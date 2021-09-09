@@ -1,0 +1,22 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Have you always lived in England?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "Yes, I’ve always lived in England"
+      },
+      {
+        text: "No, I have lived somewhere else too"
+      }
+    ]
+  } | decorateFormAttributes(['example-wizard', 'always-england']) ) }}
+{% endblock %}

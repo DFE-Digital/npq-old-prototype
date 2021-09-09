@@ -1,0 +1,15 @@
+{% extends "_wizard-page.html" %}
+{% set title = 'Check your answers before confirming' %}
+{% set buttonText = 'Finish' %}
+
+{% block banner %}
+  {{ govukPanel({
+    titleText: "Application complete",
+    html: "Your reference number<br><strong>HDJ2123F</strong>"
+  }) }}
+{% endblock %}
+
+{% block page %}
+  <h2 class="govuk-heading-m govuk-!-margin-top-6">What happens next</h2>
+  <p>This is the end of the example wizard.</p>
+{% endblock %}

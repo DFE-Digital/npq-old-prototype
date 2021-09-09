@@ -1,0 +1,12 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'What is your name?' %}
+
+{% block form %}
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--xl",
+      isPageHeading: true
+    }
+  } | decorateFormAttributes(['example-wizard', 'name']) ) }}
+{% endblock %}

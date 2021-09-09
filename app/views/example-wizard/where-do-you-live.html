@@ -1,0 +1,28 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Where do you live?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "England"
+      },
+      {
+        text: "Scotland"
+      },
+      {
+        text: "Wales"
+      },
+      {
+        text: "Northern Ireland"
+      }
+    ]
+  } | decorateFormAttributes(['example-wizard', 'where-do-you-live']) ) }}
+{% endblock %}

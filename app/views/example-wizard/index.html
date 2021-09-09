@@ -1,0 +1,23 @@
+{% extends "_wizard-page.html" %}
+{% set title = 'An example user journey' %}
+
+{% block page %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>The wizard paths and wizard helpers files make it easy to build and iterate a page-per-thing journey.</p>
+
+  <p>The paths file defines:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>the order of pages</li>
+    <li>fork points in the journey, where the journey must diverge based on a given answer</li>
+  </ul>
+
+  <p>You can rearrange the list of pages to quickly change the order of pages in a journey.</p>
+
+  <p>The templates automatically generate:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>a back link to the previous page</li>
+    <li>a ‘Continue’ button which submits the form</li>
+    <li>a form action that submits to the current page</li>
+  </ul>
+{% endblock %}

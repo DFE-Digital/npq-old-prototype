@@ -1,0 +1,32 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'What is your nationality?' %}
+
+{% block form %}
+  {{ govukCheckboxes({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    hint: {
+      text: "If you have dual nationality, select all options that are relevant to you."
+    },
+    items: [
+      {
+        text: "British",
+        hint: {
+          text: "including English, Scottish, Welsh and Northern Irish"
+        }
+      },
+      {
+        text: "Irish"
+      },
+      {
+        value: "other",
+        text: "Citizen of another country"
+      }
+    ]
+  } | decorateFormAttributes(['example-wizard', 'nationality']) ) }}
+{% endblock %}
