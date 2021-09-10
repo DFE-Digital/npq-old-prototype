@@ -1,0 +1,31 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Updated name' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>If you’ve changed your name and want to use it for work, and any NPQ certificates gained, it must also be changed on the Teaching Regulation Agency (TRA) records.</p>
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: 'Have you updated your name with the TRA?',
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        text: "Yes, I’ve updated my name",
+        value: "yes"
+      },
+      {
+        text: "No, I have not updated my name",
+        value: "no"
+      },
+      {
+        text: "Not sure",
+        value: "not-sure"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'name-updated']) ) }}
+{% endblock %}

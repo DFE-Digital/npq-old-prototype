@@ -9,13 +9,9 @@ function registerWizardPaths (req) {
     '/register/chosen',
     '/register/share-information',
     '/register/trn',
-    '/register/confirmation',
-
-    '/register/chosen',
-    '/register/choosing-an-npq',
-
-    '/register/trn',
-    '/register/get-your-trn'
+    '/register/name-changes',
+    '/register/email',
+    '/register/confirmation'
   ]
 
   return nextAndBackPaths(paths, req)
@@ -41,6 +37,12 @@ function registerWizardForks (req) {
             return '/register/get-a-trn'
         }
       }
+    },
+    {
+      currentPath: '/register/name-changes',
+      storedData: ['register', 'name-changed'],
+      values: ['yes'],
+      forkPath: '/register/updated-name'
     }
   ]
   return nextForkPath(forks, req)

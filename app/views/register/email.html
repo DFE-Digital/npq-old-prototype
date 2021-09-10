@@ -1,0 +1,15 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Email details' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>We’ll email you a code to confirm your email address.</p>
+
+  {{ govukInput({
+    label: {
+      text: "Email address",
+      classes: "govuk-label--s"
+    }
+  } | decorateFormAttributes(['register', 'email']) ) }}
+{% endblock %}
