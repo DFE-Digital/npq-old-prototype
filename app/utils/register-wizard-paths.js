@@ -15,6 +15,7 @@ function registerWizardPaths (req) {
     '/register/personal-details',
     '/register/where-school',
     '/register/which-school',
+    '/register/funding',
     '/register/choose-npq',
     '/register/choose-provider',
     '/register/check',

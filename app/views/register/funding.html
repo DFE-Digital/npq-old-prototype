@@ -1,0 +1,34 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Funding' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>Your school or college is not eligible for NPQ government scholarship funding.</p>
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: 'How is your ' + (data.register.npq or 'course') + ' being paid for?',
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        text: "My school or college is covering the cost"
+      },
+      {
+        text: "My trust is paying"
+      },
+      {
+        text: "I am paying"
+      },
+      {
+        text: "My NPQ is being paid in another way",
+        hint: {
+          text: "For example, I am sharing the costs with my school or college"
+        }
+      }
+    ]
+  } | decorateFormAttributes(['register', 'provider']) ) }}
+{% endblock %}
