@@ -1,0 +1,149 @@
+{% extends "_wizard-page.html" %}
+{% set title = 'Check your answers and confirm' %}
+{% set buttonText = 'Confirm' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block page %}
+<h1 class="govuk-heading-xl" >{{ title }}</h1>
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Full name"
+      },
+      value: {
+        text: data.register.name
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Teacher reference number (TRN)"
+      },
+      value: {
+        text: data.register.trn
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details",
+            text: "Change",
+            visuallyHiddenText: "TRN"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details",
+            text: "Change",
+            visuallyHiddenText: "TRN"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "National Insurance number"
+      },
+      value: {
+        text: data.register.nino
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details",
+            text: "Change",
+            visuallyHiddenText: "national insurance number"
+          }
+        ]
+      }
+    } if data.register.nino,
+    {
+      key: {
+        text: "Email address"
+      },
+      value: {
+        text: data.register.email
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/email",
+            text: "Change",
+            visuallyHiddenText: "email address"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "School or college"
+      },
+      value: {
+        text: data.register.school
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/where-school",
+            text: "Change",
+            visuallyHiddenText: "school or college"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Course"
+      },
+      value: {
+        text: data.register.npq
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-npq",
+            text: "Change",
+            visuallyHiddenText: " course"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Lead provider"
+      },
+      value: {
+        text: data.register.provider
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-provider",
+            text: "Change",
+            visuallyHiddenText: " lead provider"
+          }
+        ]
+      }
+    }
+  ]
+}) }}
+{% endblock %}

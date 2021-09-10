@@ -17,6 +17,7 @@ function registerWizardPaths (req) {
     '/register/which-school',
     '/register/choose-npq',
     '/register/choose-provider',
+    '/register/check',
     '/register/confirmation',
 
     '/register/name-changes',

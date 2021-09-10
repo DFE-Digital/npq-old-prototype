@@ -1,0 +1,23 @@
+{% extends "_wizard-page.html" %}
+{% set title = 'Initial registration complete' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+{% block pageNavigation %}{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukPanel({
+      titleText: title,
+      classes: 'govuk-!-margin-bottom-6'
+    }) }}
+
+    <h2 class="govuk-heading-m">
+      What happens next
+    </h2>
+
+    <p>{{ data.register.provider }} will contact you to complete your registration.</p>
+
+    <p>They will provide details of timings, costs and deadlines for your course.</p>
+  </div>
+</div>
+{% endblock %}
