@@ -1,0 +1,22 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Where is your school or college?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>We need this information to check if you can access Department for Education funding.</p>
+
+  <div class="govuk-inset-text">
+    You can only select schools and colleges in England, Guernsey, Jersey or the Isle of Man. If your school or college is outside these locations, check with your training provider.
+  </div>
+
+  {{ govukInput({
+    label: {
+      text: "School or college location",
+      classes: "govuk-label--s"
+    },
+    hint: {
+      text: "Enter town, city or postcode"
+    }
+  } | decorateFormAttributes(['register', 'school-location']) ) }}
+{% endblock %}

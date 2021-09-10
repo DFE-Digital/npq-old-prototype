@@ -1,0 +1,37 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Choose your course' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "NPQ Leading Teaching (NPQLT)"
+      },
+      {
+        text: "NPQ Leading Behaviour and Culture (NPQLBC)"
+      },
+      {
+        text: "NPQ Leading Teacher Development (NPQLTD)"
+      },
+      {
+        text: "NPQ for Senior Leadership (NPQSL)"
+      },
+      {
+        text: "NPQ for Headship (NPQH)"
+      },
+      {
+        text: "Additional Support Offer (ASO) for NPQH"
+      },
+      {
+        text: "NPQ for Executive Leadership (NPQEL)"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'course']) ) }}
+{% endblock %}
