@@ -7,6 +7,8 @@ function registerWizardPaths (req) {
   var paths = [
     '/start',
     '/register/chosen',
+    '/register/share-information',
+    '/register/trn',
     '/register/confirmation',
 
     '/register/chosen',
