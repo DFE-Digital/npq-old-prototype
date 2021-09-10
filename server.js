@@ -23,6 +23,7 @@ const documentationRoutes = require('./docs/documentation_routes.js')
 const packageJson = require('./package.json')
 const routes = require('./app/routes.js')
 const utils = require('./lib/utils.js')
+const helpers = require('./lib/helpers.js')
 const extensions = require('./lib/extensions/extensions.js')
 const addNunjucksFiltersWithAppContext = require('./lib/filters-with-app-context')
 
@@ -201,6 +202,9 @@ if (useAutoStoreData === 'true') {
     utils.addCheckedFunction(nunjucksV6Env)
   }
 }
+
+// Load in global helper functions
+helpers.addHelpers(nunjucksAppEnv)
 
 // Clear all data in session if you open /prototype-admin/clear-data
 app.post('/prototype-admin/clear-data', function (req, res) {
