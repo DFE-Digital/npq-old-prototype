@@ -1,0 +1,35 @@
+
+{% extends "layout.html" %}
+{% set title = 'Register for a National Professional Qualification (NPQ)' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{ title }}
+      </h1>
+      <p class="govuk-body-l">This service is for teachers who want to register to study for an NPQ.</p>
+
+      <p>Use this service to start your NPQ registration.</p>
+
+      <h2 class="govuk-heading-m">Before you start</h2>
+
+      <p>You must:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>only use this service if you are a teacher working in England, Guernsey, Jersey or the Isle of Man - if you are a teacher working outside these locations contact your provider directly to register</li>
+        <li>have your teacher reference number (TRN)</li>
+        <li>have your funding source confirmed - either a scholarship, school, college or personal funding</li>
+        <li>know which NPQ course you want to study</li>
+        <li>have chosen a provider</li>
+      </ul>
+
+      {{ govukButton({
+        text: 'Start now',
+        href: '#',
+        isStartButton: true
+      }) }}
+    </div>
+  </div>
+
+{% endblock %}
