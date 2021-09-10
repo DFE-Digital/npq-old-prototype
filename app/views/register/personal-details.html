@@ -1,0 +1,74 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Check your details' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>We need to check your details on the Teaching Regulation Agency records to ensure you qualify to study for a National Professional Qualification (NPQ).</p>
+
+  {{ govukInput({
+    label: {
+      text: "Teacher reference number (TRN)",
+      classes: "govuk-label--s"
+    },
+    classes: 'govuk-!-width-one-third',
+    hint: {
+      text: 'Your TRN is between 6 and 7 characters long. It may begin with ‘RP’'
+    }
+  } | decorateFormAttributes(['register', 'trn']) ) }}
+
+  {{ govukInput({
+    label: {
+      text: "Full name",
+      classes: "govuk-label--s"
+    },
+    classes: 'govuk-!-width-three-quarters',
+    hint: {
+      text: 'Your full name exactly as it appears on the Teaching Regulation Agency records'
+    }
+  } | decorateFormAttributes(['register', 'name']) ) }}
+
+  {{ govukDateInput({
+      id: 'dob',
+      fieldset: {
+        legend: {
+          text: "Date of birth",
+          classes: "govuk-label--s"
+        }
+      },
+      items: [
+        {
+          name: '[register][dob-day]',
+          value: data['register']['dob-day'],
+          classes: "govuk-input--width-2",
+          label: 'Day'
+        },
+        {
+          name: '[register][dob-month]',
+          value: data['register']['dob-month'],
+          classes: "govuk-input--width-2",
+          label: 'Month'
+        },
+        {
+          name: '[register][dob-year]',
+          value: data['register']['dob-year'],
+          classes: "govuk-input--width-4",
+          label: 'Year'
+        }
+      ],
+      hint: {
+        text: "For example, 12 11 1990"
+      }
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "National Insurance number (optional)",
+        classes: "govuk-label--s"
+      },
+      classes: 'govuk-!-width-three-quarters',
+      hint: {
+        text: 'This will help us match your details. It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+      }
+    } | decorateFormAttributes(['register', 'nino']) ) }}
+{% endblock %}

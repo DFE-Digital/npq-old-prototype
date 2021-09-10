@@ -11,6 +11,8 @@ function registerWizardPaths (req) {
     '/register/trn',
     '/register/name-changes',
     '/register/email',
+    '/register/email-confirmation',
+    '/register/personal-details',
     '/register/confirmation',
 
     '/register/name-changes',
