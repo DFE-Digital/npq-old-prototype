@@ -1,0 +1,28 @@
+{% extends "_wizard-page.html" %}
+{% set title = 'Change your details on the Teaching Regulation Agency records' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+      <p>To update your name on the Teaching Regulation Agency records you will need to login to the <a href="https://teacherservices.education.gov.uk/SelfService/Login">Teacher Self Service Portal</a> - it can take a minimum of 5 days to update your details.</p>
+
+      <p class="govuk-body">You will need to upload one of the following documents as evidence of your name change:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>marriage: copy of your marriage certificate</li>
+        <li>civil partnership: copy of your civil agreement certificate</li>
+        <li>divorce: copy of your decree absolute and your birth certificate</li>
+        <li>statutory declaration: copy of the statutory declaration</li>
+        <li>deed poll: copy of your deed poll. Once you have clicked submit, you will be taken to the Change of Details request page.</li>
+      </ul>
+
+      <div class="govuk-inset-text">
+        <p>You can still <a href="#">continue to register</a> for your NPQ with your previous name - this can be changed on the Teaching Regulation Agency records after registration.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
