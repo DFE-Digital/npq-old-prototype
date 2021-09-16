@@ -70,11 +70,11 @@ function registerWizardForks (req) {
     {
       currentPath: '/register/updated-name',
       storedData: ['register', 'updated-name'],
-      values: ['not-sure', 'no'],
+      values: ['yes', 'not-sure'],
       forkPath: (value) => {
         switch (value) {
-          case 'no':
-            return '/register/updating-your-name'
+          case 'yes':
+            return '/register/email'
           case 'not-sure':
             return '/register/dont-know-if-name-updated'
         }
