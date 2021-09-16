@@ -2,6 +2,10 @@
 {% set title = 'Choose your course' %}
 
 {% block form %}
+  {% set npqh %}
+    <p>If you are interested in both the NPQH and the Additional Support Offer (ASO), you can register for your ASO once you have completed your NPQH registration.</p>
+  {% endset %}
+
   {{ govukRadios({
     fieldset: {
       legend: {
@@ -24,10 +28,16 @@
         text: "NPQ for Senior Leadership (NPQSL)"
       },
       {
-        text: "NPQ for Headship (NPQH)"
+        text: "NPQ for Headship (NPQH)",
+        conditional: {
+          html: npqh
+        }
       },
       {
-        text: "Additional Support Offer (ASO) for NPQH"
+        text: "Additional Support Offer (ASO) for NPQH",
+        conditional: {
+          html: npqh
+        }
       },
       {
         text: "NPQ for Executive Leadership (NPQEL)"
