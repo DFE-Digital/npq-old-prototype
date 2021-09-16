@@ -21,6 +21,7 @@ function registerWizardPaths (req) {
     '/register/aso-early-headship',
     '/register/aso-funding',
     '/register/choose-provider',
+    '/register/funding-vague',
     '/register/check',
     '/register/confirmation',
 
@@ -88,6 +89,12 @@ function registerWizardForks (req) {
       storedData: ['register', 'course'],
       excludedValues: ['Additional Support Offer (ASO) for NPQH'],
       forkPath: '/register/choose-provider'
+    },
+    {
+      currentPath: '/register/choose-provider',
+      storedData: ['register', 'course'],
+      values: ['Additional Support Offer (ASO) for NPQH'],
+      forkPath: '/register/check'
     },
     {
       currentPath: '/register/aso',
