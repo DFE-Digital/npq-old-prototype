@@ -1,0 +1,27 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'ASO funding is not available to you' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>You are not eligible for scholarship funding for your ASO, but you can still study the ASO course.</p>
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: 'Do you want to pay for your ASO in another way?',
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        text: "Yes, I will pay another way",
+        value: "yes"
+      },
+      {
+        text: "No",
+        value: "no"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'aso-pay-another-way']) ) }}
+{% endblock %}

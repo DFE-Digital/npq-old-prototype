@@ -17,6 +17,9 @@ function registerWizardPaths (req) {
     '/register/which-school',
     '/register/funding',
     '/register/choose-npq',
+    '/register/aso',
+    '/register/aso-early-headship',
+    '/register/aso-funding',
     '/register/choose-provider',
     '/register/check',
     '/register/confirmation',
@@ -24,7 +27,11 @@ function registerWizardPaths (req) {
     '/register/name-changes',
     '/register/updated-name',
     '/register/updating-your-name',
-    '/register/change-name-on-tra'
+    '/register/change-name-on-tra',
+
+    '/register/aso',
+    '/register/aso-funding-not-available',
+    '/register/aso-how-pay'
   ]
 
   return nextAndBackPaths(paths, req)
@@ -75,6 +82,34 @@ function registerWizardForks (req) {
       storedData: ['register', 'updating-name-now'],
       values: ['no'],
       forkPath: '/register/email'
+    },
+    {
+      currentPath: '/register/choose-npq',
+      storedData: ['register', 'course'],
+      excludedValues: ['Additional Support Offer (ASO) for NPQH'],
+      forkPath: '/register/choose-provider'
+    },
+    {
+      currentPath: '/register/aso',
+      storedData: ['register', 'aso-headteacher'],
+      values: ['no'],
+      forkPath: '/register/aso-funding-not-available'
+    },
+    {
+      currentPath: '/register/aso-early-headship',
+      storedData: ['register', 'aso-early-headship'],
+      values: ['no'],
+      forkPath: '/register/aso-funding-not-available'
+    },
+    {
+      currentPath: '/register/aso-funding-not-available',
+      storedData: ['register', 'aso-pay-another-way'],
+      values: ['no'],
+      forkPath: '/register/aso-contact-provider'
+    },
+    {
+      currentPath: '/register/aso-how-pay',
+      skipTo: '/register/choose-provider'
     }
   ]
   return nextForkPath(forks, req)

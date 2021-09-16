@@ -1,0 +1,29 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Additional Support Offer' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>You are eligible for additional support if you are completing or have completed an NPQH and are in your first 2 years of headship.</p>
+
+  <p>If eligible, your training provider will share further details with you.</p>
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: 'Are you a headteacher?',
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        text: "Yes, I am a headteacher",
+        value: "yes"
+      },
+      {
+        text: "No",
+        value: "no"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'aso-headteacher']) ) }}
+{% endblock %}

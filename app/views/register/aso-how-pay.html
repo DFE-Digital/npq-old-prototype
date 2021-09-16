@@ -1,0 +1,31 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'How is your additional support being paid for?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "My school or college is covering the cost"
+      },
+      {
+        text: "My trust is paying"
+      },
+      {
+        text: "I am paying"
+      },
+      {
+        text: "My ASO is being paid in another way",
+        hint: {
+          text: "For example, I am sharing the costs with my school or college"
+        }
+      }
+    ]
+  } | decorateFormAttributes(['register', 'aso-how-pay']) ) }}
+{% endblock %}
