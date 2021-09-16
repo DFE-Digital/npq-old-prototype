@@ -8,6 +8,11 @@ module.exports = router => {
     res.render('register/index', { paths: registerWizardPaths(req) })
   })
 
+  router.get('/register/aso-from-npqh', (req, res) => {
+    req.session.data.register.course = 'Additional Support Offer (ASO) for NPQH'
+    res.render('register/aso', { paths: registerWizardPaths(req) })
+  })
+
   router.get('/register/:view', (req, res) => {
     res.render(`register/${req.params.view}`, { paths: registerWizardPaths(req) })
   })

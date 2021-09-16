@@ -103,6 +103,19 @@ function registerWizardForks (req) {
       forkPath: '/register/aso-funding-not-available'
     },
     {
+      currentPath: '/register/aso-from-npqh',
+      storedData: ['register', 'aso-headteacher'],
+      values: ['yes', 'no'],
+      forkPath: (value) => {
+        switch (value) {
+          case 'yes':
+            return '/register/aso-early-headship'
+          case 'no':
+            return '/register/aso-funding-not-available'
+        }
+      }
+    },
+    {
       currentPath: '/register/aso-early-headship',
       storedData: ['register', 'aso-early-headship'],
       values: ['no'],
@@ -116,6 +129,10 @@ function registerWizardForks (req) {
     },
     {
       currentPath: '/register/aso-how-pay',
+      skipTo: '/register/choose-provider'
+    },
+    {
+      currentPath: '/register/aso-from-npqh',
       skipTo: '/register/choose-provider'
     }
   ]
