@@ -112,7 +112,7 @@ function registerWizardForks (req) {
     },
     {
       currentPath: '/register/aso-from-npqh',
-      skipTo: '/register/aso-headteacher'
+      skipTo: '/register/aso-completed-npqh'
     },
     {
       currentPath: '/register/aso-early-headship',
