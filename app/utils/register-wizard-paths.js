@@ -15,7 +15,7 @@ function registerWizardPaths (req) {
     '/register/personal-details',
     '/register/where-school',
     '/register/which-school',
-    '/register/funding',
+    // '/register/funding', // temporarily disable funding pending logic
     '/register/choose-npq',
     '/register/aso',
     '/register/aso-early-headship',
