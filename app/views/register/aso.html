@@ -1,29 +1,20 @@
-{% extends "_wizard-form.html" %}
-{% set title = 'Additional Support Offer' %}
+{% extends "_wizard-page.html" %}
+{% set title = 'Additional Support Offer (ASO)' %}
 
-{% block form %}
+{% block page %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>You are eligible for additional support if you are completing or have completed an NPQH and are in your first 2 years of headship.</p>
+  <p><a href="https://www.gov.uk/government/publications/national-professional-qualifications-npqs-reforms/national-professional-qualifications-npqs-reforms#additional-support-offer-for-the-npq-in-headship" target="_blank">Read more about ASO</a></p>
 
-  <p>If eligible, your training provider will share further details with you.</p>
+  <h2 class="govuk-heading-m">Who can take this course</h2>
+  <p>You can register for this course if you:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>have completed an NPQH</li>
+    <li>are completing an NPQH</li>
+    <li>have already registered to start an NPQH alongside this course</li>
+  </ul>
 
-  {{ govukRadios({
-    fieldset: {
-      legend: {
-        text: 'Are you a headteacher?',
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [
-      {
-        text: "Yes, I am a headteacher",
-        value: "yes"
-      },
-      {
-        text: "No",
-        value: "no"
-      }
-    ]
-  } | decorateFormAttributes(['register', 'aso-headteacher']) ) }}
+  <h2 class="govuk-heading-m">Funding this course</h2>
+  <p>Your ASO course may be eligible for scholarship funding if you are a headteacher in your first 2 years of headship.</p>
+  <p>Alternatively you can pay for an ASO another way.</p>
 {% endblock %}
