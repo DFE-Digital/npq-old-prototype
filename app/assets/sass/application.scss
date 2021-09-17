@@ -18,4 +18,21 @@ $govuk-assets-path: '/govuk/assets/';
 // Components that aren’t in Frontend
 @import "components/summary-card";
 
+// govuk-prototype-kit-plus additional helper methods
+.app-\!-inherit-colour {
+  color: inherit !important;
+}
+
+.app-\!-font-family-tabular {
+  @include govuk-font($size: false, $tabular: true);
+}
+
+.app-\!-font-family-tabular-bold {
+  @include govuk-font($size: false, $tabular: true, $weight: bold);
+}
+
+.app-\!-no-wrap {
+  white-space: nowrap !important;
+}
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
