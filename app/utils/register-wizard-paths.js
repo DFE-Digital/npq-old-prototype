@@ -89,13 +89,13 @@ function registerWizardForks (req) {
     {
       currentPath: '/register/choose-npq',
       storedData: ['register', 'course'],
-      excludedValues: ['Additional Support Offer (ASO) for NPQH'],
+      excludedValues: ['Additional Support Offer for new headteachers'],
       forkPath: '/register/choose-provider'
     },
     {
       currentPath: '/register/choose-provider',
       storedData: ['register', 'course'],
-      values: ['Additional Support Offer (ASO) for NPQH'],
+      values: ['Additional Support Offer for new headteachers'],
       forkPath: '/register/check'
     },
     {

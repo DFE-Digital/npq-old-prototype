@@ -1,17 +1,17 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'You are not eligible for scholarship funding' %}
+{% set title = 'DfE scholarship funding not available' %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>You can still study the ASO course, but you need to pay for it another way.</p>
+  <p>You can still register for the Additional Support Offer, but you need to pay for it another way.</p>
 
-  <p>The course costs £800.</p>
+  <p>The Additional Support Offer costs £800.</p>
 
   {{ govukRadios({
     fieldset: {
       legend: {
-        text: 'Do you want to pay for your ASO in another way?',
+        text: 'Do you want to pay for the Additional Support Offer in another way?',
         classes: "govuk-fieldset__legend--m"
       }
     },

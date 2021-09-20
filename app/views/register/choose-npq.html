@@ -1,7 +1,8 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Choose your course' %}
+{% set title = 'What are you applying for?' %}
 
 {% block form %}
+ <h1 class="govuk-heading-xl">{{ title }}</h1>
   {% set npqh %}
     <p>If you are interested in both the NPQH and the Additional Support Offer (ASO), you can register for your ASO once you have completed your NPQH registration.</p>
   {% endset %}
@@ -9,7 +10,7 @@
   {{ govukRadios({
     fieldset: {
       legend: {
-        text: title,
+       
         isPageHeading: true,
         classes: "govuk-fieldset__legend--xl"
       }
@@ -28,19 +29,20 @@
         text: "NPQ for Senior Leadership (NPQSL)"
       },
       {
-        text: "NPQ for Headship (NPQH)",
-        conditional: {
-          html: npqh
-        }
+        text: "NPQ for Headship (NPQH)"
+
       },
-      {
-        text: "Additional Support Offer (ASO) for NPQH",
-        conditional: {
-          html: npqh
-        }
-      },
+
       {
         text: "NPQ for Executive Leadership (NPQEL)"
+      },
+
+     {
+        text: "Additional Support Offer for new headteachers",
+          hint: {
+        text: "The Additional Support Offer is a targeted support package for new headteachers. "
+      }
+
       }
     ]
   } | decorateFormAttributes(['register', 'course']) ) }}

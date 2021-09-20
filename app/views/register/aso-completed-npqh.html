@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Are you completing, or have you completed an NPQ for Headship (NPQH)?' %}
+{% set title = 'Are you studying for, or have you completed an NPQ for Headship (NPQH)?' %}
 
 {% block form %}
   {{ govukRadios({
@@ -15,10 +15,10 @@
         text: "I have completed an NPQH"
       },
       {
-        text: "I am still completing an NPQH"
+        text: "I am still studying for an NPQH"
       },
       {
-        text: "I have registered to start an NPQH"
+        text: "I am about to start an NPQH"
       },
       {
         divider: "or"
