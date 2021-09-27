@@ -33,8 +33,14 @@
         <li>are about to start an NPQH</li>
       </ul>
 
-      <p>If eligible, your training provider will share further details with you.</p>
-      <p class="govuk-!-margin-bottom-6"><a href="https://www.gov.uk/government/publications/national-professional-qualifications-npqs-reforms/national-professional-qualifications-npqs-reforms#additional-support-offer-for-the-npq-in-headship" target="_blank">Read more about the Additional Support Offer for new headteachers</a></p>
+      {% if data.features['aso-loop'] %}
+        <p>
+          <a href="/register/aso-from-npqh">Register for the Additional Support Offer (ASO) for NPQH</a>
+        </p>
+      {% else %}
+        <p>If eligible, your training provider will share further details with you.</p>
+        <p class="govuk-!-margin-bottom-6"><a href="https://www.gov.uk/government/publications/national-professional-qualifications-npqs-reforms/national-professional-qualifications-npqs-reforms#additional-support-offer-for-the-npq-in-headship" target="_blank">Read more about the Additional Support Offer for new headteachers</a></p>
+      {% endif %}
     {% endif %}
   </div>
 </div>
