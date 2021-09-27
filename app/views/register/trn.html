@@ -1,37 +1,73 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Teacher reference number' %}
+{% set title = 'You need your teacher reference number to register for an NPQ' if isEnglandTeacher else 'You need a teacher reference number to register for an NPQ' %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>Your teacher reference number (TRN) is used to check you’re eligible to study for a national professional qualification (NPQ).</p>
+  {% if isEnglandTeacher %}
+    <p>Your teacher reference number (TRN) is used to check you’re eligible to study for a national professional qualification (NPQ).</p>
 
-  <p>If you don’t know what your TRN is, this can usually be found on your payslip, teachers’ pension documentation or teacher training records.</p>
+    <p>If you don’t know what your TRN is, this can usually be found on your payslip, teachers’ pension documentation or teacher training records.</p>
 
-  <p>The TRN has previously been known as a QTS, GTC, DfE, DfES or DCSF number.</p>
+    <p>The TRN has previously been known as a QTS, GTC, DfE, DfES or DCSF number.</p>
 
-  <p>You may not have a TRN if you are working in further education or qualified outside England or overseas.</p>
+    <p>You may not have a TRN if you are working in further education or qualified outside England or overseas.</p>
 
-  {{ govukRadios({
-    fieldset: {
-      legend: {
-        text: 'Do you know your teacher reference number (TRN)?',
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [
-      {
-        text: "Yes, I know my TRN",
-        value: "yes"
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: 'Do you know your teacher reference number (TRN)?',
+          classes: "govuk-fieldset__legend--m"
+        }
       },
-      {
-        text: "No, I do not know my TRN",
-        value: "dont-know"
+      items: [
+        {
+          text: "Yes, I know my TRN",
+          value: "yes"
+        },
+        {
+          text: "No, I do not know my TRN",
+          value: "dont-know"
+        },
+        {
+          text: "I do not have a TRN",
+          value: "no-trn"
+        }
+      ]
+    } | decorateFormAttributes(['register', 'know-trn']) ) }}
+  {% else %}
+    <p>You may not have a teacher reference number (TRN) if you:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>qualified outside England or overseas</li>
+      <li>are not a qualified teacher</li>
+      <li>are working in further education</li>
+    </ul>
+
+    <p>The TRN has previously been known as a QTS, GTC, DfE, DfES or DCSF number.</p>
+
+    <p>If you think you have a TRN, it can usually be found on a teacher’s payslip, pension documentation or teacher training records.</p>
+
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: 'Do you have a teacher reference number (TRN)?',
+          classes: "govuk-fieldset__legend--m"
+        }
       },
-      {
-        text: "I do not have a TRN",
-        value: "no-trn"
-      }
-    ]
-  } | decorateFormAttributes(['register', 'know-trn']) ) }}
+      items: [
+        {
+          text: "Yes, I know my TRN",
+          value: "yes"
+        },
+        {
+          text: "Yes, but I need to be reminded what it is",
+          value: "dont-know"
+        },
+        {
+          text: "No, I need to get a TRN",
+          value: "no-trn"
+        }
+      ]
+    } | decorateFormAttributes(['register', 'know-trn']) ) }}
+  {% endif %}
 {% endblock %}
