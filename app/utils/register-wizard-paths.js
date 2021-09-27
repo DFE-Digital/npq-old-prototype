@@ -7,7 +7,6 @@ function registerWizardPaths (req) {
   var paths = [
     '/start',
     '/register/chosen',
-    '/register/share-information',
     '/register/trn',
     '/register/name-changes',
     '/register/email',
@@ -24,6 +23,7 @@ function registerWizardPaths (req) {
     '/register/aso-funding',
     '/register/choose-provider',
     '/register/funding-vague',
+    '/register/share-information',
     '/register/check',
     '/register/confirmation',
 
@@ -96,7 +96,7 @@ function registerWizardForks (req) {
       currentPath: '/register/choose-provider',
       storedData: ['register', 'course'],
       values: ['Additional Support Offer for new headteachers'],
-      forkPath: '/register/check'
+      forkPath: '/register/share-information'
     },
     {
       currentPath: '/register/aso-completed-npqh',
