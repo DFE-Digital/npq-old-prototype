@@ -4,6 +4,16 @@ const {
 } = require('../utils/register-wizard-paths')
 
 module.exports = router => {
+  router.all('/register/*', (req, res, next) => {
+    const registerData = req.session.data.register
+    res.locals.isInternational = registerData && registerData['teach-in-england'] === 'No, I’m a teacher somewhere else'
+    res.locals.isNonTeacher = registerData && registerData['teach-in-england'] === 'No, I’m not a teacher'
+
+    // Allow a non-answer to default to England teacher
+    res.locals.isEnglandTeacher = !(res.locals.isNonTeacher || res.locals.isInternational)
+    next()
+  })
+
   router.get('/register', (req, res) => {
     res.render('register/index', { paths: registerWizardPaths(req) })
   })
