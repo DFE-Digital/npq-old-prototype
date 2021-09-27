@@ -27,7 +27,7 @@ function registerWizardPaths (req) {
     '/register/aso-early-headship',
     '/register/aso-funding',
     '/register/choose-provider',
-    '/register/funding-vague',
+    ...isEnglandTeacher ? ['/register/funding-vague'] : ['/register/funding'],
     '/register/share-information',
     '/register/check',
     '/register/confirmation',

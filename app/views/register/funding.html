@@ -1,16 +1,19 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Funding' %}
+{% set legend = 'How is your ' + (data.register.npq or 'course') + ' being paid for?' %}
+{% set title = 'Funding' if isEnglandTeacher else legend %}
 
 {% block form %}
-  <h1 class="govuk-heading-xl">{{ title }}</h1>
-
-  <p>Your school or college is not eligible for NPQ government scholarship funding.</p>
+  {% if isEnglandTeacher %}
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+    <p>Your school or college is not eligible for NPQ government scholarship funding.</p>
+  {% endif %}
 
   {{ govukRadios({
     fieldset: {
       legend: {
-        text: 'How is your ' + (data.register.npq or 'course') + ' being paid for?',
-        classes: "govuk-fieldset__legend--s"
+        text: legend,
+        isPageTitle: not isEnglandTeacher,
+        classes: "govuk-fieldset__legend--s" if isEnglandTeacher else "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
       }
     },
     items: [
@@ -30,5 +33,5 @@
         }
       }
     ]
-  } | decorateFormAttributes(['register', 'provider']) ) }}
+  } | decorateFormAttributes(['register', 'funding']) ) }}
 {% endblock %}
