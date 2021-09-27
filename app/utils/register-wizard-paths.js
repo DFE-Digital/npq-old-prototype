@@ -4,6 +4,8 @@ const {
 } = require('../utils/wizard-helpers')
 
 function registerWizardPaths (req) {
+  const isEnglandTeacher = typeOfUser(req).isEnglandTeacher
+
   var paths = [
     '/start',
     '/register/teach-in-england',
@@ -13,8 +15,10 @@ function registerWizardPaths (req) {
     '/register/email',
     '/register/email-confirmation',
     '/register/personal-details',
-    '/register/where-school',
-    '/register/which-school',
+    ...isEnglandTeacher ? [
+      '/register/where-school',
+      '/register/which-school'
+    ] : [],
     // '/register/funding', // temporarily disable funding pending logic
     '/register/choose-npq',
     '/register/aso',
@@ -135,7 +139,18 @@ function registerWizardForks (req) {
   return nextForkPath(forks, req)
 }
 
+function typeOfUser (req) {
+  const registerData = req.session.data.register
+  const isInternational = registerData && registerData['teach-in-england'] === 'No, I’m a teacher somewhere else'
+  const isNonTeacher = registerData && registerData['teach-in-england'] === 'No, I’m not a teacher'
+
+  // Allow a non-answer to default to England teacher
+  const isEnglandTeacher = !(isNonTeacher || isInternational)
+  return { isInternational, isNonTeacher, isEnglandTeacher }
+}
+
 module.exports = {
   registerWizardPaths,
-  registerWizardForks
+  registerWizardForks,
+  typeOfUser
 }
