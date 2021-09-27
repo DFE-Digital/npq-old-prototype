@@ -6,6 +6,7 @@ const {
 function registerWizardPaths (req) {
   var paths = [
     '/start',
+    '/register/teach-in-england',
     '/register/chosen',
     '/register/trn',
     '/register/name-changes',

@@ -20,7 +20,9 @@
 
       <p>You must:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>only use this service if you are a teacher working in England, Guernsey, Jersey or the Isle of Man – if you are a teacher working outside these locations contact your provider directly to register</li>
+        {% if not data.features['international-and-non-teacher'] %}
+          <li>only use this service if you are a teacher working in England, Guernsey, Jersey or the Isle of Man – if you are a teacher working outside these locations contact your provider directly to register</li>
+        {% endif %}
         <li>have your teacher reference number (TRN)</li>
         <li>have your funding source confirmed – either a scholarship, school, college or personal funding</li>
         <li>know which NPQ course you want to study</li>
@@ -29,7 +31,7 @@
 
       {{ govukButton({
         text: 'Start now',
-        href: '/register/chosen',
+        href: '/register/teach-in-england' if data.features['international-and-non-teacher'] else '/register/chosen',
         isStartButton: true,
         classes: 'govuk-!-margin-top-4'
       }) }}
