@@ -1,13 +1,11 @@
 {% extends "_wizard-page.html" %}
-{% set title = 'Check your details
-' %}
+{% set title = 'Check your answers before confirming your registration' %}
 {% set isASO = (data.register.course == 'Additional Support Offer (ASO) for NPQH') %}
 {% set buttonText = 'Confirm' %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block page %}
 <h1 class="govuk-heading-xl" >{{ title }}</h1>
-<p>Ensure the following information is correct before continuing.</p>
 {{ govukSummaryList({
   rows: [
     {
