@@ -1,5 +1,6 @@
 module.exports = {
   features: {
-    'aso-loop': false
+    'aso-loop': false,
+    'international-and-non-teacher': true
   }
 }

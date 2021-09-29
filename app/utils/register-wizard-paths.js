@@ -4,17 +4,21 @@ const {
 } = require('../utils/wizard-helpers')
 
 function registerWizardPaths (req) {
+  const isEnglandTeacher = typeOfUser(req).isEnglandTeacher
+
   var paths = [
     '/start',
+    '/register/teach-in-england',
     '/register/chosen',
-    '/register/share-information',
     '/register/trn',
     '/register/name-changes',
     '/register/email',
     '/register/email-confirmation',
     '/register/personal-details',
-    '/register/where-school',
-    '/register/which-school',
+    ...isEnglandTeacher ? [
+      '/register/where-school',
+      '/register/which-school'
+    ] : [],
     // '/register/funding', // temporarily disable funding pending logic
     '/register/choose-npq',
     '/register/aso',
@@ -23,7 +27,8 @@ function registerWizardPaths (req) {
     '/register/aso-early-headship',
     '/register/aso-funding',
     '/register/choose-provider',
-    '/register/funding-vague',
+    ...isEnglandTeacher ? ['/register/funding-vague'] : ['/register/funding'],
+    '/register/share-information',
     '/register/check',
     '/register/confirmation',
 
@@ -96,7 +101,7 @@ function registerWizardForks (req) {
       currentPath: '/register/choose-provider',
       storedData: ['register', 'course'],
       values: ['Additional Support Offer for new headteachers'],
-      forkPath: '/register/check'
+      forkPath: '/register/share-information'
     },
     {
       currentPath: '/register/aso-completed-npqh',
@@ -134,7 +139,18 @@ function registerWizardForks (req) {
   return nextForkPath(forks, req)
 }
 
+function typeOfUser (req) {
+  const registerData = req.session.data.register
+  const isInternational = registerData && registerData['teach-in-england'] === 'No, I’m a teacher somewhere else'
+  const isNonTeacher = registerData && registerData['teach-in-england'] === 'No, I’m not a teacher'
+
+  // Allow a non-answer to default to England teacher
+  const isEnglandTeacher = !(isNonTeacher || isInternational)
+  return { isInternational, isNonTeacher, isEnglandTeacher }
+}
+
 module.exports = {
   registerWizardPaths,
-  registerWizardForks
+  registerWizardForks,
+  typeOfUser
 }

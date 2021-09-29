@@ -1,9 +1,18 @@
 const {
   registerWizardPaths,
-  registerWizardForks
+  registerWizardForks,
+  typeOfUser
 } = require('../utils/register-wizard-paths')
 
 module.exports = router => {
+  router.all('/register/*', (req, res, next) => {
+    const typesOfUser = typeOfUser(req)
+    res.locals.isInternational = typesOfUser.isInternational
+    res.locals.isNonTeacher = typesOfUser.isNonTeacher
+    res.locals.isEnglandTeacher = typesOfUser.isEnglandTeacher
+    next()
+  })
+
   router.get('/register', (req, res) => {
     res.render('register/index', { paths: registerWizardPaths(req) })
   })

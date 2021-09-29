@@ -1,0 +1,26 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Are you a teacher in England, Jersey, Guernsey or the Isle of Man?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "Yes",
+        value: "yes"
+      },
+      {
+        text: "No, I’m a teacher somewhere else"
+      },
+      {
+        text: "No, I’m not a teacher"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'teach-in-england']) ) }}
+{% endblock %}

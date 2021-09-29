@@ -1,20 +1,12 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Name changes' %}
+{% set title = 'Has your name changed since you first registered as a teacher?' if isEnglandTeacher else 'Has your name changed since you received your teacher reference number (TRN)?' %}
 
 {% block form %}
-  <h1 class="govuk-heading-xl">{{ title }}</h1>
+  <h1 class="govuk-heading-l">{{ title }}</h1>
 
   <p>Your name must match the name held in the Teaching Regulation Agency records to confirm you can take an NPQ.</p>
 
-  <p>If it does not match, you cannot continue with an NPQ.</p>
-
   {{ govukRadios({
-    fieldset: {
-      legend: {
-        text: 'Has your name changed since you first registered as a teacher?',
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
     items: [
       {
         text: "Yes, I have changed my name",
