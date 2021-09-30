@@ -13,13 +13,16 @@ function registerWizardPaths (req) {
     '/register/trn',
     '/register/email',
     '/register/email-confirmation',
-    '/register/personal-details',
+    '/register/your-trn',
+    '/register/your-name',
+    '/register/your-dob',
+    '/register/your-nino',
     // '/register/name-changes', Disable ‘Have you changed your name’ flow
+    // '/register/personal-details',
     ...isEnglandTeacher ? [
       '/register/where-school',
       '/register/which-school'
     ] : [],
-    // '/register/funding', // temporarily disable funding pending logic
     '/register/choose-npq',
     '/register/aso',
     '/register/aso-completed-npqh',

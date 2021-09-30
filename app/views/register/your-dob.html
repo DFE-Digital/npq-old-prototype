@@ -1,0 +1,38 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'What’s your date of birth?' %}
+
+{% block form %}
+  {{ govukDateInput({
+    id: 'dob',
+    fieldset: {
+      legend: {
+        text: title,
+        isPageTitle: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        name: '[register][dob-day]',
+        value: data['register']['dob-day'],
+        classes: "govuk-input--width-2",
+        label: 'Day'
+      },
+      {
+        name: '[register][dob-month]',
+        value: data['register']['dob-month'],
+        classes: "govuk-input--width-2",
+        label: 'Month'
+      },
+      {
+        name: '[register][dob-year]',
+        value: data['register']['dob-year'],
+        classes: "govuk-input--width-4",
+        label: 'Year'
+      }
+    ],
+    hint: {
+      text: "For example, 12 11 1990"
+    }
+  }) }}
+{% endblock %}
