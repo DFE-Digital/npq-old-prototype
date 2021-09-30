@@ -5,20 +5,22 @@ const {
 
 function registerWizardPaths (req) {
   const isEnglandTeacher = typeOfUser(req).isEnglandTeacher
+  const data = req.session.data
 
   var paths = [
     '/start',
     '/register/teach-in-england',
     '/register/chosen',
     '/register/trn',
+    ...data.features['name-changes'] ? ['/register/name-changes'] : [],
     '/register/email',
     '/register/email-confirmation',
-    '/register/your-trn',
-    '/register/your-name',
-    '/register/your-dob',
-    '/register/your-nino',
-    // '/register/name-changes', Disable ‘Have you changed your name’ flow
-    // '/register/personal-details',
+    ...data.features['name-changes'] ? ['/register/personal-details'] : [
+      '/register/your-trn',
+      '/register/your-name',
+      '/register/your-dob',
+      '/register/your-nino'
+    ],
     ...isEnglandTeacher ? [
       '/register/where-school',
       '/register/which-school'
@@ -35,10 +37,11 @@ function registerWizardPaths (req) {
     '/register/check',
     '/register/confirmation',
 
-    // '/register/name-changes',
-    // '/register/updated-name',
-    // '/register/updating-your-name',
-    // '/register/change-name-on-tra',
+    ...data.features['name-changes'] ? [
+      '/register/name-changes',
+      '/register/updated-name',
+      '/register/updating-your-name',
+      '/register/change-name-on-tra'] : [],
 
     '/register/aso',
     '/register/aso-funding-not-available',
