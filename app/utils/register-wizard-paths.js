@@ -11,10 +11,10 @@ function registerWizardPaths (req) {
     '/register/teach-in-england',
     '/register/chosen',
     '/register/trn',
-    '/register/name-changes',
     '/register/email',
     '/register/email-confirmation',
     '/register/personal-details',
+    // '/register/name-changes', Disable ‘Have you changed your name’ flow
     ...isEnglandTeacher ? [
       '/register/where-school',
       '/register/which-school'
@@ -32,10 +32,10 @@ function registerWizardPaths (req) {
     '/register/check',
     '/register/confirmation',
 
-    '/register/name-changes',
-    '/register/updated-name',
-    '/register/updating-your-name',
-    '/register/change-name-on-tra',
+    // '/register/name-changes',
+    // '/register/updated-name',
+    // '/register/updating-your-name',
+    // '/register/change-name-on-tra',
 
     '/register/aso',
     '/register/aso-funding-not-available',
