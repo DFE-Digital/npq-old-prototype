@@ -1,0 +1,33 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'What’s your name?' %}
+
+{% block form %}
+  {% set nameHelp %}
+    <p>If your name has changed and you have not updated your Teaching Regulation Agency record, you can:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>use your previous name to register with the service</li>
+      <li>use your previous name to register, and then change it on the Teaching Regulation Agency records at a later date</li>
+      <li><a href="/register/change-name-on-tra">change your name on the Teaching Regulation Agency records</a> first and then return to register for an NPQ</li>
+    </ul>
+
+    <p>It will take a minimum of 5 days to update your Teaching Regulation Agency records.</p>
+
+    <p>If you are unsure whether you have updated your name, you can <a href="#">request a reminder</a>.</p>
+  {% endset %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>Give your full name, exactly as it appears on the Teaching Regulation Agency&nbsp;records.</p>
+
+  {{ govukDetails({
+    summaryText: "Help if you have changed your name",
+    html: nameHelp
+  }) }}
+
+  {{ govukInput({
+    label: {
+      text: 'Full name',
+      classes: "govuk-label--m"
+    }
+  } | decorateFormAttributes(['register', 'name']) ) }}
+{% endblock %}
