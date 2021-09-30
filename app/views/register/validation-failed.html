@@ -1,0 +1,37 @@
+{% extends "_wizard-page.html" %}
+{% set title = 'We cannot find your details' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+    <p>We cannot find a match with the details you have provided.</p>
+
+    <p>This could be because:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>you have abbreviated your first name, for example Rob/Robert</li>
+      <li>your surname is different to the name held on the Teaching Regulation Agency records</li>
+      <li>you’ve entered an incorrect TRN</li>
+      <li>you have entered an incorrect date of birth</li>
+    </ul>
+
+    <p>Try again to enter your details - entering your National Insurance number will help us match your details.</p>
+
+    {{ govukButton({
+      text: 'Try again',
+      href: '#'
+    }) }}
+
+    <h2 class="govuk-heading-m">Still can’t match your details?</h2>
+
+    <p>You can still continue to register - our support team will manually match your details over the next few weeks. You will only be contacted if we cannot match your details.</p>
+
+    {{ govukButton({
+      text: 'Continue registration',
+      href: '#',
+      classes: 'govuk-button--secondary'
+    }) }}
+  </div>
+</div>
+{% endblock %}
