@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% set title = 'Feature flags' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if success %}
+        {% set html %}
+          <h3 class="govuk-notification-banner__heading">
+            Feature flags updated
+          </h3>
+          <p class="govuk-body"><a href="/">Return to prototype</a></p>
+        {% endset %}
+        {{ govukNotificationBanner({
+          html: html,
+          type: 'success'
+        }) }}
+      {% endif %}
+
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+      <form method="post" autocomplete="off" action="/feature-flags">
+        {% for key, flag in data.features %}
+          {{ govukRadios({
+            classes: "govuk-radios--inline",
+            fieldset: {
+              legend: {
+                text: flag.name,
+                classes: "govuk-fieldset__legend--m"
+              }
+            },
+            hint: {
+              text: flag.description
+            },
+            items: [
+              {
+                text: "On",
+                value: true
+              },
+              {
+                text: "Off",
+                value: false
+              }
+            ]
+          } | decorateFormAttributes(['features', key, 'on']) ) }}
+        {% endfor %}
+
+        {{ govukButton({
+          html: 'Save changes'
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

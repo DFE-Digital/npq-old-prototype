@@ -12,10 +12,10 @@ function registerWizardPaths (req) {
     '/register/teach-in-england',
     '/register/chosen',
     '/register/trn',
-    ...data.features['name-changes'] ? ['/register/name-changes'] : [],
+    ...data.features['name-changes'].on ? ['/register/name-changes'] : [],
     '/register/email',
     '/register/email-confirmation',
-    ...data.features['name-changes'] ? ['/register/personal-details'] : [
+    ...data.features['name-changes'].on ? ['/register/personal-details'] : [
       '/register/your-trn',
       '/register/your-name',
       '/register/your-dob',
@@ -37,7 +37,7 @@ function registerWizardPaths (req) {
     '/register/check',
     '/register/confirmation',
 
-    ...data.features['name-changes'] ? [
+    ...data.features['name-changes'].on ? [
       '/register/name-changes',
       '/register/updated-name',
       '/register/updating-your-name',

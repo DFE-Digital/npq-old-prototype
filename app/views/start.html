@@ -20,7 +20,7 @@
 
       <p>You must:</p>
       <ul class="govuk-list govuk-list--bullet">
-        {% if not data.features['international-and-non-teacher'] %}
+        {% if not data.features['international-and-non-teacher'].on %}
           <li>only use this service if you are a teacher working in England, Guernsey, Jersey or the Isle of Man – if you are a teacher working outside these locations contact your provider directly to register</li>
         {% endif %}
         <li>have your teacher reference number (TRN)</li>
@@ -31,7 +31,7 @@
 
       {{ govukButton({
         text: 'Start now',
-        href: '/register/teach-in-england' if data.features['international-and-non-teacher'] else '/register/chosen',
+        href: '/register/teach-in-england' if data.features['international-and-non-teacher'].on else '/register/chosen',
         isStartButton: true,
         classes: 'govuk-!-margin-top-4'
       }) }}
