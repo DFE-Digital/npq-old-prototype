@@ -18,11 +18,14 @@
     },
     items: [
       {
-        text: "My school or college is covering the cost"
-      } if isEnglandTeacher,
+        text: "My school or college is paying"
+      },
       {
         text: "My trust is paying"
       } if isEnglandTeacher,
+      {
+        text: "My employer is paying"
+      } if not isEnglandTeacher,
       {
         text: "I am paying"
       },
