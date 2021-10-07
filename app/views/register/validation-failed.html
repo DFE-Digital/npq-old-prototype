@@ -6,26 +6,84 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">{{ title }}</h1>
-    <p>We cannot find a match with the details you have provided.</p>
+    <p>We cannot find a match with the details you’ve given.</p>
 
-    <p>This could be because:</p>
+    <p>This could be because you:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>you have abbreviated your first name, for example Rob/Robert</li>
-      <li>your surname is different to the name held on the Teaching Regulation Agency records</li>
-      <li>you’ve entered an incorrect TRN</li>
-      <li>you have entered an incorrect date of birth</li>
+      <li>abbreviated your first name, for example Rob/Robert</li>
+      <li>used a different name to the one held on the Teaching Regulation Agency records</li>
+      <li>mistyped or entered some incorrect information</li>
     </ul>
 
-    <p>Try again to enter your details - entering your National Insurance number will help us match your details.</p>
+    <h2 class="govuk-heading-m">Check your details and try again</h2>
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Teacher reference number (TRN)"
+          },
+          value: {
+            text: data.register.trn
+          }
+        },
+        {
+          key: {
+            text: "Full name"
+          },
+          value: {
+            text: data.register.name
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
+          }
+        },
+        {
+          key: {
+            text: "National Insurance number"
+          },
+          value: {
+            text: data.register.nino
+          }
+        } if data.register.nino
+      ]
+    }) }}
+
+    <!--
+    Alternative to two buttons descoped for now:
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: 'Do you need to change anything?',
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          text: "Yes, change my details and try again"
+        },
+        {
+          text: "No, these details are correct",
+          value: "dont-know"
+        }
+      ]
+    } | decorateFormAttributes(['register', 'know-trn']) ) }} -->
+
+    <p>Try again to enter your details{% if not data.register.nino %} – entering your National Insurance number will help us match your details{% endif %}.</p>
 
     {{ govukButton({
       text: 'Try again',
       href: '#'
     }) }}
 
-    <h2 class="govuk-heading-m">Still can’t match your details?</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-4">Still can’t match your details?</h2>
 
-    <p>You can still continue to register - our support team will manually match your details over the next few weeks. You will only be contacted if we cannot match your details.</p>
+    <p>You can still continue to register – our support team will manually match your details over the next few weeks. You will only be contacted if we cannot match your details.</p>
 
     {{ govukButton({
       text: 'Continue registration',
