@@ -7,6 +7,21 @@ module.exports = function (env) {
    */
   var filters = {}
 
+  // govuk-prototype-kit-plus filters
+  /* ------------------------------------------------------------------ */
+
+  // 'This is my string' returns 'This is my&nbsp;string'
+  filters.noOrphans = string => {
+    const indexOflastSpace = string.lastIndexOf(' ')
+    if (indexOflastSpace === -1) {
+      return string
+    }
+
+    const begin = string.substring(0, indexOflastSpace)
+    const end = string.substring(indexOflastSpace + 1)
+    return `${begin}&nbsp;${end}`
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

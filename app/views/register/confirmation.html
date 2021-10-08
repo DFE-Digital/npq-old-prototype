@@ -1,14 +1,21 @@
 {% extends "_wizard-page.html" %}
-{% set title = 'Initial registration complete' %}
+{% set title = 'Your initial registration is complete' %}
 {% set isNPQH = (data.register.course == 'NPQ for Headship (NPQH)') %}
 {% block pageTitle %}{{ title }}{% endblock %}
 {% block pageNavigation %}{% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
+  {% set html %}
+    <div class="govuk-!-font-size-19">
+      You’ve registered for an <strong>{{ data.register.course }}</strong> with <strong>{{ data.register.provider }}</strong>
+    </div>
+  {% endset %}
+
   <div class="govuk-grid-column-two-thirds">
     {{ govukPanel({
-      titleText: title,
+      titleHtml: title | noOrphans | safe,
+      html: html,
       classes: 'govuk-!-margin-bottom-6'
     }) }}
 
