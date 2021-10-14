@@ -10,21 +10,38 @@
   rows: [
     {
       key: {
-        text: "Are you a teacher in England, Jersey, Guernsey or the Isle of Man?"
+        text: "Are you a teacher?"
       },
       value: {
-        text: data.register['teach-in-england'] | capitaliseFirstLetter
+        text: data.register['are-you-a-teacher'] | capitaliseFirstLetter
       },
       actions: {
         items: [
           {
-            href: "/register/teach-in-england",
+            href: "/register/are-you-a-teacher",
             text: "Change",
-            visuallyHiddenText: "if you are a teacher in England"
+            visuallyHiddenText: "if you are a teacher"
           }
         ]
       }
     },
+    {
+      key: {
+        text: "Where do you teach?"
+      },
+      value: {
+        text: data.register['country'] if data.register['country'] else (data.register['where-do-you-teach'] | capitaliseFirstLetter)
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/where-do-you-teach",
+            text: "Change",
+            visuallyHiddenText: "where you are a teacher"
+          }
+        ]
+      }
+    } if not data.register['are-you-a-teacher'] == 'No, I’m not a teacher',
     {
       key: {
         text: "Full name"

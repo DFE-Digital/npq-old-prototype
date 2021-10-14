@@ -1,0 +1,50 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Where do you teach?' %}
+
+{% block form %}
+  {% set country %}
+    {{ govukInput({
+      label: {
+        text: "Which country do you teach in?",
+        classes: "govuk-label--s"
+      }
+    } | decorateFormAttributes(['register', 'country']) ) }}
+  {% endset %}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "England"
+      },
+      {
+        text: "Scotland"
+      },
+      {
+        text: "Wales"
+      },
+      {
+        text: "Northern Ireland"
+      },
+      {
+        text: "Jersey, Guernsey or the Isle of Man"
+      },
+      {
+        divider: "or"
+      },
+      {
+        text: "Another country",
+        value: "other",
+        conditional: {
+          html: country
+        }
+      }
+    ]
+  } | decorateFormAttributes(['register', 'where-do-you-teach']) ) }}
+{% endblock %}
