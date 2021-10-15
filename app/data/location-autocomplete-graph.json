@@ -623,22 +623,6 @@
       "en-GB": "Costa Rica"
     }
   },
-  "country:CS": {
-    "edges": {
-      "from": [
-      ]
-    },
-    "meta": {
-      "canonical": true,
-      "canonical-mask": 1,
-      "display-name": true,
-      "stable-name": true
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "Czechoslovakia"
-    }
-  },
   "country:CU": {
     "edges": {
       "from": [
@@ -701,22 +685,6 @@
     "names": {
       "cy": false,
       "en-GB": "Czechia"
-    }
-  },
-  "country:DD": {
-    "edges": {
-      "from": [
-      ]
-    },
-    "meta": {
-      "canonical": true,
-      "canonical-mask": 1,
-      "display-name": true,
-      "stable-name": true
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "East Germany"
     }
   },
   "country:DE": {
@@ -2655,22 +2623,6 @@
       "en-GB": "Sao Tome and Principe"
     }
   },
-  "country:SU": {
-    "edges": {
-      "from": [
-      ]
-    },
-    "meta": {
-      "canonical": true,
-      "canonical-mask": 1,
-      "display-name": true,
-      "stable-name": true
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "USSR"
-    }
-  },
   "country:SV": {
     "edges": {
       "from": [
@@ -3117,22 +3069,6 @@
     "names": {
       "cy": false,
       "en-GB": "Yemen"
-    }
-  },
-  "country:YU": {
-    "edges": {
-      "from": [
-      ]
-    },
-    "meta": {
-      "canonical": true,
-      "canonical-mask": 1,
-      "display-name": true,
-      "stable-name": true
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "Yugoslavia"
     }
   },
   "country:ZA": {
@@ -6090,23 +6026,6 @@
       "en-GB": "CR"
     }
   },
-  "nym:CS": {
-    "edges": {
-      "from": [
-        "country:CS"
-      ]
-    },
-    "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
-      "display-name": false,
-      "stable-name": false
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "CS"
-    }
-  },
   "nym:CU": {
     "edges": {
       "from": [
@@ -6819,40 +6738,6 @@
     "names": {
       "cy": false,
       "en-GB": "Czechoslav"
-    }
-  },
-  "nym:Czechoslovak Republic": {
-    "edges": {
-      "from": [
-        "country:CS"
-      ]
-    },
-    "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
-      "display-name": true,
-      "stable-name": true
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "Czechoslovak Republic"
-    }
-  },
-  "nym:DD": {
-    "edges": {
-      "from": [
-        "country:DD"
-      ]
-    },
-    "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
-      "display-name": false,
-      "stable-name": false
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "DD"
     }
   },
   "nym:DE": {
@@ -8946,23 +8831,6 @@
       "en-GB": "Georgia"
     }
   },
-  "nym:Germany Democratic Republic": {
-    "edges": {
-      "from": [
-        "country:DD"
-      ]
-    },
-    "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
-      "display-name": true,
-      "stable-name": true
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "Germany Democratic Republic"
-    }
-  },
   "nym:Gibraltar": {
     "edges": {
       "from": [
@@ -10406,23 +10274,6 @@
     "names": {
       "cy": false,
       "en-GB": "Johnston Atoll"
-    }
-  },
-  "nym:Jugoslavija": {
-    "edges": {
-      "from": [
-        "country:YU"
-      ]
-    },
-    "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
-      "display-name": false,
-      "stable-name": false
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "Jugoslavija"
     }
   },
   "nym:Juzur al-Qamar": {
@@ -17038,23 +16889,6 @@
       "en-GB": "ST"
     }
   },
-  "nym:SU": {
-    "edges": {
-      "from": [
-        "country:SU"
-      ]
-    },
-    "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
-      "display-name": false,
-      "stable-name": false
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "SU"
-    }
-  },
   "nym:SV": {
     "edges": {
       "from": [
@@ -17648,23 +17482,6 @@
     "names": {
       "cy": false,
       "en-GB": "Slovenská"
-    }
-  },
-  "nym:Socialist Federal Republic of Yugoslavia": {
-    "edges": {
-      "from": [
-        "country:YU"
-      ]
-    },
-    "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
-      "display-name": true,
-      "stable-name": true
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "Socialist Federal Republic of Yugoslavia"
     }
   },
   "nym:Socialist People's Libyan Arab": {
@@ -22546,23 +22363,6 @@
       "en-GB": "Umbuso weSwatini"
     }
   },
-  "nym:Union of Soviet Socialist Republics": {
-    "edges": {
-      "from": [
-        "country:SU"
-      ]
-    },
-    "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
-      "display-name": true,
-      "stable-name": true
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "Union of Soviet Socialist Republics"
-    }
-  },
   "nym:Union of the Comoros": {
     "edges": {
       "from": [
@@ -23498,23 +23298,6 @@
       "en-GB": "YT"
     }
   },
-  "nym:YU": {
-    "edges": {
-      "from": [
-        "country:YU"
-      ]
-    },
-    "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
-      "display-name": false,
-      "stable-name": false
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "YU"
-    }
-  },
   "nym:Yaltopya": {
     "edges": {
       "from": [
@@ -23564,23 +23347,6 @@
     "names": {
       "cy": false,
       "en-GB": "Yisrael"
-    }
-  },
-  "nym:Yugosav": {
-    "edges": {
-      "from": [
-        "country:YU"
-      ]
-    },
-    "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
-      "display-name": false,
-      "stable-name": false
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "Yugosav"
     }
   },
   "nym:ZA": {
@@ -25349,23 +25115,6 @@
     "names": {
       "cy": false,
       "en-GB": "Россия1"
-    }
-  },
-  "nym:Союз Советских Социалистических Республик": {
-    "edges": {
-      "from": [
-        "country:SU"
-      ]
-    },
-    "meta": {
-      "canonical": false,
-      "canonical-mask": 0,
-      "display-name": false,
-      "stable-name": false
-    },
-    "names": {
-      "cy": false,
-      "en-GB": "Союз Советских Социалистических Республик"
     }
   },
   "nym:Србија": {
