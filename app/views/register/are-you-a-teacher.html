@@ -1,11 +1,11 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Are you a teacher?' %}
+{% set title = 'Are you a teacher or school leader?' %}
 
 {% block form %}
   {{ govukRadios({
     fieldset: {
       legend: {
-        text: title,
+        text: title | noOrphans | safe,
         isPageHeading: true,
         classes: "govuk-fieldset__legend--xl"
       }
