@@ -57,7 +57,7 @@ function registerWizardForks (req) {
     {
       currentPath: '/register/are-you-a-teacher',
       storedData: ['register', 'are-you-a-teacher'],
-      values: ['No, I’m not a teacher'],
+      values: ['No, I’m not a teacher or school leader'],
       forkPath: '/register/chosen'
     },
     {
@@ -160,7 +160,7 @@ function typeOfUser (req) {
     ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-teach'])
 
   const isNonTeacher = registerData &&
-    registerData['are-you-a-teacher'] === 'No, I’m not a teacher'
+    registerData['are-you-a-teacher'] === 'No, I’m not a teacher or school leader'
 
   // Allow a non-answer to default to England teacher
   const isEnglandTeacher = !(isNonTeacher || isInternational)
