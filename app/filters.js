@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -20,6 +22,11 @@ module.exports = function (env) {
     const begin = string.substring(0, indexOflastSpace)
     const end = string.substring(indexOflastSpace + 1)
     return `${begin}&nbsp;${end}`
+  }
+
+  filters.countryNameFromCode = code => {
+    const countries = JSON.parse(fs.readFileSync('public/govuk-country-and-territory-autocomplete/location-autocomplete-canonical-list.json', 'utf8'))
+    return countries.find(country => country[1] === code)[0]
   }
 
   /* ------------------------------------------------------------------

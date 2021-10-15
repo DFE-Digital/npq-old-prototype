@@ -30,7 +30,7 @@
         text: "Where do you teach?"
       },
       value: {
-        text: data.register['country'] if data.register['country'] else (data.register['where-do-you-teach'] | capitaliseFirstLetter)
+        text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-teach'] | capitaliseFirstLetter)
       },
       actions: {
         items: [
@@ -41,7 +41,7 @@
           }
         ]
       }
-    } if not data.register['are-you-a-teacher'] == 'No, I’m not a teacher',
+    } if not (data.register['are-you-a-teacher'] == 'No, I’m not a teacher'),
     {
       key: {
         text: "Full name"

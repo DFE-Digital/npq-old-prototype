@@ -16,6 +16,15 @@ gulp.task('copy-assets', function () {
     .pipe(gulp.dest(config.paths.public))
 })
 
+gulp.task('copy-country-and-territory-autocomplete', function () {
+  return gulp.src([
+    'node_modules/govuk-country-and-territory-autocomplete/dist/*.js',
+    'node_modules/govuk-country-and-territory-autocomplete/dist/*.css'
+    'node_modules/govuk-country-and-territory-autocomplete/dist/*.json',
+  ])
+    .pipe(gulp.dest(`${config.paths.public}/govuk-country-and-territory-autocomplete/`))
+})
+
 gulp.task('copy-assets-documentation', function () {
   return gulp.src([
     `${config.paths.docsAssets}/**`,
