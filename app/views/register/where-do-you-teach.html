@@ -1,0 +1,63 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Where do you teach?' %}
+{% block pageStyles %}
+  <link href="/public/govuk-country-and-territory-autocomplete/location-autocomplete.min.css" media="screen" rel="stylesheet">
+{% endblock %}
+{% block pageScripts %}
+  <script src="/public/govuk-country-and-territory-autocomplete/location-autocomplete.min.js"></script>
+  <script>
+    openregisterLocationPicker({
+      selectElement: document.getElementById('register-country'),
+      url: '/public/govuk-country-and-territory-autocomplete/location-autocomplete-graph.json',
+      defaultValue: '{{ data.register.country }}'
+    })
+</script>
+{% endblock %}
+
+{% block form %}
+  {% set country %}
+    {{ govukSelect({
+      label: {
+        text: "Which country do you teach in?"
+      },
+      items: countries
+    } | decorateFormAttributes(['register', 'country'])) }}
+  {% endset %}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "England"
+      },
+      {
+        text: "Scotland"
+      },
+      {
+        text: "Wales"
+      },
+      {
+        text: "Northern Ireland"
+      },
+      {
+        text: "Jersey, Guernsey or the Isle of Man"
+      },
+      {
+        divider: "or"
+      },
+      {
+        text: "Another country",
+        value: "other",
+        conditional: {
+          html: country
+        }
+      }
+    ]
+  } | decorateFormAttributes(['register', 'where-do-you-teach']) ) }}
+{% endblock %}
