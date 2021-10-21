@@ -4,7 +4,7 @@ const {
 } = require('../utils/wizard-helpers')
 
 function registerWizardPaths (req) {
-  const isEnglandTeacher = typeOfUser(req).isEnglandTeacher
+  const isInEnglandEducation = typeOfUser(req).isInEnglandEducation
   const data = req.session.data
 
   var paths = [
@@ -24,7 +24,7 @@ function registerWizardPaths (req) {
       '/register/your-dob',
       '/register/your-nino'
     ],
-    ...isEnglandTeacher ? [
+    ...isInEnglandEducation ? [
       '/register/where-school',
       '/register/which-school'
     ] : [],
@@ -35,7 +35,7 @@ function registerWizardPaths (req) {
     '/register/aso-early-headship',
     '/register/aso-funding',
     '/register/choose-provider',
-    ...isEnglandTeacher ? ['/register/funding-vague'] : ['/register/funding'],
+    ...isInEnglandEducation ? ['/register/funding-vague'] : ['/register/funding'],
     '/register/share-information',
     '/register/check',
     '/register/confirmation',
@@ -168,8 +168,8 @@ function typeOfUser (req) {
     registerData['work-in-education'] === 'No'
 
   // Allow a non-answer to default to England teacher
-  const isEnglandTeacher = !(isNonEducation || isInternational)
-  return { isInternational, isNonEducation, isEnglandTeacher }
+  const isInEnglandEducation = !(isNonEducation || isInternational)
+  return { isInternational, isNonEducation, isInEnglandEducation }
 }
 
 module.exports = {
