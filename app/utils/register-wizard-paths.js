@@ -173,11 +173,16 @@ function typeOfUser (req) {
   const isInSchoolAndIsInEngland = isInSchoolSetting && isEngland
 
   return {
+    // Do you work in education answers
     isInSchoolSetting,
     isInOtherEducationSetting,
     isNonEducation,
+
+    // Where do you work answers
     isEngland,
     isInternational,
+
+    // Combinations
     isInSchoolAndIsInEngland,
     isInEducationAndIsInEngland
   }

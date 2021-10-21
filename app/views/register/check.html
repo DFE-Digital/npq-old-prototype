@@ -37,11 +37,11 @@
           {
             href: "/register/where-do-you-work",
             text: "Change",
-            visuallyHiddenText: "where you are a teacher"
+            visuallyHiddenText: "where you work"
           }
         ]
       }
-    } if not isNonEducation,
+    } if (isInSchoolSetting or isInOtherEducationSetting),
     {
       key: {
         text: "Full name"
