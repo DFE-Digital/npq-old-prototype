@@ -170,10 +170,19 @@ function typeOfUser (req) {
   const isInternational = registerData &&
     ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-work'])
 
-  // Allow a non-answer to default to in education and in England (ie the most common path)
-  const isInEducationAndIsInEngland = (isInSchoolSetting || isInOtherEducationSetting) && !isInternational
+  const isEngland = !isInternational
+  const isInEducationAndIsInEngland = (isInSchoolSetting || isInOtherEducationSetting) && isEngland
+  const isInSchoolAndIsInEngland = isInSchoolSetting && isEngland
 
-  return { isInSchoolSetting, isInOtherEducationSetting, isNonEducation, isInternational, isInEducationAndIsInEngland }
+  return {
+    isInSchoolSetting,
+    isInOtherEducationSetting,
+    isNonEducation,
+    isEngland,
+    isInternational,
+    isInSchoolAndIsInEngland,
+    isInEducationAndIsInEngland
+  }
 }
 
 module.exports = {
