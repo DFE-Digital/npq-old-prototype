@@ -9,8 +9,8 @@ function registerWizardPaths (req) {
 
   var paths = [
     '/start',
-    '/register/are-you-a-teacher',
-    '/register/where-do-you-teach',
+    '/register/work-in-education',
+    '/register/where-do-you-work',
     '/register/chosen',
     '/register/trn',
     ...data.features['name-changes'].on ? ['/register/name-changes'] : [],
@@ -55,9 +55,9 @@ function registerWizardPaths (req) {
 function registerWizardForks (req) {
   var forks = [
     {
-      currentPath: '/register/are-you-a-teacher',
-      storedData: ['register', 'are-you-a-teacher'],
-      values: ['No, I’m not a teacher or school leader'],
+      currentPath: '/register/work-in-education',
+      storedData: ['register', 'work-in-education'],
+      values: ['No'],
       forkPath: '/register/chosen'
     },
     {
@@ -156,11 +156,14 @@ function typeOfUser (req) {
   const registerData = req.session.data.register
 
   const isInternational = registerData &&
-    registerData['are-you-a-teacher'] === 'yes' &&
-    ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-teach'])
+    [
+      'Yes, I work in a school, college or academy trust',
+      'Yes, I work in another setting'
+    ].includes(registerData['where-do-you-work']) &&
+    ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-work'])
 
   const isNonTeacher = registerData &&
-    registerData['are-you-a-teacher'] === 'No, I’m not a teacher or school leader'
+    registerData['work-in-education'] === 'No'
 
   // Allow a non-answer to default to England teacher
   const isEnglandTeacher = !(isNonTeacher || isInternational)

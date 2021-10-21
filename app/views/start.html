@@ -31,7 +31,7 @@
 
       {{ govukButton({
         text: 'Start now',
-        href: '/register/are-you-a-teacher' if data.features['international-and-non-teacher'].on else '/register/chosen',
+        href: '/register/work-in-education' if data.features['international-and-non-teacher'].on else '/register/chosen',
         isStartButton: true,
         classes: 'govuk-!-margin-top-4'
       }) }}
