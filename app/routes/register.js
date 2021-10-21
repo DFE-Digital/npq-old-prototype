@@ -9,7 +9,7 @@ module.exports = router => {
   router.all('/register/*', (req, res, next) => {
     const typesOfUser = typeOfUser(req)
     res.locals.isInternational = typesOfUser.isInternational
-    res.locals.isNonTeacher = typesOfUser.isNonTeacher
+    res.locals.isNonEducation = typesOfUser.isNonEducation
     res.locals.isEnglandTeacher = typesOfUser.isEnglandTeacher
     next()
   })

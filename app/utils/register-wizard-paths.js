@@ -162,12 +162,12 @@ function typeOfUser (req) {
     ].includes(registerData['where-do-you-work']) &&
     ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-work'])
 
-  const isNonTeacher = registerData &&
+  const isNonEducation = registerData &&
     registerData['work-in-education'] === 'No'
 
   // Allow a non-answer to default to England teacher
-  const isEnglandTeacher = !(isNonTeacher || isInternational)
-  return { isInternational, isNonTeacher, isEnglandTeacher }
+  const isEnglandTeacher = !(isNonEducation || isInternational)
+  return { isInternational, isNonEducation, isEnglandTeacher }
 }
 
 module.exports = {
