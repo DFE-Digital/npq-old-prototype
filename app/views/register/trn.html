@@ -1,10 +1,10 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'You need your teacher reference number to register for an NPQ' if isInEnglandEducation else 'You’ll need a teacher reference number to register for an NPQ' %}
+{% set title = 'You need your teacher reference number to register for an NPQ' if isInEducationAndIsInEngland else 'You’ll need a teacher reference number to register for an NPQ' %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  {% if isInEnglandEducation %}
+  {% if isInEducationAndIsInEngland %}
     <p>Your teacher reference number (TRN) is used to check you’re eligible to study for a national professional qualification (NPQ).</p>
 
     <p>If you don’t know what your TRN is, this can usually be found on your payslip, teachers’ pension documentation or teacher training records.</p>
