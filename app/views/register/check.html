@@ -10,17 +10,17 @@
   rows: [
     {
       key: {
-        text: "Are you a teacher or school leader?"
+        text: "Do you work in education?"
       },
       value: {
-        text: data.register['are-you-a-teacher'] | capitaliseFirstLetter
+        text: data.register['work-in-education'] | capitaliseFirstLetter
       },
       actions: {
         items: [
           {
-            href: "/register/are-you-a-teacher",
+            href: "/register/work-in-education",
             text: "Change",
-            visuallyHiddenText: "if you are a teacher"
+            visuallyHiddenText: "whether you work in education"
           }
         ]
       }
@@ -41,7 +41,7 @@
           }
         ]
       }
-    } if not (data.register['are-you-a-teacher'] == 'No, I’m not a teacher or school leader'),
+    } if not isNonTeacher,
     {
       key: {
         text: "Full name"
