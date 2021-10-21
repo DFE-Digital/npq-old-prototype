@@ -8,8 +8,11 @@ const {
 module.exports = router => {
   router.all('/register/*', (req, res, next) => {
     const typesOfUser = typeOfUser(req)
-    res.locals.isInternational = typesOfUser.isInternational
+
+    res.locals.isInSchoolSetting = typesOfUser.isInSchoolSetting
+    res.locals.isInOtherEducationSetting = typesOfUser.isInOtherEducationSetting
     res.locals.isNonEducation = typesOfUser.isNonEducation
+    res.locals.isInternational = typesOfUser.isInternational
     res.locals.isInEnglandEducation = typesOfUser.isInEnglandEducation
     next()
   })
