@@ -10,7 +10,7 @@ module.exports = router => {
     const typesOfUser = typeOfUser(req)
     res.locals.isInternational = typesOfUser.isInternational
     res.locals.isNonEducation = typesOfUser.isNonEducation
-    res.locals.isEnglandTeacher = typesOfUser.isEnglandTeacher
+    res.locals.isInEnglandEducation = typesOfUser.isInEnglandEducation
     next()
   })
 
