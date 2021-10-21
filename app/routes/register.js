@@ -13,7 +13,7 @@ module.exports = router => {
     res.locals.isInOtherEducationSetting = typesOfUser.isInOtherEducationSetting
     res.locals.isNonEducation = typesOfUser.isNonEducation
     res.locals.isInternational = typesOfUser.isInternational
-    res.locals.isInEnglandEducation = typesOfUser.isInEnglandEducation
+    res.locals.isInEducationAndIsInEngland = typesOfUser.isInEducationAndIsInEngland
     next()
   })
 

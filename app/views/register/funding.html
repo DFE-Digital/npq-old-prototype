@@ -1,9 +1,9 @@
 {% extends "_wizard-form.html" %}
 {% set legend = 'How is your ' + (data.register.npq or 'course') + ' being paid for?' %}
-{% set title = 'Funding' if isInEnglandEducation else legend %}
+{% set title = 'Funding' if isInEducationAndIsInEngland else legend %}
 
 {% block form %}
-  {% if isInEnglandEducation %}
+  {% if isInEducationAndIsInEngland %}
     <h1 class="govuk-heading-xl">{{ title }}</h1>
     <p>Your school or college is not eligible for NPQ government scholarship funding.</p>
   {% endif %}
@@ -12,8 +12,8 @@
     fieldset: {
       legend: {
         text: legend,
-        isPageTitle: not isInEnglandEducation,
-        classes: "govuk-fieldset__legend--s" if isInEnglandEducation else "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+        isPageTitle: not isInEducationAndIsInEngland,
+        classes: "govuk-fieldset__legend--s" if isInEducationAndIsInEngland else "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
       }
     },
     items: [
@@ -22,10 +22,10 @@
       },
       {
         text: "My trust is paying"
-      } if isInEnglandEducation,
+      } if isInEducationAndIsInEngland,
       {
         text: "My employer is paying"
-      } if not isInEnglandEducation,
+      } if not isInEducationAndIsInEngland,
       {
         text: "I am paying"
       },

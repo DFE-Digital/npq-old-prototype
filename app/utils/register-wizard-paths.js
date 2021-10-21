@@ -33,7 +33,7 @@ function registerWizardPaths (req) {
     '/register/aso-early-headship',
     '/register/aso-funding',
     '/register/choose-provider',
-    ...typesOfUser.isInEnglandEducation ? ['/register/funding-vague'] : ['/register/funding'],
+    ...typesOfUser.isInEducationAndIsInEngland ? ['/register/funding-vague'] : ['/register/funding'],
     '/register/share-information',
     '/register/check',
     '/register/confirmation',
@@ -169,9 +169,9 @@ function typeOfUser (req) {
     ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-work'])
 
   // Allow a non-answer to default to in education and in England (ie the most common path)
-  const isInEnglandEducation = (isInSchoolSetting || isInOtherEducationSetting) && !isInternational
+  const isInEducationAndIsInEngland = (isInSchoolSetting || isInOtherEducationSetting) && !isInternational
 
-  return { isInSchoolSetting, isInOtherEducationSetting, isNonEducation, isInternational, isInEnglandEducation }
+  return { isInSchoolSetting, isInOtherEducationSetting, isNonEducation, isInternational, isInEducationAndIsInEngland }
 }
 
 module.exports = {
