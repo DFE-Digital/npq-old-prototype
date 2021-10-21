@@ -1,14 +1,14 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Choose your school or college' %}
+{% set title = 'Choose your school, college or academy trust' %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>Please choose from schools or colleges located in {{ data['register']['school-location'] }}</p>
+  <p>Choose from schools, colleges and trusts located in {{ data['register']['school-location'] }}</p>
 
   {{ govukInput({
     label: {
-      text: "Enter your school or college name",
+      text: "Enter your school, college or trust name",
       classes: "govuk-label--s"
     }
   } | decorateFormAttributes(['register', 'school']) ) }}
