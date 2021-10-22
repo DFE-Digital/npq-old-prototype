@@ -18,7 +18,7 @@ module.exports = router => {
     res.render('register/index', { paths: registerWizardPaths(req) })
   })
 
-  router.all('/register/where-do-you-teach', (req, res, next) => {
+  router.all('/register/where-do-you-work', (req, res, next) => {
     res.locals.countries = [{ text: '', value: '' }].concat(JSON.parse(fs.readFileSync('public/govuk-country-and-territory-autocomplete/location-autocomplete-canonical-list.json', 'utf8'))
       .map(country => {
         return { text: country[0], value: country[1] }

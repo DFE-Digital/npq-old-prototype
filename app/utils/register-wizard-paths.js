@@ -11,7 +11,7 @@ function registerWizardPaths (req) {
     '/start',
     '/register/chosen',
     ...data.features['non-teacher'].on ? ['/register/are-you-a-teacher'] : [],
-    ...data.features.international.on ? ['/register/where-do-you-teach'] : [],
+    ...data.features.international.on ? ['/register/where-do-you-work'] : [],
     '/register/trn',
     ...data.features['name-changes'].on ? ['/register/name-changes'] : [],
     '/register/email',
@@ -157,7 +157,7 @@ function typeOfUser (req) {
 
   const isInternational = registerData &&
     registerData['are-you-a-teacher'] === 'yes' &&
-    ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-teach'])
+    ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-work'])
 
   const isNonTeacher = registerData &&
     registerData['are-you-a-teacher'] === 'No, I’m not a teacher or school leader'
