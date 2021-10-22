@@ -9,9 +9,9 @@ function registerWizardPaths (req) {
 
   var paths = [
     '/start',
-    '/register/are-you-a-teacher',
-    '/register/where-do-you-teach',
     '/register/chosen',
+    ...data.features['non-teacher'].on ? ['/register/are-you-a-teacher'] : [],
+    ...data.features.international.on ? ['/register/where-do-you-teach'] : [],
     '/register/trn',
     ...data.features['name-changes'].on ? ['/register/name-changes'] : [],
     '/register/email',
