@@ -156,7 +156,6 @@ function typeOfUser (req) {
   const registerData = req.session.data.register
 
   const isInternational = registerData &&
-    registerData['are-you-a-teacher'] === 'yes' &&
     ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-work'])
 
   const isNonTeacher = registerData &&
