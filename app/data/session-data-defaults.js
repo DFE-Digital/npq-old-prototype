@@ -11,7 +11,7 @@ module.exports = {
       description: 'Include questions and contextual guidance for international teachers'
     },
     'non-teacher': {
-      on: true,
+      on: false,
       name: 'Non-teacher journey',
       description: 'Include questions and contextual guidance for non-teachers'
     },
