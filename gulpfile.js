@@ -23,8 +23,6 @@ gulp.task('generate-assets', gulp.series(
     'sass',
     'copy-assets',
     'copy-country-and-territory-autocomplete',
-    'sass-documentation',
-    'copy-assets-documentation',
     'sass-v6',
     'copy-assets-v6'
   )
