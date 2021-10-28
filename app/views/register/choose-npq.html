@@ -38,4 +38,19 @@
       } if isEnglandTeacher
     ]
   } | decorateFormAttributes(['register', 'course']) ) }}
+
+  {% set html %}
+    <p>If you’re applying to start an NPQH, you might also be applying for the Additional Support Offer, a targeted support package for new headteachers.</p>
+    <p>You can use this service to register for both, one at a time.</p>
+    <p>You should:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>complete your registration for an NPQH using this service</li>
+      <li>complete another registration for the Additional Support Offer, also using this service</li>
+    </ul>
+  {% endset %}
+
+  {{ govukDetails({
+    summaryText: "Help with NPQH and the Additional Support Offer",
+    html: html
+  }) }}
 {% endblock %}
