@@ -5,10 +5,15 @@ module.exports = {
       name: 'Additional Support Offer Loop',
       description: 'Allow users to loop from the confirmation page back into an ASO course registration journey'
     },
-    'international-and-non-teacher': {
+    international: {
       on: true,
-      name: 'International and Non-teacher journeys',
-      description: 'Include questions and contextual guidance for international teachers and non-teachers'
+      name: 'International journey',
+      description: 'Include questions and contextual guidance for international teachers'
+    },
+    'non-teacher': {
+      on: false,
+      name: 'Non-teacher journey',
+      description: 'Include questions and contextual guidance for non-teachers'
     },
     'name-changes': {
       on: true,
