@@ -7,12 +7,10 @@ function registerWizardPaths (req) {
   const typesOfUser = typeOfUser(req)
   const data = req.session.data
 
-  var paths = [
+  const paths = [
     '/start',
-    '/register/work-in-education',
-    '/register/where-do-you-work',
     '/register/chosen',
-    ...data.features['non-teacher'].on ? ['/register/are-you-a-teacher'] : [],
+    ...data.features['non-teacher'].on ? ['/register/work-in-education'] : [],
     ...data.features.international.on ? ['/register/where-do-you-work'] : [],
     '/register/trn',
     ...data.features['name-changes'].on ? ['/register/name-changes'] : [],
@@ -57,16 +55,16 @@ function registerWizardPaths (req) {
 function registerWizardForks (req) {
   var forks = [
     {
-      currentPath: '/register/work-in-education',
-      storedData: ['register', 'work-in-education'],
-      values: ['No'],
-      forkPath: '/register/chosen'
-    },
-    {
       currentPath: '/register/chosen',
       storedData: ['register', 'chosen'],
       values: ['no'],
       forkPath: '/register/choosing-an-npq'
+    },
+    {
+      currentPath: '/register/work-in-education',
+      storedData: ['register', 'work-in-education'],
+      values: ['No'],
+      forkPath: '/register/trn'
     },
     {
       currentPath: '/register/trn',
