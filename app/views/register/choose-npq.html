@@ -35,7 +35,7 @@
         hint: {
           text: "The Additional Support Offer is a targeted support package for new headteachers. "
         }
-      } if isEnglandTeacher
+      } if isInEducationAndIsInEngland
     ]
   } | decorateFormAttributes(['register', 'course']) ) }}
 
@@ -52,5 +52,5 @@
   {{ govukDetails({
     summaryText: "Help with NPQH and the Additional Support Offer",
     html: html
-  }) }}
+  }) if isInEducationAndIsInEngland }}
 {% endblock %}

@@ -4,13 +4,13 @@ const {
 } = require('../utils/wizard-helpers')
 
 function registerWizardPaths (req) {
-  const isEnglandTeacher = typeOfUser(req).isEnglandTeacher
+  const typesOfUser = typeOfUser(req)
   const data = req.session.data
 
-  var paths = [
+  const paths = [
     '/start',
     '/register/chosen',
-    ...data.features['non-teacher'].on ? ['/register/are-you-a-teacher'] : [],
+    ...data.features['non-teacher'].on ? ['/register/work-in-education'] : [],
     ...data.features.international.on ? ['/register/where-do-you-work'] : [],
     '/register/trn',
     ...data.features['name-changes'].on ? ['/register/name-changes'] : [],
@@ -22,7 +22,7 @@ function registerWizardPaths (req) {
       '/register/your-dob',
       '/register/your-nino'
     ],
-    ...isEnglandTeacher ? [
+    ...typesOfUser.isInSchoolSetting ? [
       '/register/where-school',
       '/register/which-school'
     ] : [],
@@ -33,7 +33,7 @@ function registerWizardPaths (req) {
     '/register/aso-early-headship',
     '/register/aso-funding',
     '/register/choose-provider',
-    ...isEnglandTeacher ? ['/register/funding-vague'] : ['/register/funding'],
+    ...typesOfUser.isInEducationAndIsInEngland ? ['/register/funding-vague'] : ['/register/funding'],
     '/register/share-information',
     '/register/check',
     '/register/confirmation',
@@ -55,16 +55,16 @@ function registerWizardPaths (req) {
 function registerWizardForks (req) {
   var forks = [
     {
-      currentPath: '/register/are-you-a-teacher',
-      storedData: ['register', 'are-you-a-teacher'],
-      values: ['No, I’m not a teacher or school leader'],
-      forkPath: '/register/chosen'
-    },
-    {
       currentPath: '/register/chosen',
       storedData: ['register', 'chosen'],
       values: ['no'],
       forkPath: '/register/choosing-an-npq'
+    },
+    {
+      currentPath: '/register/work-in-education',
+      storedData: ['register', 'work-in-education'],
+      values: ['No'],
+      forkPath: '/register/trn'
     },
     {
       currentPath: '/register/trn',
@@ -155,15 +155,37 @@ function registerWizardForks (req) {
 function typeOfUser (req) {
   const registerData = req.session.data.register
 
+  const isInOtherEducationSetting = registerData &&
+    registerData['work-in-education'] === 'Yes, I work in another setting'
+
+  const isNonEducation = registerData &&
+    registerData['work-in-education'] === 'No'
+
+  // Allow a non-answer to default to in education (the most common path)
+  const isInSchoolSetting = !(isNonEducation || isInOtherEducationSetting)
+
+  // Allow a non-answer to default to in England (the most common path)
   const isInternational = registerData &&
     ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-work'])
 
-  const isNonTeacher = registerData &&
-    registerData['are-you-a-teacher'] === 'No, I’m not a teacher or school leader'
+  const isEngland = !isInternational
+  const isInEducationAndIsInEngland = (isInSchoolSetting || isInOtherEducationSetting) && isEngland
+  const isInSchoolAndIsInEngland = isInSchoolSetting && isEngland
 
-  // Allow a non-answer to default to England teacher
-  const isEnglandTeacher = !(isNonTeacher || isInternational)
-  return { isInternational, isNonTeacher, isEnglandTeacher }
+  return {
+    // Do you work in education answers
+    isInSchoolSetting,
+    isInOtherEducationSetting,
+    isNonEducation,
+
+    // Where do you work answers
+    isEngland,
+    isInternational,
+
+    // Combinations
+    isInSchoolAndIsInEngland,
+    isInEducationAndIsInEngland
+  }
 }
 
 module.exports = {
