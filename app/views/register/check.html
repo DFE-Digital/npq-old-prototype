@@ -262,7 +262,58 @@
           }
         ]
       }
-    } if not isInEducationAndIsInEngland
+    } if not isInEducationAndIsInEngland,
+    {
+      key: {
+        text: "Employer"
+      },
+      value: {
+        text: data.register.employer
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding-vague",
+            text: "Change",
+            visuallyHiddenText: " employer"
+          }
+        ]
+      }
+    } if isInOtherEducationSetting,
+    {
+      key: {
+        text: "Role"
+      },
+      value: {
+        text: data.register.role
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding-vague",
+            text: "Change",
+            visuallyHiddenText: " role"
+          }
+        ]
+      }
+    } if isInOtherEducationSetting,
+    {
+      key: {
+        text: "Educational setting"
+      },
+      value: {
+        text: data.register['educational-setting']
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding-vague",
+            text: "Change",
+            visuallyHiddenText: " educational setting"
+          }
+        ]
+      }
+    } if isInOtherEducationSetting
   ]
 }) }}
 {% endblock %}

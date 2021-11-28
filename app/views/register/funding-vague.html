@@ -1,35 +1,38 @@
-{% extends "_wizard-page.html" %}
-{% set title = 'You may qualify for DfE scholarship funding' if isInSchoolSetting else 'We need more information to know if you qualify for DfE scholarship funding' %}
+{% extends "_wizard-form.html" %}
+{% set title = 'You may qualify for DfE scholarship funding' if isInSchoolSetting else 'Tell us more about where you work' %}
 
-{% block page %}
-  <h1 class="govuk-heading-xl">{{ title }}</h1>
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
 
   {% if isInSchoolSetting %}
     <p>DfE scholarship funding may be available for the {{ data.register.course }} course you have selected.</p>
     <p>Your training provider will give you more details and confirm if you qualify for funding.</p>
   {% else %}
+    {{ govukInput({
+      label: {
+        text: "Name of employer",
+        classes: "govuk-label--m"
+      }
+    } | decorateFormAttributes(['register', 'employer']) ) }}
 
     {{ govukInput({
       label: {
-        text: "Your job title",
-        classes: "govuk-label--s"
+        text: "Role",
+        classes: "govuk-label--m"
       },
       hint: {
-        text: 'For example, teacher, learning mentor'
+        text: 'For example: Teacher, headteacher, teaching assistant'
       }
-    } | decorateFormAttributes(['register', 'job-title']) ) }}
+    } | decorateFormAttributes(['register', 'role']) ) }}
 
     {{ govukInput({
       label: {
-        text: "Your educational setting",
-        classes: "govuk-label--s"
+        text: "Type of educational setting",
+        classes: "govuk-label--m"
       },
       hint: {
-        text: 'For example, local authority, teaching school hub, SCITT, alternate provision'
+        text: 'For example: Local authority, alternative provision, youth offending institution'
       }
-    } | decorateFormAttributes(['register', 'job-title']) ) }}
-
-    <p>Our support team will be in touch with details about scholarship funding after you complete your registration.</p>
-
+    } | decorateFormAttributes(['register', 'educational-setting']) ) }}
   {% endif %}
 {% endblock %}
