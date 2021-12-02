@@ -160,6 +160,8 @@ function typeOfUser (req) {
   const isEngland = !isInternational
   const isInSchoolAndIsInEngland = isInSchoolSetting && isEngland
 
+  const isASO = registerData && registerData.course === 'Additional Support Offer for new headteachers'
+
   return {
     // Do you work in a school
     isInSchoolSetting,
@@ -169,7 +171,8 @@ function typeOfUser (req) {
     isInternational,
 
     // Combinations
-    isInSchoolAndIsInEngland
+    isInSchoolAndIsInEngland,
+    isASO
   }
 }
 
