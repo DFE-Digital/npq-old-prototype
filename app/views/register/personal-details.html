@@ -98,7 +98,7 @@
       } | decorateFormAttributes(['register', 'nino']) ) }}
     {% endset %}
 
-    {% if isInSchoolAndIsInEngland %}
+    {% if isEngland %}
       {{ nino | safe }}
     {% else %}
       {{ govukRadios({
