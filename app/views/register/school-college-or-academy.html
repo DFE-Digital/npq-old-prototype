@@ -3,20 +3,18 @@
 
 {% block form %}
 
-<h1 class="govuk-heading-xl">{{ title }}</h1>
-
   {{ govukRadios({
     classes: "govuk-radios--inline",
     fieldset: {
       legend: {
         text: title,
-        isPageHeading: false,
-        classes: "govuk-visually-hidden"
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-5"
       }
     },
     items: [
         { text: "Yes", value: "Yes" },
         { text: "No", value: "No" }
     ]
-  } | decorateFormAttributes(['register', 'work-in-education']) ) }}
+  } | decorateFormAttributes(['register', 'work-in-school-college-academy']) ) }}
 {% endblock %}

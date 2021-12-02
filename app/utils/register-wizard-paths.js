@@ -33,7 +33,8 @@ function registerWizardPaths (req) {
     '/register/aso-early-headship',
     '/register/aso-funding',
     '/register/choose-provider',
-    ...typesOfUser.isInEducationAndIsInEngland ? ['/register/funding-vague'] : ['/register/funding'],
+    ...typesOfUser.isNonEducationAndIsInEngland ? ['/register/funding-vague'] : [],
+    ...typesOfUser.isInSchoolAndIsInEngland ? ['/register/funding-vague'] : ['/register/funding'],
     '/register/share-information',
     '/register/check',
     '/register/confirmation',
@@ -57,15 +58,15 @@ function registerWizardForks (req) {
     {
       currentPath: '/register/chosen',
       storedData: ['register', 'chosen'],
-      values: ['no'],
-      forkPath: '/register/choosing-an-npq'
+        values: ['no'],
+        forkPath: '/register/choosing-an-npq'
     },
-    {
-      currentPath: '/register/work-in-education',
-      storedData: ['register', 'work-in-education'],
-      values: ['No'],
-      forkPath: '/register/trn'
-    },
+    // {
+    //   currentPath: '/register/work-in-education',
+    //   storedData: ['register', 'work-in-education'],
+    //   values: ['No'],
+    //   forkPath: '/register/where-do-you-work'
+    // },
     {
       currentPath: '/register/trn',
       storedData: ['register', 'know-trn'],
@@ -155,27 +156,23 @@ function registerWizardForks (req) {
 function typeOfUser (req) {
   const registerData = req.session.data.register
 
-  const isInOtherEducationSetting = registerData &&
-    registerData['work-in-education'] === 'Yes, I work in another setting'
-
   const isNonEducation = registerData &&
     registerData['work-in-education'] === 'No'
 
   // Allow a non-answer to default to in education (the most common path)
-  const isInSchoolSetting = !(isNonEducation || isInOtherEducationSetting)
+  const isInSchoolSetting = !(isNonEducation)
 
   // Allow a non-answer to default to in England (the most common path)
   const isInternational = registerData &&
     ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-work'])
 
   const isEngland = !isInternational
-  const isInEducationAndIsInEngland = (isInSchoolSetting || isInOtherEducationSetting) && isEngland
   const isInSchoolAndIsInEngland = isInSchoolSetting && isEngland
+  const isNonEducationAndIsInEngland = isNonEducation && isEngland
 
   return {
     // Do you work in education answers
     isInSchoolSetting,
-    isInOtherEducationSetting,
     isNonEducation,
 
     // Where do you work answers
@@ -184,7 +181,7 @@ function typeOfUser (req) {
 
     // Combinations
     isInSchoolAndIsInEngland,
-    isInEducationAndIsInEngland
+    isNonEducationAndIsInEngland
   }
 }
 

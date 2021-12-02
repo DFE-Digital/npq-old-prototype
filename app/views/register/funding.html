@@ -4,10 +4,9 @@
 {% set title = 'Funding' if showNotEligibleForScholarship else legend %}
 
 {% block form %}
-  {% if showNotEligibleForScholarship %}
-    <h1 class="govuk-heading-xl">{{ title }}</h1>
+  <!-- {% if showNotEligibleForScholarship %} -->
     <p>Your school or college is not eligible for NPQ government scholarship funding.</p>
-  {% endif %}
+  <!-- {% endif %} -->
 
   {{ govukRadios({
     fieldset: {
