@@ -10,17 +10,17 @@
   rows: [
     {
       key: {
-        text: "Do you work in education?"
+        text: "Do you work in a school or college?" if isInternational else "Do you work in a school, college or academy trust?"
       },
       value: {
-        text: data.register['work-in-education'] | capitaliseFirstLetter
+        text: data.register['work-in-school']
       },
       actions: {
         items: [
           {
-            href: "/register/work-in-education",
+            href: "/register/work-in-school",
             text: "Change",
-            visuallyHiddenText: "whether you work in education"
+            visuallyHiddenText: "whether you work in a school"
           }
         ]
       }
@@ -41,7 +41,7 @@
           }
         ]
       }
-    } if (isInSchoolSetting or isInOtherEducationSetting),
+    } if isInSchoolSetting,
     {
       key: {
         text: "Full name"
@@ -262,7 +262,7 @@
           }
         ]
       }
-    } if not isInEducationAndIsInEngland,
+    } if not isInSchoolAndIsInEngland,
     {
       key: {
         text: "Employer"
@@ -279,7 +279,7 @@
           }
         ]
       }
-    } if isInOtherEducationSetting,
+    } if not isInSchoolSetting,
     {
       key: {
         text: "Role"
@@ -296,24 +296,7 @@
           }
         ]
       }
-    } if isInOtherEducationSetting,
-    {
-      key: {
-        text: "Educational setting"
-      },
-      value: {
-        text: data.register['educational-setting']
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/funding-vague",
-            text: "Change",
-            visuallyHiddenText: " educational setting"
-          }
-        ]
-      }
-    } if isInOtherEducationSetting
+    } if not isInSchoolSetting
   ]
 }) }}
 {% endblock %}

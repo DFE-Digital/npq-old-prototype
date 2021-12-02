@@ -10,8 +10,8 @@ function registerWizardPaths (req) {
   const paths = [
     '/start',
     '/register/chosen',
-    ...data.features['non-teacher'].on ? ['/register/work-in-education'] : [],
     ...data.features.international.on ? ['/register/where-do-you-work'] : [],
+    ...data.features['non-teacher'].on ? ['/register/work-in-school'] : [],
     '/register/trn',
     ...data.features['name-changes'].on ? ['/register/name-changes'] : [],
     '/register/email',
@@ -33,7 +33,7 @@ function registerWizardPaths (req) {
     '/register/aso-early-headship',
     '/register/aso-funding',
     '/register/choose-provider',
-    ...typesOfUser.isInEducationAndIsInEngland ? ['/register/funding-vague'] : ['/register/funding'],
+    ...typesOfUser.isInSchoolAndIsInEngland ? ['/register/funding-vague'] : ['/register/funding'],
     '/register/share-information',
     '/register/check',
     '/register/confirmation',
@@ -59,12 +59,6 @@ function registerWizardForks (req) {
       storedData: ['register', 'chosen'],
       values: ['no'],
       forkPath: '/register/choosing-an-npq'
-    },
-    {
-      currentPath: '/register/work-in-education',
-      storedData: ['register', 'work-in-education'],
-      values: ['No'],
-      forkPath: '/register/trn'
     },
     {
       currentPath: '/register/trn',
@@ -155,36 +149,26 @@ function registerWizardForks (req) {
 function typeOfUser (req) {
   const registerData = req.session.data.register
 
-  const isInOtherEducationSetting = registerData &&
-    registerData['work-in-education'] === 'Yes, I work in another setting'
-
-  const isNonEducation = registerData &&
-    registerData['work-in-education'] === 'No'
-
-  // Allow a non-answer to default to in education (the most common path)
-  const isInSchoolSetting = !(isNonEducation || isInOtherEducationSetting)
+  // Allow a non-answer to default to in school (the most common path)
+  const isInSchoolSetting = !(registerData && registerData['work-in-school'] === 'No')
 
   // Allow a non-answer to default to in England (the most common path)
   const isInternational = registerData &&
     ['Scotland', 'Wales', 'Northern Ireland', 'other'].includes(registerData['where-do-you-work'])
 
   const isEngland = !isInternational
-  const isInEducationAndIsInEngland = (isInSchoolSetting || isInOtherEducationSetting) && isEngland
   const isInSchoolAndIsInEngland = isInSchoolSetting && isEngland
 
   return {
-    // Do you work in education answers
+    // Do you work in a school
     isInSchoolSetting,
-    isInOtherEducationSetting,
-    isNonEducation,
 
     // Where do you work answers
     isEngland,
     isInternational,
 
     // Combinations
-    isInSchoolAndIsInEngland,
-    isInEducationAndIsInEngland
+    isInSchoolAndIsInEngland
   }
 }
 

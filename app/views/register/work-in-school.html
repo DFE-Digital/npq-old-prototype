@@ -1,0 +1,22 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Do you work in a school or college?' if isInternational else 'Do you work in a school, college or academy trust?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+      }
+    },
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'work-in-school']) ) }}
+{% endblock %}
