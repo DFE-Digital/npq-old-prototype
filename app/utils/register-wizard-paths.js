@@ -33,6 +33,7 @@ function registerWizardPaths (req) {
     '/register/aso-early-headship',
     '/register/aso-funding',
     '/register/choose-provider',
+    ...typesOfUser.isInSchoolSetting ? [] : ['/register/about-where-you-work'],
     ...typesOfUser.isInSchoolAndIsInEngland ? ['/register/funding-vague'] : ['/register/funding'],
     '/register/share-information',
     '/register/check',

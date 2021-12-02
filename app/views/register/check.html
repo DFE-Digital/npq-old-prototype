@@ -10,6 +10,23 @@
   rows: [
     {
       key: {
+        text: "Where do you work?"
+      },
+      value: {
+        text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/where-do-you-work",
+            text: "Change",
+            visuallyHiddenText: "where you work"
+          }
+        ]
+      }
+    },
+    {
+      key: {
         text: "Do you work in a school or college?" if isInternational else "Do you work in a school, college or academy trust?"
       },
       value: {
@@ -25,23 +42,6 @@
         ]
       }
     } if data.features['non-teacher'].on,
-    {
-      key: {
-        text: "Where do you work?"
-      },
-      value: {
-        text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/where-do-you-work",
-            text: "Change",
-            visuallyHiddenText: "where you work"
-          }
-        ]
-      }
-    } if isInSchoolSetting,
     {
       key: {
         text: "Full name"
@@ -248,23 +248,6 @@
     },
     {
       key: {
-        text: "Funding"
-      },
-      value: {
-        text: data.register.funding
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/funding",
-            text: "Change",
-            visuallyHiddenText: " funding"
-          }
-        ]
-      }
-    } if not isInSchoolAndIsInEngland,
-    {
-      key: {
         text: "Employer"
       },
       value: {
@@ -293,6 +276,23 @@
             href: "/register/funding-vague",
             text: "Change",
             visuallyHiddenText: " role"
+          }
+        ]
+      }
+    } if not isInSchoolSetting,
+    {
+      key: {
+        text: "Funding"
+      },
+      value: {
+        text: data.register.funding
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding",
+            text: "Change",
+            visuallyHiddenText: " funding"
           }
         ]
       }
