@@ -18,7 +18,7 @@
   {% set country %}
     {{ govukSelect({
       label: {
-        text: "Which country do you teach in?"
+        text: "Which country do you work in?"
       },
       items: countries
     } | decorateFormAttributes(['register', 'country'])) }}

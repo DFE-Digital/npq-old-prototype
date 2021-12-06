@@ -1,6 +1,5 @@
 {% extends "_wizard-page.html" %}
 {% set title = 'Check your answers and confirm' %}
-{% set isASO = (data.register.course == 'Additional Support Offer (ASO) for NPQH') %}
 {% set buttonText = 'Confirm' %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
@@ -8,23 +7,6 @@
 <h1 class="govuk-heading-xl" >{{ title }}</h1>
 {{ govukSummaryList({
   rows: [
-    {
-      key: {
-        text: "Do you work in education?"
-      },
-      value: {
-        text: data.register['work-in-education'] | capitaliseFirstLetter
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/work-in-education",
-            text: "Change",
-            visuallyHiddenText: "whether you work in education"
-          }
-        ]
-      }
-    } if data.features['non-teacher'].on,
     {
       key: {
         text: "Where do you work?"
@@ -41,7 +23,24 @@
           }
         ]
       }
-    } if (isInSchoolSetting or isInOtherEducationSetting),
+    },
+    {
+      key: {
+        text: "Do you work in a school or college?" if isInternational else "Do you work in a school, college or academy trust?"
+      },
+      value: {
+        text: data.register['work-in-school']
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/work-in-school",
+            text: "Change",
+            visuallyHiddenText: "whether you work in a school"
+          }
+        ]
+      }
+    } if data.features['non-teacher'].on,
     {
       key: {
         text: "Full name"
@@ -248,23 +247,6 @@
     },
     {
       key: {
-        text: "Funding"
-      },
-      value: {
-        text: data.register.funding
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/funding",
-            text: "Change",
-            visuallyHiddenText: " funding"
-          }
-        ]
-      }
-    } if not isInEducationAndIsInEngland,
-    {
-      key: {
         text: "Employer"
       },
       value: {
@@ -279,7 +261,7 @@
           }
         ]
       }
-    } if isInOtherEducationSetting,
+    } if not isInSchoolSetting,
     {
       key: {
         text: "Role"
@@ -296,24 +278,24 @@
           }
         ]
       }
-    } if isInOtherEducationSetting,
+    } if not isInSchoolSetting,
     {
       key: {
-        text: "Educational setting"
+        text: "Funding"
       },
       value: {
-        text: data.register['educational-setting']
+        text: data.register.funding
       },
       actions: {
         items: [
           {
-            href: "/register/funding-vague",
+            href: "/register/funding",
             text: "Change",
-            visuallyHiddenText: " educational setting"
+            visuallyHiddenText: " funding"
           }
         ]
       }
-    } if isInOtherEducationSetting
+    } if not isInSchoolSetting
   ]
 }) }}
 {% endblock %}
