@@ -3,11 +3,27 @@
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {% set html %}
+    <p>If you’re applying to start an NPQ for Headship (NPQH), you might also be applying for the Additional Support Offer, a targeted support package for new headteachers.</p>
+    <p>To register for both you should:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>complete your registration for an NPQH using this service</li>
+      <li>complete a separate registration for the Additional Support Offer, also using this service</li>
+    </ul>
+  {% endset %}
+
+  {{ govukDetails({
+    summaryText: "Help with NPQH and the Additional Support Offer",
+    html: html
+  }) if isInSchoolAndIsInEngland }}
+
   {{ govukRadios({
     fieldset: {
       legend: {
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--xl"
+        isPageHeading: false,
+        text: title,
+        classes: "govuk-visually-hidden"
       }
     },
     items: [
@@ -38,19 +54,4 @@
       } if isInSchoolAndIsInEngland
     ]
   } | decorateFormAttributes(['register', 'course']) ) }}
-
-  {% set html %}
-    <p>If you’re applying to start an NPQH, you might also be applying for the Additional Support Offer, a targeted support package for new headteachers.</p>
-    <p>You can use this service to register for both, one at a time.</p>
-    <p>You should:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>complete your registration for an NPQH using this service</li>
-      <li>complete another registration for the Additional Support Offer, also using this service</li>
-    </ul>
-  {% endset %}
-
-  {{ govukDetails({
-    summaryText: "Help with NPQH and the Additional Support Offer",
-    html: html
-  }) if isInSchoolAndIsInEngland }}
 {% endblock %}
