@@ -1,0 +1,293 @@
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Where do you work?"
+      },
+      value: {
+        text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/where-do-you-work",
+            text: "Change",
+            visuallyHiddenText: "where you work"
+          }
+        ]
+      } if isNewUser
+    },
+    {
+      key: {
+        text: "Do you work in a school or college?" if isInternational else "Do you work in a school, college or academy trust?"
+      },
+      value: {
+        text: data.register['work-in-school']
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/work-in-school",
+            text: "Change",
+            visuallyHiddenText: "whether you work in a school"
+          }
+        ]
+      } if isNewUser
+    } if data.features['non-teacher'].on,
+    {
+      key: {
+        text: "Full name"
+      },
+      value: {
+        text: data.register.name
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details" if (data.features['name-changes'].on or data.features['name-change-guidance'].on) else "/register/your-name",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      } if isNewUser
+    },
+    {
+      key: {
+        text: "Teacher reference number (TRN)"
+      },
+      value: {
+        text: data.register.trn
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details" if (data.features['name-changes'].on or data.features['name-change-guidance'].on) else "/register/your-trn",
+            text: "Change",
+            visuallyHiddenText: "TRN"
+          }
+        ]
+      } if isNewUser
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details" if (data.features['name-changes'].on or data.features['name-change-guidance'].on) else "/register/your-dob",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      } if isNewUser
+    },
+    {
+      key: {
+        text: "National Insurance number"
+      },
+      value: {
+        text: data.register.nino
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details" if (data.features['name-changes'].on or data.features['name-change-guidance'].on) else "/register/your-nino",
+            text: "Change",
+            visuallyHiddenText: "national insurance number"
+          }
+        ]
+      } if isNewUser
+    } if data.register.nino,
+    {
+      key: {
+        text: "Email address"
+      },
+      value: {
+        text: data.register.email
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/email",
+            text: "Change",
+            visuallyHiddenText: "email address"
+          }
+        ]
+      } if isNewUser
+    },
+    {
+      key: {
+        text: "School, college or trust"
+      },
+      value: {
+        text: data.register.school
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/where-school",
+            text: "Change",
+            visuallyHiddenText: "school, college or trust"
+          }
+        ]
+      } if isNewUser
+    } if isInSchoolSetting,
+    {
+      key: {
+        text: "Course"
+      },
+      value: {
+        text: data.register.course
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-npq",
+            text: "Change",
+            visuallyHiddenText: " course"
+          }
+        ]
+      } if isNewUser
+    },
+    {
+      key: {
+        text: "Have you completed an NPQH?"
+      },
+      value: {
+        text: data.register['aso-completed-npqh']
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/aso-completed-npqh",
+            text: "Change",
+            visuallyHiddenText: " if you have completed an NPQH"
+          }
+        ]
+      } if isNewUser
+    } if isASO,
+    {
+      key: {
+        text: "Are you a headteacher?"
+      },
+      value: {
+        text: data.register['aso-headteacher'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/aso",
+            text: "Change",
+            visuallyHiddenText: " if you are a headteacher"
+          }
+        ]
+      } if isNewUser
+    } if isASO,
+    {
+      key: {
+        text: "Are you in your first 2 years of a headship?"
+      },
+      value: {
+        text: data.register['aso-early-headship'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/aso-early-headship",
+            text: "Change",
+            visuallyHiddenText: " if you are in your first 2 years of a headship"
+          }
+        ]
+      } if isNewUser
+    } if isASO and data.register['aso-headteacher'] == 'yes',
+    {
+      key: {
+        text: "How is your ASO being paid for?"
+      },
+      value: {
+        text: data.register['aso-how-pay'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/aso-how-pay",
+            text: "Change",
+            visuallyHiddenText: " how your ASO is being paid for"
+          }
+        ]
+      } if isNewUser
+    } if isASO and (data.register['aso-headteacher'] == 'no' or data.register['aso-early-headship'] == 'no'),
+    {
+      key: {
+        text: "Lead provider"
+      },
+      value: {
+        text: data.register.provider
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-provider",
+            text: "Change",
+            visuallyHiddenText: " lead provider"
+          }
+        ]
+      } if isNewUser
+    },
+    {
+      key: {
+        text: "Employer"
+      },
+      value: {
+        text: data.register.employer
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding-vague",
+            text: "Change",
+            visuallyHiddenText: " employer"
+          }
+        ]
+      } if isNewUser
+    } if not isInSchoolSetting,
+    {
+      key: {
+        text: "Role"
+      },
+      value: {
+        text: data.register.role
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding-vague",
+            text: "Change",
+            visuallyHiddenText: " role"
+          }
+        ]
+      } if isNewUser
+    } if not isInSchoolSetting,
+    {
+      key: {
+        text: "Funding"
+      },
+      value: {
+        text: data.register.funding
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding",
+            text: "Change",
+            visuallyHiddenText: " funding"
+          }
+        ]
+      } if isNewUser
+    } if not isInSchoolSetting
+  ]
+}) }}
