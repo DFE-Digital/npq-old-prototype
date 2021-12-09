@@ -1,4 +1,24 @@
 module.exports = {
+  register: {
+    chosen: 'yes',
+    email: 'email@example.com',
+    'email-code': '12345',
+    'work-in-school': 'Yes',
+    'where-do-you-work': 'England',
+    'know-trn': 'yes',
+    'name-changed': 'no',
+    trn: '1234567',
+    name: 'Jane Doe',
+    'dob-day': '1',
+    'dob-month': '1',
+    'dob-year': '1980',
+    nino: 'QQ 12 34 56 C',
+    'school-location': 'London',
+    school: 'Oftborough College',
+    course: 'NPQ Leading Teaching (NPQLT)',
+    provider: 'Ambition Institute',
+    'agree-to-share': ['yes']
+  },
   features: {
     'aso-loop': {
       on: false,

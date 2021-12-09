@@ -6,7 +6,17 @@ const {
 } = require('../utils/register-wizard-paths')
 
 module.exports = router => {
+  router.all('/existing-user/*', (req, res, next) => {
+    res.locals.isExistingUser = true
+    next()
+  })
+
   router.all('/register/*', (req, res, next) => {
+    res.locals.isNewUser = true
+    next()
+  })
+
+  router.all(['/register/*', '/existing-user/*'], (req, res, next) => {
     Object.assign(res.locals, typeOfUser(req))
     next()
   })
