@@ -2,6 +2,8 @@ const fs = require('fs')
 const {
   registerWizardPaths,
   registerWizardForks,
+  existingUserWizardPaths,
+  existingUserWizardForks,
   typeOfUser
 } = require('../utils/register-wizard-paths')
 
@@ -49,6 +51,16 @@ module.exports = router => {
   ], function (req, res) {
     const fork = registerWizardForks(req)
     const paths = registerWizardPaths(req)
+    fork ? res.redirect(fork) : res.redirect(paths.next)
+  })
+
+  router.get('/existing-user/:view', (req, res) => {
+    res.render(`register/${req.params.view}`, { paths: existingUserWizardPaths(req) })
+  })
+
+  router.post('/existing-user/:view', function (req, res) {
+    const fork = existingUserWizardForks(req)
+    const paths = existingUserWizardPaths(req)
     fork ? res.redirect(fork) : res.redirect(paths.next)
   })
 }

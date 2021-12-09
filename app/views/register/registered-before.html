@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% set title = 'You’ve already registered' %}
+{% set buttonText = 'Register for another course' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+        {{ title }}
+      </h1>
+      <p class="govuk-body-l govuk-!-margin-bottom-6">You can use your details again to register for another course.</p>
+
+      {{ govukButton({
+        text: 'Register for another course',
+        href: '/existing-user/choose-npq'
+      }) }}
+
+      <h2 class="govuk-heading-l govuk-!-margin-top-6">Your course</h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Course"
+            },
+            value: {
+              text: data.register.course
+            }
+          },
+          {
+            key: {
+              text: "Lead provider"
+            },
+            value: {
+              text: data.register.provider
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-l govuk-!-margin-top-8">Your details</h2>
+      {% set hideCourse = true %}
+      {% include 'includes/_check.html' %}
+
+      <p class="govuk-!-margin-top-8">
+        If you need to change your registration details contact us at:<br />
+        <a href="#">continuing-professional-development@digital.education.gov.uk</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}
