@@ -1,8 +1,6 @@
 module.exports = {
   register: {
-    chosen: 'yes',
     email: 'email@example.com',
-    'email-code': '12345',
     'work-in-school': 'Yes',
     'where-do-you-work': 'England',
     'know-trn': 'yes',
