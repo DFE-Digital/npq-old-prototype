@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% set title = 'You’ve already registered' %}
+{% set showMultipleCourses = false %}
 {% set buttonText = 'Register for another course' %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
@@ -21,35 +22,73 @@
         href: '/existing-user/choose-npq'
       }) }}
 
-      <h2 class="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-4">Your course</h2>
+      {% if showMultipleCourses %}
+        <h2 class="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-4">Your courses</h2>
 
-      {% set html %}
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "Lead provider"
+        {% set html %}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Lead provider"
+                },
+                value: {
+                  text: data.register.provider
+                }
               },
-              value: {
-                text: data.register.provider
+              {
+                key: {
+                  text: "Registration date"
+                },
+                value: {
+                  text: "10 December 2021"
+                }
               }
-            },
-            {
-              key: {
-                text: "Registration date"
-              },
-              value: {
-                text: "10 December 2021"
-              }
-            }
-          ]
+            ]
+          }) }}
+        {% endset %}
+
+        {{ appSummaryCard({
+          titleText: data.register.course,
+          html: html,
+          classes: "govuk-!-margin-bottom-6"
         }) }}
-      {% endset %}
 
-      {{ appSummaryCard({
-        titleText: data.register.course,
-        html: html
-      }) }}
+        {{ appSummaryCard({
+          titleText: data.register.course,
+          html: html
+        }) }}
+      {% else %}
+        <h2 class="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-4">Your course</h2>
+
+        {% set html %}
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Lead provider"
+                },
+                value: {
+                  text: data.register.provider
+                }
+              },
+              {
+                key: {
+                  text: "Registration date"
+                },
+                value: {
+                  text: "10 December 2021"
+                }
+              }
+            ]
+          }) }}
+        {% endset %}
+
+        {{ appSummaryCard({
+          titleText: data.register.course,
+          html: html
+        }) }}
+      {% endif %}
 
       <h2 class="govuk-heading-l govuk-!-margin-top-8 govuk-!-margin-bottom-4">Your details</h2>
       <div class="app-bordered">
