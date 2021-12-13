@@ -40,3 +40,20 @@ $govuk-assets-path: '/govuk/assets/';
 .autocomplete__menu {
   @include govuk-font($size: 19);
 }
+
+.app-bordered {
+  border: 1px solid $govuk-border-colour;
+  padding: govuk-spacing(3);
+
+  .govuk-table,
+  .govuk-summary-list,
+  .govuk-table {
+    margin-bottom: 0;
+  }
+
+  .govuk-summary-list__row:last-child,
+  .govuk-summary-list__row:last-child > *,
+  .govuk-table__row:last-child .govuk-table__cell {
+    border-bottom: 0;
+  }
+}

@@ -9,43 +9,53 @@
       <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
         {{ title }}
       </h1>
-      <p class="govuk-body-l govuk-!-margin-bottom-6">You can use your details again to register for another course.</p>
+      <p class="govuk-!-margin-bottom-6">
+        If you need to change your course or your registration details contact us at:<br />
+        <a href="#">continuing-professional-development@digital.education.gov.uk</a>
+      </p>
+
+      <p class="govuk-!-margin-bottom-6">You can use your details again to register for another course.</p>
 
       {{ govukButton({
         text: 'Register for another course',
         href: '/existing-user/choose-npq'
       }) }}
 
-      <h2 class="govuk-heading-l govuk-!-margin-top-6">Your course</h2>
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Course"
+      <h2 class="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-4">Your course</h2>
+
+      {% set html %}
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "Lead provider"
+              },
+              value: {
+                text: data.register.provider
+              }
             },
-            value: {
-              text: data.register.course
+            {
+              key: {
+                text: "Registration date"
+              },
+              value: {
+                text: "10 December 2021"
+              }
             }
-          },
-          {
-            key: {
-              text: "Lead provider"
-            },
-            value: {
-              text: data.register.provider
-            }
-          }
-        ]
+          ]
+        }) }}
+      {% endset %}
+
+      {{ appSummaryCard({
+        titleText: data.register.course,
+        html: html
       }) }}
 
-      <h2 class="govuk-heading-l govuk-!-margin-top-8">Your details</h2>
-      {% set hideCourse = true %}
-      {% include 'includes/_check.html' %}
-
-      <p class="govuk-!-margin-top-8">
-        If you need to change your registration details contact us at:<br />
-        <a href="#">continuing-professional-development@digital.education.gov.uk</a>
-      </p>
+      <h2 class="govuk-heading-l govuk-!-margin-top-8 govuk-!-margin-bottom-4">Your details</h2>
+      <div class="app-bordered">
+        {% set hideCourse = true %}
+        {% include 'includes/_check.html' %}
+      </div>
     </div>
   </div>
 {% endblock %}
