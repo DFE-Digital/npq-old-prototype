@@ -22,7 +22,7 @@ function registerWizardPaths (req) {
       '/register/your-dob',
       '/register/your-nino'
     ],
-    ...typesOfUser.isInSchoolSetting ? [
+    ...typesOfUser.isInSchoolAndIsInEngland ? [
       '/register/where-school',
       '/register/which-school'
     ] : [],
