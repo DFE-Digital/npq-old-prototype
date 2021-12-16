@@ -1,100 +1,20 @@
-{% extends "layout.html" %}
-{% set title = 'You’ve already registered' %}
-{% set showMultipleCourses = false %}
-{% set buttonText = 'Register for another course' %}
-{% block pageTitle %}{{ title }}{% endblock %}
+{% extends "_wizard-page.html" %}
+{% set title = 'We already have some of your details' %}
+{% set buttonText = 'Continue' %}
 
-{% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
-        {{ title }}
-      </h1>
-      <p class="govuk-!-margin-bottom-6">
-        If you need to change your course or your registration details contact us at:<br />
-        <a href="#">continuing-professional-development@digital.education.gov.uk</a>
-      </p>
+{% block page %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
 
-      <p class="govuk-!-margin-bottom-6">You can use your details again to register for another course.</p>
+  {% set hideCourse = true %}
+  {% set redact = true %}
+  {% include 'includes/_check.html' %}
 
-      {{ govukButton({
-        text: 'Register for another course',
-        href: '/existing-user/choose-npq'
-      }) }}
+  <p>You can use these details again to register for another course.</p>
 
-      {% if showMultipleCourses %}
-        <h2 class="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-4">Your courses</h2>
-
-        {% set html %}
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Lead provider"
-                },
-                value: {
-                  text: data.register.provider
-                }
-              },
-              {
-                key: {
-                  text: "Registration date"
-                },
-                value: {
-                  text: "10 December 2021"
-                }
-              }
-            ]
-          }) }}
-        {% endset %}
-
-        {{ appSummaryCard({
-          titleText: data.register.course,
-          html: html,
-          classes: "govuk-!-margin-bottom-6"
-        }) }}
-
-        {{ appSummaryCard({
-          titleText: data.register.course,
-          html: html
-        }) }}
-      {% else %}
-        <h2 class="govuk-heading-l govuk-!-margin-top-6 govuk-!-margin-bottom-4">Your course</h2>
-
-        {% set html %}
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "Lead provider"
-                },
-                value: {
-                  text: data.register.provider
-                }
-              },
-              {
-                key: {
-                  text: "Registration date"
-                },
-                value: {
-                  text: "10 December 2021"
-                }
-              }
-            ]
-          }) }}
-        {% endset %}
-
-        {{ appSummaryCard({
-          titleText: data.register.course,
-          html: html
-        }) }}
-      {% endif %}
-
-      <h2 class="govuk-heading-l govuk-!-margin-top-8 govuk-!-margin-bottom-4">Your details</h2>
-      <div class="app-bordered">
-        {% set hideCourse = true %}
-        {% include 'includes/_check.html' %}
-      </div>
-    </div>
-  </div>
+  <p class="govuk-!-margin-bottom-6">
+    If you need to change any of your registration details contact us at:<br />
+    <a href="#">continuing-professional-development@digital.education.gov.uk</a>
+  </p>
 {% endblock %}

@@ -29,6 +29,10 @@ module.exports = function (env) {
     return countries.find(country => country[1] === code)[0]
   }
 
+  filters.redact = text => {
+    return `*****${text.slice(-2)}`
+  }
+
   /* ------------------------------------------------------------------
     add your methods to the filters obj below this comment block:
     @example:

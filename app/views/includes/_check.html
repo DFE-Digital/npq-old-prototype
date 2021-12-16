@@ -1,3 +1,9 @@
+{% set trn %}
+  <span class="app-!-font-family-tabular">
+    {{ data.register.trn | redact if redact else data.register.trn }}
+  </span>
+{% endset %}
+
 {{ govukSummaryList({
   rows: [
     {
@@ -56,7 +62,7 @@
         text: "Teacher reference number (TRN)"
       },
       value: {
-        text: data.register.trn
+        html: trn
       },
       actions: {
         items: [
@@ -84,7 +90,7 @@
           }
         ]
       } if isNewUser
-    },
+    } if not redact,
     {
       key: {
         text: "National Insurance number"
@@ -101,7 +107,7 @@
           }
         ]
       } if isNewUser
-    } if data.register.nino,
+    } if data.register.nino and not redact,
     {
       key: {
         text: "Email address"

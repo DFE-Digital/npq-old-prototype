@@ -71,6 +71,7 @@ function registerWizardForks (req) {
 function existingUserWizardPaths (req) {
   const typesOfUser = typeOfUser(req)
   const paths = [
+    '/register/email-confirmation',
     '/existing-user/registered-before',
     '/existing-user/choose-npq',
     '/existing-user/aso',
