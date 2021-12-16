@@ -1,5 +1,4 @@
-const getKeypath = require('keypather/get')
-const setKeypath = require('keypather/set')
+const { get: getKeypath, set: setKeypath } = require('lodash')
 
 const generateRandomString = (length) => {
   length = length || 3
