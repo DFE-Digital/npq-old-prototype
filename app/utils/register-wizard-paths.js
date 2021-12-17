@@ -10,8 +10,8 @@ function registerWizardPaths (req) {
   const paths = [
     '/start',
     '/register/chosen',
-    ...data.features.international.on ? ['/register/where-do-you-work'] : [],
-    ...data.features['non-teacher'].on ? ['/register/work-in-school'] : [],
+    '/register/where-do-you-work',
+    '/register/work-in-school',
     '/register/trn',
     '/register/email',
     '/register/email-confirmation',
