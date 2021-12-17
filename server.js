@@ -1,5 +1,6 @@
 // Core dependencies
 const path = require('path')
+const url = require('url')
 
 // NPM dependencies
 const bodyParser = require('body-parser')
@@ -169,7 +170,11 @@ app.get(/^([^.]+)$/, function (req, res, next) {
 
 // Redirect all POSTs to GETs - this allows users to use POST for autoStoreData
 app.post(/^\/([^.]+)$/, function (req, res) {
-  res.redirect('/' + req.params[0])
+  res.redirect(url.format({
+    pathname: '/' + req.params[0],
+    query: req.query
+  })
+  )
 })
 
 // Catch 404 and forward to error handler
