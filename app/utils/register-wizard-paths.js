@@ -10,18 +10,12 @@ function registerWizardPaths (req) {
   const paths = [
     '/start',
     '/register/chosen',
-    ...data.features.international.on ? ['/register/where-do-you-work'] : [],
-    ...data.features['non-teacher'].on ? ['/register/work-in-school'] : [],
+    '/register/where-do-you-work',
+    '/register/work-in-school',
     '/register/trn',
-    ...data.features['name-changes'].on ? ['/register/name-changes'] : [],
     '/register/email',
     '/register/email-confirmation',
-    ...(data.features['name-changes'].on || data.features['name-change-guidance'].on) ? ['/register/personal-details'] : [
-      '/register/your-trn',
-      '/register/your-name',
-      '/register/your-dob',
-      '/register/your-nino'
-    ],
+    '/register/personal-details',
     ...typesOfUser.isInSchoolAndIsInEngland ? [
       '/register/where-school',
       '/register/which-school'
@@ -38,12 +32,6 @@ function registerWizardPaths (req) {
     '/register/share-information',
     '/register/check',
     '/register/confirmation',
-
-    ...data.features['name-changes'].on ? [
-      '/register/name-changes',
-      '/register/updated-name',
-      '/register/updating-your-name',
-      '/register/change-name-on-tra'] : [],
 
     '/register/aso',
     '/register/aso-funding-not-available',
@@ -73,31 +61,6 @@ function registerWizardForks (req) {
             return '/register/get-a-trn'
         }
       }
-    },
-    {
-      currentPath: '/register/name-changes',
-      storedData: ['register', 'name-changed'],
-      values: ['yes'],
-      forkPath: '/register/updated-name'
-    },
-    {
-      currentPath: '/register/updated-name',
-      storedData: ['register', 'updated-name'],
-      values: ['yes', 'not-sure'],
-      forkPath: (value) => {
-        switch (value) {
-          case 'yes':
-            return '/register/email'
-          case 'not-sure':
-            return '/register/dont-know-if-name-updated'
-        }
-      }
-    },
-    {
-      currentPath: '/register/updating-your-name',
-      storedData: ['register', 'updating-name-now'],
-      values: ['no'],
-      forkPath: '/register/email'
     },
     {
       currentPath: '/register/choose-npq',

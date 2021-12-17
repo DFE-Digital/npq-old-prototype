@@ -24,7 +24,7 @@
     },
     formGroup: {
       classes: "govuk-!-margin-bottom-4"
-    } if data.features['name-change-guidance'].on,
+    },
     classes: 'govuk-!-width-three-quarters',
     hint: {
       text: 'Your full name exactly as it appears on the Teaching Regulation Agency records'
@@ -45,12 +45,10 @@
     <p>If you are unsure whether you have updated your name, you can <a href="#">request a reminder</a>.</p>
   {% endset %}
 
-  {% if data.features['name-change-guidance'].on %}
-    {{ govukDetails({
-      summaryText: "Help if you have changed your name",
-      html: nameHelp
-    }) }}
-  {% endif %}
+  {{ govukDetails({
+    summaryText: "Help if you have changed your name",
+    html: nameHelp
+  }) }}
 
   {{ govukDateInput({
       id: 'dob',
