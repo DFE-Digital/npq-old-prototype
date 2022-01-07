@@ -5,14 +5,13 @@ const {
 
 function registerWizardPaths (req) {
   const typesOfUser = typeOfUser(req)
-  const data = req.session.data
 
   const paths = [
     '/start',
     '/register/chosen',
     '/register/email',
     '/register/email-confirmation',
-    '/existing-user/registered-before',
+    '/existing-user/is-this-you',
     '/register/where-do-you-work',
     '/register/work-in-school',
     '/register/trn',
@@ -72,6 +71,7 @@ function existingUserWizardPaths (req) {
   const typesOfUser = typeOfUser(req)
   const paths = [
     '/register/email-confirmation',
+    '/existing-user/is-this-you',
     '/existing-user/registered-before',
     '/existing-user/choose-npq',
     '/existing-user/aso',

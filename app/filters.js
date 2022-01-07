@@ -30,7 +30,7 @@ module.exports = function (env) {
   }
 
   filters.redact = text => {
-    return `*****${text.slice(-2)}`
+    return `${text.slice(0, 3)}****`
   }
 
   /* ------------------------------------------------------------------

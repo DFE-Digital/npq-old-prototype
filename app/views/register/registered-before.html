@@ -1,8 +1,7 @@
-{% extends "_wizard-page.html" %}
-{% set title = 'We already have some of your details' %}
-{% set buttonText = 'Continue' %}
+{% extends "_wizard-form.html" %}
+{% set title = 'You registered before with these details' %}
 
-{% block page %}
+{% block form %}
   <h1 class="govuk-heading-xl">
     {{ title }}
   </h1>
@@ -11,10 +10,29 @@
   {% set redact = true %}
   {% include 'includes/_check.html' %}
 
-  <p>You can use these details again to register for another course.</p>
+  <!-- <p>You can use these details again to register for another course.</p>
 
   <p class="govuk-!-margin-bottom-6">
     If you need to change any of your registration details contact us at:<br />
     <a href="#">continuing-professional-development@digital.education.gov.uk</a>
-  </p>
+  </p> -->
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: 'Are these details correct?',
+        classes: 'govuk-label--m'
+      }
+    },
+    items: [
+      {
+        text: "Yes",
+        value: "yes"
+      },
+      {
+        text: "No, I need to change something",
+        value: "no"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'details-correct']) ) }}
 {% endblock %}

@@ -1,0 +1,86 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Is this you?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {% set trn %}
+    <span class="app-!-font-family-tabular">
+      {{ data.register.trn | redact }}
+    </span>
+  {% endset %}
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Full name"
+        },
+        value: {
+          text: data.register.name
+        }
+      },
+      {
+        key: {
+          text: "Teacher reference number (TRN)"
+        },
+        value: {
+          html: trn
+        }
+      },
+      {
+        key: {
+          text: "School, college or trust"
+        },
+        value: {
+          text: data.register.school
+        }
+      } if isInSchoolAndIsInEngland,
+      {
+        key: {
+          text: "Country you work in"
+        },
+        value: {
+          text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
+        }
+      } if isInternational,
+      {
+        key: {
+          text: "Employer"
+        },
+        value: {
+          text: data.register.employer
+        }
+      } if not isInSchoolSetting,
+      {
+        key: {
+          text: "Role"
+        },
+        value: {
+          text: data.register.role
+        }
+      } if not isInSchoolSetting
+    ]
+  }) }}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: 'Is this you?',
+        classes: 'govuk-visually-hidden'
+      }
+    },
+    items: [
+      {
+        text: "Yes, that’s me",
+        value: "yes"
+      },
+      {
+        text: "No",
+        value: "no"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'details-correct']) ) }}
+{% endblock %}

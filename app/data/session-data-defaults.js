@@ -4,7 +4,6 @@ module.exports = {
     'work-in-school': 'Yes',
     'where-do-you-work': 'England',
     'know-trn': 'yes',
-    'name-changed': 'no',
     trn: '1234567',
     name: 'Jane Doe',
     'dob-day': '1',
@@ -15,6 +14,8 @@ module.exports = {
     school: 'Oftborough College',
     course: 'NPQ Leading Teaching (NPQLT)',
     provider: 'Ambition Institute',
+    employer: 'Acme Ltd',
+    role: 'Manager',
     'agree-to-share': ['yes']
   },
   features: {
