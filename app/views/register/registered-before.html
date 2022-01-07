@@ -6,16 +6,58 @@
     {{ title }}
   </h1>
 
-  {% set hideCourse = true %}
-  {% set redact = true %}
-  {% include 'includes/_check.html' %}
-
-  <!-- <p>You can use these details again to register for another course.</p>
-
-  <p class="govuk-!-margin-bottom-6">
-    If you need to change any of your registration details contact us at:<br />
-    <a href="#">continuing-professional-development@digital.education.gov.uk</a>
-  </p> -->
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Where do you work?"
+        },
+        value: {
+          text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
+        }
+      },
+      {
+        key: {
+          text: "Do you work in a school or college?" if isInternational else "Do you work in a school, college or academy trust?"
+        },
+        value: {
+          text: data.register['work-in-school']
+        }
+      } if data.features['non-teacher'].on,
+      {
+        key: {
+          text: "School, college or trust"
+        },
+        value: {
+          text: data.register.school
+        }
+      } if isInSchoolAndIsInEngland,
+      {
+        key: {
+          text: "Employer"
+        },
+        value: {
+          text: data.register.employer
+        }
+      } if not isInSchoolSetting,
+      {
+        key: {
+          text: "Role"
+        },
+        value: {
+          text: data.register.role
+        }
+      } if not isInSchoolSetting,
+      {
+        key: {
+          text: "Funding"
+        },
+        value: {
+          text: data.register.funding
+        }
+      } if not isInSchoolSetting
+    ]
+  }) }}
 
   {{ govukRadios({
     fieldset: {

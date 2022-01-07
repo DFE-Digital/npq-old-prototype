@@ -11,7 +11,7 @@ function registerWizardPaths (req) {
     '/register/chosen',
     '/register/email',
     '/register/email-confirmation',
-    '/existing-user/is-this-you',
+    '/existing-user/are-you',
     '/register/where-do-you-work',
     '/register/work-in-school',
     '/register/trn',
@@ -71,7 +71,8 @@ function existingUserWizardPaths (req) {
   const typesOfUser = typeOfUser(req)
   const paths = [
     '/register/email-confirmation',
-    '/existing-user/is-this-you',
+    '/existing-user/are-you',
+    '/existing-user/confirm-dob',
     '/existing-user/registered-before',
     '/existing-user/choose-npq',
     '/existing-user/aso',
