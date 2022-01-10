@@ -10,69 +10,53 @@
     rows: [
       {
         key: {
-          text: "Where do you work?"
+          text: "Full name"
         },
         value: {
-          text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
+          text: data.register.name
         }
       },
       {
         key: {
-          text: "Do you work in a school or college?" if isInternational else "Do you work in a school, college or academy trust?"
+          text: "Teacher reference number (TRN)"
         },
         value: {
-          text: data.register['work-in-school']
+          text: data.register.trn
         }
       },
       {
         key: {
-          text: "School, college or trust"
+          text: "Date of birth"
         },
         value: {
-          text: data.register.school
+          text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
         }
-      } if isInSchoolAndIsInEngland,
+      },
       {
         key: {
-          text: "Employer"
+          text: "Email address"
         },
         value: {
-          text: data.register.employer
+          text: data.register.email
         }
-      } if not isInSchoolSetting,
-      {
-        key: {
-          text: "Role"
-        },
-        value: {
-          text: data.register.role
-        }
-      } if not isInSchoolSetting,
-      {
-        key: {
-          text: "Funding"
-        },
-        value: {
-          text: data.register.funding
-        }
-      } if not isInSchoolSetting
+      }
     ]
   }) }}
 
   {{ govukRadios({
     fieldset: {
       legend: {
-        text: 'Are these details correct?',
+        text: 'Are these details still correct?',
         classes: 'govuk-label--m'
       }
     },
     items: [
       {
-        text: "Yes",
+        text: "Yes, they are correct",
         value: "yes"
       },
       {
-        text: "No, I need to change something",
+        text: "No",
         value: "no"
       }
     ]

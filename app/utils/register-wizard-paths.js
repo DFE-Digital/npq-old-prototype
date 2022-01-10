@@ -74,6 +74,12 @@ function existingUserWizardPaths (req) {
     '/existing-user/are-you',
     '/existing-user/confirm-dob',
     '/existing-user/registered-before',
+    '/existing-user/where-do-you-work',
+    '/existing-user/work-in-school',
+    ...typesOfUser.isInSchoolAndIsInEngland ? [
+      '/existing-user/where-school',
+      '/existing-user/which-school'
+    ] : [],
     '/existing-user/choose-npq',
     '/existing-user/aso',
     '/existing-user/aso-completed-npqh',

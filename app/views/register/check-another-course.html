@@ -1,137 +1,62 @@
 {% extends "_wizard-page.html" %}
 {% set title = 'Check your answers and confirm' %}
 {% set buttonText = 'Confirm' %}
-{% set hideCourse = true %}
 {% block pageTitle %}{{ title }}{% endblock %}
 
 {% block page %}
   <h1 class="govuk-heading-xl" >{{ title }}</h1>
 
-  {{ govukSummaryList({
-    rows: [
-      {
-        key: {
-          text: "Course"
+  {% set yourDetails %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Full name"
+          },
+          value: {
+            text: data.register.name
+          }
         },
-        value: {
-          text: data.register.course
+        {
+          key: {
+            text: "Teacher reference number (TRN)"
+          },
+          value: {
+            text: data.register.trn
+          }
         },
-        actions: {
-          items: [
-            {
-              href: "/existing-user/choose-npq",
-              text: "Change",
-              visuallyHiddenText: " course"
-            }
-          ]
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            text: data.register.email
+          }
         }
-      },
-      {
-        key: {
-          text: "Have you completed an NPQH?"
-        },
-        value: {
-          text: data.register['aso-completed-npqh']
-        },
-        actions: {
-          items: [
-            {
-              href: "/existing-user/aso-completed-npqh",
-              text: "Change",
-              visuallyHiddenText: " if you have completed an NPQH"
-            }
-          ]
-        }
-      } if isASO,
-      {
-        key: {
-          text: "Are you a headteacher?"
-        },
-        value: {
-          text: data.register['aso-headteacher'] | capitaliseFirstLetter
-        },
-        actions: {
-          items: [
-            {
-              href: "/existing-user/aso",
-              text: "Change",
-              visuallyHiddenText: " if you are a headteacher"
-            }
-          ]
-        }
-      } if isASO,
-      {
-        key: {
-          text: "Are you in your first 2 years of a headship?"
-        },
-        value: {
-          text: data.register['aso-early-headship'] | capitaliseFirstLetter
-        },
-        actions: {
-          items: [
-            {
-              href: "/existing-user/aso-early-headship",
-              text: "Change",
-              visuallyHiddenText: " if you are in your first 2 years of a headship"
-            }
-          ]
-        }
-      } if isASO and data.register['aso-headteacher'] == 'yes',
-      {
-        key: {
-          text: "How is your ASO being paid for?"
-        },
-        value: {
-          text: data.register['aso-how-pay'] | capitaliseFirstLetter
-        },
-        actions: {
-          items: [
-            {
-              href: "/existing-user/aso-how-pay",
-              text: "Change",
-              visuallyHiddenText: " how your ASO is being paid for"
-            }
-          ]
-        }
-      } if isASO and (data.register['aso-headteacher'] == 'no' or data.register['aso-early-headship'] == 'no'),
-      {
-        key: {
-          text: "Lead provider"
-        },
-        value: {
-          text: data.register.provider
-        },
-        actions: {
-          items: [
-            {
-              href: "/existing-user/choose-provider",
-              text: "Change",
-              visuallyHiddenText: " lead provider"
-            }
-          ]
-        }
-      },
-      {
-        key: {
-          text: "Funding"
-        },
-        value: {
-          text: data.register.funding
-        },
-        actions: {
-          items: [
-            {
-              href: "/existing-user/funding",
-              text: "Change",
-              visuallyHiddenText: " funding"
-            }
-          ]
-        }
-      } if not isInSchoolSetting
-    ]
-  }) }}
-<!--
-  <h2 class="govuk-heading-l">Your details</h2>
+      ]
+    }) }}
+  {% endset %}
 
-  {% include 'includes/_check.html' %} -->
+  {% set yourRegistration %}
+    {% include 'includes/_check.html' %}
+  {% endset %}
+
+  {{ appSummaryCard({
+    titleText: 'Your details',
+    html: yourDetails,
+    classes: 'govuk-!-margin-bottom-6'
+  }) }}
+
+  {{ appSummaryCard({
+    titleText: 'Your registration',
+    html: yourRegistration
+  }) }}
 {% endblock %}

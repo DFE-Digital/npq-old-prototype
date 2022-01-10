@@ -1,6 +1,6 @@
 {% set trn %}
   <span class="app-!-font-family-tabular">
-    {{ data.register.trn | redact if redact else data.register.trn }}
+    {{ data.register.trn }}
   </span>
 {% endset %}
 
@@ -21,7 +21,7 @@
             visuallyHiddenText: "where you work"
           }
         ]
-      } if isNewUser
+      }
     },
     {
       key: {
@@ -38,7 +38,7 @@
             visuallyHiddenText: "whether you work in a school"
           }
         ]
-      } if isNewUser
+      }
     },
     {
       key: {
@@ -55,8 +55,8 @@
             visuallyHiddenText: "name"
           }
         ]
-      } if isNewUser
-    },
+      }
+    } if isNewUser,
     {
       key: {
         text: "Teacher reference number (TRN)"
@@ -72,8 +72,8 @@
             visuallyHiddenText: "TRN"
           }
         ]
-      } if isNewUser
-    },
+      }
+    } if isNewUser,
     {
       key: {
         text: "Date of birth"
@@ -89,8 +89,8 @@
             visuallyHiddenText: "date of birth"
           }
         ]
-      } if isNewUser
-    } if not redact,
+      }
+    } if isNewUser,
     {
       key: {
         text: "National Insurance number"
@@ -106,8 +106,8 @@
             visuallyHiddenText: "national insurance number"
           }
         ]
-      } if isNewUser
-    } if data.register.nino and not redact,
+      }
+    } if data.register.nino and isNewUser,
     {
       key: {
         text: "Email address"
@@ -123,8 +123,8 @@
             visuallyHiddenText: "email address"
           }
         ]
-      } if isNewUser
-    },
+      }
+    } if isNewUser,
     {
       key: {
         text: "School, college or trust"
@@ -140,7 +140,7 @@
             visuallyHiddenText: "school, college or trust"
           }
         ]
-      } if isNewUser
+      }
     } if isInSchoolAndIsInEngland,
     {
       key: {
@@ -157,7 +157,7 @@
             visuallyHiddenText: " course"
           }
         ]
-      } if isNewUser
+      }
     } if not hideCourse,
     {
       key: {
@@ -174,7 +174,7 @@
             visuallyHiddenText: " if you have completed an NPQH"
           }
         ]
-      } if isNewUser
+      }
     } if isASO,
     {
       key: {
@@ -191,7 +191,7 @@
             visuallyHiddenText: " if you are a headteacher"
           }
         ]
-      } if isNewUser
+      }
     } if isASO,
     {
       key: {
@@ -208,7 +208,7 @@
             visuallyHiddenText: " if you are in your first 2 years of a headship"
           }
         ]
-      } if isNewUser
+      }
     } if isASO and data.register['aso-headteacher'] == 'yes',
     {
       key: {
@@ -225,7 +225,7 @@
             visuallyHiddenText: " how your ASO is being paid for"
           }
         ]
-      } if isNewUser
+      }
     } if isASO and (data.register['aso-headteacher'] == 'no' or data.register['aso-early-headship'] == 'no'),
     {
       key: {
@@ -242,7 +242,7 @@
             visuallyHiddenText: " lead provider"
           }
         ]
-      } if isNewUser
+      }
     } if not hideCourse,
     {
       key: {
@@ -259,7 +259,7 @@
             visuallyHiddenText: " employer"
           }
         ]
-      } if isNewUser
+      }
     } if not isInSchoolSetting,
     {
       key: {
@@ -276,7 +276,7 @@
             visuallyHiddenText: " role"
           }
         ]
-      } if isNewUser
+      }
     } if not isInSchoolSetting,
     {
       key: {
@@ -293,7 +293,7 @@
             visuallyHiddenText: " funding"
           }
         ]
-      } if isNewUser
+      }
     } if not isInSchoolSetting
   ]
 }) }}
