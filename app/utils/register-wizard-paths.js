@@ -107,6 +107,18 @@ function ASOForks (basePath) {
       forkPath: `${basePath}/choose-provider`
     },
     {
+      currentPath: `${basePath}/are-you`,
+      storedData: ['register', 'are-you'],
+      values: ['No'],
+      forkPath: `${basePath}/are-you-no`
+    },
+    {
+      currentPath: `${basePath}/registered-before`,
+      storedData: ['register', 'details-correct'],
+      values: ['no'],
+      forkPath: `${basePath}/change-some-details`
+    },
+    {
       currentPath: `${basePath}/choose-provider`,
       storedData: ['register', 'course'],
       values: ['Additional Support Offer for new headteachers'],

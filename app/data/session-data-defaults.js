@@ -12,8 +12,8 @@ module.exports = {
     nino: 'QQ 12 34 56 C',
     'school-location': 'London',
     school: 'Oftborough College',
-    course: 'NPQ Leading Teaching (NPQLT)',
-    provider: 'Ambition Institute',
+    // course: 'NPQ Leading Teaching (NPQLT)',
+    // provider: 'Ambition Institute',
     employer: 'Acme Ltd',
     role: 'Manager',
     'agree-to-share': ['yes']
