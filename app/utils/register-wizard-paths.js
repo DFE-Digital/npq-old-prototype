@@ -11,7 +11,6 @@ function registerWizardPaths (req) {
     '/register/chosen',
     '/register/email',
     '/register/email-confirmation',
-    '/existing-user/are-you',
     '/register/where-do-you-work',
     '/register/work-in-school',
     '/register/trn',
@@ -111,6 +110,12 @@ function ASOForks (basePath) {
       storedData: ['register', 'course'],
       excludedValues: ['Additional Support Offer for new headteachers'],
       forkPath: `${basePath}/choose-provider`
+    },
+    {
+      currentPath: `${basePath}/email-confirmation`,
+      storedData: ['register', 'email'],
+      values: ['existing@example.com'],
+      forkPath: '/existing-user/are-you'
     },
     {
       currentPath: `${basePath}/are-you`,
