@@ -5,16 +5,15 @@ const {
 
 function registerWizardPaths (req) {
   const typesOfUser = typeOfUser(req)
-  const data = req.session.data
 
   const paths = [
     '/start',
     '/register/chosen',
+    '/register/email',
+    '/register/email-confirmation',
     '/register/where-do-you-work',
     '/register/work-in-school',
     '/register/trn',
-    '/register/email',
-    '/register/email-confirmation',
     '/register/personal-details',
     ...typesOfUser.isInSchoolAndIsInEngland ? [
       '/register/where-school',
@@ -62,52 +61,119 @@ function registerWizardForks (req) {
         }
       }
     },
-    {
-      currentPath: '/register/choose-npq',
-      storedData: ['register', 'course'],
-      excludedValues: ['Additional Support Offer for new headteachers'],
-      forkPath: '/register/choose-provider'
-    },
-    {
-      currentPath: '/register/choose-provider',
-      storedData: ['register', 'course'],
-      values: ['Additional Support Offer for new headteachers'],
-      forkPath: '/register/share-information'
-    },
-    {
-      currentPath: '/register/aso-completed-npqh',
-      storedData: ['register', 'aso-completed-npqh'],
-      values: ['no'],
-      forkPath: '/register/aso-cannot-register'
-    },
-    {
-      currentPath: '/register/aso-headteacher',
-      storedData: ['register', 'aso-headteacher'],
-      values: ['no'],
-      forkPath: '/register/aso-funding-not-available'
-    },
-    {
-      currentPath: '/register/aso-from-npqh',
-      skipTo: '/register/aso-completed-npqh'
-    },
-    {
-      currentPath: '/register/aso-early-headship',
-      storedData: ['register', 'aso-early-headship'],
-      values: ['no'],
-      forkPath: '/register/aso-funding-not-available'
-    },
-    {
-      currentPath: '/register/aso-funding-not-available',
-      storedData: ['register', 'aso-pay-another-way'],
-      values: ['no'],
-      forkPath: '/register/aso-contact-provider'
-    },
-    {
-      currentPath: '/register/aso-how-pay',
-      skipTo: '/register/choose-provider'
-    }
+    ...ASOForks('/register')
   ]
   return nextForkPath(forks, req)
+}
+
+function existingUserWizardPaths (req) {
+  const typesOfUser = typeOfUser(req)
+  const paths = [
+    '/register/email-confirmation',
+    '/existing-user/are-you',
+    '/existing-user/confirm-dob',
+    '/existing-user/registered-before',
+    '/existing-user/where-do-you-work',
+    '/existing-user/work-in-school',
+    ...typesOfUser.isInSchoolAndIsInEngland ? [
+      '/existing-user/where-school',
+      '/existing-user/which-school'
+    ] : [],
+    '/existing-user/choose-npq',
+    '/existing-user/aso',
+    '/existing-user/aso-completed-npqh',
+    '/existing-user/aso-headteacher',
+    '/existing-user/aso-early-headship',
+    '/existing-user/aso-funding',
+    '/existing-user/choose-provider',
+    ...typesOfUser.isInSchoolAndIsInEngland ? ['/existing-user/funding-vague'] : ['/existing-user/funding'],
+    '/existing-user/check-another-course',
+    '/existing-user/confirmation',
+
+    '/existing-user/aso',
+    '/existing-user/aso-funding-not-available',
+    '/existing-user/aso-how-pay'
+  ]
+
+  return nextAndBackPaths(paths, req)
+}
+
+function existingUserWizardForks (req) {
+  var forks = ASOForks('/existing-user')
+  return nextForkPath(forks, req)
+}
+
+function ASOForks (basePath) {
+  return [
+    {
+      currentPath: `${basePath}/choose-npq`,
+      storedData: ['register', 'course'],
+      excludedValues: ['Additional Support Offer for new headteachers'],
+      forkPath: `${basePath}/choose-provider`
+    },
+    {
+      currentPath: `${basePath}/email-confirmation`,
+      storedData: ['register', 'email'],
+      values: ['existing@example.com'],
+      forkPath: '/existing-user/are-you'
+    },
+    {
+      currentPath: `${basePath}/are-you`,
+      storedData: ['register', 'are-you'],
+      values: ['No'],
+      forkPath: `${basePath}/are-you-no`
+    },
+    {
+      currentPath: `${basePath}/registered-before`,
+      storedData: ['register', 'details-correct'],
+      values: ['no'],
+      forkPath: `${basePath}/change-some-details`
+    },
+    {
+      currentPath: `${basePath}/choose-provider`,
+      storedData: ['register', 'course'],
+      values: ['Additional Support Offer for new headteachers'],
+      forkPath: (value) => {
+        if (basePath === '/register') {
+          return `${basePath}/share-information`
+        } else {
+          return `${basePath}/check`
+        }
+      }
+    },
+    {
+      currentPath: `${basePath}/aso-completed-npqh`,
+      storedData: ['register', 'aso-completed-npqh'],
+      values: ['no'],
+      forkPath: `${basePath}/aso-cannot-register`
+    },
+    {
+      currentPath: `${basePath}/aso-headteacher`,
+      storedData: ['register', 'aso-headteacher'],
+      values: ['no'],
+      forkPath: `${basePath}/aso-funding-not-available`
+    },
+    {
+      currentPath: `${basePath}/aso-from-npqh`,
+      skipTo: `${basePath}/aso-completed-npqh`
+    },
+    {
+      currentPath: `${basePath}/aso-early-headship`,
+      storedData: ['register', 'aso-early-headship'],
+      values: ['no'],
+      forkPath: `${basePath}/aso-funding-not-available`
+    },
+    {
+      currentPath: `${basePath}/aso-funding-not-available`,
+      storedData: ['register', 'aso-pay-another-way'],
+      values: ['no'],
+      forkPath: `${basePath}/aso-contact-provider`
+    },
+    {
+      currentPath: `${basePath}/aso-how-pay`,
+      skipTo: `${basePath}/choose-provider`
+    }
+  ]
 }
 
 function typeOfUser (req) {
@@ -142,5 +208,7 @@ function typeOfUser (req) {
 module.exports = {
   registerWizardPaths,
   registerWizardForks,
+  existingUserWizardPaths,
+  existingUserWizardForks,
   typeOfUser
 }

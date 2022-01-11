@@ -1,0 +1,22 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Are you '+ data.register.name + '?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: 'govuk-fieldset__legend--xl'
+      }
+    },
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'are-you']) ) }}
+{% endblock %}

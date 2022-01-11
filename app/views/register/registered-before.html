@@ -1,0 +1,64 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'You registered before with these details' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">
+    {{ title }}
+  </h1>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Full name"
+        },
+        value: {
+          text: data.register.name
+        }
+      },
+      {
+        key: {
+          text: "Teacher reference number (TRN)"
+        },
+        value: {
+          text: data.register.trn
+        }
+      },
+      {
+        key: {
+          text: "Date of birth"
+        },
+        value: {
+          text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
+        }
+      },
+      {
+        key: {
+          text: "Email address"
+        },
+        value: {
+          text: data.register.email
+        }
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: 'Are these details still correct?',
+        classes: 'govuk-label--m'
+      }
+    },
+    items: [
+      {
+        text: "Yes, they are correct",
+        value: "yes"
+      },
+      {
+        text: "No",
+        value: "no"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'details-correct']) ) }}
+{% endblock %}

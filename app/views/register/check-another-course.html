@@ -1,0 +1,61 @@
+{% extends "_wizard-page.html" %}
+{% set title = 'Check your answers and confirm' %}
+{% set buttonText = 'Confirm' %}
+
+{% block page %}
+  <h1 class="govuk-heading-xl" >{{ title }}</h1>
+
+  {% set yourDetails %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Full name"
+          },
+          value: {
+            text: data.register.name
+          }
+        },
+        {
+          key: {
+            text: "Teacher reference number (TRN)"
+          },
+          value: {
+            text: data.register.trn
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            text: data.register.email
+          }
+        }
+      ]
+    }) }}
+  {% endset %}
+
+  {% set yourRegistration %}
+    {% include 'includes/_check.html' %}
+  {% endset %}
+
+  {{ appSummaryCard({
+    titleText: 'Your details',
+    html: yourDetails,
+    classes: 'govuk-!-margin-bottom-6'
+  }) }}
+
+  {{ appSummaryCard({
+    titleText: 'Your registration',
+    html: yourRegistration
+  }) }}
+{% endblock %}

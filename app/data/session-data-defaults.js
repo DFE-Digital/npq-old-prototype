@@ -1,4 +1,5 @@
 module.exports = {
+  register: {},
   features: {
     'aso-loop': {
       on: false,

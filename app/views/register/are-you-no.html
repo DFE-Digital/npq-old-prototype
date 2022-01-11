@@ -1,0 +1,31 @@
+{% extends "_wizard-page.html" %}
+{% set title = 'Your email address is associated with someone else' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+
+      <p>This can happen if:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>you use a shared email address</li>
+        <li>you use an email address someone used before (for example a headteacher email address that a previous headteacher would have used)</li>
+        <li>you used your email address to register other people</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">How to continue</h2>
+
+      <p>Try registering with a different email address, one that only you have access&nbsp;to.</p>
+      <p>If you’re registering on behalf of someone else, they will need to register using their own email address.</p>
+
+      <!-- <h2 class="govuk-heading-l">Contact support</h2> -->
+      <p class="govuk-!-margin-bottom-6">
+        Contact our support team if you need help:<br />
+        <a href="#">continuing-professional-development@digital.education.gov.uk</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
