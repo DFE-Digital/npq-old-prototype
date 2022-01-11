@@ -1,0 +1,28 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Have you agreed with a provider that you will start your NPQ in Spring 2022?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "Yes",
+        value: "yes"
+      },
+      {
+        text: "No",
+        value: "Yes"
+      }
+    ]
+
+
+  } | decorateFormAttributes(['register', 'chosen']) ) }}
+
+
+{% endblock %}

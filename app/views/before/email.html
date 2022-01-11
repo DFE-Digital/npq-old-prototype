@@ -1,0 +1,15 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Email address' %}
+
+{% block form %}
+  {{ govukInput({
+    label: {
+      text: title,
+      isPageTitle: true,
+      classes: "govuk-label--xl"
+    },
+    hint: {
+      html: '<p>We’ll email you when registration reopens.</p>'
+    }
+  } | decorateFormAttributes(['register', 'email-notify']) ) }}
+{% endblock %}

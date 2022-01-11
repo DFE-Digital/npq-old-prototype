@@ -1,0 +1,38 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Registration has now closed for Spring 2022. Would you like to know when registration reopens?' %}
+
+<div class="govuk-inset-text">
+  You can only select schools and colleges in England, Guernsey, Jersey or the Isle of Man. If your school or college is outside these locations, check with your training provider.
+</div>
+
+
+{% block form %}
+
+
+
+
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "Yes",
+        value: "yes"
+      },
+      {
+        text: "No",
+        value: "Yes"
+      }
+    ]
+
+
+  } | decorateFormAttributes(['register', 'chosen']) ) }}
+
+
+{% endblock %}

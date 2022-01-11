@@ -1,0 +1,32 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Registration has closed for Spring 2022.' %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+
+
+<p>Some information to give more context</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+
+
+{{ govukRadios({
+      fieldset: {
+        legend: {
+          text: 'Would you like to receive a notification when registration reopens?',
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          text: "Yes",
+          value: "yes-notify"
+        },
+
+        {
+          text: "No",
+          value: "no-notify"
+        }
+      ]
+    } | decorateFormAttributes(['register', 'know-trn']) ) }}
+
+{% endblock %}
