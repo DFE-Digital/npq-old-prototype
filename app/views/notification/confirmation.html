@@ -1,0 +1,20 @@
+{% extends "_wizard-page.html" %}
+{% set title = 'Sign up complete' %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  {% set html %}
+    <div class="govuk-!-font-size-24">
+      We’ll send an email to <strong>{{ data.notification.email }}</strong> when registration&nbsp;reopens.
+    </div>
+  {% endset %}
+
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukPanel({
+      titleHtml: title | noOrphans | safe,
+      html: html,
+      classes: 'govuk-!-margin-bottom-6'
+    }) }}
+  </div>
+</div>
+{% endblock %}
