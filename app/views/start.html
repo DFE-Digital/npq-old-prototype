@@ -9,28 +9,50 @@
         {{ title }}
       </h1>
 
-      <p>Use this service to register:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>to study for an NPQ</li>
-        <li>for the Additional Support Offer for new headteachers</li>
-      </ul>
+      {% if data.features['registration-closed'].on %}
 
-      <h2 class="govuk-heading-m">Before you start</h2>
+        <h2 class="govuk-heading-m">Registration for NPQs is currently closed</h2>
 
-      <p>You must:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>have your teacher reference number (TRN)</li>
-        <li>have your funding source confirmed – either a scholarship, school, college or personal funding</li>
-        <li>know which NPQ course you want to study</li>
-        <li>have chosen a provider</li>
-      </ul>
+        <p><a href="/notification/sign-up">Sign up for alerts</a> to be notified when registration reopens in May.</p>
 
-      {{ govukButton({
-        text: 'Start now',
-        href: '/register/chosen',
-        isStartButton: true,
-        classes: 'govuk-!-margin-top-4'
-      }) }}
+        <h2 class="govuk-heading-m">When registration reopens</h2>
+
+        <p>You can use this service to register:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>to study for an NPQ</li>
+          <li>for the Additional Support Offer for new headteachers</li>
+        </ul>
+
+        <p>Before you start you’ll need to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>have your teacher reference number (TRN)</li>
+          <li>have your funding source confirmed – either a scholarship, school, college or personal funding</li>
+          <li>know which NPQ course you want to study</li>
+          <li>have chosen a provider</li>
+        </ul>
+      {% else %}
+        <p>You can use this service to register:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>to study for an NPQ</li>
+          <li>for the Additional Support Offer for new headteachers</li>
+        </ul>
+
+        <h2 class="govuk-heading-m">Before you start</h2>
+        <p>You must:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>have your teacher reference number (TRN)</li>
+          <li>have your funding source confirmed – either a scholarship, school, college or personal funding</li>
+          <li>know which NPQ course you want to study</li>
+          <li>have chosen a provider</li>
+        </ul>
+
+        {{ govukButton({
+          text: 'Start now',
+          href: '/register/chosen',
+          isStartButton: true,
+          classes: 'govuk-!-margin-top-4'
+        }) }}
+      {% endif %}
     </div>
   </div>
 
