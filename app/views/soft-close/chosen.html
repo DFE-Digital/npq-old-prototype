@@ -1,0 +1,24 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Have you agreed with a provider that you will start your NPQ in 2022?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "Yes, I have chosen my NPQ and provider",
+        value: "yes"
+      },
+      {
+        text: "No, I do not know my NPQ or provider",
+        value: "no"
+      }
+    ]
+  } | decorateFormAttributes(['soft-close', 'chosen']) ) }}
+{% endblock %}

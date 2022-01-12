@@ -10,6 +10,11 @@ module.exports = {
       on: false,
       name: 'Registration closed',
       description: 'How the service behaves when you cannot register for Autumn 2022 yet'
+    },
+    'registration-soft-close': {
+      on: false,
+      name: 'Registration soft close',
+      description: 'How the service behaves when the service is closed but allows for delayed registrations'
     }
   }
 }
