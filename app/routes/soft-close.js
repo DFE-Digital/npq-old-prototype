@@ -1,6 +1,6 @@
 const {
   softCloseWizardPaths,
-  exampleWizardForks
+  softCloseWizardForks
 } = require('../utils/soft-close-wizard-paths')
 
 module.exports = router => {
@@ -16,8 +16,9 @@ module.exports = router => {
     '/soft-close',
     '/soft-close/:view'
   ], function (req, res) {
-    const fork = exampleWizardForks(req)
+    const fork = softCloseWizardForks(req)
     const paths = softCloseWizardPaths(req)
+    console.log(paths)
     fork ? res.redirect(fork) : res.redirect(paths.next)
   })
 }

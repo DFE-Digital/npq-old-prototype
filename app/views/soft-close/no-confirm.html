@@ -1,0 +1,23 @@
+{% extends "_wizard-page.html" %}
+{% block pageNavigation %}{% endblock %}
+{% set title = 'You have chosen not to receive an alert' %}
+
+
+{% block content %}
+<div class="govuk-grid-row">
+
+
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukPanel({
+      titleHtml: title | noOrphans | safe,
+      html: html,
+      classes: 'govuk-!-margin-bottom-6'
+    }) }}
+    <p>If you change your mind, you can revisit <a href="/start">Register for a National Professional Qualification.</a></p>
+
+  </div>
+
+
+</div>
+
+{% endblock %}

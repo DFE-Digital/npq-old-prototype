@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Have you agreed with a provider that you will start your NPQ in 2022?' %}
+{% set title = 'Have you agreed with a provider that you will start your NPQ in February?' %}
 
 {% block form %}
   {{ govukRadios({
@@ -12,12 +12,10 @@
     },
     items: [
       {
-        text: "Yes, I have chosen my NPQ and provider",
-        value: "yes"
+        text: "Yes"
       },
       {
-        text: "No, I do not know my NPQ or provider",
-        value: "no"
+        text: "No"
       }
     ]
   } | decorateFormAttributes(['soft-close', 'chosen']) ) }}
