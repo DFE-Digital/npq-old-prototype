@@ -18,7 +18,6 @@ module.exports = router => {
   ], function (req, res) {
     const fork = softCloseWizardForks(req)
     const paths = softCloseWizardPaths(req)
-    console.log(paths)
     fork ? res.redirect(fork) : res.redirect(paths.next)
   })
 }
