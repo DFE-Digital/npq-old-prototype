@@ -16,9 +16,6 @@ function softCloseWizardPaths (req) {
 
 function softCloseWizardForks (req) {
   var forks = [
-    // Example fork:
-    // Skip the England question if an answer other
-    // than England is given for where you live
     {
       currentPath: '/soft-close/chosen',
       storedData: ['soft-close', 'chosen'],
