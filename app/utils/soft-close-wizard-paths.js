@@ -26,7 +26,7 @@ function softCloseWizardForks (req) {
       currentPath: '/soft-close/alert',
       storedData: ['soft-close', 'alert'],
       values: ['Yes'],
-      forkPath: '/notification/sign-up'
+      forkPath: '/notification/confirmation'
     }
   ]
   return nextForkPath(forks, req)

@@ -1,19 +1,34 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Registration has temporarily closed' %}
+{% set title = 'Registration for NPQs has closed temporarily' %}
+{% set buttonText = 'Confirm' %}
+
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
     <p>Registration for NPQs starting in autumn will reopen soon. For more information you can read guidance on the <a href="https://www.gov.uk/government/publications/national-professional-qualifications-npqs-reforms/national-professional-qualifications-npqs-reforms">NPQ reforms.</a></p>
 
+    {% set alert %}
+      {{ govukInput({
+        classes: "govuk-!-width-three-quarters",
+        label: {
+          text: "Email address"
+        }
+
+      } | decorateFormAttributes(['notification', 'email'])) }}
+    {% endset %}
+
     {{ govukRadios({
       fieldset: {
         legend: {
-          text: 'Would you like to receive an alert when registration reopens?',
+          text: 'Would you like to receive an email when registration reopens?',
           classes: "govuk-fieldset__legend--m"
         }
       },
       items: [
         {
-          text: "Yes"
+          text: "Yes",
+          conditional: {
+            html: alert
+  }
         },
         {
           text: "No"

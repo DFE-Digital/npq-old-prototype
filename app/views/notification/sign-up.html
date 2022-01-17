@@ -1,16 +1,15 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Sign up for an alert' %}
+{% set title = "What's your email address?" %}
 {% set buttonText = 'Confirm' %}
 {% set paths = { back: '/start' } %}
 {% set action = '/notification/confirmation' %}
 
 {% block form %}
-  <h1 class="govuk-heading-xl">{{ title }}</h1>
-
   {{ govukInput({
     label: {
-      text: 'Email address',
-      classes: "govuk-label--m"
+      text: title,
+      isPageTitle: true,
+      classes: "govuk-label--xl"
     },
     hint: {
       html: '<p>We’ll email you when registration reopens.</p>'
