@@ -1,0 +1,38 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Confirm your code' %}
+
+{% block form %}
+  {% set html %}
+    <h3 class="govuk-notification-banner__heading">
+      We’ve emailed a confirmation code to {{ data['accounts']['email'] }}
+    </h3>
+  {% endset %}
+  {{ govukNotificationBanner({
+    html: html,
+    type: 'success'
+  }) }}
+
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {{ govukInput({
+    label: {
+      text: "Enter your code",
+      classes: "govuk-label--s"
+    },
+    classes: 'govuk-!-width-one-quarter'
+  } | decorateFormAttributes(['accounts', 'email-code']) ) }}
+
+  <details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      If you have not received a code
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <ol class="govuk-list govuk-list--number">
+  <li>Check your spam or junk folder.</li>
+  <li>Try signing in again, making sure your email address does not include any spaces or errors</li>
+</ol>
+  </div>
+</details>
+{% endblock %}

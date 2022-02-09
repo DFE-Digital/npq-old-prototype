@@ -1,0 +1,124 @@
+{{ govukSummaryList({
+  rows: [
+  {
+    key: {
+      text: "Lead provider"
+    },
+    value: {
+      text: data['accounts']['aso-provider']
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "lead provider"
+        }
+      ]
+    }
+  },
+    {
+      key: {
+        text: "Where do you work?"
+      },
+      value: {
+        text: data['accounts']['country']
+      },
+      actions: {
+        items: [
+          {
+            href: "/accounts-signed-in/where-do-you-work",
+            text: "Change",
+            visuallyHiddenText: "where you work"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Do you work in a school,college or academy trust?"
+      },
+      value: {
+        text: data['accounts']['work-in-school']
+      },
+      actions: {
+        items: [
+          {
+            href: "/accounts-signed-in/work-in-school",
+            text: "Change",
+            visuallyHiddenText: "whether you work in a school"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "School, college or trust"
+      },
+      value: {
+        text: data['accounts']['school']
+      },
+      actions: {
+        items: [
+          {
+            href: "/accounts-signed-in/which-school",
+            text: "Change",
+            visuallyHiddenText: "school, college or trust"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Have you completed an NPQH?"
+      },
+      value: {
+        text: data.accounts['aso-completed-npqh']
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/aso-completed-npqh",
+            text: "Change",
+            visuallyHiddenText: " if you have completed an NPQH"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Are you a headteacher?"
+      },
+      value: {
+        text: data.accounts['aso-headteacher'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/aso",
+            text: "Change",
+            visuallyHiddenText: " if you are a headteacher"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Are you in your first 2 years of a headship?"
+      },
+      value: {
+        text: data.accounts['aso-early-headship'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [
+          {
+            href: "/accounts-aso/aso-early-headship",
+            text: "Change",
+            visuallyHiddenText: " if you are in your first 2 years of a headship"
+          }
+        ]
+      }
+    }
+
+  ]
+}) }}

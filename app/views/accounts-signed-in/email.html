@@ -1,0 +1,19 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Change your email address' %}
+{% set buttonText = 'Continue' %}
+{% set paths = { back: '/accounts-signed-in/home' } %}
+{% set action = '/accounts-signed-in/email-confirmation' %}
+
+{% block form %}
+  {{ govukInput({
+    label: {
+      text: title,
+      isPageTitle: true,
+      classes: "govuk-label--xl"
+    },
+    hint: {
+      html: '<p>We’ll send you a code to confirm your email address.</p>'
+    },
+    value: ''
+  } | decorateFormAttributes(['accounts', 'email']) ) }}
+{% endblock %}

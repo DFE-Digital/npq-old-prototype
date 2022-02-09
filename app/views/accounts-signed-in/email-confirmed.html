@@ -1,0 +1,23 @@
+{% extends "layout_signedin.html" %}
+
+{% block pageTitle %}
+  Question page
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      {{ govukPanel({
+  titleText: "Email address changed"
+}) }}
+
+<br>
+      <p><a href="/accounts-signed-in/home">Go back to home</a>.</p>
+
+    </div>
+  </div>
+
+{% endblock %}

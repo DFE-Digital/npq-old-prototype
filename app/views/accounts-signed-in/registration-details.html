@@ -1,0 +1,123 @@
+{% extends "_wizard-page.html" %}
+{% block pageNavigation %}{% endblock %}
+{% set paths = { back: '/signed-in/home' } %}
+{% set title = 'You will not get an email alert' %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl govuk-!-padding-bottom-0">Registration details</h1>
+
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+      {{ govukSummaryList({
+      rows: [
+      {
+        key: {
+          text: "Name"
+        },
+        value: {
+          text: "{{ data['changed-name'] }}"
+        },
+        actions: {
+          items: [
+            {
+              href: "/signed-in/name",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Date of birth"
+        },
+        value: {
+          text: "5 January 1978"
+        }
+
+      },
+      {
+        key: {
+          text: "Email address"
+        },
+        value: {
+          text: "{{ data['accounts']['email'] }}"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "email address"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Where do you work?"
+        },
+        value: {
+          text: "(data.register['country'])"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "where you work"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "Do you work in a school.college or academy trust?"
+        },
+        value: {
+          text: "(data.register['work-in-school'])"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "whether you work in a school"
+            }
+          ]
+        }
+      },
+
+      {
+        key: {
+          text: "School, college or trust"
+        },
+        value: {
+          text: "data.register.school"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "school, college or trust"
+            }
+          ]
+        }
+      }
+      ]
+      }) }}
+
+
+
+
+
+{% endblock %}

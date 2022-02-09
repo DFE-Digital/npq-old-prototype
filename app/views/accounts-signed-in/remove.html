@@ -1,0 +1,28 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Are you sure you want to remove your NPQ?" %}
+{% set buttonText = 'Confirm' %}
+{% set paths = { back: '/accounts-signed-in/home' } %}
+{% set action = '/accounts-signed-in/remove-confirm' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    hint: {
+    text: "You can change both the course and provider for your exisitng registration."
+  },
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['accounts', 'applied']) ) }}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "_wizard-form.html" %}
+{% set paths = { back: '/accounts-signed-in/where-do-you-work' } %}
+{% set title = 'You will no longer receive funding' %}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+    <p>Now that you don't work in in England, you will no longer receive funding for NPQs that you register for.</p>
+
+    <p>If you currently have an accepted place on an NPQ you will still receive funding</p>
+
+    {{ govukCheckboxes({
+      items: [
+        {
+          text: "I understand that I will no longer receive funding",
+          value: "yes"
+        }
+      ]
+    }  ) }}
+
+    {{ govukButton({
+      text: "Confirm change",
+      href: '/accounts-signed-in/home'
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

@@ -50,6 +50,31 @@
           classes: 'govuk-!-margin-top-4'
         }) }}
 
+        {% elseif data.features['npq-accounts'].on %}
+
+        <p>You can use this service to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>register to study for an NPQ</li>
+          <li>register for the Additional Support Offer for new headteachers</li>
+          <li>edit and change your registration details
+        </ul>
+
+        <h2 class="govuk-heading-m">Before you start</h2>
+        <p>You must:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>have your teacher reference number (TRN)</li>
+          <li>have your funding source confirmed – either a scholarship, school, college or personal funding</li>
+          <li>know which NPQ course you want to study</li>
+          <li>have chosen a provider</li>
+        </ul>
+
+        {{ govukButton({
+          text: 'Start now',
+          href: '/accounts/email',
+          isStartButton: true,
+          classes: 'govuk-!-margin-top-4'
+        }) }}
+
 
       {% else %}
         <p>You can use this service to register:</p>

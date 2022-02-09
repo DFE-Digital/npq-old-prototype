@@ -1,0 +1,117 @@
+{% set trn %}
+  <span class="app-!-font-family-tabular">
+    {{ data.register.trn }}
+  </span>
+{% endset %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+rows: [
+{
+  key: {
+    text: "Name"
+  },
+  value: {
+    text: data.register.name
+  },
+  actions: {
+    items: [
+      {
+        href: "/home/name",
+        text: "Change",
+        visuallyHiddenText: "name"
+      }
+    ]
+  }
+},
+{
+  key: {
+    text: "Date of birth"
+  },
+  value: {
+    text: "5 January 1978"
+  }
+
+},
+{
+  key: {
+    text: "Teacher reference number (TRN)"
+  },
+  value: {
+    text: "1234567"
+  }
+
+},
+{
+  key: {
+    text: "Email address"
+  },
+  value: {
+    text: data['register']['email']
+  },
+  actions: {
+    items: [
+      {
+        href: "#",
+        text: "Change",
+        visuallyHiddenText: "email address"
+      }
+    ]
+  }
+},
+{
+  key: {
+    text: "Where do you work?"
+  },
+  value: {
+    text: data['register']['country']
+  },
+  actions: {
+    items: [
+      {
+        href: "#",
+        text: "Change",
+        visuallyHiddenText: "where you work"
+      }
+    ]
+  }
+},
+
+{
+  key: {
+    text: "Do you work in a school.college or academy trust?"
+  },
+  value: {
+    text: data['register']['work-in-school']
+  },
+  actions: {
+    items: [
+      {
+        href: "#",
+        text: "Change",
+        visuallyHiddenText: "whether you work in a school"
+      }
+    ]
+  }
+},
+
+{
+  key: {
+    text: "School, college or trust"
+  },
+  value: {
+    text: data.register.school
+  },
+  actions: {
+    items: [
+      {
+        href: "#",
+        text: "Change",
+        visuallyHiddenText: "school, college or trust"
+      }
+    ]
+  }
+}
+]
+}) }}

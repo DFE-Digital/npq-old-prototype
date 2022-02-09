@@ -15,6 +15,11 @@ module.exports = {
       on: false,
       name: 'Registration closed',
       description: 'How the service behaves when you cannot register for Autumn 2022 yet'
+    },
+    'npq-accounts': {
+      on: false,
+      name: 'NPQ accounts',
+      description: 'Enabling users to have change/edit there registration details more efficiently'
     }
   }
 }

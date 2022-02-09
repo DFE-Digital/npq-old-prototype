@@ -1,0 +1,18 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'What’s your email address?' %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+  {{ govukInput({
+    label: {
+      isPageTitle: true
+    },
+    hint: {
+      html: '<p>We’ll send you a code to confirm your email address.</p>'
+    },
+    value: '',
+    errorMessage: {
+        text: "Email address is not recognised"
+      }
+  } | decorateFormAttributes(['accounts', 'email']) ) }}
+{% endblock %}

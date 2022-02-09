@@ -1,0 +1,67 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Your current work details" %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Where do you work?"
+        },
+        value: {
+          text: data['accounts']['country']
+        },
+        actions: {
+          items: [
+
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Do you work in a school,college or academy trust?"
+        },
+        value: {
+          text: data['accounts']['work-in-school']
+        },
+        actions: {
+
+        }
+      },
+      {
+        key: {
+          text: "School, college or trust"
+        },
+        value: {
+          text: data['accounts']['school']
+        },
+        actions: {
+          items: [
+
+          ]
+        }
+      }
+    ]
+  }) }}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "Are these details still correct?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['accounts', 'workplace']) ) }}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Have you applied for an NPQ since Autumn 2021?" %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['accounts', 'applied']) ) }}
+{% endblock %}

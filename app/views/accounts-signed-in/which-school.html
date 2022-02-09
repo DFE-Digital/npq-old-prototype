@@ -1,0 +1,18 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Choose your school, college or academy trust' %}
+{% set buttonText = 'Confirm' %}
+{% set paths = { back: '/accounts-signed-in/home' } %}
+{% set action = '/accounts-signed-in/home' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>Choose from schools, colleges and trusts located in {{ data['register']['school-location'] }}</p>
+
+  {{ govukInput({
+    label: {
+      text: "Enter your school, college or trust name",
+      classes: "govuk-label--s"
+    }
+  } | decorateFormAttributes(['accounts', 'school']) ) }}
+{% endblock %}

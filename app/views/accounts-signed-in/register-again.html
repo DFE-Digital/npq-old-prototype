@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        You've already applied for an NPQ this year
+      </h1>
+
+      <p>You can still register for an NPQ, however you will not be funded by the DfE.</p>
+
+
+      <p class="govuk-body">Your options:</p>
+  <ul class="govuk-list govuk-list--bullet">
+  <li>Change an existing NPQ that you are awiting acceptance on</li>
+  <li>Organise your own funding, for a new NPQ</li>
+  <li>Request to be notified when registration for next academic year reopens</li>
+  </ul>
+
+      <form action="/register/chosen" method="post" novalidate>
+
+        {{ govukRadios({
+          idPrefix: "proceed",
+          name: "proceed",
+          fieldset: {
+            legend: {
+              text: "What would you like to do next?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "continue",
+              text: "Continue with this application, without DfE funding",
+              conditional: {
+                html: alert
+        }
+            },
+            {
+              value: "notify",
+              text: "Notify, me when registrations opens next academic year"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
