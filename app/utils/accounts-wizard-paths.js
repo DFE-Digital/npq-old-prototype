@@ -62,6 +62,14 @@ function accountsSignedInWizardForks (req) {
       storedData: ['register', 'country'],
       values: ['Scotland'],
       forkPath: '/accounts-signed-in/funding'
+    },
+    {
+      currentPath: '/accounts-signed-in/email',
+      skipTo: '/accounts-signed-in/email-confirmation'
+    },
+    {
+      currentPath: '/accounts-signed-in/email-confirmation',
+      skipTo: '/accounts-signed-in/email-confirmed'
     }
   ]
   return nextForkPath(forks, req)
