@@ -59,7 +59,7 @@ function accountsSignedInWizardForks (req) {
   var forks = [
     {
       currentPath: '/accounts-signed-in/where-do-you-work',
-      storedData: ['accounts', 'country'],
+      storedData: ['register', 'country'],
       values: ['Scotland'],
       forkPath: '/accounts-signed-in/funding'
     }

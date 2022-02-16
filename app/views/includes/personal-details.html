@@ -4,16 +4,17 @@
   </span>
 {% endset %}
 
+
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
 {{ govukSummaryList({
 rows: [
 {
   key: {
-    text: "Name"
+    text: "Full name"
   },
   value: {
-    text: data.accounts.name
+    text: data.register.name
   },
   actions: {
     items: [
@@ -27,7 +28,7 @@ rows: [
     text: "Date of birth"
   },
   value: {
-    text: isoDateFromDateInputs(data.accounts['dob-year'], data.accounts['dob-month'], data.accounts['dob-day']) | dateWithYear
+    text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
   }
 
 },
@@ -36,7 +37,7 @@ rows: [
     text: "Teacher reference number (TRN)"
   },
   value: {
-    text: "1234567"
+    html: trn
   }
 
 },
@@ -45,7 +46,7 @@ rows: [
     text: "Email address"
   },
   value: {
-    text: data['accounts']['email']
+    text: data['register']['email']
   },
   actions: {
     items: [
@@ -62,7 +63,7 @@ rows: [
     text: "Where do you work?"
   },
   value: {
-    text: data['accounts']['country']
+    text: data.register['country'] 
   },
   actions: {
     items: [
@@ -80,7 +81,7 @@ rows: [
     text: "Do you work in a school,college or academy trust?"
   },
   value: {
-    text: data['accounts']['work-in-school']
+    text: data['register']['work-in-school']
   },
   actions: {
     items: [
@@ -98,7 +99,7 @@ rows: [
     text: "School, college or trust"
   },
   value: {
-    text: data['accounts']['school']
+    text: data['register']['school']
   },
   actions: {
     items: [

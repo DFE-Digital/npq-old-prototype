@@ -2,7 +2,7 @@
 {% set title = 'Where do you work?' %}
 {% set buttonText = 'Confirm' %}
 {% set paths = { back: '/accounts-signed-in/home' } %}
-{% set action = '/accounts-signed-in/home' %}
+{% set action = '/accounts-signed-in/where-do-you-work' %}
 {% block pageStyles %}
   <link href="/public/govuk-country-and-territory-autocomplete/location-autocomplete.min.css" media="screen" rel="stylesheet">
 {% endblock %}
@@ -12,7 +12,7 @@
     openregisterLocationPicker({
       selectElement: document.getElementById('register-country'),
       url: '/public/govuk-country-and-territory-autocomplete/location-autocomplete-graph.json',
-      defaultValue: '{{ data.accounts.country }}'
+      defaultValue: '{{ data.register.country }}'
     })
 </script>
 {% endblock %}
@@ -24,7 +24,7 @@
         text: "Which country do you work in?"
       },
       items: countries
-    } | decorateFormAttributes(['accounts', 'country'])) }}
+    } | decorateFormAttributes(['register', 'country'])) }}
   {% endset %}
 
   {{ govukRadios({
@@ -62,5 +62,5 @@
         }
       }
     ]
-  } | decorateFormAttributes(['accounts', 'country']) ) }}
+  } | decorateFormAttributes(['register', 'country']) ) }}
 {% endblock %}

@@ -4,7 +4,7 @@
       Course
     </dt>
     <dd class="govuk-summary-list__value">
-      NPQ Senior Leadership (NPQSL)
+      {{data.register.course}}
     </dd>
     <dd class="govuk-summary-list__actions">
     </dd>
@@ -14,18 +14,28 @@
       Provider
     </dt>
     <dd class="govuk-summary-list__value">
-      Ambition
+      {{data.register.provider}}
     </dd>
     <dd class="govuk-summary-list__actions">
     </dd>
   </div>
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Status
+      Registration status
     </dt>
     <dd class="govuk-summary-list__value">
-      <p class="govuk-body"><strong class="govuk-tag">NPQ completed</strong></p>
-      <p>You have finished you NPQ with Ambtion, please contact them for your certificate</p>
+      <p class="govuk-body"><strong class="govuk-tag">Registration accepted</strong></p>
+      <p>{{data.register.provider}} have accepted your registration. If you need to change any details or withdraw your application please contact them.</p>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Funding eligibility
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <p>DfE funded</p>
     </dd>
     <dd class="govuk-summary-list__actions">
     </dd>

@@ -16,35 +16,10 @@ module.exports = router => {
     res.render(`accounts-aso/${req.params.view}`, { paths: accountsAsoWizardPaths(req) })
   })
 
-  router.post([
-    '/accounts',
-    '/accounts/:view'
-  ], function (req, res) {
-    const fork = accountsWizardForks(req)
-    const paths = accountsWizardPaths(req)
-    fork ? res.redirect(fork) : res.redirect(paths.next)
-  })
-
-  router.post([
-    '/accounts-aso',
-    '/accounts-aso/:view'
-  ], function (req, res) {
-    const fork = accountsAsoWizardForks(req)
-    const paths = accountsAsoWizardPaths(req)
-    fork ? res.redirect(fork) : res.redirect(paths.next)
-  })
-
-  router.post([
-    '/accounts-aso',
-    '/accounts-aso/:view'
-  ], function (req, res) {
-    const fork = accountsSignedInWizardForks(req)
-    if (fork) { res.redirect(fork) }
-  })
-
   router.post('/accounts/email', (req, res, next) => {
     const email = getKeypath(req, 'body.accounts.email')
-    if (email === 'returning@head.com') {
+    console.log (req.body,email)
+    if (email === 'barbara@head.com') {
       const accounts = {
         email: 'returning@head.com',
         // 'work-in-school': 'Yes',
@@ -68,5 +43,31 @@ module.exports = router => {
       setKeypath(req, 'session.data.accounts', accounts)
     }
     next()
+  })
+
+  router.post([
+    '/accounts',
+    '/accounts/:view'
+  ], function (req, res) {
+    const fork = accountsWizardForks(req)
+    const paths = accountsWizardPaths(req)
+    fork ? res.redirect(fork) : res.redirect(paths.next)
+  })
+
+  router.post([
+    '/accounts-aso',
+    '/accounts-aso/:view'
+  ], function (req, res) {
+    const fork = accountsAsoWizardForks(req)
+    const paths = accountsAsoWizardPaths(req)
+    fork ? res.redirect(fork) : res.redirect(paths.next)
+  })
+
+  router.post([
+    '/accounts-signed-in',
+    '/accounts-signed-in/:view'
+  ], function (req, res) {
+    const fork = accountsSignedInWizardForks(req)
+    fork ? res.redirect(fork) : res.redirect('/accounts-signed-in/home')
   })
 }

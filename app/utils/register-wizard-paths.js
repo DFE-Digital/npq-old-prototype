@@ -8,9 +8,9 @@ function registerWizardPaths (req) {
 
   const paths = [
     '/start',
-    '/register/chosen',
     '/register/email',
     '/register/email-confirmation',
+    '/register/chosen',
     '/register/where-do-you-work',
     '/register/work-in-school',
     '/register/trn',
@@ -116,6 +116,13 @@ function ASOForks (basePath) {
       storedData: ['register', 'email'],
       values: ['existing@example.com'],
       forkPath: '/existing-user/are-you'
+    },
+
+    {
+      currentPath: `${basePath}/email-confirmation`,
+      storedData: ['register', 'email'],
+      values: ['head@example.com'],
+      forkPath: '/accounts/are-you'
     },
     {
       currentPath: `${basePath}/are-you`,

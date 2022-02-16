@@ -17,42 +17,16 @@
         You've already applied for an NPQ this year
       </h1>
 
-      <p>You can still register for an NPQ, however you will not be funded by the DfE.</p>
+      <p>You can still register for an NPQ, however you will only be funded for one.</p>
 
+      <p>If you are wanting to hedge your bets with multiple providers...</p>
 
-      <p class="govuk-body">Your options:</p>
-  <ul class="govuk-list govuk-list--bullet">
-  <li>Change an existing NPQ that you are awiting acceptance on</li>
-  <li>Organise your own funding, for a new NPQ</li>
-  <li>Request to be notified when registration for next academic year reopens</li>
-  </ul>
+      <p>If you are looking to take an additional NPQ, you will  need to organise youtr own funding or wait until registration opens for next academic year </p>
+
+      <p>You can also change the course or remove an NPQ on the dashboard </p>
 
       <form action="/register/chosen" method="post" novalidate>
 
-        {{ govukRadios({
-          idPrefix: "proceed",
-          name: "proceed",
-          fieldset: {
-            legend: {
-              text: "What would you like to do next?",
-              isPageHeading: false,
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          items: [
-            {
-              value: "continue",
-              text: "Continue with this application, without DfE funding",
-              conditional: {
-                html: alert
-        }
-            },
-            {
-              value: "notify",
-              text: "Notify, me when registrations opens next academic year"
-            }
-          ]
-        }) }}
 
         {{ govukButton({
           text: "Continue"

@@ -11,7 +11,7 @@
           text: "Where do you work?"
         },
         value: {
-          text: data['accounts']['country']
+          text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
         },
         actions: {
           items: [
@@ -24,7 +24,7 @@
           text: "Do you work in a school,college or academy trust?"
         },
         value: {
-          text: data['accounts']['work-in-school']
+          text: data['register']['work-in-school']
         },
         actions: {
 
@@ -35,7 +35,7 @@
           text: "School, college or trust"
         },
         value: {
-          text: data['accounts']['school']
+          text: data['register']['school']
         },
         actions: {
           items: [
@@ -63,5 +63,5 @@
         text: "No"
       }
     ]
-  } | decorateFormAttributes(['accounts', 'workplace']) ) }}
+  } | decorateFormAttributes(['register', 'workplace']) ) }}
 {% endblock %}

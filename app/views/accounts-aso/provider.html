@@ -4,7 +4,7 @@
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>These are the training providers who provide {{ data.register.course }}. Providers may have different entry requirements.</p>
+  <p>These are the training providers who provide the Additional support offer. Providers may have different entry requirements.</p>
 
   {% if isInSchoolAndIsInEngland %}
     <p>Check with the person responsible for professional development at your school or college.</p>
@@ -40,5 +40,5 @@
         text: "UCL Institute of Education"
       }
     ]
-  } | decorateFormAttributes(['accounts', 'aso-provider']) ) }}
+  } | decorateFormAttributes(['accounts', 'asoprovider']) ) }}
 {% endblock %}
