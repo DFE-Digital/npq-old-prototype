@@ -6,17 +6,17 @@
 
   {{ govukRadios({
     items: [
+    {
+      text: "I want to do more than one NPQ this year",
+      value: "this year"
+    },
+    {
+      text: "I want to register for the same NPQ with more than one provider.",
+      value: "hedge"
+    },
       {
         text: "I want to register for an NPQ next year",
         value: "next year"
-      },
-      {
-        text: "I only want to do one NPQ this year, but want to apply for multiple courses.",
-        value: "hedge"
-      },
-      {
-        text: "I want to do more than one NPQ this year",
-        value: "this year"
       }
     ]
   } | decorateFormAttributes(['accounts', 'add']) ) }}
