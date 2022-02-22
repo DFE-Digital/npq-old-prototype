@@ -1,8 +1,8 @@
 {% extends "_wizard-form.html" %}
 {% set title = "Are you sure you want to remove your NPQ?" %}
-{% set buttonText = 'Confirm' %}
 {% set paths = { back: '/accounts-signed-in/home' } %}
-{% set action = '/accounts-signed-in/remove-confirm' %}
+{% set buttonText = 'Confirm' %}
+
 
 {% block form %}
   {{ govukRadios({

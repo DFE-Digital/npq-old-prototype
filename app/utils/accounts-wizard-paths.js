@@ -70,6 +70,16 @@ function accountsSignedInWizardForks (req) {
     {
       currentPath: '/accounts-signed-in/email-confirmation',
       skipTo: '/accounts-signed-in/email-confirmed'
+    },
+    {
+      currentPath: '/accounts-signed-in/remove',
+      skipTo: '/accounts-signed-in/remove-confirm'
+    },
+    {
+      currentPath: '/accounts-signed-in/register-again',
+      storedData: ['accounts', 'add'],
+      values: ['this year'],
+      forkPath: '/accounts-signed-in/funding-add'
     }
   ]
   return nextForkPath(forks, req)

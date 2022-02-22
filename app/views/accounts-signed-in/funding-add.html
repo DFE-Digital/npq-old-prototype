@@ -1,6 +1,6 @@
 {% extends "_wizard-form.html" %}
 {% set paths = { back: '/accounts-signed-in/where-do-you-work' } %}
-{% set title = 'You will no longer receive funding' %}
+{% set title = 'You are only funded for one NPQ per year' %}
 
 {% block content %}
   <div class="govuk-grid-row">
@@ -8,12 +8,12 @@
 
     <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-      <p>Now that you don't work in in England, you will no longer receive funding for NPQs that you register for.</p>
+      <p>Some content about policy</p>
 
-      <p>If you currently have an accepted place on an NPQ you will still receive funding</p>
+      <p>If you currently have an accepted place on an NPQ you will still receive funding for that course.</p>
       <form action="/accounts-signed-in/home" method="post" novalidate>
 
-  {{ govukCheckboxes({
+        {{ govukCheckboxes({
           items: [
             {
               text: "I understand that I will no longer receive funding",
@@ -21,6 +21,7 @@
             }
           ]
         }  ) }}
+
 
         {{ govukButton({
           text: "Continue"

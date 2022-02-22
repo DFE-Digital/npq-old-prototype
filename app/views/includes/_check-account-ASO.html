@@ -22,7 +22,7 @@
         text: "Where do you work?"
       },
       value: {
-        text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
+        text: data.register['country']
       },
       actions: {
         items: [
