@@ -72,14 +72,30 @@ function accountsSignedInWizardForks (req) {
       skipTo: '/accounts-signed-in/email-confirmed'
     },
     {
-      currentPath: '/accounts-signed-in/remove',
-      skipTo: '/accounts-signed-in/remove-confirm'
+      currentPath: '/accounts-signed-in/choose-npq',
+      skipTo: '/accounts-signed-in/choose-npq-confirm'
     },
     {
-      currentPath: '/accounts-signed-in/register-again',
-      storedData: ['accounts', 'add'],
-      values: ['this year'],
-      forkPath: '/accounts-signed-in/funding-add'
+      currentPath: '/accounts-signed-in/choose-provider',
+      skipTo: '/accounts-signed-in/choose-provider-confirm'
+    },
+    {
+      currentPath: '/accounts-signed-in/choose-npq-confirm',
+      storedData: ['accounts', 'change-course'],
+      values: ['Yes'],
+      forkPath: '/accounts-signed-in/choose-npq-confirmation'
+    },
+    {
+      currentPath: '/accounts-signed-in/choose-provider-confirm',
+      storedData: ['accounts', 'change-provider'],
+      values: ['Yes'],
+      forkPath: '/accounts-signed-in/choose-provider-confirmation'
+    },
+    {
+      currentPath: '/accounts-signed-in/remove',
+      storedData: ['accounts', 'remove'],
+      values: ['Yes'],
+      forkPath: '/accounts-signed-in/remove-confirmation'
     }
   ]
   return nextForkPath(forks, req)

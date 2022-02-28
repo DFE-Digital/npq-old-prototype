@@ -1,6 +1,10 @@
 {% extends "_wizard-form.html" %}
 {% set title = 'Choose your provider' %}
-{% set buttonText = 'Confirm' %}
+
+{% block beforeContent %}
+
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>

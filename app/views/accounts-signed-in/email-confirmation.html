@@ -6,7 +6,7 @@
 {% block form %}
   {% set html %}
     <h3 class="govuk-notification-banner__heading">
-      We’ve emailed a confirmation code to {{ data['accounts']['email'] }}
+      We’ve emailed a confirmation code to {{ data['register']['email'] }}
     </h3>
   {% endset %}
   {{ govukNotificationBanner({

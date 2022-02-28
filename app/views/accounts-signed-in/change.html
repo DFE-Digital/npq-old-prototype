@@ -1,0 +1,9 @@
+{% extends "_wizard-page.html" %}
+{% set title = 'Change your NPQ details' %}
+{% set buttonText = 'Confirm' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+
+{% block page %}
+  <h1 class="govuk-heading-xl" >{{ title }}</h1>
+  {% include 'includes/_change-details.html' %}
+{% endblock %}
