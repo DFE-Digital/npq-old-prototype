@@ -1,12 +1,37 @@
 {% extends "_wizard-page.html" %}
+{% set title = 'You have removed your NPQ registration' %}
+{% block pageTitle %}{{ title }}{% endblock %}
 {% block pageNavigation %}{% endblock %}
-{% set title = 'You have removed your '+ data.register.course + ' with '+ data.register.provider +'' %}
+
 {% block content %}
 <div class="govuk-grid-row">
+  {% set html %}
+    <div class="govuk-!-font-size-19">
+      You’ve removed your <strong>{{ data.register.course }}</strong> with <strong>{{ data.register.provider }}</strong>
+    </div>
+  {% endset %}
+
   <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l">{{ title }}</h2>
-    <p><a href="/accounts-signed-in/home-npq-removed">Go back to home</a>.</p>
+    {{ govukPanel({
+      titleHtml: title | noOrphans | safe,
+      html: html,
+      classes: 'govuk-!-margin-bottom-6'
+    }) }}
+
+    <h3 class="govuk-heading-m">
+      What you can do next
+    </h3>
+
+          <p>We'll tell {{ data.register.provider }} that you have removed your registration</p>
+
+
+<h3 class="govuk-heading-m">
+  What you can do next
+</h3>
+
+      <p>You can register for another course on the <a href="/accounts-signed-in/home-npq-removed">registration details</a> page.</p>
+
+    </div>
   </div>
-</div>
 
 {% endblock %}

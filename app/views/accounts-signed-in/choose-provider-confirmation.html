@@ -1,12 +1,35 @@
 {% extends "_wizard-page.html" %}
+{% set title = 'You have changed your NPQ provider' %}
+{% block pageTitle %}{{ title }}{% endblock %}
 {% block pageNavigation %}{% endblock %}
-{% set title = 'You have changed your provider to '+ data.register.provider + '' %}
+
 {% block content %}
 <div class="govuk-grid-row">
+  {% set html %}
+    <div class="govuk-!-font-size-19">
+      You’re now registered with <strong>{{ data.register.provider }}</strong> for your <strong>{{ data.register.course }}</strong>
+    </div>
+  {% endset %}
+
   <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l">{{ title }}</h2>
-    <p><a href="/accounts-signed-in/home">Go back to home</a>.</p>
+    {{ govukPanel({
+      titleHtml: title | noOrphans | safe,
+      html: html,
+      classes: 'govuk-!-margin-bottom-6'
+    }) }}
+
+<h3 class="govuk-heading-m">
+  What happens next
+</h3>
+
+<p>We'll tell both providers that you've changed your registration.</p>
+
+<p>{{ data.register.provider }} will contact you to complete your registration. They will provide details of timings, costs and deadlines.</p>
+
+<br>
+      <p><a href="/accounts-signed-in/home">Go back to your NPQ registration details.</a></p>
+
+    </div>
   </div>
-</div>
 
 {% endblock %}

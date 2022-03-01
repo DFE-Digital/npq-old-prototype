@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Are you sure you want to remove '+ data.register.course + ' with '+ data.register.provider + ' ?' %}
+{% set title = 'Are you sure you want to remove your '+ data.register.course + ' with '+ data.register.provider + ' ?' %}
 {% set paths = { back: '/accounts-signed-in/home' } %}
 {% set buttonText = 'Confirm' %}
 
@@ -14,11 +14,12 @@
       }
     },
     hint: {
-    text: "You can change both the course and provider for your exisitng registration."
+    text: "You can use the registration details page to change both the course and provider for your existing registration."
   },
     items: [
       {
-        text: "Yes"
+        text: " Yes, remove my registration",
+        value: "Yes"
       },
       {
         text: "No"

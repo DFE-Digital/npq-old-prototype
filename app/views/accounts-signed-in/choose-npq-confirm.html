@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Are you sure you want to change to the '+ data.register.course + '?' %}
+{% set title = 'Are you sure you want to change your course to the '+ data.register.course + '?' %}
 {% set paths = { back: '/accounts-signed-in/home' } %}
 {% set buttonText = 'Confirm' %}
 
@@ -14,7 +14,7 @@
       }
     },
     hint: {
-    text: "Once confirmed {{ data.register.provider }} will see you've changed NPQ."
+    text: "Once confirmed " + data.register.provider + " will see you've changed NPQ."
   },
     items: [
       {
