@@ -1,0 +1,22 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Have you agreed a start date of February 2022 with an NPQ provider?" %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['soft-close', 'chosen']) ) }}
+{% endblock %}

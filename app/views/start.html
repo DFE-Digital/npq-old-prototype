@@ -11,11 +11,22 @@
 
       {% if data.features['registration-closed'].on %}
 
-        <h2 class="govuk-heading-m">Registration for NPQs is currently closed</h2>
+        <h2 class="govuk-heading-m">Registration for NPQs has closed temporarily</h2>
 
-        <p><a href="/notification/sign-up">Sign up for alerts</a> to be notified when registration reopens in May.</p>
+        <p><a href="/notification/sign-up">Sign up for an email</a> to be notified when registration reopens.</p>
 
         <h2 class="govuk-heading-m">When registration reopens</h2>
+
+        <p>You will be able to use this service to register:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>to study for an NPQ</li>
+          <li>for the Additional Support Offer for new headteachers</li>
+        </ul>
+
+        <p>For more information you can read guidance on the <a href="https://www.gov.uk/government/publications/national-professional-qualifications-npqs-reforms/national-professional-qualifications-npqs-reforms">NPQ reforms.</a></p>
+
+
+        {% elseif data.features['registration-soft-close'].on %}
 
         <p>You can use this service to register:</p>
         <ul class="govuk-list govuk-list--bullet">
@@ -23,13 +34,23 @@
           <li>for the Additional Support Offer for new headteachers</li>
         </ul>
 
-        <p>Before you start you’ll need to:</p>
+        <h2 class="govuk-heading-m">Before you start</h2>
+        <p>You must:</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>have your teacher reference number (TRN)</li>
           <li>have your funding source confirmed – either a scholarship, school, college or personal funding</li>
           <li>know which NPQ course you want to study</li>
           <li>have chosen a provider</li>
         </ul>
+
+        {{ govukButton({
+          text: 'Start now',
+          href: '/soft-close/chosen',
+          isStartButton: true,
+          classes: 'govuk-!-margin-top-4'
+        }) }}
+
+
       {% else %}
         <p>You can use this service to register:</p>
         <ul class="govuk-list govuk-list--bullet">
