@@ -61,17 +61,6 @@
 }) }}
 
 
-  <div class="govuk-width-container {{mainClasses}}">
-
-  {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-    {{ govukPhaseBanner({
-      tag: {
-        text: "Prototype"
-      },
-      html: '	This is a prototype. It is not a real service.'
-    }) }}
-  </div>
-
   {% block navigation %}
   {% endblock %}
 
