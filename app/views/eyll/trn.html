@@ -1,0 +1,51 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'You need a teacher reference number to register for an NPQ'%}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+
+    <p>A teacher reference number (TRN) is used to check you’re eligible to study for a national professional qualification (NPQ).</p>
+      <p>You’ll need a TRN to register for an NPQ even if you aren’t a teacher.</p>
+
+<h4 class="govuk-heading-s">If you’ve qualified as a teacher in England</h4>
+
+<p>You will already have a TRN. If you don’t know what your TRN is, this can usually be found on your payslip, teachers’ pension documentation or teacher training records.</p>
+
+<p>The TRN has previously been known as a QTS, GTC, DfE, DfES or DCSF number.</p>
+
+<h4 class="govuk-heading-s">If you haven't qualified as a teacher in England</h4>
+
+<p>You may already have a TRN if you’ve previously registered for an NPQ.</p>
+<p>You may not have a TRN if you’re working in further education or early years, or if you qualified outside England or overseas.</p>
+
+<br>
+
+
+
+
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: 'Do you know your teacher reference number (TRN)?',
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          text: "Yes, I know my TRN",
+          value: "yes"
+        },
+        {
+          text: "No, I need a reminder",
+          value: "dont-know"
+        },
+        {
+          text: "I do not have a TRN",
+          value: "no-trn"
+        }
+      ]
+    } | decorateFormAttributes(['register', 'know-trn']) ) }}
+
+
+{% endblock %}

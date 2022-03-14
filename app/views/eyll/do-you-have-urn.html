@@ -1,0 +1,31 @@
+{% extends "_wizard-form.html" %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">Do you or your workplace have an Ofsted unique reference number (URN)?</h1>
+
+  <p>If you or your workplace has registered with Ofsted, you’ll have a unique reference number (URN).</p>
+
+<p>You can <a href="https://reports.ofsted.gov.uk/childcare" class="govuk-link" rel="noreferrer noopener" target="_blank">search the public Ofsted register (opens in a new tab)</a> to find your URN.</p>
+
+<p>If you are a nanny or childminder you may not be listed on the public Ofsted register. You will need to check your email or registration certificate to find your URN.</p>
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "Do you have an Ofsted unique reference number (URN)?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    items: [
+      {
+        text: "Yes, I have a URN",
+        value: "yes"
+      },
+      {
+        text: "No, I do not have a URN",
+        value: "no"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'ofsted']) ) }}
+{% endblock %}

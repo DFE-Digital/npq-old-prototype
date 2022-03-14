@@ -1,0 +1,39 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Choose your provider' %}
+{% set action = '/register/funding-vague' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>These are the training providers who provide {{ data.register.course }}. Providers may have different entry requirements.</p>
+
+  {% if isInSchoolAndIsInEngland %}
+    <p>Check with the person responsible for professional development at your school or college.</p>
+  {% endif %}
+
+  {{ govukRadios({
+    items: [
+      {
+        text: "Ambition Institute"
+      },
+      {
+        text: "Education Development Trust"
+      },
+      {
+        text: "Institute of Teaching"
+      },
+      {
+        text: "School-Led Network"
+      },
+      {
+        text: "Teacher Development Trust"
+      },
+      {
+        text: "Teach First"
+      },
+      {
+        text: "UCL Institute of Education"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'provider']) ) }}
+{% endblock %}
