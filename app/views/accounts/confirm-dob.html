@@ -1,0 +1,37 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Confirm your date of birth' %}
+{% set action = '/accounts-signed-in/home' %}
+
+
+{% block form %}
+  {{ govukDateInput({
+    id: 'dob',
+    fieldset: {
+      legend: {
+        text: title,
+        isPageTitle: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        name: '[accounts][dob-day]',
+        classes: "govuk-input--width-2",
+        label: 'Day'
+      },
+      {
+        name: '[accounts][dob-month]',
+        classes: "govuk-input--width-2",
+        label: 'Month'
+      },
+      {
+        name: '[accounts][dob-year]',
+        classes: "govuk-input--width-4",
+        label: 'Year'
+      }
+    ],
+    hint: {
+      text: "For example, 12 11 1990"
+    }
+  }) }}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout_nobanner.html" %}
+{% extends "_wizard-form.html" %}
+{% set title = 'Are you a headteacher?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "Yes, I am a headteacher",
+        value: "yes"
+      },
+      {
+        text: "No",
+        value: "no"
+      }
+    ]
+  } | decorateFormAttributes(['accounts', 'aso-headteacher']) ) }}
+{% endblock %}

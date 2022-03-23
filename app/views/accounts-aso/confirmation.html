@@ -1,0 +1,33 @@
+{% extends "layout_signedin.html" %}
+{% set title = 'Your registration is complete' %}
+{% set isNPQH = (data.register.course == 'NPQ for Headship (NPQH)') %}
+{% block pageTitle %}{{ title }}{% endblock %}
+{% block pageNavigation %}{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  {% set html %}
+    <div class="govuk-!-font-size-19">
+      You’ve registered for the <strong>Additional support offer</strong> with <strong>{{data.accounts.asoprovider}}</strong>
+    </div>
+  {% endset %}
+
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukPanel({
+      titleHtml: title | noOrphans | safe,
+      html: html,
+      classes: 'govuk-!-margin-bottom-6'
+    }) }}
+
+    <h2 class="govuk-heading-m">
+      What happens next
+    </h2>
+
+    <p>{{data.accounts.asoprovider}} will contact you to complete your registration.</p>
+
+    <p>They will provide details of timings, costs and deadlines.</p>
+
+    <p><a href="/accounts-signed-in/home-aso">Go back to your NPQ registration details.</a></p>
+
+
+{% endblock %}

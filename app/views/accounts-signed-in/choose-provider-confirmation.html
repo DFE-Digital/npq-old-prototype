@@ -1,0 +1,38 @@
+{% extends "layout_signedin.html" %}
+{% set title = 'You have changed your NPQ provider' %}
+{% block pageTitle %}{{ title }}{% endblock %}
+{% block pageNavigation %}{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  {% set html %}
+    <div class="govuk-!-font-size-19">
+      You’re now registered with <strong>{{ data.register.provider }}</strong> for your <strong>{{ data.register.course }}</strong>
+    </div>
+  {% endset %}
+
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukPanel({
+      titleHtml: title | noOrphans | safe,
+      html: html,
+      classes: 'govuk-!-margin-bottom-6'
+    }) }}
+
+<h3 class="govuk-heading-m">
+  What happens next
+</h3>
+
+<p>{{ data.register.provider }} will contact you to complete your registration. They will provide details of timings, costs and deadlines.</p>
+
+<h3 class="govuk-heading-m">
+  What you can do next
+</h3>
+
+<p>You should tell your previous provider that you've changed.</p>
+<br>
+      <p><a href="/accounts-signed-in/home">Go back to your NPQ registration details.</a></p>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Why are you adding a new NPQ?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {{ govukRadios({
+    items: [
+    {
+      text: "I want to do more than one NPQ this year",
+      value: "this year"
+    },
+    {
+      text: "I want to register for the same NPQ with more than one provider.",
+      value: "hedge"
+    },
+      {
+        text: "I want to register for an NPQ next year",
+        value: "next year"
+      }
+    ]
+  } | decorateFormAttributes(['accounts', 'add']) ) }}
+{% endblock %}

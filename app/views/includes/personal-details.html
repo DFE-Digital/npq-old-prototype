@@ -1,0 +1,62 @@
+{% set trn %}
+  <span class="app-!-font-family-tabular">
+    {{ data.register.trn }}
+  </span>
+{% endset %}
+
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+rows: [
+{
+  key: {
+    text: "Full name"
+  },
+  value: {
+    text: data.register.name
+  },
+  actions: {
+    items: [
+      {
+      }
+    ]
+  }
+},
+{
+  key: {
+    text: "Date of birth"
+  },
+  value: {
+    text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
+  }
+
+},
+{
+  key: {
+    text: "Teacher reference number (TRN)"
+  },
+  value: {
+    html: trn
+  }
+
+},
+{
+  key: {
+    text: "Email address"
+  },
+  value: {
+    text: data['register']['email']
+  },
+  actions: {
+    items: [
+      {
+        href: "/accounts-signed-in/email",
+        text: "Change",
+        visuallyHiddenText: "email address"
+      }
+    ]
+  }
+}
+]
+}) }}

@@ -6,6 +6,7 @@ require('./routes/feature-flags')(router)
 require('./routes/example-wizard')(router)
 require('./routes/register')(router)
 require('./routes/soft-close')(router)
+require('./routes/accounts')(router)
 
 // Add your routes here - above the module.exports line
 

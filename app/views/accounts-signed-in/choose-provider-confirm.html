@@ -1,0 +1,29 @@
+{% extends "layout_nobanner.html" %}
+{% extends "_wizard-form.html" %}
+{% set title = 'Are you sure you want to register with '+ data.register.provider + '?' %}
+{% set paths = { back: '/accounts-signed-in/home' } %}
+{% set buttonText = 'Confirm' %}
+
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    hint: {
+    text: "Once confirmed both providers will see you've changed your registration."
+  },
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['accounts', 'change-provider']) ) }}
+{% endblock %}

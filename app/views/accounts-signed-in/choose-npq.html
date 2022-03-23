@@ -1,0 +1,58 @@
+{% extends "_wizard-form.html" %}
+{% extends "layout_signedin.html" %}
+{% set title = 'What are you applying for?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {% set html %}
+    <p>If you’re applying to start an NPQ for Headship (NPQH), you might also be applying for the Additional Support Offer, a targeted support package for new headteachers.</p>
+    <p>To register for both you should:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>complete your registration for an NPQH using this service</li>
+      <li>complete a separate registration for the Additional Support Offer, also using this service</li>
+    </ul>
+  {% endset %}
+
+  {{ govukDetails({
+    summaryText: "Help with NPQH and the Additional Support Offer",
+    html: html
+  }) }}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        isPageHeading: false,
+        text: title,
+        classes: "govuk-visually-hidden"
+      }
+    },
+    items: [
+      {
+        text: "NPQ Leading Teaching (NPQLT)"
+      },
+      {
+        text: "NPQ Leading Behaviour and Culture (NPQLBC)"
+      },
+      {
+        text: "NPQ Leading Teacher Development (NPQLTD)"
+      },
+      {
+        text: "NPQ for Senior Leadership (NPQSL)"
+      },
+      {
+        text: "NPQ for Headship (NPQH)"
+
+      },
+      {
+        text: "NPQ for Executive Leadership (NPQEL)"
+      },
+      {
+        text: "Additional Support Offer for new headteachers",
+        hint: {
+          text: "The Additional Support Offer is a targeted support package for new headteachers. "
+        }
+      }
+    ]
+  } | decorateFormAttributes(['register', 'course']) ) }}
+{% endblock %}

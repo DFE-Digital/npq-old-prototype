@@ -1,0 +1,24 @@
+{% extends "layout_nobanner.html" %}
+{% extends "_wizard-form.html" %}
+{% set title = 'Are you in your first 2 years of a headship?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    items: [
+      {
+        text: "Yes, I am in my first 2 years of a headship"
+      },
+      {
+        text: "No",
+        value: "no"
+      }
+    ]
+  } | decorateFormAttributes(['accounts', 'aso-early-headship']) ) }}
+{% endblock %}

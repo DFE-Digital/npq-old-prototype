@@ -1,0 +1,29 @@
+{% extends "layout_nobanner.html" %}
+{% extends "_wizard-form.html" %}
+{% set title = 'Are you sure you want to change your course to the '+ data.register.course + '?' %}
+{% set paths = { back: '/accounts-signed-in/home' } %}
+{% set buttonText = 'Confirm' %}
+
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    hint: {
+    text: "Once confirmed " + data.register.provider + " will see you've changed NPQ."
+  },
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['accounts', 'change-course']) ) }}
+{% endblock %}

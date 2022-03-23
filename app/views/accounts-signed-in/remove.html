@@ -1,0 +1,30 @@
+{% extends "layout_nobanner.html" %}
+{% extends "_wizard-form.html" %}
+{% set title = 'Are you sure you want to remove your '+ data.register.course + ' with '+ data.register.provider + ' ?' %}
+{% set paths = { back: '/accounts-signed-in/home' } %}
+{% set buttonText = 'Confirm' %}
+
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl"
+      }
+    },
+    hint: {
+    text: "You can use the registration details page to change both the course and provider for your existing registration."
+  },
+    items: [
+      {
+        text: " Yes, remove my registration",
+        value: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['accounts', 'remove']) ) }}
+{% endblock %}

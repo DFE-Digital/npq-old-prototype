@@ -1,0 +1,54 @@
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Course
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{data.register.course}}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="/accounts-signed-in/choose-npq">
+        Change<span class="govuk-visually-hidden">course</span>
+      </a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Provider
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{data.register.provider}}
+    </dd>
+    <dd class="govuk-summary-list__actions">
+      <a class="govuk-link" href="/accounts-signed-in/choose-provider">
+        Change<span class="govuk-visually-hidden">provider</span>
+      </a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Registration status
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <p class="govuk-body"><strong class="govuk-tag govuk-tag--grey">Awaiting Acceptance</strong></p>
+      <p>{{data.register.provider}} will review your application. Contact them for more information. </p>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Funding eligibility
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <p>To be confirmed</p>
+    </dd>
+    <dd class="govuk-summary-list__actions">
+    </dd>
+  </div>
+</dl>
+<hr class="govuk-section-break govuk-section-break--visible">
+<ul class="govuk-list govuk-!-padding-top-4">
+  <li><a href="#">Change workplace details</a></li>
+  <li><a href="/accounts-signed-in/remove">Remove registration</a></li>
+    </ul>

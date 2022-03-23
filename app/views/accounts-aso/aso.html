@@ -1,0 +1,23 @@
+{% extends "layout_nobanner.html" %}
+{% extends "_wizard-form.html" %}
+{% set title = 'Additional Support Offer for new headteachers' %}
+{% set paths = { back: '/accounts-signed-in/home' } %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+  <p>The Additional Support Offer is a targeted support package for new headteachers.</p>
+
+  <h2 class="govuk-heading-m">Who is this for?</h2>
+  <p>You can register for the Additonal Support Offer if you:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>have completed an NPQH</li>
+    <li>are studying for an NPQH</li>
+    <li>are about to start an NPQH</li>
+  </ul>
+
+  <h2 class="govuk-heading-m">How is this paid for?</h2>
+  <p>You may be eligible for DfE scholarship funding if you are a headteacher in your first 2 years of headship.</p>
+  <p>Or you can pay the cost of your Additional Support Offer another way.</p>
+
+  <p class="govuk-!-margin-bottom-6"><a href="https://www.gov.uk/government/publications/national-professional-qualifications-npqs-reforms/national-professional-qualifications-npqs-reforms#additional-support-offer-for-the-npq-in-headship" target="_blank">Read more about the Additional Support Offer for new headteachers</a></p>
+{% endblock %}
