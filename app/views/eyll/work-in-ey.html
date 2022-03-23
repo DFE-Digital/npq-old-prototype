@@ -1,0 +1,18 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Do you work in early years or childcare?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {{ govukRadios({
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'ey']) ) }}
+
+{% endblock %}

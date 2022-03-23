@@ -13,10 +13,6 @@
     </ul>
   {% endset %}
 
-  {{ govukDetails({
-    summaryText: "Help with NPQH and the Additional Support Offer",
-    html: html
-  }) }}
 
   {{ govukRadios({
     fieldset: {
@@ -50,12 +46,6 @@
       },
       {
         text: "NPQ for Executive Leadership (NPQEL)"
-      },
-      {
-        text: "Additional Support Offer for new headteachers",
-        hint: {
-          text: "The Additional Support Offer is a targeted support package for new headteachers. "
-        }
       }
     ]
   } | decorateFormAttributes(['register', 'course']) ) }}

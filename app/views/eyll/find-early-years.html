@@ -1,12 +1,12 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Choose your early years or childcare workplace' %}
+{% set title = 'Find your childcare or early years Ofsted registration details' %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
   {{ govukInput({
     label: {
-      text: "Enter your workplace's URN",
+      text: "Enter your or your employer’s URN ",
       classes: "govuk-label--s"
     }
   } | decorateFormAttributes(['register', 'urn']) ) }}

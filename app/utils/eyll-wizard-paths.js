@@ -5,15 +5,12 @@ const {
 
 function eyllWizardPaths (req) {
   var paths = [
-    '/eyll/email',
-    '/eyll/email-confirmation',
-    '/eyll/chosen',
+    '/eyll/work-in-ey',
+    '/eyll/la-nursery',
     '/eyll/trn',
     '/eyll/personal-details',
-    '/eyll/where-do-you-work',
-    '/eyll/what-setting',
     '/eyll/do-you-have-urn',
-    '/eyll/which-early-years',
+    '/eyll/find-early-years',
     '/eyll/choose-npq',
     '/eyll/choose-provider-ey-ll',
     '/eyll/funding-vague',
@@ -43,24 +40,21 @@ function eyllWizardForks (req) {
     },
 
     {
-      currentPath: '/eyll/what-setting',
-      storedData: ['register', 'setting'],
-      values: ['School', '16 to 19 organisation', 'Academy trust', 'LA maintained nursery', 'other'],
-      forkPath: (value) => {
-        switch (value) {
-          case 'School':
-            return '/eyll-school/where-school'
-          case '16 to 19 organisation':
-            return '/eyll-school/where-school'
-          case 'Academy trust':
-            return '/eyll-school/where-school'
-          case 'LA maintained nursery':
-            return '/eyll-school/where-school'
-          case 'other':
-            return '/eyll-school/choose-npq'
-        }
-      }
+      currentPath: '/eyll/la-nursery',
+      storedData: ['register', 'la-nursery'],
+      values: ['Yes'],
+      forkPath: '/eyll-nursery/trn'
     },
+
+    {
+      currentPath: '/eyll/do-you-have-urn',
+      storedData: ['register', 'ofsted'],
+      values: ['help'],
+      forkPath: '/eyll/help-urn'
+    },
+
+
+
     {
       currentPath: '/eyll/choose-npq',
       storedData: ['register', 'course'],
@@ -72,36 +66,53 @@ function eyllWizardForks (req) {
   return nextForkPath(forks, req)
 }
 
-function eyllSchoolWizardPaths (req) {
+function eyllNurseryWizardPaths (req) {
   var paths = [
-    '/eyll-school/where-school',
-    '/eyll-school/which-school',
-    '/eyll-school/choose-npq',
-    '/eyll-school/choose-provider',
-    '/register/funding-vague'
+    '/eyll-nursery/trn',
+    '/eyll-nursery/personal-details',
+    '/eyll-nursery/where-nursery',
+    '/eyll-nursery/which-nursery',
+    '/eyll-nursery/choose-npq',
+    '/eyll-nursery/choose-provider-ey-ll', 
+    '/eyll-nursery/funding-vague',
+    '/eyll-nursery/share-information',
+    '/eyll-nursery/check',
+    '/eyll-nursery/confirmation'
+
 
   ]
 
   return nextAndBackPaths(paths, req)
 }
 
-function eyllSchoolWizardForks (req) {
+function eyllNurseryWizardForks (req) {
   var forks = [
+
     {
-      currentPath: '/eyll-school/choose-npq',
-      storedData: ['register', 'course'],
-      values: ['NPQ Leading Literacy (NPQLL)', 'NPQ Early Years Leadership (NPQEYL)', 'Additional Support Offer for new headteachers'],
+      currentPath: '/eyll-nursery/trn',
+      storedData: ['register', 'know-trn'],
+      values: ['dont-know', 'no-trn'],
       forkPath: (value) => {
         switch (value) {
-          case 'NPQ Leading Literacy (NPQLL)':
-            return '/eyll-school/choose-provider-ey-ll'
-          case 'NPQ Early Years Leadership (NPQEYL)':
-            return '/eyll-school/choose-provider-ey-ll'
-          case 'Additional Support Offer for new headteachers':
-            return '/register/aso'
+          case 'dont-know':
+            return '/register/get-your-trn'
+          case 'no-trn':
+            return '/register/get-a-trn'
         }
       }
-    }
+    },
+     {
+      currentPath: '/eyll-nursery/choose-npq',
+      storedData: ['register', 'course'],
+      excludedValues: ['NPQ Leading Literacy (NPQLL)', 'NPQ Early Years Leadership (NPQEYL)'],
+      forkPath: '/eyll-nursery/choose-provider'
+    },
+
+    {
+      currentPath: '/eyll-nursery/choose-provider',
+      skipTo: '/eyll-nursery/funding-vague'
+    },
+
   ]
   return nextForkPath(forks, req)
 }
@@ -109,6 +120,6 @@ function eyllSchoolWizardForks (req) {
 module.exports = {
   eyllWizardPaths,
   eyllWizardForks,
-  eyllSchoolWizardPaths,
-  eyllSchoolWizardForks
+  eyllNurseryWizardPaths,
+  eyllNurseryWizardForks
 }

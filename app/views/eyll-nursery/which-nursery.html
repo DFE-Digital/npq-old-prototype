@@ -1,0 +1,15 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Choose your local authority-maintained nursery' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>Choose from local authority-maintained nurseries located in {{ data['register']['nursery-location'] }}</p>
+
+  {{ govukInput({
+    label: {
+      text: "Enter name",
+      classes: "govuk-label--s"
+    }
+  } | decorateFormAttributes(['register', 'nursery']) ) }}
+{% endblock %}

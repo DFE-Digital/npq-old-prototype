@@ -8,9 +8,9 @@ function registerWizardPaths (req) {
 
   const paths = [
     '/start',
-    '/register/chosen',
     '/register/email',
     '/register/email-confirmation',
+    '/register/chosen',
     '/register/where-do-you-work',
     '/register/work-in-school',
     '/register/trn',
@@ -48,6 +48,14 @@ function registerWizardForks (req) {
       values: ['no'],
       forkPath: '/register/choosing-an-npq'
     },
+
+    {
+      currentPath: '/register/work-in-school',
+      storedData: ['register', 'work-in-school'],
+      values: ['No'],
+      forkPath: '/eyll/work-in-ey'
+    },
+
     {
       currentPath: '/register/trn',
       storedData: ['register', 'know-trn'],

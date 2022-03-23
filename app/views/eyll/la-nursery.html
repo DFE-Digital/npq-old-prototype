@@ -1,5 +1,6 @@
+@@ -0,0 +1,22 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Do you work in a school or college?' if isInternational else 'Do you work in a school, academy trust or 16 to 19 organisation?' %}
+{% set title = 'Do you work in a local authority-maintained nursery?' %}
 
 {% block form %}
   {{ govukRadios({
@@ -18,5 +19,5 @@
         text: "No"
       }
     ]
-  } | decorateFormAttributes(['register', 'work-in-school']) ) }}
+  } | decorateFormAttributes(['register', 'la-nursery']) ) }}
 {% endblock %}
