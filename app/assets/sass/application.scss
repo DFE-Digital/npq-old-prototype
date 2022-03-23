@@ -35,26 +35,6 @@ $govuk-assets-path: '/govuk/assets/';
   white-space: nowrap !important;
 }
 
-.topnav {
-  background-color: white;
-  overflow: hidden;
-}
-
-/* Style the links inside the navigation bar */
-.topnav a {
-  float: left;
-  color: #0b0c0c;
-  text-align: left;
-  padding: 14px 16px 14px 0px;
-  text-decoration: none;
-  font-size: 19px;
-}
-
-.box-accounts {
-  padding: 20px;
-  border: 1px solid #b1b4b6;
-}
-
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 
