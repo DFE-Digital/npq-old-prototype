@@ -1,0 +1,29 @@
+@@ -0,0 +1,22 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'What kind of nursery do you work in?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+      }
+    },
+    items: [
+      {
+        text: "Private nursery",
+        value: "private"
+      },
+      {
+        text: "Local authority-maintained nursery",
+        value: "la"
+      },
+      {
+        text: "Pre-school class that is part of a school",
+        value: "pre-school"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'nursery-type']) ) }}
+{% endblock %}

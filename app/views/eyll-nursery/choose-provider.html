@@ -5,7 +5,7 @@
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>These are the training providers who provide {{ data.register.course }}. Providers may have different entry requirements.</p>
+  <p>These are the training providers who provide <strong>{{ data.register.course }}.</strong> Providers may have different entry requirements.</p>
 
   {% if isInSchoolAndIsInEngland %}
     <p>Check with the person responsible for professional development at your school or college.</p>
@@ -14,34 +14,34 @@
   {{ govukRadios({
     items: [
       {
-        text: "Ambition Institute"
+        text: "Training Provider A"
       },
       {
-        text: "Best Practice Network (home of Outstanding Leaders Partnership)"
+        text: "Training Provider B"
       },
       {
-        text: "Church of England"
+        text: "Training Provider C"
       },
       {
-        text: "Education Development Trust"
+        text: "Training Provider E"
       },
       {
-        text: "Institute of Teaching"
+        text: "Training Provider I"
       },
       {
-        text: "School-Led Network"
+        text: "Training Provider L"
       },
       {
-        text: "Leadership Learning South East (LLSE)"
+        text: "Training Provider S"
       },
       {
-        text: "Teacher Development Trust"
+        text: "Training Provider T1"
       },
       {
-        text: "Teach First"
+        text: "Training Provider T2"
       },
       {
-        text: "UCL Institute of Education"
+        text: "Training Provider U"
       }
     ]
   } | decorateFormAttributes(['register', 'provider']) ) }}

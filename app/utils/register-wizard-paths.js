@@ -8,12 +8,12 @@ function registerWizardPaths (req) {
 
   const paths = [
     '/start',
-    '/register/email',
-    '/register/email-confirmation',
     '/register/chosen',
     '/register/where-do-you-work',
     '/register/work-in-school',
     '/register/trn',
+    '/register/email',
+    '/register/email-confirmation',
     '/register/personal-details',
     ...typesOfUser.isInSchoolAndIsInEngland ? [
       '/register/where-school',
@@ -69,7 +69,46 @@ function registerWizardForks (req) {
         }
       }
     },
-    ...ASOForks('/register')
+
+    {
+      currentPath: '/register/choose-npq',
+      storedData: ['register', 'course'],
+      values: ['NPQ Leading Literacy (NPQLL)', 'NPQ Early Years Leadership (NPQEYL)', 'NPQ Leading Teaching (NPQLT)', 'NPQ Leading Behaviour and Culture (NPQLBC)', 'NPQ Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)'],
+      forkPath: (value) => {
+        switch (value) {
+          case 'NPQ Leading Literacy (NPQLL)':
+            return '/register/choose-provider-ey-ll'
+          case 'NPQ Early Years Leadership (NPQEYL)':
+            return '/register/choose-provider-ey-ll'
+          case 'NPQ Leading Teaching (NPQLT)':
+            return '/register/choose-provider'
+          case 'NPQ Leading Behaviour and Culture (NPQLBC)':
+            return '/register/choose-provider'
+          case 'NPQ Leading Teacher Development (NPQLTD)':
+              return '/register/choose-provider'
+          case 'NPQ for Senior Leadership (NPQSL)':
+              return '/register/choose-provider'
+          case 'NPQ for Headship (NPQH)':
+              return '/register/choose-provider'
+          case 'NPQ for Executive Leadership (NPQEL)':
+              return '/register/choose-provider'
+        }
+      }
+    },
+
+
+    {
+      currentPath: '/register/choose-provider-ey-ll',
+      skipTo: '/register/funding-vague'
+    },
+
+    {
+      currentPath: '/register/choose-provider',
+      skipTo: '/register/funding-vague'
+    }
+
+
+   
   ]
   return nextForkPath(forks, req)
 }
