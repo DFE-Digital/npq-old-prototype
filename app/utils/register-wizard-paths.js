@@ -45,7 +45,7 @@ function registerWizardForks (req) {
     {
       currentPath: '/register/chosen',
       storedData: ['register', 'chosen'],
-      values: ['no'],
+      values: ['No'],
       forkPath: '/register/choosing-an-npq'
     },
 
@@ -53,7 +53,7 @@ function registerWizardForks (req) {
       currentPath: '/register/work-in-school',
       storedData: ['register', 'work-in-school'],
       values: ['No'],
-      forkPath: '/eyll/work-in-ey'
+      forkPath: '/eyll/trn'
     },
 
     {

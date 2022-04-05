@@ -5,13 +5,13 @@ const {
 
 function eyllWizardPaths (req) {
   var paths = [
-    '/eyll/work-in-ey',
-    '/eyll/nursery',
-    '/eyll/nursery-type',
     '/eyll/trn',
     '/eyll/email',
     '/eyll/email-confirmation',
     '/eyll/personal-details',
+    '/eyll/work-in-ey',
+    '/eyll/nursery',
+    '/eyll/nursery-type',
     '/eyll/do-you-have-urn',
     '/eyll/find-early-years',
     '/eyll/choose-npq',
@@ -41,14 +41,14 @@ function eyllWizardForks (req) {
       currentPath: '/eyll/nursery',
       storedData: ['register', 'nursery'],
       values: ['No'],
-      forkPath: '/eyll/trn'
+      forkPath: '/eyll/do-you-have-urn'
     },
 
     {
       currentPath: '/eyll/nursery-type',
       storedData: ['register', 'nursery-type'],
       excludedValues: ['private'],
-      forkPath: '/eyll-nursery/trn'
+      forkPath: '/eyll-nursery/where-nursery'
     },
 
     {
@@ -116,10 +116,6 @@ function eyllWizardForks (req) {
 
 function eyllNurseryWizardPaths (req) {
   var paths = [
-    '/eyll-nursery/trn',
-    '/eyll-nursery/email',
-    '/eyll-nursery/email-confirmation',
-    '/eyll-nursery/personal-details',
     '/eyll-nursery/where-nursery',
     '/eyll-nursery/which-nursery',
     '/eyll-nursery/choose-npq',

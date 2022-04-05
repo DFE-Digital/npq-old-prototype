@@ -1,0 +1,62 @@
+{% extends "_wizard-form.html" %}
+{% set paths = { back: '/start' } %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">Ofsted registration details </h1>
+
+  <p>You can use the <a href="https://reports.ofsted.gov.uk/childcare" rel="noreferrer noopener" target="_blank" >public Ofsted register (opens in a new tab)</a> to look up a unique reference number (URN).
+  </p> 
+
+  <details class="govuk-details" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        If you are a nanny or a childminder
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      If you are a nanny or a childminder you may not be listed on the public Ofsted register. You will need to check your email or registration certificate to find your URN.
+    </div>
+    <div class="govuk-details__text">
+      If your employer is registered with Ofsted or you are registered with a childminder agency (CMA), you can use their URN.
+    </div>
+  </details>
+
+
+
+
+ 
+
+
+  {% set alert %}
+  {{ govukInput({
+    classes: "govuk-!-width-full",
+    label: {
+      text: "Enter URN"
+    }
+
+  } | decorateFormAttributes(['notification', 'email'])) }}
+{% endset %}
+
+{{ govukRadios({
+  fieldset: {
+    legend: {
+      text: 'Do you or your employer have an Ofsted unique reference number (URN)?',
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      text: "Yes",
+      conditional: {
+        html: alert
+}
+    },
+    {
+      text: "No"
+    }
+  ]
+  } | decorateFormAttributes(['register', 'ofsted']) ) }}
+
+
+
+{% endblock %}
