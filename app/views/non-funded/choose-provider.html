@@ -1,0 +1,48 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Choose your provider' %}
+{% set action = '/non-funded/choose-provider' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>These are the training providers who provide <strong>{{ data.register.course }}.</strong> Providers may have different entry requirements.</p>
+
+  {% if isInSchoolAndIsInEngland %}
+    <p>Check with the person responsible for professional development at your school or college.</p>
+  {% endif %}
+
+  {{ govukRadios({
+    items: [
+      {
+        text: "Training Provider A"
+      },
+      {
+        text: "Training Provider B"
+      },
+      {
+        text: "Training Provider C"
+      },
+      {
+        text: "Training Provider E"
+      },
+      {
+        text: "Training Provider I"
+      },
+      {
+        text: "Training Provider L"
+      },
+      {
+        text: "Training Provider S"
+      },
+      {
+        text: "Training Provider T1"
+      },
+      {
+        text: "Training Provider T2"
+      },
+      {
+        text: "Training Provider U"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'provider']) ) }}
+{% endblock %}

@@ -34,7 +34,7 @@ function eyllWizardForks (req) {
       currentPath: '/eyll/work-in-ey',
       storedData: ['register', 'ey'],
       values: ['No'],
-      forkPath: '#'
+      forkPath: '/non-funded/choose-npq'
     },
 
     {
@@ -182,9 +182,65 @@ function eyllNurseryWizardForks (req) {
   return nextForkPath(forks, req)
 }
 
+
+function nonFundedWizardPaths (req) {
+  var paths = [
+    '/non-funded/choose-npq',
+    '/non-funded/choose-provider-ey-ll', 
+    '/non-funded/about-where-you-work', 
+    '/non-funded/funding',
+    '/non-funded/share-information',
+    '/non-funded/check',
+    '/non-funded/confirmation'
+
+
+  ]
+
+  return nextAndBackPaths(paths, req)
+}
+
+function nonFundedWizardForks (req) {
+  var forks = [
+
+
+    {
+      currentPath: '/non-funded/choose-npq',
+      storedData: ['register', 'course'],
+      values: ['NPQ Leading Teaching (NPQLT)', 'NPQ Leading Behaviour and Culture (NPQLBC)', 'NPQ Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)', 'Additional Support Offer for new headteachers'],
+      forkPath: (value) => {
+        switch (value) {
+          case 'NPQ Leading Teaching (NPQLT)':
+            return '/non-funded/choose-provider'
+          case 'NPQ Leading Behaviour and Culture (NPQLBC)':
+            return '/non-funded/choose-provider'
+          case 'NPQ Leading Teacher Development (NPQLTD)':
+              return '/non-funded/choose-provider'
+          case 'NPQ for Senior Leadership (NPQSL)':
+              return '/non-funded/choose-provider'
+          case 'NPQ for Headship (NPQH)':
+              return '/non-funded/choose-provider'
+          case 'NPQ for Executive Leadership (NPQEL)':
+              return '/non-funded/choose-provider'
+          case 'Additional Support Offer for new headteachers':
+                return '/register/aso'
+        }
+      }
+    },
+
+    {
+      currentPath: '/non-funded/choose-provider',
+      skipTo: '/non-funded/about-where-you-work'
+    },
+
+  ]
+  return nextForkPath(forks, req)
+}
+
 module.exports = {
   eyllWizardPaths,
   eyllWizardForks,
   eyllNurseryWizardPaths,
-  eyllNurseryWizardForks
+  eyllNurseryWizardForks,
+  nonFundedWizardPaths,
+  nonFundedWizardForks
 }

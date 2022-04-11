@@ -1,0 +1,35 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Select your provider' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>These are the training providers who provide <strong>{{ data.register.course }}.</strong> Providers may have different entry requirements.</p>
+
+
+  {{ govukRadios({
+    items: [
+    {
+      text: "Training Provider A"
+    },
+    {
+      text: "Training Provider D"
+    },
+    {
+      text: "Training Provider E"
+    },
+    {
+      text: "Training Provider G"
+    },
+    {
+      text: "Training Provider H"
+    },
+    {
+      text: "Training Provider I"
+    },
+    {
+      text: "Training Provider J"
+    }
+  ]
+  } | decorateFormAttributes(['register', 'provider']) ) }}
+{% endblock %}

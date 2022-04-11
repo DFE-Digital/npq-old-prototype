@@ -70,6 +70,11 @@ function registerWizardForks (req) {
       }
     },
 
+     {
+      currentPath: '/register/not-received-code',
+      skipTo: '/register/email'
+    },
+
     {
       currentPath: '/register/choose-npq',
       storedData: ['register', 'course'],
