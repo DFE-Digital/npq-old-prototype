@@ -8,13 +8,9 @@ function registerWizardPaths (req) {
 
   const paths = [
     '/start',
-    '/register/email',
-    '/register/email-confirmation',
     '/register/chosen',
     '/register/where-do-you-work',
     '/register/work-in-school',
-    '/register/trn',
-    '/register/personal-details',
     ...typesOfUser.isInSchoolAndIsInEngland ? [
       '/register/where-school',
       '/register/which-school'
@@ -47,19 +43,6 @@ function registerWizardForks (req) {
       storedData: ['register', 'chosen'],
       values: ['no'],
       forkPath: '/register/choosing-an-npq'
-    },
-    {
-      currentPath: '/register/trn',
-      storedData: ['register', 'know-trn'],
-      values: ['dont-know', 'no-trn'],
-      forkPath: (value) => {
-        switch (value) {
-          case 'dont-know':
-            return '/register/get-your-trn'
-          case 'no-trn':
-            return '/register/get-a-trn'
-        }
-      }
     },
     ...ASOForks('/register')
   ]
