@@ -1,9 +1,158 @@
 {% extends "_wizard-page.html" %}
 {% set title = 'Check your answers and confirm' %}
+{% set accountData = data['account-data'] %}
+{% set isNewUser = false %}
 {% set buttonText = 'Confirm' %}
-{% block pageTitle %}{{ title }}{% endblock %}
 
 {% block page %}
   <h1 class="govuk-heading-xl" >{{ title }}</h1>
-  {% include 'includes/_check.html' %}
+
+  {% set altYourDetails %}
+    {% set expanded = false %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            text: accountData['email-address'] or 'email@example.com'
+          }
+        }, {
+          key: {
+            text: "Do you have a TRN?"
+          },
+          value: {
+            text: accountData.account['do-you-have-a-trn']
+          }
+        } if accountData.account['do-you-have-a-trn'] !== 'Yes', {
+          key: {
+            text: "Teacher reference number (TRN)"
+          },
+          value: {
+            text: accountData.account.trn if accountData.account['do-you-know-your-trn'] === 'yes' else 'I don’t know my TRN'
+          }
+        } if accountData.account['do-you-have-a-trn'] === 'Yes', {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: accountData['full-name']
+          }
+        } if accountData['full-name'], {
+        key: {
+            text: "Previous name"
+          },
+          value: {
+            text: accountData['previous-name']
+          }
+        } if accountData['previous-name'] and not accountData['previous-name'] === " ", {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: isoDateFromDateInputs(accountData['date-of-birth']['year'], accountData['date-of-birth']['month'], accountData['date-of-birth']['day']) | dateWithYear
+          }
+        } if accountData['date-of-birth'], {
+          key: {
+            text: "National Insurance number"
+          },
+          value: {
+            text: accountData['national-insurance-number'] or 'Not given'
+          }
+        } if accountData['have-nino'] !== 'No', {
+          key: {
+            text: "Do you have a National Insurance number?"
+          },
+          value: {
+            text: "No"
+          }
+        } if accountData['have-nino'] === 'No', {
+          key: {
+            text: "Have you been awarded QTS?"
+          },
+          value: {
+            text: accountData['has-qts']
+          }
+        } if accountData['has-qts'] !== 'Yes', {
+          key: {
+            text: "Where did you get your QTS?"
+          },
+          value: {
+            text: accountData['itt-provider'] if accountData['itt-provider'] else 'Not given'
+          }
+        } if accountData['has-qts'] === 'Yes' and accountData['has-qts-from-provider'] === 'Yes', {
+          key: {
+            text: "Did a university, SCITT or school award your QTS?"
+          },
+          value: {
+            text: accountData['has-qts-from-provider']
+          }
+        } if accountData['has-qts'] === 'Yes' and accountData['has-qts-from-provider'] !== 'Yes'
+      ]
+    }) }}
+  {% endset %}
+
+  {% set yourDetails %}
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Full name"
+          },
+          value: {
+            text: accountData['full-name']
+          }
+        },
+        {
+          key: {
+            text: "Teacher reference number (TRN)"
+          },
+          value: {
+            text: accountData.account.trn
+          }
+        },
+        {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: isoDateFromDateInputs(accountData['date-of-birth']['year'], accountData['date-of-birth']['month'], accountData['date-of-birth']['day']) | dateWithYear
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            text: accountData['email-address']
+          }
+        }
+      ]
+    }) }}
+  {% endset %}
+
+  {% set yourRegistration %}
+    {% include 'includes/_check.html' %}
+  {% endset %}
+
+  {{ appSummaryCard({
+    titleText: 'Your details',
+    html: altYourDetails,
+    classes: 'govuk-!-margin-bottom-6',
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "your personal details"
+        }
+      ]
+    }
+  }) }}
+
+  {{ appSummaryCard({
+    titleText: 'Your registration',
+    html: yourRegistration
+  }) }}
 {% endblock %}
