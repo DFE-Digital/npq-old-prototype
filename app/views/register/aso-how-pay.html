@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'How is the Additional Support Offer being paid for?' %}
+{% set title = 'How is the Early Headship Coaching Offer being paid for?' %}
 
 {% block form %}
   {{ govukRadios({
@@ -12,21 +12,18 @@
     },
     items: [
       {
-        text: "My school or college is covering the cost"
-      } if isInSchoolSetting,
+        text: "My workplace is covering the cost"
+      }, 
       {
         text: "My trust is paying"
-      } if isInSchoolSetting,
-      {
-        text: "My employer is paying"
-      } if not isInSchoolSetting,
+      },
       {
         text: "I am paying"
       },
       {
-        text: "The Additional Support Offer is being paid in another way",
+        text: "The Early Headship Coaching Offer is being paid in another way",
         hint: {
-          text: "For example, I am sharing the costs with my school or college"
+          text: "For example, I am sharing the costs with my workplace"
         }
       }
     ]

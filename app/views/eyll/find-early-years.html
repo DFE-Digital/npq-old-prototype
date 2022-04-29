@@ -1,10 +1,14 @@
 {% extends "_wizard-form.html" %}
-{% set title = "Enter your or your employer’s URN" %}
+{% set title = "Search for and select a URN" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
   {{ govukInput({
+    label: {
+      text: "Enter your or your employer’s URN ",
+      classes: "govuk-label--s"
+    },
     hint: {
       text: "For example EY456798"
     }
