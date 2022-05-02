@@ -4,7 +4,13 @@ const {
   eyllNurseryWizardPaths,
   eyllNurseryWizardForks,
   nonFundedWizardPaths,
-  nonFundedWizardForks
+  nonFundedWizardForks,
+  asoUserWizardPaths,
+  asoUserWizardForks,
+  eyllNonfundWizardPaths,
+  eyllNonfundWizardForks,
+  schoolNonfundWizardPaths,
+  schoolNonfundWizardForks
 } = require('../utils/eyll-wizard-paths')
 
 module.exports = router => {
@@ -23,6 +29,19 @@ module.exports = router => {
   router.get('/non-funded/:view', (req, res) => {
     res.render(`non-funded/${req.params.view}`, { paths: nonFundedWizardPaths(req) })
   })
+
+  router.get('/aso-user/:view', (req, res) => {
+    res.render(`aso-user/${req.params.view}`, { paths: asoUserWizardPaths(req) })
+  })
+
+  router.get('/eyll-nonfund/:view', (req, res) => {
+    res.render(`eyll-nonfund/${req.params.view}`, { paths: eyllNonfundWizardPaths(req) })
+  })
+
+  router.get('/school-nonfund/:view', (req, res) => {
+    res.render(`school-nonfund/${req.params.view}`, { paths: schoolNonfundWizardPaths(req) })
+  })
+
 
   router.post([
     '/eyll',
@@ -48,6 +67,33 @@ module.exports = router => {
   ], function (req, res) {
     const fork = nonFundedWizardForks(req)
     const paths = nonFundedWizardPaths(req)
+    fork ? res.redirect(fork) : res.redirect(paths.next)
+  })
+
+  router.post([
+    '/aso-user',
+    '/aso-user/:view'
+  ], function (req, res) {
+    const fork = asoUserWizardForks(req)
+    const paths = asoUserWizardPaths(req)
+    fork ? res.redirect(fork) : res.redirect(paths.next)
+  })
+
+  router.post([
+    '/eyll-nonfund',
+    '/eyll-nonfund/:view'
+  ], function (req, res) {
+    const fork = eyllNonfundWizardForks(req)
+    const paths = eyllNonfundWizardPaths(req)
+    fork ? res.redirect(fork) : res.redirect(paths.next)
+  })
+
+  router.post([
+    '/school-nonfund',
+    '/school-nonfund/:view'
+  ], function (req, res) {
+    const fork = schoolNonfundWizardForks(req)
+    const paths = schoolNonfundWizardPaths(req)
     fork ? res.redirect(fork) : res.redirect(paths.next)
   })
 }

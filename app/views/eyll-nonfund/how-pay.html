@@ -1,0 +1,31 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'How is the (data.register.npq) being paid for?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+      }
+    },
+    items: [
+      {
+        text: "My workplace is covering the cost"
+      }, 
+      {
+        text: "My trust is paying"
+      },
+      {
+        text: "I am paying"
+      },
+      {
+        text: "The Early Headship Coaching Offer is being paid in another way",
+        hint: {
+          text: "For example, I am sharing the costs with my workplace"
+        }
+      }
+    ]
+  } | decorateFormAttributes(['register', 'aso-how-pay']) ) }}
+{% endblock %}

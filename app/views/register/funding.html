@@ -1,7 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set legend = 'How is your ' + (data.register.npq or 'course') + ' being paid for?' %}
-{% set showNotEligibleForScholarship = isInSchoolAndIsInEngland %}
-{% set title = 'Funding' if showNotEligibleForScholarship else legend %}
+{% set title = 'How is your course being paid for?' %}
 
 {% block form %}
   {% if showNotEligibleForScholarship %}

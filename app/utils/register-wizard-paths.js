@@ -25,16 +25,11 @@ function registerWizardPaths (req) {
     '/register/aso-headteacher',
     '/register/aso-early-headship',
     '/register/aso-funding',
+    '/register/funding-vague',
     '/register/choose-provider',
-    ...typesOfUser.isInSchoolSetting ? [] : ['/register/about-where-you-work'],
-    ...typesOfUser.isInSchoolAndIsInEngland ? ['/register/funding-vague'] : ['/register/funding'],
     '/register/share-information',
     '/register/check',
-    '/register/confirmation',
-
-    '/register/aso',
-    '/register/aso-funding-not-available',
-    '/register/aso-how-pay'
+    '/register/confirmation'
   ]
 
   return nextAndBackPaths(paths, req)
@@ -82,35 +77,64 @@ function registerWizardForks (req) {
       forkPath: (value) => {
         switch (value) {
           case 'NPQ Leading Literacy (NPQLL)':
-            return '/register/choose-provider-ey-ll'
+            return '/register/funding-vague'
           case 'NPQ Early Years Leadership (NPQEYL)':
-            return '/register/choose-provider-ey-ll'
+            return '/register/funding-vague'
           case 'NPQ Leading Teaching (NPQLT)':
-            return '/register/choose-provider'
+            return '/register/funding-vague'
           case 'NPQ Leading Behaviour and Culture (NPQLBC)':
-            return '/register/choose-provider'
+            return '/register/funding-vague'
           case 'NPQ Leading Teacher Development (NPQLTD)':
-              return '/register/choose-provider'
+              return '/register/funding-vague'
           case 'NPQ for Senior Leadership (NPQSL)':
-              return '/register/choose-provider'
+              return '/register/funding-vague'
           case 'NPQ for Headship (NPQH)':
-              return '/register/choose-provider'
+              return '/register/funding-vague'
           case 'NPQ for Executive Leadership (NPQEL)':
-              return '/register/choose-provider'
+              return '/register/funding-vague'
         }
       }
     },
 
-
     {
-      currentPath: '/register/choose-provider-ey-ll',
-      skipTo: '/register/funding-vague'
+      currentPath: '/register/aso-completed-npqh',
+      storedData: ['register', 'aso-completed-npqh'],
+      values: ['no'],
+      forkPath: '/register/aso-cannot-register'
     },
 
     {
-      currentPath: '/register/choose-provider',
-      skipTo: '/register/funding-vague'
-    }
+      currentPath: '/register/aso-completed-npqh',
+      storedData: ['register', 'aso-completed-npqh'],
+      values: ['no'],
+      forkPath: '/register/aso-cannot-register'
+    },
+
+    {
+      currentPath: '/register/aso-headteacher',
+      storedData: ['register', 'aso-headteacher'],
+      values: ['No'],
+      forkPath: '/aso-user/aso-funding-not-available'
+    },
+    
+    {
+      currentPath: '/register/aso-early-headship',
+      storedData: ['register', 'aso-early-headship'],
+      values: ['No', 'Yes'],
+      forkPath: (value) => {
+        switch (value) {
+          case 'No':
+            return '/aso-user/aso-funding-not-available'
+          case 'Yes':
+            return '/aso-user/aso-funding'
+        }
+      }
+    },
+
+    {
+      currentPath: '/register/aso-funding',
+      skipTo: '/register/choose-provider'
+    },
 
 
    

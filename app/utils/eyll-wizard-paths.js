@@ -15,8 +15,8 @@ function eyllWizardPaths (req) {
     '/eyll/do-you-have-urn',
     '/eyll/find-early-years',
     '/eyll/choose-npq',
-    '/eyll/choose-provider-ey-ll',
     '/eyll/funding-vague',
+    '/eyll/choose-provider-ey-ll',
     '/eyll/share-information',
     '/eyll/check',
     '/eyll/confirmation'
@@ -85,22 +85,24 @@ function eyllWizardForks (req) {
     {
       currentPath: '/eyll/choose-npq',
       storedData: ['register', 'course'],
-      values: ['NPQ Leading Teaching (NPQLT)', 'NPQ Leading Behaviour and Culture (NPQLBC)', 'NPQ Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)', 'Additional Support Offer for new headteachers'],
+      values: ['NPQ Leading Teaching (NPQLT)', 'NPQ Leading Behaviour and Culture (NPQLBC)', 'NPQ Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)', 'NPQ Leading Literacy (NPQLL)', 'The Early Headship Coaching Offer'],
       forkPath: (value) => {
         switch (value) {
           case 'NPQ Leading Teaching (NPQLT)':
-            return '/eyll/choose-provider'
+            return '/eyll-nonfund/funding-not-available'
           case 'NPQ Leading Behaviour and Culture (NPQLBC)':
-            return '/eyll/choose-provider'
+            return '/eyll-nonfund/funding-not-available'
           case 'NPQ Leading Teacher Development (NPQLTD)':
-              return '/eyll/choose-provider'
+              return '/eyll-nonfund/funding-not-available'
           case 'NPQ for Senior Leadership (NPQSL)':
-              return '/eyll/choose-provider'
+              return '/eyll-nonfund/funding-not-available'
           case 'NPQ for Headship (NPQH)':
-              return '/eyll/choose-provider'
+              return '/eyll-nonfund/funding-not-available'
           case 'NPQ for Executive Leadership (NPQEL)':
-              return '/eyll/choose-provider'
-          case 'Additional Support Offer for new headteachers':
+              return '/eyll-nonfund/funding-not-available'
+              case 'NPQ Leading Literacy (NPQLL)':
+                return '/eyll-nonfund/funding-not-available'
+          case 'The Early Headship Coaching Offer':
                 return '/register/aso'
         }
       }
@@ -118,9 +120,9 @@ function eyllNurseryWizardPaths (req) {
   var paths = [
     '/eyll-nursery/where-nursery',
     '/eyll-nursery/which-nursery',
-    '/eyll-nursery/choose-npq',
-    '/eyll-nursery/choose-provider-ey-ll', 
+    '/eyll-nursery/choose-npq', 
     '/eyll-nursery/funding-vague',
+    '/eyll-nursery/choose-provider-ey-ll',
     '/eyll-nursery/share-information',
     '/eyll-nursery/check',
     '/eyll-nursery/confirmation'
@@ -150,32 +152,15 @@ function eyllNurseryWizardForks (req) {
      
 
     {
-      currentPath: '/eyll-nursery/choose-npq',
-      storedData: ['register', 'course'],
-      values: ['NPQ Leading Teaching (NPQLT)', 'NPQ Leading Behaviour and Culture (NPQLBC)', 'NPQ Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)', 'Additional Support Offer for new headteachers'],
-      forkPath: (value) => {
-        switch (value) {
-          case 'NPQ Leading Teaching (NPQLT)':
-            return '/eyll-nursery/choose-provider'
-          case 'NPQ Leading Behaviour and Culture (NPQLBC)':
-            return '/eyll-nursery/choose-provider'
-          case 'NPQ Leading Teacher Development (NPQLTD)':
-              return '/eyll-nursery/choose-provider'
-          case 'NPQ for Senior Leadership (NPQSL)':
-              return '/eyll-nursery/choose-provider'
-          case 'NPQ for Headship (NPQH)':
-              return '/eyll-nursery/choose-provider'
-          case 'NPQ for Executive Leadership (NPQEL)':
-              return '/eyll-nursery/choose-provider'
-          case 'Additional Support Offer for new headteachers':
-                return '/register/aso'
-        }
-      }
+      currentPath: '/eyll-nursery/choose-provider',
+      skipTo: '/eyll-nursery/funding-vague'
     },
 
     {
-      currentPath: '/eyll-nursery/choose-provider',
-      skipTo: '/eyll-nursery/funding-vague'
+      currentPath: '/eyll-nursery/choose-npq',
+      storedData: ['register', 'course'],
+      values: ['The Early Headship Coaching Offer'],
+      forkPath: '/register/aso'
     },
 
   ]
@@ -236,11 +221,94 @@ function nonFundedWizardForks (req) {
   return nextForkPath(forks, req)
 }
 
+function asoUserWizardPaths (req) {
+  var paths = [
+    '/aso-user/aso-funding-not-available',
+    '/aso-user/aso-how-pay',
+    '/aso-user/aso-choose-provider',
+    '/aso-user/share-information',
+    '/aso-user/check',
+    '/register/confirmation'
+
+  ]
+
+  return nextAndBackPaths(paths, req)
+}
+
+function asoUserWizardForks (req) {
+  var forks = [
+
+
+    {
+      currentPath: '/aso-user/aso-funding',
+      skipTo: '/aso-user/aso-choose-provider'
+    },
+
+  ]
+  return nextForkPath(forks, req)
+}
+
+function eyllNonfundWizardPaths (req) {
+  var paths = [
+
+    '/eyll-nonfund/funding-not-available',
+    '/eyll-nonfund/how-pay',
+    '/eyll-nonfund/choose-provider',
+    '/eyll-nonfund/share-information',
+    '/eyll-nonfund/check',
+    '/register/confirmation',
+
+
+
+
+  ]
+
+  return nextAndBackPaths(paths, req)
+}
+
+function eyllNonfundWizardForks (req) {
+  var forks = [
+
+  ]
+  return nextForkPath(forks, req)
+}
+
+function schoolNonfundWizardPaths (req) {
+  var paths = [
+
+    '/school-nonfund/funding-not-available',
+    '/school-nonfund/how-pay',
+    '/school-nonfund/choose-provider',
+    '/school-nonfund/share-information',
+    '/school-nonfund/check',
+    '/register/confirmation',
+
+
+
+
+  ]
+
+  return nextAndBackPaths(paths, req)
+}
+
+function schoolNonfundWizardForks (req) {
+  var forks = [
+
+  ]
+  return nextForkPath(forks, req)
+}
+
 module.exports = {
   eyllWizardPaths,
   eyllWizardForks,
   eyllNurseryWizardPaths,
   eyllNurseryWizardForks,
   nonFundedWizardPaths,
-  nonFundedWizardForks
+  nonFundedWizardForks,
+  asoUserWizardPaths,
+  asoUserWizardForks,
+  eyllNonfundWizardPaths,
+  eyllNonfundWizardForks,
+  schoolNonfundWizardPaths,
+  schoolNonfundWizardForks,
 }
