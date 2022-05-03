@@ -1,24 +1,18 @@
-{% extends "_wizard-form.html" %}
+{% extends "_wizard-page.html" %}
 {% set title = 'DfE scholarship funding is not available' %}
+{% set action = '/eyll-nonfund/how-pay.html' %}
 
-{% block form %}
+{% block page %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>Our records show that you have previously received scholarship funding for <strong>{{ data.register.course }}.</strong> If you have failed or withdrawn from this course, then you are not eligible for scholarship funding for the same NPQ again.</p>
+  <p>To be eligible for scholarship funding for the NPQ Early Years Leadership you must:</p>
 
-  <p>You can still register for {{ data.register.course }}, but you need to pay for it another way.</p>
-
-  <details class="govuk-details" data-module="govuk-details">
-    <summary class="govuk-details__summary">
-      <span class="govuk-details__summary-text">
-        I have not failed or withdrawn from this course
-      </span>
-    </summary>
-    <div class="govuk-details__text">
-      If you do not believe you have failed or withdrawn from this course please email <a href="mailto:continuing-professional-development@digital.education.gov.uk">continuing-professional-development@digital.education.gov.uk</a>
-    </div>
-   
-  </details>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>Work in England, Jersey, Guernsey or the Isle of Man</li>
+    <li>Be registered on the Ofsted childcare and early education register or be registered with a Childminder Agency (CMA)</li>
+  </ul>
+  
+  <p>You can still register for NPQ Early Years Leadership but you need to pay for it another way. To find out more about your  funding options please contact your course provider. </p>
 
 
 {% endblock %}

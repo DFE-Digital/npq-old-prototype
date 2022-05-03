@@ -89,19 +89,19 @@ function eyllWizardForks (req) {
       forkPath: (value) => {
         switch (value) {
           case 'NPQ Leading Teaching (NPQLT)':
-            return '/eyll-nonfund/funding-not-available'
+            return '/eyll-nonfund/funding-not-available-npq'
           case 'NPQ Leading Behaviour and Culture (NPQLBC)':
-            return '/eyll-nonfund/funding-not-available'
+            return '/eyll-nonfund/funding-not-available-npq'
           case 'NPQ Leading Teacher Development (NPQLTD)':
-              return '/eyll-nonfund/funding-not-available'
+              return '/eyll-nonfund/funding-not-available-npq'
           case 'NPQ for Senior Leadership (NPQSL)':
-              return '/eyll-nonfund/funding-not-available'
+              return '/eyll-nonfund/funding-not-available-npq'
           case 'NPQ for Headship (NPQH)':
-              return '/eyll-nonfund/funding-not-available'
+              return '/eyll-nonfund/funding-not-available-npq'
           case 'NPQ for Executive Leadership (NPQEL)':
-              return '/eyll-nonfund/funding-not-available'
+              return '/eyll-nonfund/funding-not-available-npq'
               case 'NPQ Leading Literacy (NPQLL)':
-                return '/eyll-nonfund/funding-not-available'
+                return '/eyll-nonfund/funding-not-available-npq'
           case 'The Early Headship Coaching Offer':
                 return '/register/aso'
         }
@@ -228,7 +228,7 @@ function asoUserWizardForks (req) {
 function eyllNonfundWizardPaths (req) {
   var paths = [
 
-    '/eyll-nonfund/funding-not-available',
+    '/eyll-nonfund/funding-not-available-npq',
     '/eyll-nonfund/how-pay',
     '/eyll-nonfund/choose-provider',
     '/eyll-nonfund/share-information',
@@ -253,7 +253,7 @@ function eyllNonfundWizardForks (req) {
 function schoolNonfundWizardPaths (req) {
   var paths = [
 
-    '/school-nonfund/funding-not-available',
+    '/school-nonfund/funding-not-available-npq',
     '/school-nonfund/how-pay',
     '/school-nonfund/choose-provider',
     '/school-nonfund/share-information',
