@@ -253,7 +253,7 @@ function eyllNonfundWizardForks (req) {
 function schoolNonfundWizardPaths (req) {
   var paths = [
 
-    '/school-nonfund/funding-not-available-npq',
+    '/school-nonfund/funding-not-available',
     '/school-nonfund/how-pay',
     '/school-nonfund/choose-provider',
     '/school-nonfund/share-information',
