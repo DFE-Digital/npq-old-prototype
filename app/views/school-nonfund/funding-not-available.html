@@ -1,24 +1,28 @@
 {% extends "_wizard-form.html" %}
 {% set title = 'DfE scholarship funding is not available' %}
 
-{% block navigation %}
-<a href="#" class="govuk-back-link">Back</a>
-{% endblock %}
 
 {% block form %}
 
 
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>To be eligible for scholarship funding for the {{ data.register.course }} you must work:</p>
+  <p>To be eligible for scholarship funding for the {{ data.register.course }} you must work in one of these settings in England:
+  </p>
 
   <ul class="govuk-list govuk-list--bullet">
-    <li>In England, Jersey, Guernsey or the Isle of Man</li>
-    <li>In a state-funded school, trust or 16 to 19 educational setting</li>
+    <li>state-funded schools</li>
+    <li>state-funded 16 to 19 organisations</li>
+    <li>independent special schools</li>
+    <li>virtual schools</li>
+    <li>hospital schools</li>
+    <li>young offender institutions</li>
+
+
   </ul>
 
 
-  <p>You can still register for {{ data.register.course }}, but you need to pay for it another way. To find out more about your funding options please contact your course provider. </p>
+  <p>You can still register for {{ data.register.course }}, but you need to pay for it another way. Contact your course provider to discuss your funding options.</p>
 
 
 {% endblock %}

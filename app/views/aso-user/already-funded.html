@@ -1,0 +1,26 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'DfE scholarship funding is not available' %}
+{% set action = '/school-nonfund/funding-not-available' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>Our records show that you have already received scholarship funding for the Early Headship Coaching Offer. If you have withdrawn from this offer (previously known as the Additional Support Offer), then you are not eligible for scholarship funding for the Early Headship Coaching Offer again.</p>
+
+  <p>You can still register for the Early Headship Coaching Offer, but you need to pay for it another way. Contact your course provider to discuss your funding options.</p>
+
+  <details class="govuk-details" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        I have not failed or withdrawn from this offer
+      </span>
+    </summary>
+    <div class="govuk-details__text">
+      If you do not believe you have previously withdrawn from this offer please email <a href="mailto:continuing-professional-development@digital.education.gov.uk">continuing-professional-development@digital.education.gov.uk</a>
+    </div>
+   
+  </details>
+
+
+
+{% endblock %}
