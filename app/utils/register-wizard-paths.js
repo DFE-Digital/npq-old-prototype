@@ -73,18 +73,18 @@ function registerWizardForks (req) {
     {
       currentPath: '/register/choose-npq',
       storedData: ['register', 'course'],
-      values: ['NPQ Leading Literacy (NPQLL)', 'NPQ Early Years Leadership (NPQEYL)', 'NPQ Leading Teaching (NPQLT)', 'NPQ Leading Behaviour and Culture (NPQLBC)', 'NPQ Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)'],
+      values: ['NPQ for Leading Literacy (NPQLL)', 'NPQ for Early Years Leadership (NPQEYL)', 'NPQ for Leading Teaching (NPQLT)', 'NPQ for Leading Behaviour and Culture (NPQLBC)', 'NPQ for Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)'],
       forkPath: (value) => {
         switch (value) {
-          case 'NPQ Leading Literacy (NPQLL)':
+          case 'NPQ for Leading Literacy (NPQLL)':
             return '/register/funding-vague'
-          case 'NPQ Early Years Leadership (NPQEYL)':
+          case 'NPQ for Early Years Leadership (NPQEYL)':
             return '/register/funding-vague'
-          case 'NPQ Leading Teaching (NPQLT)':
+          case 'NPQ for Leading Teaching (NPQLT)':
             return '/register/funding-vague'
-          case 'NPQ Leading Behaviour and Culture (NPQLBC)':
+          case 'NPQ for Leading Behaviour and Culture (NPQLBC)':
             return '/register/funding-vague'
-          case 'NPQ Leading Teacher Development (NPQLTD)':
+          case 'NPQ for Leading Teacher Development (NPQLTD)':
               return '/register/funding-vague'
           case 'NPQ for Senior Leadership (NPQSL)':
               return '/register/funding-vague'

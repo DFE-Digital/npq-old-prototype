@@ -85,14 +85,14 @@ function eyllWizardForks (req) {
     {
       currentPath: '/eyll/choose-npq',
       storedData: ['register', 'course'],
-      values: ['NPQ Leading Teaching (NPQLT)', 'NPQ Leading Behaviour and Culture (NPQLBC)', 'NPQ Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)', 'NPQ Leading Literacy (NPQLL)', 'The Early Headship Coaching Offer'],
+      values: ['NPQ for Leading Teaching (NPQLT)', 'NPQ for Leading Behaviour and Culture (NPQLBC)', 'NPQ for Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)', 'NPQ Leading Literacy (NPQLL)', 'The Early Headship Coaching Offer'],
       forkPath: (value) => {
         switch (value) {
-          case 'NPQ Leading Teaching (NPQLT)':
+          case 'NPQ for Leading Teaching (NPQLT)':
             return '/eyll-nonfund/funding-not-available-npq'
-          case 'NPQ Leading Behaviour and Culture (NPQLBC)':
+          case 'NPQ for Leading Behaviour and Culture (NPQLBC)':
             return '/eyll-nonfund/funding-not-available-npq'
-          case 'NPQ Leading Teacher Development (NPQLTD)':
+          case 'NPQ for Leading Teacher Development (NPQLTD)':
               return '/eyll-nonfund/funding-not-available-npq'
           case 'NPQ for Senior Leadership (NPQSL)':
               return '/eyll-nonfund/funding-not-available-npq'
