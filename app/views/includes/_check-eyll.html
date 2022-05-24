@@ -41,40 +41,7 @@
       ]
     }
   },
-  {
-    key: {
-      text: "Do you work in early years or childcare?"
-    },
-    value: {
-      text: data.register['ey']
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/work-in-ey",
-          text: "Change",
-          visuallyHiddenText: "whether you work in early years or childcare"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "Do you work in a nursery?"
-    },
-    value: {
-      text: data.register['nursery']
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/work-in-ey",
-          text: "Change",
-          visuallyHiddenText: "whether you work in early years or childcare"
-        }
-      ]
-    }
-  },
+  
 
     {
       key: {
@@ -157,6 +124,58 @@
             href: "/register/email",
             text: "Change",
             visuallyHiddenText: "email address"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Do you work in early years or childcare?"
+      },
+      value: {
+        text: data.register['ey']
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/work-in-ey",
+            text: "Change",
+            visuallyHiddenText: "whether you work in early years or childcare"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Do you work in a nursery?"
+      },
+      value: {
+        text: data.register['nursery']
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/nursery",
+            text: "Change",
+            visuallyHiddenText: "whether you work in a nursery"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "What kind of nursery do you work in?"
+      },
+      value: {
+        text: data.register['nursery-type']
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/nursery",
+            text: "Change",
+            visuallyHiddenText: "what kind of nursery you work in"
           }
         ]
       }

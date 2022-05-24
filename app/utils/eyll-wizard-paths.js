@@ -47,7 +47,7 @@ function eyllWizardForks (req) {
     {
       currentPath: '/eyll/nursery-type',
       storedData: ['register', 'nursery-type'],
-      excludedValues: ['private'],
+      excludedValues: ['Private nursery'],
       forkPath: '/eyll-nursery/where-nursery'
     },
 

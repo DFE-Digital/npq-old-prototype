@@ -143,24 +143,6 @@
         ]
       }
     },
-    {
-      key: {
-        text: "Nursery"
-      },
-      value: {
-        text: data.register.nurseryName
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/where-nursery",
-            text: "Change",
-            visuallyHiddenText: "nursery"
-          }
-        ]
-      }
-    },
-    
     
     {
       key: {
@@ -181,6 +163,23 @@
     },
     {
       key: {
+        text: "How is your NPQ being paid for?"
+      },
+      value: {
+        text: data.register['aso-how-pay'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/aso-how-pay",
+            text: "Change",
+            visuallyHiddenText: " how your NPQ is being paid for"
+          }
+        ]
+      }
+    },
+    {
+      key: {
         text: "Lead provider"
       },
       value: {
@@ -192,6 +191,40 @@
             href: "/eyll/choose-provider-ey-ll",
             text: "Change",
             visuallyHiddenText: " lead provider"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Employer"
+      },
+      value: {
+        text: data.register.employer
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding-vague",
+            text: "Change",
+            visuallyHiddenText: " employer"
+          }
+        ]
+      }
+    } if not isInSchoolSetting,
+    {
+      key: {
+        text: "Role"
+      },
+      value: {
+        text: data.register.role
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding-vague",
+            text: "Change",
+            visuallyHiddenText: " role"
           }
         ]
       }
