@@ -4,6 +4,8 @@
   </span>
 {% endset %}
 
+
+
 {{ govukSummaryList({
   rows: [
 
@@ -41,93 +43,93 @@
       ]
     }
   },
-  
 
-    {
-      key: {
-        text: "Full name"
-      },
-      value: {
-        text: data.register.name
-      },
-      actions: {
-        items: [
-          {
-            href: "/eyll/personal-details",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
+  {
+    key: {
+      text: "Full name"
     },
-    {
-      key: {
-        text: "Teacher reference number (TRN)"
-      },
-      value: {
-        html: trn
-      },
-      actions: {
-        items: [
-          {
-            href: "/eyll/personal-details",
-            text: "Change",
-            visuallyHiddenText: "TRN"
-          }
-        ]
-      }
+    value: {
+      text: data.register.name
     },
-    {
-      key: {
-        text: "Date of birth"
-      },
-      value: {
-        text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
-      },
-      actions: {
-        items: [
-          {
-            href: "/eyll/personal-details",
-            text: "Change",
-            visuallyHiddenText: "date of birth"
-          }
-        ]
-      }
+    actions: {
+      items: [
+        {
+          href: "/eyll/personal-details",
+          text: "Change",
+          visuallyHiddenText: "name"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "TRN"
     },
-    {
-      key: {
-        text: "National Insurance number"
-      },
-      value: {
-        text: data.register.nino
-      },
-      actions: {
-        items: [
-          {
-            href: "/eyll/personal-details",
-            text: "Change",
-            visuallyHiddenText: "national insurance number"
-          }
-        ]
-      }
+    value: {
+      html: trn
     },
-    {
-      key: {
-        text: "Email address"
-      },
-      value: {
-        text: data.register.email
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/email",
-            text: "Change",
-            visuallyHiddenText: "email address"
-          }
-        ]
-      }
+    actions: {
+      items: [
+        {
+          href: "/eyll/personal-details",
+          text: "Change",
+          visuallyHiddenText: "TRN"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Date of birth"
     },
+    value: {
+      text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
+    },
+    actions: {
+      items: [
+        {
+          href: "/eyll/personal-details",
+          text: "Change",
+          visuallyHiddenText: "date of birth"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "National Insurance number"
+    },
+    value: {
+      text: data.register.nino
+    },
+    actions: {
+      items: [
+        {
+          href: "/eyll/personal-details",
+          text: "Change",
+          visuallyHiddenText: "national insurance number"
+        }
+      ]
+    }
+  },
+  {
+    key: {
+      text: "Email address"
+    },
+    value: {
+      text: data.register.email
+    },
+    actions: {
+      items: [
+        {
+          href: "/register/email",
+          text: "Change",
+          visuallyHiddenText: "email address"
+        }
+      ]
+    }
+  },
+  
 
     {
       key: {
@@ -165,7 +167,7 @@
     },
     {
       key: {
-        text: "What kind of nursery do you work in?"
+        text: "Type of nursery"
       },
       value: {
         text: data.register['nursery-type']

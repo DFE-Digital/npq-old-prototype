@@ -26,7 +26,7 @@
   },
   {
     key: {
-      text: "Do you work in a school, academy trust or 16 to 19 organisation?"
+      text: "Do you work in a school, academy trust or 16 to 19 educational setting?"
     },
     value: {
       text: data.register['work-in-school']
@@ -37,40 +37,6 @@
           href: "/register/work-in-school",
           text: "Change",
           visuallyHiddenText: "whether you work in a school"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "Do you work in early years or childcare?"
-    },
-    value: {
-      text: data.register['ey']
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/work-in-ey",
-          text: "Change",
-          visuallyHiddenText: "whether you work in early years or childcare"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "Do you work in a nursery?"
-    },
-    value: {
-      text: data.register['nursery']
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/work-in-ey",
-          text: "Change",
-          visuallyHiddenText: "whether you work in early years or childcare"
         }
       ]
     }
@@ -95,7 +61,7 @@
     },
     {
       key: {
-        text: "Teacher reference number (TRN)"
+        text: "TRN"
       },
       value: {
         html: trn
@@ -163,6 +129,57 @@
     },
     {
       key: {
+        text: "Do you work in early years or childcare?"
+      },
+      value: {
+        text: data.register['ey']
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/work-in-ey",
+            text: "Change",
+            visuallyHiddenText: "whether you work in early years or childcare"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Do you work in a nursery?"
+      },
+      value: {
+        text: data.register['nursery']
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/work-in-ey",
+            text: "Change",
+            visuallyHiddenText: "whether you work in early years or childcare"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Type of nursery"
+      },
+      value: {
+        text: data.register.nurseryType
+      },
+      actions: {
+        items: [
+          {
+            href: "/nursery/nursery-type",
+            text: "Change",
+            visuallyHiddenText: "nursery"
+          }
+        ]
+      }
+    },
+    {
+      key: {
         text: "Nursery"
       },
       value: {
@@ -171,13 +188,14 @@
       actions: {
         items: [
           {
-            href: "/register/where-nursery",
+            href: "/eyll-nursery/where-nursery",
             text: "Change",
             visuallyHiddenText: "nursery"
           }
         ]
       }
     },
+
     
     
     {
