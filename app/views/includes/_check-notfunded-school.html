@@ -56,7 +56,7 @@
           }
         ]
       }
-    },
+    }, 
     {
       key: {
         text: "TRN"
@@ -137,7 +137,7 @@
           {
             href: "/register/where-school",
             text: "Change",
-            visuallyHiddenText: " workplace"
+            visuallyHiddenText: "workplace"
           }
         ]
       }
@@ -154,62 +154,32 @@
           {
             href: "/register/choose-npq",
             text: "Change",
-            visuallyHiddenText: "course"
+            visuallyHiddenText: " course"
           }
+          
         ]
       }
     },
+
     {
       key: {
-        text: "Have you completed an NPQH?"
+        text: "How is your NPQ being paid for?"
       },
       value: {
-        text: data.register['aso-completed-npqh']
+        text: data.register['aso-how-pay'] | capitaliseFirstLetter
       },
       actions: {
         items: [
           {
-            href: "/register/aso-completed-npqh",
+            href: "/school-nonfund/how-pay",
             text: "Change",
-            visuallyHiddenText: "if you have completed an NPQH"
+            visuallyHiddenText: "how your NPQ is being paid for"
           }
         ]
       }
     },
-    {
-      key: {
-        text: "Are you a headteacher?"
-      },
-      value: {
-        text: data.register['aso-headteacher'] | capitaliseFirstLetter
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/aso-headteacher",
-            text: "Change",
-            visuallyHiddenText: "if you are a headteacher"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Are you in your first 5 years of a headship?"
-      },
-      value: {
-        text: data.register['aso-early-headship'] | capitaliseFirstLetter
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/aso-early-headship",
-            text: "Change",
-            visuallyHiddenText: "if you are in your first 5 years of a headship"
-          }
-        ]
-      }
-    },
+    
+
     {
       key: {
         text: "Lead provider"
@@ -222,10 +192,14 @@
           {
             href: "/register/choose-provider",
             text: "Change",
-            visuallyHiddenText: "lead provider"
+            visuallyHiddenText: " lead provider"
           }
         ]
       }
-    } 
+    }
+    
+    
+    
+    
   ]
 }) }}
