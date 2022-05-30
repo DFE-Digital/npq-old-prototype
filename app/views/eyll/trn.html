@@ -1,35 +1,38 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'You need a teacher reference number to register for an NPQ'%}
+{% set title = 'Do you have a teacher reference number (TRN)?'%}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
 
 <p>You’ll need a teacher reference number (TRN) to register for an NPQ, even if you are not a teacher. We use your TRN to check you’re eligible to study for an NPQ.</p>
-      
-<p>You may already have a TRN if you’ve previously registered for an NPQ. </p>
+  
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      I need help with this
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    You can <a href="https://find-a-lost-trn.education.gov.uk/start" rel="noreferrer noopener" target="_blank" >find a lost TRN (opens in a new tab)</a> if you do not know your TRN or to check if you have one. 
 
+  </div>
+  <div class="govuk-details__text">
+    You may not have a TRN if you are working in further education or qualified outside England or overseas.
+  </div>
 
-<br>
+</details>
 
     {{ govukRadios({
-      fieldset: {
-        legend: {
-          text: 'Do you know your teacher reference number (TRN)?',
-          classes: "govuk-fieldset__legend--m"
-        }
-      },
+     
       items: [
         {
           text: "Yes",
           value: "yes"
         },
+        
         {
-          text: "I need a reminder",
-          value: "dont-know"
-        },
-        {
-          text: "I do not have a TRN",
+          text: "No",
           value: "no-trn"
         }
       ]

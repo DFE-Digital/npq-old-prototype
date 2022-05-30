@@ -1,74 +1,42 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'You need your teacher reference number to register for an NPQ' if isInSchoolAndIsInEngland else 'You’ll need a teacher reference number to register for an NPQ' %}
+{% set title = 'Do you have your teacher reference number (TRN)?'%}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  {% if isInSchoolAndIsInEngland %}
-    <p>Your teacher reference number (TRN) is used to check you’re eligible to study for an NPQ.</p>
 
-    <p>If you don’t know what your TRN is, this can usually be found on your payslip, teachers’ pension documentation or teacher training records.</p>
+<p>Your teacher reference number (TRN) is used to check you’re eligible to study for an NPQ.</p>
+  
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      I need help with this
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    You can <a href="https://find-a-lost-trn.education.gov.uk/start" rel="noreferrer noopener" target="_blank" >find a lost TRN (opens in a new tab)</a> if you do not know your TRN or to check if you have one. 
 
-    <p>The TRN has previously been known as a QTS, GTC, DfE, DfES or DCSF number.</p>
+  </div>
+  <div class="govuk-details__text">
+    You may not have a TRN if you are working in further education or qualified outside England or overseas.
+  </div>
 
-    <p>You may not have a TRN if you are working in further education or qualified outside England or overseas.</p>
+</details>
+
 
     {{ govukRadios({
-      fieldset: {
-        legend: {
-          text: 'Do you know your teacher reference number (TRN)?',
-          classes: "govuk-fieldset__legend--m"
-        }
-      },
+     
       items: [
         {
           text: "Yes",
           value: "yes"
         },
+        
         {
-          text: "I need a reminder",
-          value: "dont-know"
-        },
-        {
-          text: "I do not have a TRN",
+          text: "No",
           value: "no-trn"
         }
       ]
     } | decorateFormAttributes(['register', 'know-trn']) ) }}
-  {% else %}
-    <p>Everyone needs a teacher reference number (TRN) to register for an NPQ. You do not need to be a teacher to get a TRN.</p>
-    <p>You may not have a TRN if you:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>qualified outside England or overseas</li>
-      <li>are not a qualified teacher</li>
-      <li>are working in further education</li>
-    </ul>
 
-    <p>The TRN has previously been known as a QTS, GTC, DfE, DfES or DCSF number.</p>
-
-    <p>If you think you have a TRN, it can usually be found on a teacher’s payslip, pension documentation or teacher training records.</p>
-
-    {{ govukRadios({
-      fieldset: {
-        legend: {
-          text: 'Do you have a teacher reference number (TRN)?',
-          classes: "govuk-fieldset__legend--m"
-        }
-      },
-      items: [
-        {
-          text: "Yes",
-          value: "yes"
-        },
-        {
-          text: "I need a reminder",
-          value: "dont-know"
-        },
-        {
-          text: "I do not have a TRN",
-          value: "no-trn"
-        }
-      ]
-    } | decorateFormAttributes(['register', 'know-trn']) ) }}
-  {% endif %}
 {% endblock %}
