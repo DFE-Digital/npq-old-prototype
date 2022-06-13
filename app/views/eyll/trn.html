@@ -1,29 +1,30 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Do you have a teacher reference number (TRN)?'%}
+{% set title = 'You need a teacher reference number to register for an NPQ'%}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
 
-<p>You’ll need a teacher reference number (TRN) to register for an NPQ, even if you are not a teacher. We use your TRN to check you’re eligible to study for an NPQ.</p>
+  <p>You’ll need a teacher reference number (TRN) to register for an NPQ, even if you are not a teacher. We use your TRN to check you’re eligible to study for an NPQ.</p>
   
-<details class="govuk-details" data-module="govuk-details">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      I need help with this
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-    You can <a href="https://find-a-lost-trn.education.gov.uk/start" rel="noreferrer noopener" target="_blank" >find a lost TRN (opens in a new tab)</a> if you do not know your TRN or to check if you have one. 
+  <p>You may not have a TRN if you are working in early years, further education or qualified as a teacher outside England.</p>
+  
+  
+  <p>You can use the <a href="https://find-a-lost-trn.education.gov.uk/start" rel="noreferrer noopener" target="_blank" >find a lost TRN service (opens in a new tab)</a> if you do not know your TRN, or want to check if you have one.</p>
+    
 
-  </div>
-  <div class="govuk-details__text">
-    You may not have a TRN if you are working in further education or qualified outside England or overseas.
-  </div>
-
-</details>
 
     {{ govukRadios({
+
+      idPrefix: "do-you-have-trn",
+          name: "do-you-have-trn",
+          fieldset: {
+            legend: {
+              text: "Do you have a TRN?",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
      
       items: [
         {
@@ -32,7 +33,7 @@
         },
         
         {
-          text: "No",
+          text: "No, I need help getting one",
           value: "no-trn"
         }
       ]
