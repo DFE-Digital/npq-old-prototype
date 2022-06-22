@@ -1,0 +1,28 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'How is your course being paid for?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+      }
+    },
+    items: [
+      {
+        text: "My workplace is covering the cost"
+      }, 
+      {
+        text: "I am paying"
+      },
+      {
+        text: "My NPQ is being paid for in another way",
+        hint: {
+          text: "For example, I am sharing the costs with my workplace"
+        }
+      }
+    ]
+  } | decorateFormAttributes(['register', 'aso-how-pay']) ) }}
+{% endblock %}

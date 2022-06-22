@@ -1,0 +1,35 @@
+{% extends "_wizard-form.html" %}
+{% set legend = 'How is your ' + (data.register.npq or 'course') + ' being paid for?' %}
+{% set showNotEligibleForScholarship = isInSchoolAndIsInEngland %}
+{% set title = 'Funding' if showNotEligibleForScholarship else legend %}
+
+{% block form %}
+  {% if showNotEligibleForScholarship %}
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+    <p>Your school or college is not eligible for NPQ government scholarship funding.</p>
+  {% endif %}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: legend,
+        isPageTitle: not showNotEligibleForScholarship,
+        classes: "govuk-fieldset__legend--s" if showNotEligibleForScholarship else "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+      }
+    },
+    items: [
+      {
+        text: "My workplace is covering the cost"
+      },
+      {
+        text: "I am paying"
+      },
+      {
+        text: "My NPQ is being paid in another way",
+        hint: {
+          text: "For example, I am sharing the costs with my workplace"
+        }
+      }
+    ]
+  } | decorateFormAttributes(['register', 'funding']) ) }}
+{% endblock %}

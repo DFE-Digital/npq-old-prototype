@@ -1,0 +1,23 @@
+@@ -0,0 +1,22 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Do you work in a nursery?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+      }
+    },
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'nursery']) ) }}
+{% endblock %}

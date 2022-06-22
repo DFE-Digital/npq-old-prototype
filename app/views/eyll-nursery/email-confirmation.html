@@ -1,0 +1,29 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Confirm your code' %}
+
+{% block form %}
+  {% set html %}
+    <h3 class="govuk-notification-banner__heading">
+      We’ve emailed a confirmation code to {{ data['register']['email'] }}
+    </h3>
+  {% endset %}
+  {{ govukNotificationBanner({
+    html: html,
+    type: 'success'
+  }) }}
+
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {{ govukInput({
+    label: {
+      text: "Enter your code",
+      classes: "govuk-label--s"
+    },
+    classes: 'govuk-!-width-one-quarter'
+  } | decorateFormAttributes(['register', 'email-code']) ) }}
+
+  <p>
+    <a href="/eyll-nursery/not-received-code">I have not recieved an email</a>
+  </p>
+
+{% endblock %}

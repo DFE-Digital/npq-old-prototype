@@ -1,0 +1,16 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Search for your or your workplace's Ofsted registration " %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {{ govukInput({
+    label: {
+      text: "Enter your or your workplace's URN ",
+      classes: "govuk-label--s"
+    },
+    hint: {
+      text: "For example EY456798"
+    }
+  } | decorateFormAttributes(['register', 'urn']) ) }}
+{% endblock %}

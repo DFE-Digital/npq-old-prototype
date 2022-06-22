@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Are you in your first 2 years of a headship?' %}
+{% set title = 'Are you in your first 5 years of headship?' %}
 
 {% block form %}
   {{ govukRadios({
@@ -12,11 +12,10 @@
     },
     items: [
       {
-        text: "Yes, I am in my first 2 years of a headship"
+        text: "Yes"
       },
       {
-        text: "No",
-        value: "no"
+        text: "No"
       }
     ]
   } | decorateFormAttributes(['register', 'aso-early-headship']) ) }}

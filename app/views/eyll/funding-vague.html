@@ -1,0 +1,16 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'If your provider accepts your application, you’ll qualify for DfE funding.' %}
+
+
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+
+  <p>From the information you have provided, DfE scholarship funding should be available for the <strong>{{ data.register.course }}.</strong></p>
+
+  <p>You’ll only be eligible for DfE funding for this NPQ once. If you start this NPQ, and then withdraw or fail, you will not be funded again for the same course.</p>
+
+  <a href="/eyll-nonfund/funding-not-available.html" class="govuk-link govuk-link--no-visited-state">For prototype reference: If user doesn't work for a funded EY setting</a></p> 
+
+
+{% endblock %}

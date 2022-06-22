@@ -1,33 +1,22 @@
+{% set trn %}
+  <span class="app-!-font-family-tabular">
+    {{ data.register.trn }}
+  </span>
+{% endset %}
+
 {{ govukSummaryList({
   rows: [
-  {
-    key: {
-      text: "Lead provider"
-    },
-    value: {
-      text: data['accounts']['asoprovider']
-    },
-    actions: {
-      items: [
-        {
-          href: "#",
-          text: "Change",
-          visuallyHiddenText: "lead provider"
-        }
-      ]
-    }
-  },
     {
       key: {
         text: "Where do you work?"
       },
       value: {
-        text: "England"
+        text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
       },
       actions: {
         items: [
           {
-            href: "/accounts-signed-in/where-do-you-work",
+            href: "/register/where-do-you-work",
             text: "Change",
             visuallyHiddenText: "where you work"
           }
@@ -36,15 +25,15 @@
     },
     {
       key: {
-        text: "Do you work in a school,college or academy trust?"
+        text: "Do you work in a school, academy trust or 16 to 19 educational setting?"
       },
       value: {
-        text: data['register']['work-in-school']
+        text: data.register['work-in-school']
       },
       actions: {
         items: [
           {
-            href: "/accounts-signed-in/work-in-school",
+            href: "/register/work-in-school",
             text: "Change",
             visuallyHiddenText: "whether you work in a school"
           }
@@ -53,17 +42,119 @@
     },
     {
       key: {
-        text: "School, college or trust"
+        text: "Full name"
       },
       value: {
-        text: data['register']['school']
+        text: data.register.name
       },
       actions: {
         items: [
           {
-            href: "/accounts-signed-in/which-school",
+            href: "/register/personal-details",
             text: "Change",
-            visuallyHiddenText: "school, college or trust"
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "TRN"
+      },
+      value: {
+        html: trn
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details",
+            text: "Change",
+            visuallyHiddenText: "TRN"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "National Insurance number"
+      },
+      value: {
+        text: data.register.nino
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details",
+            text: "Change",
+            visuallyHiddenText: "national insurance number"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Email address"
+      },
+      value: {
+        text: data.register.email
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/email",
+            text: "Change",
+            visuallyHiddenText: "email address"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Workplace"
+      },
+      value: {
+        text: data.register.school
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/where-school",
+            text: "Change",
+            visuallyHiddenText: " workplace"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Course"
+      },
+      value: {
+        text: data.register.course
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-npq",
+            text: "Change",
+            visuallyHiddenText: "course"
           }
         ]
       }
@@ -73,14 +164,14 @@
         text: "Have you completed an NPQH?"
       },
       value: {
-        text: data.accounts['aso-completed-npqh']
+        text: data.register['aso-completed-npqh']
       },
       actions: {
         items: [
           {
             href: "/register/aso-completed-npqh",
             text: "Change",
-            visuallyHiddenText: " if you have completed an NPQH"
+            visuallyHiddenText: "if you have completed an NPQH"
           }
         ]
       }
@@ -90,35 +181,51 @@
         text: "Are you a headteacher?"
       },
       value: {
-        text: data.accounts['aso-headteacher'] | capitaliseFirstLetter
+        text: data.register['aso-headteacher'] | capitaliseFirstLetter
       },
       actions: {
         items: [
           {
-            href: "/register/aso",
+            href: "/register/aso-headteacher",
             text: "Change",
-            visuallyHiddenText: " if you are a headteacher"
+            visuallyHiddenText: "if you are a headteacher"
           }
         ]
       }
     },
     {
       key: {
-        text: "Are you in your first 2 years of a headship?"
+        text: "Are you in your first 5 years of a headship?"
       },
       value: {
-        text: data.accounts['aso-early-headship'] | capitaliseFirstLetter
+        text: data.register['aso-early-headship'] | capitaliseFirstLetter
       },
       actions: {
         items: [
           {
-            href: "/accounts-aso/aso-early-headship",
+            href: "/register/aso-early-headship",
             text: "Change",
-            visuallyHiddenText: " if you are in your first 2 years of a headship"
+            visuallyHiddenText: "if you are in your first 5 years of a headship"
           }
         ]
       }
-    }
-
+    },
+    {
+      key: {
+        text: "Lead provider"
+      },
+      value: {
+        text: data.register.provider
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-provider",
+            text: "Change",
+            visuallyHiddenText: "lead provider"
+          }
+        ]
+      }
+    } 
   ]
 }) }}

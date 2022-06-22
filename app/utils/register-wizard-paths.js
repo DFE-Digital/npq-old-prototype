@@ -8,12 +8,12 @@ function registerWizardPaths (req) {
 
   const paths = [
     '/start',
-    '/register/email',
-    '/register/email-confirmation',
     '/register/chosen',
     '/register/where-do-you-work',
     '/register/work-in-school',
     '/register/trn',
+    '/register/email',
+    '/register/email-confirmation',
     '/register/personal-details',
     ...typesOfUser.isInSchoolAndIsInEngland ? [
       '/register/where-school',
@@ -25,16 +25,11 @@ function registerWizardPaths (req) {
     '/register/aso-headteacher',
     '/register/aso-early-headship',
     '/register/aso-funding',
+    '/register/funding-vague',
     '/register/choose-provider',
-    ...typesOfUser.isInSchoolSetting ? [] : ['/register/about-where-you-work'],
-    ...typesOfUser.isInSchoolAndIsInEngland ? ['/register/funding-vague'] : ['/register/funding'],
     '/register/share-information',
     '/register/check',
-    '/register/confirmation',
-
-    '/register/aso',
-    '/register/aso-funding-not-available',
-    '/register/aso-how-pay'
+    '/register/confirmation'
   ]
 
   return nextAndBackPaths(paths, req)
@@ -45,9 +40,17 @@ function registerWizardForks (req) {
     {
       currentPath: '/register/chosen',
       storedData: ['register', 'chosen'],
-      values: ['no'],
+      values: ['No'],
       forkPath: '/register/choosing-an-npq'
     },
+
+    {
+      currentPath: '/register/work-in-school',
+      storedData: ['register', 'work-in-school'],
+      values: ['No'],
+      forkPath: '/eyll/trn'
+    },
+
     {
       currentPath: '/register/trn',
       storedData: ['register', 'know-trn'],
@@ -61,7 +64,80 @@ function registerWizardForks (req) {
         }
       }
     },
-    ...ASOForks('/register')
+
+     {
+      currentPath: '/register/not-received-code',
+      skipTo: '/register/email'
+    },
+
+    {
+      currentPath: '/register/choose-npq',
+      storedData: ['register', 'course'],
+      values: ['NPQ for Leading Literacy (NPQLL)', 'NPQ for Early Years Leadership (NPQEYL)', 'NPQ for Leading Teaching (NPQLT)', 'NPQ for Leading Behaviour and Culture (NPQLBC)', 'NPQ for Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)'],
+      forkPath: (value) => {
+        switch (value) {
+          case 'NPQ for Leading Literacy (NPQLL)':
+            return '/register/funding-vague'
+          case 'NPQ for Early Years Leadership (NPQEYL)':
+            return '/register/funding-vague'
+          case 'NPQ for Leading Teaching (NPQLT)':
+            return '/register/funding-vague'
+          case 'NPQ for Leading Behaviour and Culture (NPQLBC)':
+            return '/register/funding-vague'
+          case 'NPQ for Leading Teacher Development (NPQLTD)':
+              return '/register/funding-vague'
+          case 'NPQ for Senior Leadership (NPQSL)':
+              return '/register/funding-vague'
+          case 'NPQ for Headship (NPQH)':
+              return '/register/funding-vague'
+          case 'NPQ for Executive Leadership (NPQEL)':
+              return '/register/funding-vague'
+        }
+      }
+    },
+
+    {
+      currentPath: '/register/aso-completed-npqh',
+      storedData: ['register', 'aso-completed-npqh'],
+      values: ['no'],
+      forkPath: '/register/aso-cannot-register'
+    },
+
+    {
+      currentPath: '/register/aso-completed-npqh',
+      storedData: ['register', 'aso-completed-npqh'],
+      values: ['no'],
+      forkPath: '/register/aso-cannot-register'
+    },
+
+    {
+      currentPath: '/register/aso-headteacher',
+      storedData: ['register', 'aso-headteacher'],
+      values: ['No'],
+      forkPath: '/aso-user/aso-funding-not-available'
+    },
+    
+    {
+      currentPath: '/register/aso-early-headship',
+      storedData: ['register', 'aso-early-headship'],
+      values: ['No', 'Yes'],
+      forkPath: (value) => {
+        switch (value) {
+          case 'No':
+            return '/aso-user/aso-funding-not-available'
+          case 'Yes':
+            return '/aso-user/aso-funding'
+        }
+      }
+    },
+
+    {
+      currentPath: '/register/aso-funding',
+      skipTo: '/register/choose-provider'
+    },
+
+
+   
   ]
   return nextForkPath(forks, req)
 }
