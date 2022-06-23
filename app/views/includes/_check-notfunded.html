@@ -146,6 +146,59 @@
     
     {
       key: {
+        text: "Employment type"
+      },
+      value: {
+        text: data.register['employment']
+      },
+      actions: {
+        items: [
+          {
+            href: "/non-funded/employment",
+            text: "Change",
+            visuallyHiddenText: "how you are employed"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Employer"
+      },
+      value: {
+        text: data.register.employer
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding-vague",
+            text: "Change",
+            visuallyHiddenText: " employer"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Role"
+      },
+      value: {
+        text: data.register.role
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding-vague",
+            text: "Change",
+            visuallyHiddenText: " role"
+          }
+        ]
+      }
+    },
+    
+    {
+      key: {
         text: "Course"
       },
       value: {
@@ -157,23 +210,6 @@
             href: "/eyll/choose-npq",
             text: "Change",
             visuallyHiddenText: " course"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "How is your NPQ being paid for?"
-      },
-      value: {
-        text: data.register['aso-how-pay'] | capitaliseFirstLetter
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/aso-how-pay",
-            text: "Change",
-            visuallyHiddenText: " how your NPQ is being paid for"
           }
         ]
       }
@@ -194,41 +230,8 @@
           }
         ]
       }
-    },
-    {
-      key: {
-        text: "Employer"
-      },
-      value: {
-        text: data.register.employer
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/funding-vague",
-            text: "Change",
-            visuallyHiddenText: " employer"
-          }
-        ]
-      }
-    } if not isInSchoolSetting,
-    {
-      key: {
-        text: "Role"
-      },
-      value: {
-        text: data.register.role
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/funding-vague",
-            text: "Change",
-            visuallyHiddenText: " role"
-          }
-        ]
-      }
     }
+    
 
   ]
 }) }}

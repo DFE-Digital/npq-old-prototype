@@ -1,0 +1,33 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'How are you employed?' %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: title,
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
+      }
+    },
+    items: [
+    {
+      text: "In a virtual school (local authority run organisations that support the education of children in care)",
+      value: "Virtual school"
+    },
+      {
+        text: "In a hospital school",
+        value: "Hospital school"
+      },
+      {
+        text: "In a young offender institution",
+        value: "Young offender institution"
+      },
+      {
+        text: "Other",
+        value: "Other"
+      }
+
+    ]
+  } | decorateFormAttributes(['register', 'employment']) ) }}
+{% endblock %}

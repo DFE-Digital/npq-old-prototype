@@ -1,0 +1,23 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Tell us about where you work' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+
+  {{ govukInput({
+    label: {
+      text: "Name of employer",
+      classes: "govuk-label--m"
+    }
+  } | decorateFormAttributes(['register', 'employer']) ) }}
+
+  {{ govukInput({
+    label: {
+      text: "Role",
+      classes: "govuk-label--m"
+    },
+    hint: {
+      text: 'For example: Administrator, business manager'
+    }
+  } | decorateFormAttributes(['register', 'role']) ) }}
+{% endblock %}

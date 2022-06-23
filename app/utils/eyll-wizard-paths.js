@@ -34,7 +34,7 @@ function eyllWizardForks (req) {
       currentPath: '/eyll/work-in-ey',
       storedData: ['register', 'ey'],
       values: ['No'],
-      forkPath: '/non-funded/choose-npq'
+      forkPath: '/non-funded/employment'
     },
 
     {
@@ -170,9 +170,10 @@ function eyllNurseryWizardForks (req) {
 
 function nonFundedWizardPaths (req) {
   var paths = [
+    '/non-funded/employment',
+    '/non-funded/about-where-you-work',
+    '/non-funded/about-where-you-work-other',
     '/non-funded/choose-npq', 
-    '/non-funded/about-where-you-work', 
-    '/non-funded/how-pay',
     '/non-funded/choose-provider',
     '/non-funded/share-information',
     '/non-funded/check',
@@ -188,11 +189,38 @@ function nonFundedWizardForks (req) {
   var forks = [
 
     {
+      currentPath: '/non-funded/employment',
+      storedData: ['register', 'employment'],
+      values: ['Virtual school', 'Hospital school', 'Young offender institution',  'Other'],
+      forkPath: (value) => {
+        switch (value) {
+          case 'Virtual school':
+            return '/non-funded/about-where-you-work'
+          case 'Hospital school':
+              return '/non-funded/about-where-you-work'
+          case 'Young offender institution':
+              return '/non-funded/about-where-you-work'
+          case 'Other':
+            return '/non-funded/about-where-you-work-other'
+        }
+      }
+    },
+
+    {
+      currentPath: '/non-funded/about-where-you-work',
+      skipTo: '/register/choose-npq'
+    },
+
+    
+
+    {
       currentPath: '/non-funded/choose-npq',
       storedData: ['register', 'course'],
       values: ['The Early Headship Coaching Offer'],
       forkPath: '/register/aso'
     },
+
+
 
   ]
   return nextForkPath(forks, req)
