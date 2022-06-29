@@ -10,7 +10,7 @@ function registerWizardPaths (req) {
     '/start',
     '/register/chosen',
     '/register/where-do-you-work',
-    '/register/work-in-school',
+    '/register/work-in-school-two',
     '/register/trn',
     '/register/email',
     '/register/email-confirmation',
@@ -43,6 +43,14 @@ function registerWizardForks (req) {
       values: ['No'],
       forkPath: '/register/choosing-an-npq'
     },
+
+    {
+      currentPath: '/register/work-in-school-two',
+      storedData: ['register', 'work-in-school-two'],
+      values: ['Other'],
+      forkPath: '/eyll/trn'
+    },
+
 
     {
       currentPath: '/register/work-in-school',
