@@ -1,0 +1,11 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'What is the name of your employer?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
+
+  {{ govukInput({
+ 
+  } | decorateFormAttributes(['register', 'employer']) ) }}
+
+{% endblock %}

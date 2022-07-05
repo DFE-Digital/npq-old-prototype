@@ -1,0 +1,97 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Enter your details' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>We need to check your details on the Teaching Regulation Agency records.</p>
+
+  {{ govukInput({
+    label: {
+      text: "Teacher reference number (TRN)",
+      classes: "govuk-label--s"
+    },
+    classes: 'govuk-!-width-one-third',
+    hint: {
+      text: 'Your TRN is between 6 and 7 characters long. It may begin with ‘RP’'
+    }
+  } | decorateFormAttributes(['register', 'trn']) ) }}
+
+  {{ govukInput({
+    label: {
+      text: "Full name",
+      classes: "govuk-label--s"
+    },
+    formGroup: {
+      classes: "govuk-!-margin-bottom-4"
+    },
+    classes: 'govuk-!-width-three-quarters',
+    hint: {
+      text: 'Your full name exactly as it appears on the Teaching Regulation Agency records'
+    }
+  } | decorateFormAttributes(['register', 'name']) ) }}
+
+  {% set nameHelp %}
+    <p>If your name has changed and you have not updated your Teaching Regulation Agency record, you can:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>use your previous name to register with the service</li>
+      <li>use your previous name to register, and then change it on the Teaching Regulation Agency records at a later date</li>
+      <li><a href="/register/change-name-on-tra">change your name on the Teaching Regulation Agency records</a> first and then return to register for an NPQ</li>
+    </ul>
+
+    <p>It will take a minimum of 5 days to update your Teaching Regulation Agency records.</p>
+
+    <p>If you are unsure whether you have updated your name, you can <a href="#">request a reminder</a>.</p>
+  {% endset %}
+
+  {{ govukDetails({
+    summaryText: "Help if you have changed your name",
+    html: nameHelp
+  }) }}
+
+  {{ govukDateInput({
+      id: 'dob',
+      fieldset: {
+        legend: {
+          text: "Date of birth",
+          classes: "govuk-label--s"
+        }
+      },
+      items: [
+        {
+          name: '[register][dob-day]',
+          value: data['register']['dob-day'],
+          classes: "govuk-input--width-2",
+          label: 'Day'
+        },
+        {
+          name: '[register][dob-month]',
+          value: data['register']['dob-month'],
+          classes: "govuk-input--width-2",
+          label: 'Month'
+        },
+        {
+          name: '[register][dob-year]',
+          value: data['register']['dob-year'],
+          classes: "govuk-input--width-4",
+          label: 'Year'
+        }
+      ],
+      hint: {
+        text: "For example, 12 11 1990"
+      }
+    }) }}
+
+      {{ govukInput({
+        label: {
+          text: "National Insurance number",
+          classes: "govuk-label--s"
+        },
+        classes: 'govuk-!-width-three-quarters',
+        hint: {
+          text: 'This will help us match your details. It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.'
+        }
+      } | decorateFormAttributes(['register', 'nino']) ) }}
+
+{% endblock %}

@@ -47,8 +47,22 @@ function registerWizardForks (req) {
     {
       currentPath: '/register/work-in-school-two',
       storedData: ['register', 'work-in-school-two'],
+      values: ['Other', 'Early years or childcare'],
+      forkPath: (value) => {
+        switch (value) {
+          case 'Other':
+            return '/non-funded/trn'
+          case 'Early years or childcare':
+            return  '/eyll/trn'
+        }
+      }
+    },
+
+    {
+      currentPath: '/register/work-in-school-two',
+      storedData: ['register', 'work-in-school-two'],
       values: ['Other'],
-      forkPath: '/eyll/trn'
+      forkPath: '/non-funded/trn'
     },
 
 
