@@ -1,15 +1,13 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Choose your workplace' %}
+{% set title = "What's the name of your workplace?" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>Choose from schools, trusts or 16 to 19 educational settings located in {{ data['register']['school-location'] }}</p>
+  <div id="event-name-hint" class="govuk-hint">Search for schools or 16 to 19 educational settings located in  {{ data['register']['school-location'] }}. If you work for a trust, enter one of their schools.</div>
+
 
   {{ govukInput({
-    label: {
-      text: "Enter the name of your workplace",
-      classes: "govuk-label--s"
-    }
+
   } | decorateFormAttributes(['register', 'school']) ) }}
 {% endblock %}

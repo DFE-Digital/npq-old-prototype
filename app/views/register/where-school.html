@@ -1,22 +1,13 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Where is your workplace?' %}
+{% set title = 'Where is your workplace located?' %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>We need this information to check if you can access Department for Education funding.</p>
-
-  <div class="govuk-inset-text">
-    You can only select schools, trusts and 16 to 19 educational settings in England, Guernsey, Jersey or the Isle of Man. If your workplace is outside these locations, check with your training provider.
-  </div>
-
   {{ govukInput({
-    label: {
-      text: "Workplace location",
-      classes: "govuk-label--s"
-    },
+  
     hint: {
-      text: "Enter town, city or postcode"
+      text: "Enter the town, city or the first part of the postcode. For example Chester or CH1."
     }
   } | decorateFormAttributes(['register', 'school-location']) ) }}
 {% endblock %}
