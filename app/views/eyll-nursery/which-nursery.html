@@ -1,15 +1,11 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'Choose your nursery' %}
+{% set title = "What's the name of your nursery?" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <p>Choose from nurseries located in {{ data['register']['nursery-location'] }}</p>
+  <div id="event-name-hint" class="govuk-hint">Search for nurseries located in  {{ data['register']['school-location'] }}.</div>
 
   {{ govukInput({
-    label: {
-      text: "Enter name",
-      classes: "govuk-label--s"
-    }
   } | decorateFormAttributes(['register', 'nurseryName']) ) }}
 {% endblock %}
