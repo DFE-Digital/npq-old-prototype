@@ -26,10 +26,10 @@
   },
   {
     key: {
-      text: "Do you work in a school, academy trust or 16 to 19 educational setting?"
+      text: "Work setting"
     },
     value: {
-      text: data.register['work-in-school']
+      text: data.register['work-in-school-two']
     },
     actions: {
       items: [
@@ -126,19 +126,56 @@
         ]
       }
     },
+
+    
     {
       key: {
-        text: "Do you work in early years or childcare?"
+        text: "Employment type"
       },
       value: {
-        text: data.register['ey']
+        text: data.register['employment']
       },
       actions: {
         items: [
           {
-            href: "/eyll/work-in-ey",
+            href: "/non-funded/employment",
             text: "Change",
-            visuallyHiddenText: "whether you work in early years or childcare"
+            visuallyHiddenText: "how you are employed"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Employer"
+      },
+      value: {
+        text: data.register.employer
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding-vague",
+            text: "Change",
+            visuallyHiddenText: " employer"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Role"
+      },
+      value: {
+        text: data.register.role
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/funding-vague",
+            text: "Change",
+            visuallyHiddenText: " role"
           }
         ]
       }
@@ -163,23 +200,6 @@
     },
     {
       key: {
-        text: "How is your NPQ being paid for?"
-      },
-      value: {
-        text: data.register['aso-how-pay'] | capitaliseFirstLetter
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/aso-how-pay",
-            text: "Change",
-            visuallyHiddenText: " how your NPQ is being paid for"
-          }
-        ]
-      }
-    },
-    {
-      key: {
         text: "Lead provider"
       },
       value: {
@@ -194,41 +214,8 @@
           }
         ]
       }
-    },
-    {
-      key: {
-        text: "Employer"
-      },
-      value: {
-        text: data.register.employer
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/funding-vague",
-            text: "Change",
-            visuallyHiddenText: " employer"
-          }
-        ]
-      }
-    } if not isInSchoolSetting,
-    {
-      key: {
-        text: "Role"
-      },
-      value: {
-        text: data.register.role
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/funding-vague",
-            text: "Change",
-            visuallyHiddenText: " role"
-          }
-        ]
-      }
     }
+    
 
   ]
 }) }}

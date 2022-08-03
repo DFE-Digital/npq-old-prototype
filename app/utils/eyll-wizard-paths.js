@@ -9,7 +9,6 @@ function eyllWizardPaths (req) {
     '/eyll/email',
     '/eyll/email-confirmation',
     '/eyll/personal-details',
-    '/eyll/work-in-ey',
     '/eyll/nursery',
     '/eyll/nursery-type',
     '/eyll/do-you-have-urn',
@@ -29,13 +28,6 @@ function eyllWizardPaths (req) {
 function eyllWizardForks (req) {
   var forks = [
 
-    
-    {
-      currentPath: '/eyll/work-in-ey',
-      storedData: ['register', 'ey'],
-      values: ['No'],
-      forkPath: '/non-funded/choose-npq'
-    },
 
     {
       currentPath: '/eyll/nursery',
@@ -170,9 +162,14 @@ function eyllNurseryWizardForks (req) {
 
 function nonFundedWizardPaths (req) {
   var paths = [
+    '/non-funded/trn',
+    '/non-funded/email',
+    '/non-funded/email-confirmation',
+    '/non-funded/personal-details',
+    '/non-funded/employment',
+    '/non-funded/role',
+    '/non-funded/employer',
     '/non-funded/choose-npq', 
-    '/non-funded/about-where-you-work', 
-    '/non-funded/how-pay',
     '/non-funded/choose-provider',
     '/non-funded/share-information',
     '/non-funded/check',
@@ -193,6 +190,8 @@ function nonFundedWizardForks (req) {
       values: ['The Early Headship Coaching Offer'],
       forkPath: '/register/aso'
     },
+
+
 
   ]
   return nextForkPath(forks, req)
@@ -245,6 +244,11 @@ function eyllNonfundWizardPaths (req) {
 
 function eyllNonfundWizardForks (req) {
   var forks = [
+
+    {
+      currentPath: '/eyll-nonfund/funding-not-available',
+      skipTo: '/eyll-nonfund/how-pay',
+    },
 
   ]
   return nextForkPath(forks, req)
