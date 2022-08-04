@@ -183,17 +183,20 @@ function nonFundedWizardPaths (req) {
 
 function nonFundedWizardForks (req) {
   var forks = [
-
     {
-      currentPath: '/non-funded/choose-npq',
-      storedData: ['register', 'course'],
-      values: ['The Early Headship Coaching Offer'],
-      forkPath: '/register/aso'
+      currentPath: "/non-funded/employment",
+      storedData: ["register", "employment"],
+      values: ["ITT mentor"],
+      forkPath: "/itt-mentor/find-itt",
     },
 
-
-
-  ]
+    {
+      currentPath: "/non-funded/choose-npq",
+      storedData: ["register", "course"],
+      values: ["The Early Headship Coaching Offer"],
+      forkPath: "/register/aso",
+    },
+  ];
   return nextForkPath(forks, req)
 }
 
@@ -279,6 +282,54 @@ function schoolNonfundWizardForks (req) {
   return nextForkPath(forks, req)
 }
 
+function ittMentorWizardPaths(req) {
+  var paths = [
+    '/itt-mentor/find-itt',
+    '/itt-mentor/choose-npq',
+    '/itt-mentor/funding-not-available-npq',
+    '/itt-mentor/how-pay',
+    '/itt-mentor/choose-provider',
+    '/itt-mentor/share-information',
+    '/itt-mentor/check',
+    '/itt-mentor/confirmation',
+  ];
+
+  return nextAndBackPaths(paths, req);
+}
+
+function ittMentorWizardForks(req) {
+  var forks = [
+    {
+      currentPath: "/itt-mentor/choose-npq",
+      storedData: ["register", "course"],
+      values: ["NPQ for Leading Teacher Development (NPQLTD)"],
+      forkPath: "/itt-mentor-funded/funding-vague",
+    },
+
+  ];
+  return nextForkPath(forks, req);
+}
+
+function ittMentorFundedWizardPaths(req) {
+  var paths = [
+    '/itt-mentor-funded/funding-vague',
+    '/itt-mentor-funded/choose-provider',
+    '/itt-mentor-funded/share-information',
+    '/itt-mentor-funded/check',
+    '/itt-mentor-funded/confirmation',
+  ];
+
+  return nextAndBackPaths(paths, req);
+}
+
+function ittMentorFundedWizardForks(req) {
+  var forks = [
+
+  ];
+  return nextForkPath(forks, req);
+}
+
+
 module.exports = {
   eyllWizardPaths,
   eyllWizardForks,
@@ -292,4 +343,8 @@ module.exports = {
   eyllNonfundWizardForks,
   schoolNonfundWizardPaths,
   schoolNonfundWizardForks,
-}
+  ittMentorWizardPaths,
+  ittMentorWizardForks,
+  ittMentorFundedWizardPaths,
+  ittMentorFundedWizardForks,
+};

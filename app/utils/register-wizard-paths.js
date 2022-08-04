@@ -58,20 +58,7 @@ function registerWizardForks (req) {
       }
     },
 
-    {
-      currentPath: '/register/work-in-school-two',
-      storedData: ['register', 'work-in-school-two'],
-      values: ['Other'],
-      forkPath: '/non-funded/trn'
-    },
 
-
-    {
-      currentPath: '/register/work-in-school',
-      storedData: ['register', 'work-in-school'],
-      values: ['No'],
-      forkPath: '/eyll/trn'
-    },
 
     {
       currentPath: '/register/trn',

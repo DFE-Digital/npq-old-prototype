@@ -10,8 +10,12 @@ const {
   eyllNonfundWizardPaths,
   eyllNonfundWizardForks,
   schoolNonfundWizardPaths,
-  schoolNonfundWizardForks
-} = require('../utils/eyll-wizard-paths')
+  schoolNonfundWizardForks,
+  ittMentorWizardPaths,
+  ittMentorWizardForks,
+  ittMentorFundedWizardPaths,
+  ittMentorFundedWizardForks,
+} = require("../utils/eyll-wizard-paths");
 
 module.exports = router => {
   router.get('/eyll', (req, res) => {
@@ -40,6 +44,10 @@ module.exports = router => {
 
   router.get('/school-nonfund/:view', (req, res) => {
     res.render(`school-nonfund/${req.params.view}`, { paths: schoolNonfundWizardPaths(req) })
+  })
+
+    router.get('/itt-mentor/:view', (req, res) => {
+    res.render(`itt-mentor/${req.params.view}`, { paths: ittMentorWizardPaths(req) })
   })
 
 
@@ -96,4 +104,19 @@ module.exports = router => {
     const paths = schoolNonfundWizardPaths(req)
     fork ? res.redirect(fork) : res.redirect(paths.next)
   })
+
+  router.post(
+    ["/itt-mentor", "/itt-mentor/:view"],
+    function (req, res) {
+      const fork = ittMentorWizardForks(req);
+      const paths = ittMentorWizardPaths(req);
+      fork ? res.redirect(fork) : res.redirect(paths.next);
+    }
+  )
+   
+  router.post(["/itt-mentor-funded", "/itt-mentor-funded/:view"], function (req, res) {
+    const fork = ittMentorFundedWizardForks(req);
+    const paths = ittMentorFundedWizardPaths(req);
+    fork ? res.redirect(fork) : res.redirect(paths.next);
+  });
 }
