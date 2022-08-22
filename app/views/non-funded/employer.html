@@ -1,10 +1,13 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'What is the name of your employer?' %}
+{% set title = 'What organisation are you employed by?' %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title | noOrphans | safe }}</h1>
 
   {{ govukInput({
+     hint: {
+      text: "For example 'Essex County Council', or 'I'm self employed'"
+    }
  
   } | decorateFormAttributes(['register', 'employer']) ) }}
 
