@@ -6,24 +6,25 @@
 
 {{ govukSummaryList({
   rows: [
-    {
-      key: {
-        text: "Where do you work?"
-      },
-      value: {
-        text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/where-do-you-work",
-            text: "Change",
-            visuallyHiddenText: "where you work"
-          }
-        ]
-      }
+
+  {
+    key: {
+      text: "Where do you work?"
     },
-    {
+    value: {
+      text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
+    },
+    actions: {
+      items: [
+        {
+          href: "/register/where-do-you-work",
+          text: "Change",
+          visuallyHiddenText: "where you work"
+        }
+      ]
+    }
+  },
+  {
     key: {
       text: "Work setting"
     },
@@ -50,13 +51,13 @@
       actions: {
         items: [
           {
-            href: "/register/personal-details",
+            href: "/eyll/personal-details",
             text: "Change",
             visuallyHiddenText: "name"
           }
         ]
       }
-    }, 
+    },
     {
       key: {
         text: "TRN"
@@ -67,7 +68,7 @@
       actions: {
         items: [
           {
-            href: "/register/personal-details",
+            href: "/eyll/personal-details",
             text: "Change",
             visuallyHiddenText: "TRN"
           }
@@ -84,7 +85,7 @@
       actions: {
         items: [
           {
-            href: "/register/personal-details",
+            href: "/eyll/personal-details",
             text: "Change",
             visuallyHiddenText: "date of birth"
           }
@@ -101,7 +102,7 @@
       actions: {
         items: [
           {
-            href: "/register/personal-details",
+            href: "/eyll/personal-details",
             text: "Change",
             visuallyHiddenText: "national insurance number"
           }
@@ -125,23 +126,43 @@
         ]
       }
     },
+
+    
     {
       key: {
-        text: "Workplace"
+        text: "Employment type"
       },
       value: {
-        text: data.register.school
+        text: data.register['employment']
       },
       actions: {
         items: [
           {
-            href: "/register/where-school",
+            href: "/non-funded/employment",
             text: "Change",
-            visuallyHiddenText: "workplace"
+            visuallyHiddenText: "how you are employed"
           }
         ]
       }
     },
+
+    {
+      key: {
+        text: "ITT Provider"
+      },
+      value: {
+        text: data.register.itt
+      },
+      actions: {
+        items: [
+          {
+            href: "/itt-mentor/find-itt",
+            text: "Change",
+            visuallyHiddenText: "ITT provider"
+          }
+        ]
+      }
+    },   
     {
       key: {
         text: "Course"
@@ -152,15 +173,13 @@
       actions: {
         items: [
           {
-            href: "/register/choose-npq",
+            href: "/eyll/choose-npq",
             text: "Change",
             visuallyHiddenText: " course"
           }
-          
         ]
       }
     },
-
     {
       key: {
         text: "How is your NPQ being paid for?"
@@ -171,15 +190,13 @@
       actions: {
         items: [
           {
-            href: "/school-nonfund/how-pay",
+            href: "/eyll-nonfund/how-pay",
             text: "Change",
             visuallyHiddenText: "how your NPQ is being paid for"
           }
         ]
       }
     },
-    
-
     {
       key: {
         text: "Lead provider"
@@ -190,16 +207,14 @@
       actions: {
         items: [
           {
-            href: "/register/choose-provider",
+            href: "/eyll/choose-provider-ey-ll",
             text: "Change",
-            visuallyHiddenText: " lead provider"
+            visuallyHiddenText: "lead provider"
           }
         ]
       }
     }
     
-    
-    
-    
+
   ]
 }) }}
