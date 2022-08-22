@@ -77,7 +77,7 @@ function eyllWizardForks (req) {
     {
       currentPath: '/eyll/choose-npq',
       storedData: ['register', 'course'],
-      values: ['NPQ for Leading Teaching (NPQLT)', 'NPQ for Leading Behaviour and Culture (NPQLBC)', 'NPQ for Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)', 'NPQ Leading Literacy (NPQLL)', 'The Early Headship Coaching Offer'],
+      values: ['NPQ for Leading Teaching (NPQLT)', 'NPQ for Leading Behaviour and Culture (NPQLBC)', 'NPQ for Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)', 'NPQ for Leading Literacy (NPQLL)', 'The Early Headship Coaching Offer'],
       forkPath: (value) => {
         switch (value) {
           case 'NPQ for Leading Teaching (NPQLT)':
@@ -92,10 +92,10 @@ function eyllWizardForks (req) {
               return '/eyll-nonfund/funding-not-available-npq'
           case 'NPQ for Executive Leadership (NPQEL)':
               return '/eyll-nonfund/funding-not-available-npq'
-              case 'NPQ Leading Literacy (NPQLL)':
-                return '/eyll-nonfund/funding-not-available-npq'
+          case 'NPQ for Leading Literacy (NPQLL)':
+              return '/eyll-nonfund/funding-not-available-npq'
           case 'The Early Headship Coaching Offer':
-                return '/register/aso'
+              return '/register/aso'
         }
       }
     },
