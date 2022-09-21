@@ -1,10 +1,5 @@
-{% extends "_wizard-form.html" %}
-{% set title = 'DfE scholarship funding is not available' %}
 
-{% block form %}
-  <h1 class="govuk-heading-xl">{{ title }}</h1>
-
-  <p>To be eligible for scholarship funding for the <strong>{{ data.register.course }}</strong> you must work in one of these settings in England:
+<p>To be eligible for scholarship funding for the <strong>{{ data.register.course }}</strong> you must work in one of these settings in England:
   </p>
 
   <ul class="govuk-list govuk-list--bullet">
@@ -21,5 +16,3 @@
   <div class="govuk-inset-text">
     From the answers you have given us you should be eligible for scholarship funding for the NPQ Early Years Leadership (NPQEYL). You can <a href="/eyll/choose-npq.html">go back and select the NPQEYL</a> or continue with your registration for {{ data.register.course }}.
   </div>
-
-{% endblock %}

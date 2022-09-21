@@ -3,12 +3,12 @@ const {
   eyllWizardForks,
   eyllNurseryWizardPaths,
   eyllNurseryWizardForks,
-  nonFundedWizardPaths,
-  nonFundedWizardForks,
+  OtherWizardPaths,
+  OtherWizardForks,
   asoUserWizardPaths,
   asoUserWizardForks,
-  eyllNonfundWizardPaths,
-  eyllNonfundWizardForks,
+  notFundedWizardPaths,
+  notFundedWizardForks,
   schoolNonfundWizardPaths,
   schoolNonfundWizardForks,
   ittMentorWizardPaths,
@@ -30,16 +30,18 @@ module.exports = router => {
     res.render(`eyll-nursery/${req.params.view}`, { paths: eyllNurseryWizardPaths(req) })
   })
 
-  router.get('/non-funded/:view', (req, res) => {
-    res.render(`non-funded/${req.params.view}`, { paths: nonFundedWizardPaths(req) })
+  router.get('/other/:view', (req, res) => {
+    res.render(`other/${req.params.view}`, { paths: OtherWizardPaths(req) })
   })
 
   router.get('/aso-user/:view', (req, res) => {
     res.render(`aso-user/${req.params.view}`, { paths: asoUserWizardPaths(req) })
   })
 
-  router.get('/eyll-nonfund/:view', (req, res) => {
-    res.render(`eyll-nonfund/${req.params.view}`, { paths: eyllNonfundWizardPaths(req) })
+  router.get('/not-funded/:view', (req, res) => {
+    res.render(`not-funded/${req.params.view}`, {
+      paths: notFundedWizardPaths(req),
+    });
   })
 
   router.get('/school-nonfund/:view', (req, res) => {
@@ -70,11 +72,11 @@ module.exports = router => {
   })
 
   router.post([
-    '/non-funded',
-    '/non-funded/:view'
+    '/other',
+    '/other/:view'
   ], function (req, res) {
-    const fork = nonFundedWizardForks(req)
-    const paths = nonFundedWizardPaths(req)
+    const fork = OtherWizardForks(req)
+    const paths = OtherWizardPaths(req)
     fork ? res.redirect(fork) : res.redirect(paths.next)
   })
 
@@ -91,8 +93,8 @@ module.exports = router => {
     '/eyll-nonfund',
     '/eyll-nonfund/:view'
   ], function (req, res) {
-    const fork = eyllNonfundWizardForks(req)
-    const paths = eyllNonfundWizardPaths(req)
+    const fork = notFundedWizardForks(req);
+    const paths = notFundedWizardPaths(req);
     fork ? res.redirect(fork) : res.redirect(paths.next)
   })
 

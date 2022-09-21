@@ -1,0 +1,17 @@
+{% extends "_wizard-page.html" %}
+{% set title = 'DfE scholarship funding is not available' %}
+
+{% block page %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+
+{% if data.register['where-do-you-work'] != "England" %}
+  {% include 'includes/not-funded-not-eng.html' %}
+{% elseif data.register['ofsted'] == "No" %}
+   {% include 'includes/not-funded-no-ofsted.html' %}
+{% elseif (data.register['nursery-type'] == "Private nursery") and (data.register['course'] != "NPQ for Early Years Leadership (NPQEYL)") %}
+ {% include 'includes/not-funded-not-ey.html' %}
+{% endif %}
+
+{% endblock %}
+

@@ -2,12 +2,24 @@
 {% set title = "What’s the name of your workplace?" %}
 
 {% block form %}
+
+{% if data.register['what-setting'] != "Early years or childcare" %}
+
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
   <div id="event-name-hint" class="govuk-hint">Search for schools or 16 to 19 educational settings located in  {{ data['register']['school-location'] }}. If you work for a trust, enter one of their schools.</div>
 
+{% else %}
+
+   <h1 class="govuk-heading-xl">What’s the name of your nursery?</h1>
+
+     <div id="event-name-hint" class="govuk-hint">Search for nurseries located in  {{ data['register']['school-location'] }}.</div>
+
+{% endif %}
 
   {{ govukInput({
 
   } | decorateFormAttributes(['register', 'school']) ) }}
+
+
 {% endblock %}

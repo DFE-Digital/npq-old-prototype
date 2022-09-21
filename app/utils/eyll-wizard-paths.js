@@ -5,15 +5,11 @@ const {
 
 function eyllWizardPaths (req) {
   var paths = [
-    '/eyll/trn',
-    '/eyll/email',
-    '/eyll/email-confirmation',
-    '/eyll/personal-details',
     '/eyll/nursery',
     '/eyll/nursery-type',
     '/eyll/do-you-have-urn',
     '/eyll/find-early-years',
-    '/eyll/choose-npq',
+    '/register/choose-npq',
     '/eyll/funding-vague',
     '/eyll/choose-provider-ey-ll',
     '/eyll/share-information',
@@ -40,7 +36,7 @@ function eyllWizardForks (req) {
       currentPath: '/eyll/nursery-type',
       storedData: ['register', 'nursery-type'],
       excludedValues: ['Private nursery'],
-      forkPath: '/eyll-nursery/where-nursery'
+      forkPath: '/register/where-school'
     },
 
     {
@@ -68,8 +64,8 @@ function eyllWizardForks (req) {
     {
       currentPath: '/eyll/do-you-have-urn',
       storedData: ['register', 'ofsted'],
-      values: ['help'],
-      forkPath: '/eyll/help-urn'
+      values: ['No'],
+      forkPath: '/register/choose-npq'
     },
 
 
@@ -112,13 +108,12 @@ function eyllNurseryWizardPaths (req) {
   var paths = [
     '/eyll-nursery/where-nursery',
     '/eyll-nursery/which-nursery',
-    '/eyll-nursery/choose-npq', 
+    '/register/choose-npq', 
     '/eyll-nursery/funding-vague',
     '/eyll-nursery/choose-provider-ey-ll',
     '/eyll-nursery/share-information',
     '/eyll-nursery/check',
     '/eyll-nursery/confirmation'
-
 
   ]
 
@@ -160,38 +155,32 @@ function eyllNurseryWizardForks (req) {
 }
 
 
-function nonFundedWizardPaths (req) {
+function OtherWizardPaths (req) {
   var paths = [
-    '/non-funded/trn',
-    '/non-funded/email',
-    '/non-funded/email-confirmation',
-    '/non-funded/personal-details',
-    '/non-funded/employment',
-    '/non-funded/role',
-    '/non-funded/employer',
-    '/non-funded/choose-npq', 
-    '/non-funded/choose-provider',
-    '/non-funded/share-information',
-    '/non-funded/check',
-    '/non-funded/confirmation'
-
-
-  ]
+    "/other/employment",
+    "/other/role",
+    "/other/employer",
+    "/register/choose-npq",
+    "/other/choose-provider",
+    "/other/share-information",
+    "/other/check",
+    "/other/confirmation",
+  ];
 
   return nextAndBackPaths(paths, req)
 }
 
-function nonFundedWizardForks (req) {
+function OtherWizardForks (req) {
   var forks = [
     {
-      currentPath: "/non-funded/employment",
+      currentPath: "/other/employment",
       storedData: ["register", "employment"],
       values: ["ITT mentor"],
       forkPath: "/itt-mentor/find-itt",
     },
 
     {
-      currentPath: "/non-funded/choose-npq",
+      currentPath: "/other/choose-npq",
       storedData: ["register", "course"],
       values: ["The Early Headship Coaching Offer"],
       forkPath: "/register/aso",
@@ -227,34 +216,24 @@ function asoUserWizardForks (req) {
   return nextForkPath(forks, req)
 }
 
-function eyllNonfundWizardPaths (req) {
+function notFundedWizardPaths(req) {
   var paths = [
+    "/not-funded/funding-not-available",
+    "/not-funded/how-pay",
+    "/register/choose-provider",
+  ];
 
-    '/eyll-nonfund/funding-not-available-npq',
-    '/eyll-nonfund/how-pay',
-    '/eyll-nonfund/choose-provider',
-    '/eyll-nonfund/share-information',
-    '/eyll-nonfund/check',
-    '/register/confirmation',
-
-
-
-
-  ]
-
-  return nextAndBackPaths(paths, req)
+  return nextAndBackPaths(paths, req);
 }
 
-function eyllNonfundWizardForks (req) {
+function notFundedWizardForks(req) {
   var forks = [
-
     {
-      currentPath: '/eyll-nonfund/funding-not-available',
-      skipTo: '/eyll-nonfund/how-pay',
+      currentPath: "/not-funded/funding-not-available",
+      skipTo: "/not-funded/how-pay",
     },
-
-  ]
-  return nextForkPath(forks, req)
+  ];
+  return nextForkPath(forks, req);
 }
 
 function schoolNonfundWizardPaths (req) {
@@ -285,7 +264,7 @@ function schoolNonfundWizardForks (req) {
 function ittMentorWizardPaths(req) {
   var paths = [
     '/itt-mentor/find-itt',
-    '/itt-mentor/choose-npq',
+    '/register/choose-npq',
     '/itt-mentor/funding-not-available-npq',
     '/itt-mentor/how-pay',
     '/itt-mentor/choose-provider',
@@ -335,12 +314,12 @@ module.exports = {
   eyllWizardForks,
   eyllNurseryWizardPaths,
   eyllNurseryWizardForks,
-  nonFundedWizardPaths,
-  nonFundedWizardForks,
+  OtherWizardPaths,
+  OtherWizardForks,
   asoUserWizardPaths,
   asoUserWizardForks,
-  eyllNonfundWizardPaths,
-  eyllNonfundWizardForks,
+  notFundedWizardPaths,
+  notFundedWizardForks,
   schoolNonfundWizardPaths,
   schoolNonfundWizardForks,
   ittMentorWizardPaths,

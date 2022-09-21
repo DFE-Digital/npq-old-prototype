@@ -1,0 +1,23 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Your date of birth" %}
+
+{% block form %}
+  {{ govukDateInput({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--xl",
+        isPageHeading: true,
+        text: title
+      }
+    },
+    hint: {
+      text: "For example, 27 3 1987"
+    },
+    decorate: "date-of-birth",
+    validate: {
+      date: {
+        message: "Date of birth should be a valid date"
+      }
+    }
+  }) }}
+{% endblock %}

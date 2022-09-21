@@ -1,0 +1,138 @@
+{% set trn %}
+  <span class="app-!-font-family-tabular">
+    {{ data.register.trn }}
+  </span>
+{% endset %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Email address"
+      },
+      value: {
+        text: data.register.email
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/email",
+            text: "Change",
+            visuallyHiddenText: "email address"
+          }
+        ]
+      }
+    },
+    
+    {
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: data.register.name
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    }, 
+    {
+      key: {
+        text: "Date of birth"
+      },
+      value: {
+        text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details",
+            text: "Change",
+            visuallyHiddenText: "date of birth"
+          }
+        ]
+      }
+    },
+        {
+      key: {
+        text: "National Insurance number"
+      },
+      value: {
+        text: data.register.nino
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details",
+            text: "Change",
+            visuallyHiddenText: "national insurance number"
+          }
+        ]
+      }
+    },
+  
+    {
+      key: {
+        text: "Teacher reference number (TRN)"
+      },
+      value: {
+        html: trn
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/personal-details",
+            text: "Change",
+            visuallyHiddenText: "TRN"
+          }
+        ]
+      }
+    },
+    
+   
+
+    {
+      key: {
+        text: "Have you been awarded QTS?"
+      },
+      value: {
+        text: data.register.provider
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/choose-provider-ey-ll",
+            text: "Change",
+            visuallyHiddenText: " lead provider"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Where did you get your QTS??"
+      },
+      value: {
+        text: data.register.provider
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/choose-provider-ey-ll",
+            text: "Change",
+            visuallyHiddenText: " lead provider"
+          }
+        ]
+      }
+    }
+    
+    
+    
+    
+  ]
+}) }}
