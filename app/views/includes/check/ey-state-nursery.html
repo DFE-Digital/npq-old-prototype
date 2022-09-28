@@ -4,8 +4,6 @@
   </span>
 {% endset %}
 
-
-
 {{ govukSummaryList({
   rows: [
 
@@ -26,110 +24,23 @@
       ]
     }
   },
-  {
+    {
     key: {
       text: "Work setting"
     },
     value: {
-      text: data.register['work-in-school-two']
+      text: data.register['work-setting']
     },
     actions: {
       items: [
         {
-          href: "/register/work-in-school-two",
+          href: "/register/work-setting",
           text: "Change",
           visuallyHiddenText: "what setting you work in"
         }
       ]
     }
-  },
-
-  {
-    key: {
-      text: "Full name"
-    },
-    value: {
-      text: data.register.name
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/personal-details",
-          text: "Change",
-          visuallyHiddenText: "name"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "TRN"
-    },
-    value: {
-      html: trn
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/personal-details",
-          text: "Change",
-          visuallyHiddenText: "TRN"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "Date of birth"
-    },
-    value: {
-      text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/personal-details",
-          text: "Change",
-          visuallyHiddenText: "date of birth"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "National Insurance number"
-    },
-    value: {
-      text: data.register.nino
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/personal-details",
-          text: "Change",
-          visuallyHiddenText: "national insurance number"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "Email address"
-    },
-    value: {
-      text: data.register.email
-    },
-    actions: {
-      items: [
-        {
-          href: "/register/email",
-          text: "Change",
-          visuallyHiddenText: "email address"
-        }
-      ]
-    }
-  },
-  
+  }, 
     {
       key: {
         text: "Do you work in a nursery?"
@@ -152,36 +63,37 @@
         text: "Type of nursery"
       },
       value: {
-        text: data.register['nursery-type']
+        text: data.register.nurseryType
       },
       actions: {
         items: [
           {
             href: "/eyll/nursery-type",
             text: "Change",
-            visuallyHiddenText: "what kind of nursery you work in"
+            visuallyHiddenText: "nursery"
           }
         ]
       }
     },
-    
     {
       key: {
-        text: "Ofsted registration details"
+        text: "Nursery"
       },
       value: {
-        text: data.register.urn
+        text: data.register.school
       },
       actions: {
         items: [
           {
-            href: "/eyll/do-you-have-urn",
+            href: "/register/which-school",
             text: "Change",
-            visuallyHiddenText: "ofsted regsitration details"
+            visuallyHiddenText: "nursery"
           }
         ]
       }
     },
+
+    
     
     {
       key: {

@@ -26,17 +26,17 @@
       ]
     }
   },
- {
+  {
     key: {
       text: "Work setting"
     },
     value: {
-      text: data.register['work-in-school-two']
+      text: data.register['what-setting']
     },
     actions: {
       items: [
         {
-          href: "/register/work-in-school-two",
+          href: "/register/what-setting",
           text: "Change",
           visuallyHiddenText: "what setting you work in"
         }
@@ -44,92 +44,6 @@
     }
   },
 
-  {
-    key: {
-      text: "Full name"
-    },
-    value: {
-      text: data.register.name
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/personal-details",
-          text: "Change",
-          visuallyHiddenText: "name"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "TRN"
-    },
-    value: {
-      html: trn
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/personal-details",
-          text: "Change",
-          visuallyHiddenText: "TRN"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "Date of birth"
-    },
-    value: {
-      text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/personal-details",
-          text: "Change",
-          visuallyHiddenText: "date of birth"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "National Insurance number"
-    },
-    value: {
-      text: data.register.nino
-    },
-    actions: {
-      items: [
-        {
-          href: "/eyll/personal-details",
-          text: "Change",
-          visuallyHiddenText: "national insurance number"
-        }
-      ]
-    }
-  },
-  {
-    key: {
-      text: "Email address"
-    },
-    value: {
-      text: data.register.email
-    },
-    actions: {
-      items: [
-        {
-          href: "/register/email",
-          text: "Change",
-          visuallyHiddenText: "email address"
-        }
-      ]
-    }
-  },
-  
     {
       key: {
         text: "Do you work in a nursery?"
@@ -177,7 +91,7 @@
           {
             href: "/eyll/do-you-have-urn",
             text: "Change",
-            visuallyHiddenText: "ofsted registration details"
+            visuallyHiddenText: "ofsted regsitration details"
           }
         ]
       }
@@ -193,26 +107,9 @@
       actions: {
         items: [
           {
-            href: "/eyll/choose-npq",
+            href: "/register/choose-npq",
             text: "Change",
             visuallyHiddenText: " course"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "How is your NPQ being paid for?"
-      },
-      value: {
-        text: data.register['aso-how-pay'] | capitaliseFirstLetter
-      },
-      actions: {
-        items: [
-          {
-            href: "/eyll-nonfund/how-pay",
-            text: "Change",
-            visuallyHiddenText: "how your NPQ is being paid for"
           }
         ]
       }
@@ -227,9 +124,9 @@
       actions: {
         items: [
           {
-            href: "/eyll/choose-provider-ey-ll",
+            href: "/register/choose-provider",
             text: "Change",
-            visuallyHiddenText: " lead provider"
+            visuallyHiddenText: "lead provider"
           }
         ]
       }

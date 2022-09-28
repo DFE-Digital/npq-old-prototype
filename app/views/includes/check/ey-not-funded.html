@@ -1,0 +1,152 @@
+{% set trn %}
+  <span class="app-!-font-family-tabular">
+    {{ data.register.trn }}
+  </span>
+{% endset %}
+
+
+
+{{ govukSummaryList({
+  rows: [
+
+  {
+    key: {
+      text: "Where do you work?"
+    },
+    value: {
+      text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
+    },
+    actions: {
+      items: [
+        {
+          href: "/register/where-do-you-work",
+          text: "Change",
+          visuallyHiddenText: "where you work"
+        }
+      ]
+    }
+  },
+ {
+    key: {
+      text: "Work setting"
+    },
+    value: {
+      text: data.register['what-setting']
+    },
+    actions: {
+      items: [
+        {
+          href: "/register/what-setting",
+          text: "Change",
+          visuallyHiddenText: "what setting you work in"
+        }
+      ]
+    }
+  },
+    {
+      key: {
+        text: "Do you work in a nursery?"
+      },
+      value: {
+        text: data.register['nursery']
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/nursery",
+            text: "Change",
+            visuallyHiddenText: "whether you work in a nursery"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Type of nursery"
+      },
+      value: {
+        text: data.register['nursery-type']
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/nursery-type",
+            text: "Change",
+            visuallyHiddenText: "what kind of nursery you work in"
+          }
+        ]
+      }
+    },
+    
+    {
+      key: {
+        text: "Ofsted registration details"
+      },
+      value: {
+        text: data.register.urn
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/do-you-have-urn",
+            text: "Change",
+            visuallyHiddenText: "ofsted registration details"
+          }
+        ]
+      }
+    },
+    
+    {
+      key: {
+        text: "Course"
+      },
+      value: {
+        text: data.register.course
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-npq",
+            text: "Change",
+            visuallyHiddenText: " course"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How is your NPQ being paid for?"
+      },
+      value: {
+        text: data.register['aso-how-pay'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [
+          {
+            href: "/not-funded/how-pay",
+            text: "Change",
+            visuallyHiddenText: "how your NPQ is being paid for"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Lead provider"
+      },
+      value: {
+        text: data.register.provider
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-provider",
+            text: "Change",
+            visuallyHiddenText: "lead provider"
+          }
+        ]
+      }
+    }
+
+  ]
+}) }}

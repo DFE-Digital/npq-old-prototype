@@ -1,0 +1,138 @@
+{% set trn %}
+  <span class="app-!-font-family-tabular">
+    {{ data.register.trn }}
+  </span>
+{% endset %}
+
+  {{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Where do you work?"
+      },
+      value: {
+        text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/where-do-you-work",
+            text: "Change",
+            visuallyHiddenText: "where you work"
+          }
+        ]
+      }
+    },
+    {
+    key: {
+      text: "Work setting"
+    },
+    value: {
+      text: data.register['what-setting']
+    },
+    actions: {
+      items: [
+        {
+          href: "/register/what-setting",
+          text: "Change",
+          visuallyHiddenText: "what setting you work in"
+        }
+      ]
+    }
+  },
+    {
+      key: {
+        text: "Employment type"
+      },
+      value: {
+        text: data.register['employment']
+      },
+      actions: {
+        items: [
+          {
+            href: "/other/employment",
+            text: "Change",
+            visuallyHiddenText: "how you are employed"
+          }
+        ]
+      }
+    },
+
+    {
+      key: {
+        text: "Employer"
+      },
+      value: {
+        text: data.register.employer
+      },
+      actions: {
+        items: [
+          {
+            href: "/other/employer",
+            text: "Change",
+            visuallyHiddenText: " employer"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Role"
+      },
+      value: {
+        text: data.register.role
+      },
+      actions: {
+        items: [
+          {
+            href: "/other/role",
+            text: "Change",
+            visuallyHiddenText: " role"
+          }
+        ]
+      }
+    },
+    
+    {
+      key: {
+        text: "Course"
+      },
+      value: {
+        text: data.register.course
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-npq",
+            text: "Change",
+            visuallyHiddenText: " course"
+          }
+        ]
+      }
+    },
+    
+
+{
+      key: {
+        text: "Lead provider"
+      },
+      value: {
+        text: data.register.provider
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-provider",
+            text: "Change",
+            visuallyHiddenText: " lead provider"
+          }
+        ]
+      }
+    }
+    
+    
+    
+    
+  ]
+}) }}
+
