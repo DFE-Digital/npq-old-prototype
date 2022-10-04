@@ -29,12 +29,12 @@
         text: "Name"
       },
       value: {
-        text: data.register.name
+        text: data.register.firstname + " " + data.register.lastname  
       },
       actions: {
         items: [
           {
-            href: "/register/personal-details",
+            href: "/register/gai-name",
             text: "Change",
             visuallyHiddenText: "name"
           }
@@ -46,12 +46,12 @@
         text: "Date of birth"
       },
       value: {
-        text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
+        text: data.register['dob-day'] + " " + data.register['dob-month'] + " " + data.register['dob-year']
       },
       actions: {
         items: [
           {
-            href: "/register/personal-details",
+            href: "/register/gai-dob",
             text: "Change",
             visuallyHiddenText: "date of birth"
           }
@@ -68,7 +68,7 @@
       actions: {
         items: [
           {
-            href: "/register/personal-details",
+            href: "/register/gai-nino",
             text: "Change",
             visuallyHiddenText: "national insurance number"
           }
@@ -86,7 +86,7 @@
       actions: {
         items: [
           {
-            href: "/register/personal-details",
+            href: "/register/gai-trn",
             text: "Change",
             visuallyHiddenText: "TRN"
           }
@@ -101,14 +101,14 @@
         text: "Have you been awarded QTS?"
       },
       value: {
-        text: data.register.provider
+        text: data.register.haveqts
       },
       actions: {
         items: [
           {
-            href: "/eyll/choose-provider-ey-ll",
+            href: "/register/gai-have-qts",
             text: "Change",
-            visuallyHiddenText: " lead provider"
+            visuallyHiddenText: "if you have qualified teaching status"
           }
         ]
       }
@@ -118,14 +118,14 @@
         text: "Where did you get your QTS??"
       },
       value: {
-        text: data.register.provider
+        text: data.register.whereqts
       },
       actions: {
         items: [
           {
-            href: "/eyll/choose-provider-ey-ll",
+            href: "/register/gai-how-qts",
             text: "Change",
-            visuallyHiddenText: " lead provider"
+            visuallyHiddenText: "how you got qualified teaching status"
           }
         ]
       }

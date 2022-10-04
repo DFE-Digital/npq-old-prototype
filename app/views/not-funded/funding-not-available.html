@@ -6,11 +6,11 @@
 
 
 {% if data.register['where-do-you-work'] != "England" %}
-  {% include 'includes/not-funded-not-eng.html' %}
+  {% include 'includes/not-funded-msg/not-eng.html' %}
 {% elseif data.register['ofsted'] == "No" %}
-   {% include 'includes/not-funded-no-ofsted.html' %}
+  {% include 'includes/not-funded-msg/no-ofsted.html' %}
 {% elseif (data.register['nursery-type'] == "Private nursery") and (data.register['course'] != "NPQ for Early Years Leadership (NPQEYL)") %}
- {% include 'includes/not-funded-not-ey.html' %}
+ {% include 'includes/not-funded-msg/not-ey.html' %}
 {% endif %}
 
 {% endblock %}

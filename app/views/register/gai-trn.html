@@ -1,0 +1,46 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Do you know your teacher reference number (TRN)?" %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+
+<p>Your TRN is 7 digits long, for example 4567814.</p>
+
+<p>It might include the letters RP and a slash, for example RP99/12345</p>
+
+<p class="govuk-!-margin-bottom-7">It’s previously been known as a QTS, GTC, DfE, DfES and DCSF number.</p>
+
+  {% set alert %}
+      {{ govukInput({
+        classes: "govuk-!-width-one-quarter",
+        label: {
+          text: "What is your TRN?",
+          classes: "govuk-label--s"
+        }
+
+      } | decorateFormAttributes(['register', 'trn'])) }}
+    {% endset %}
+
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: 'Do you know your TRN?',
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          text: "Yes, I know my TRN",
+          conditional: {
+            html: alert
+  }
+        },
+        {
+          text: "No, I need to continue without my TRN"
+        }
+       
+       
+      ]
+    } | decorateFormAttributes(['register', 'have-trn']) ) }}
+
+{% endblock %}

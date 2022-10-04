@@ -12,13 +12,13 @@ function registerWizardPaths (req) {
     "/register/email",
     "/register/email-confirmation",
     "/register/ask-questions",
-    "/register/official-name",
-    "/register/dob",
-    "/register/have-nino",
-    "/register/nino",
-    "/register/trn-known",
-    "/register/have-qts",
-    "/register/how-qts",
+    "/register/gai-name",
+    "/register/gai-dob",
+    "/register/gai-have-nino",
+    "/register/gai-nino",
+    "/register/gai-trn",
+    "/register/gai-have-qts",
+    "/register/gai-how-qts",
     "/register/check-answers-gai",
     "/register/finish-gai",
     "/register/chosen",
@@ -66,6 +66,20 @@ function registerWizardForks (req) {
     },
 
     {
+      currentPath: "/register/gai-have-nino",
+      storedData: ["register", "have-nino"],
+      values: ["No"],
+      forkPath: "/register/gai-trn",
+    },
+
+    {
+      currentPath: "/register/gai-have-qts",
+      storedData: ["register", "haveqts"],
+      values: ["No"],
+      forkPath: "/register/check-answers-gai",
+    },
+
+    {
       currentPath: "/register/where-do-you-work",
       storedData: ["register", "where-do-you-work"],
       values: ["England", "Scotland", "Wales"],
@@ -108,47 +122,39 @@ function registerWizardForks (req) {
         "NPQ for Leading Behaviour and Culture (NPQLBC)",
       ],
       forkPath: (value) => {
-        console.log("where do you work:",req.session.data.register["where-do-you-work"]);
-                console.log(
-                  "do you have ofsted:",
-                  req.session.data.register["ofsted"]
-                );
+        console.log(
+          "where do you work:",
+          req.session.data.register["where-do-you-work"]
+        );
+        console.log("do you have ofsted:", req.session.data.register["ofsted"]);
 
-        if (req.session.data.register["where-do-you-work"] === "England") 
-        {
-        
-          if (req.session.data.register["nursery-type"] === "Private nursery" && req.session.data.register["ofsted"] === "Yes" && req.session.data.register["course"] != "NPQ for Early Years Leadership (NPQEYL)")               
-          {  
+        if (req.session.data.register["where-do-you-work"] === "England") {
+          if (
+            req.session.data.register["nursery-type"] === "Private nursery" &&
+            req.session.data.register["ofsted"] === "Yes" &&
+            req.session.data.register["course"] !=
+              "NPQ for Early Years Leadership (NPQEYL)"
+          ) {
             console.log("Not doing EY");
             return "/not-funded/funding-not-available";
           }
 
-          if (req.session.data.register["ofsted"] === "No") 
-          {
+          if (req.session.data.register["ofsted"] === "No") {
             console.log("no ofsted");
             return "/not-funded/funding-not-available";
-          } 
-          if (req.session.data.register["what-setting"] === "Other") 
-          {
+          }
+          if (req.session.data.register["what-setting"] === "Other") {
             console.log("other maybe");
             return "/register/choose-provider";
-          }
-
-          else   
-          {
+          } else {
             console.log("funded");
             return "/register/funding-vague";
           }
-
-        } 
- 
-        else if (req.session.data.register["where-do-you-work"] != "England");  
+        } else if (req.session.data.register["where-do-you-work"] != "England");
         {
           console.log("not eng");
           return "/not-funded/funding-not-available";
-        } 
-
-        
+        }
       },
     },
 

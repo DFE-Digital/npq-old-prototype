@@ -1,0 +1,48 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'What is your National Insurance number?' %}
+
+{% block form %}
+  {{ govukInput({
+  label: {
+    text: "What is your National Insurance number??",
+    classes: "govuk-label--xl",
+    isPageHeading: true
+  },
+  classes: "govuk-input--width-10",
+  hint: {
+    text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+  },
+  id: "account-number",
+  name: "account-number",
+  inputmode: "numeric",
+  spellcheck: false
+} | decorateFormAttributes(['register', 'nino']))  }}
+
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      I don’t know my National Insurance number
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    You can <a href="https://www.gov.uk/lost-national-insurance-number">find a lost National Insurance number.</a>
+  </div>
+  <div class="govuk-details__text">
+    Or you can continue without it.  
+  </div>
+  <button class="govuk-button govuk-button--secondary" data-module="govuk-button" href="/register/gai-name">
+  Find address
+</button>
+ 
+  
+ 
+  
+</details>
+
+
+
+
+
+
+
+{% endblock %}
