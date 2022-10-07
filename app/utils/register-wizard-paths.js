@@ -80,6 +80,13 @@ function registerWizardForks (req) {
     },
 
     {
+      currentPath: "/register/chosen",
+      storedData: ["register", "chosen"],
+      values: ["No"],
+      forkPath: "/register/choosing-an-npq",
+    },
+
+    {
       currentPath: "/register/where-do-you-work",
       storedData: ["register", "where-do-you-work"],
       values: ["England", "Scotland", "Wales"],
@@ -109,9 +116,17 @@ function registerWizardForks (req) {
       },
     },
 
+
     {
       currentPath: "/register/returning",
       skipTo: "/register/chosen",
+    },
+
+    {
+      currentPath: "/register/choose-npq",
+      storedData: ["register", "course"],
+      values: ["The Early Headship Coaching Offer"],
+      forkPath: "/aso/aso-intro",
     },
 
     {
@@ -156,13 +171,6 @@ function registerWizardForks (req) {
           return "/not-funded/funding-not-available";
         }
       },
-    },
-
-    {
-      currentPath: "/register/chosen",
-      storedData: ["register", "chosen"],
-      values: ["No"],
-      forkPath: "/register/choosing-an-npq",
     },
 
     {
@@ -289,18 +297,6 @@ function ASOForks (basePath) {
           return `${basePath}/check`
         }
       }
-    },
-    {
-      currentPath: `${basePath}/aso-completed-npqh`,
-      storedData: ['register', 'aso-completed-npqh'],
-      values: ['no'],
-      forkPath: `${basePath}/aso-cannot-register`
-    },
-    {
-      currentPath: `${basePath}/aso-headteacher`,
-      storedData: ['register', 'aso-headteacher'],
-      values: ['no'],
-      forkPath: `${basePath}/aso-funding-not-available`
     },
     {
       currentPath: `${basePath}/aso-from-npqh`,

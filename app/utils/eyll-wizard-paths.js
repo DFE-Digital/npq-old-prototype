@@ -189,30 +189,47 @@ function OtherWizardForks (req) {
   return nextForkPath(forks, req)
 }
 
-function asoUserWizardPaths (req) {
+function asoWizardPaths (req) {
   var paths = [
-    '/aso-user/aso-funding-not-available',
-    '/aso-user/aso-how-pay',
-    '/aso-user/aso-choose-provider',
-    '/aso-user/share-information',
-    '/aso-user/check',
-    '/register/confirmation'
-
-  ]
+    "/aso/aso-intro",
+    "/aso/aso-completed-npqh",
+    "/aso/aso-headteacher",
+    "/aso/aso-early-headship",
+    "/register/choose-provider",
+    "/aso/aso-funding-not-available",
+    "/aso/aso-how-pay",
+    "/aso/aso-choose-provider",
+    "/aso/share-information",
+    "/aso/check",
+    "/register/confirmation",
+  ];
 
   return nextAndBackPaths(paths, req)
 }
 
-function asoUserWizardForks (req) {
+function asoWizardForks (req) {
   var forks = [
-
-
     {
-      currentPath: '/aso-user/aso-funding',
-      skipTo: '/aso-user/aso-choose-provider'
+      currentPath: "/aso/aso-completed-npqh",
+      storedData: ["register", "aso-completed-npqh"],
+      values: ["no"],
+      forkPath: "/aso/aso-cannot-register",
     },
 
-  ]
+    {
+      currentPath: "/aso/aso-headteacher",
+      storedData: ["register", "aso-headteacher"],
+      values: ["No"],
+      forkPath: "/aso/aso-funding-not-available",
+    },
+
+    {
+      currentPath: "/aso/early-headship",
+      storedData: ["register", "aso-early-headship"],
+      values: ["No"],
+      forkPath: "/aso/aso-funding-not-available",
+    },
+  ];
   return nextForkPath(forks, req)
 }
 
@@ -316,8 +333,8 @@ module.exports = {
   eyllNurseryWizardForks,
   OtherWizardPaths,
   OtherWizardForks,
-  asoUserWizardPaths,
-  asoUserWizardForks,
+  asoWizardPaths,
+  asoWizardForks,
   notFundedWizardPaths,
   notFundedWizardForks,
   schoolNonfundWizardPaths,

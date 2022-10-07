@@ -5,8 +5,8 @@ const {
   eyllNurseryWizardForks,
   OtherWizardPaths,
   OtherWizardForks,
-  asoUserWizardPaths,
-  asoUserWizardForks,
+  asoWizardPaths,
+  asoWizardForks,
   notFundedWizardPaths,
   notFundedWizardForks,
   schoolNonfundWizardPaths,
@@ -34,8 +34,8 @@ module.exports = router => {
     res.render(`other/${req.params.view}`, { paths: OtherWizardPaths(req) })
   })
 
-  router.get('/aso-user/:view', (req, res) => {
-    res.render(`aso-user/${req.params.view}`, { paths: asoUserWizardPaths(req) })
+  router.get('/aso/:view', (req, res) => {
+    res.render(`aso/${req.params.view}`, { paths: asoWizardPaths(req) })
   })
 
   router.get('/not-funded/:view', (req, res) => {
@@ -81,11 +81,11 @@ module.exports = router => {
   })
 
   router.post([
-    '/aso-user',
-    '/aso-user/:view'
+    '/aso',
+    '/aso/:view'
   ], function (req, res) {
-    const fork = asoUserWizardForks(req)
-    const paths = asoUserWizardPaths(req)
+    const fork = asoWizardForks(req)
+    const paths = asoWizardPaths(req)
     fork ? res.redirect(fork) : res.redirect(paths.next)
   })
 
