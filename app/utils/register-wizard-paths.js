@@ -41,7 +41,7 @@ function registerWizardForks (req) {
       currentPath: '/register/chosen',
       storedData: ['register', 'chosen'],
       values: ['No'],
-      forkPath: '/register/choosing-an-npq'
+      forkPath: '/register/choose-an-npq-and-provider'
     },
 
     {
@@ -125,7 +125,7 @@ function registerWizardForks (req) {
       values: ['No'],
       forkPath: '/aso-user/aso-funding-not-available'
     },
-    
+
     {
       currentPath: '/register/aso-early-headship',
       storedData: ['register', 'aso-early-headship'],
@@ -146,7 +146,7 @@ function registerWizardForks (req) {
     },
 
 
-   
+
   ]
   return nextForkPath(forks, req)
 }
