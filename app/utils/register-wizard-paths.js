@@ -87,22 +87,14 @@ function registerWizardForks (req) {
     },
 
     {
-      currentPath: "/register/where-do-you-work",
-      storedData: ["register", "where-do-you-work"],
-      values: ["England", "Scotland", "Wales"],
-      forkPath: (value) => {
-        if (req.session.data.register["where-do-you-work"] != "England") {
-          console.log("Not England!");
-          return "/register/choose-npq";
-        }
-      },
-    },
-
-    {
       currentPath: "/register/what-setting",
       storedData: ["register", "what-setting"],
       values: ["Other", "Early years or childcare", "School"],
       forkPath: (value) => {
+        if (req.session.data.register["where-do-you-work"] != "England") {
+        console.log("Not England");
+        return "/register/choose-npq";
+        }
         if (req.session.data.register["what-setting"] == "Other") {
           console.log("Other!");
           return "/other/employment";
@@ -125,16 +117,10 @@ function registerWizardForks (req) {
     {
       currentPath: "/register/choose-npq",
       storedData: ["register", "course"],
-      values: ["The Early Headship Coaching Offer"],
-      forkPath: "/aso/aso-intro",
-    },
-
-    {
-      currentPath: "/register/choose-npq",
-      storedData: ["register", "course"],
       values: [
         "NPQ for Early Years Leadership (NPQEYL)",
         "NPQ for Leading Behaviour and Culture (NPQLBC)",
+        "The Early Headship Coaching Offer",
       ],
       forkPath: (value) => {
         console.log(
@@ -144,6 +130,11 @@ function registerWizardForks (req) {
         console.log("do you have ofsted:", req.session.data.register["ofsted"]);
 
         if (req.session.data.register["where-do-you-work"] === "England") {
+          if (req.session.data.register["course"]== "The Early Headship Coaching Offer")
+            {
+              return "/aso/aso-intro";
+            }
+            
           if (
             req.session.data.register["nursery-type"] === "Private nursery" &&
             req.session.data.register["ofsted"] === "Yes" &&
@@ -165,7 +156,9 @@ function registerWizardForks (req) {
             console.log("funded");
             return "/register/funding-vague";
           }
-        } else if (req.session.data.register["where-do-you-work"] != "England");
+        // } else if (req.session.data.register["where-do-you-work"] != "England");
+        } else 
+
         {
           console.log("not eng");
           return "/not-funded/funding-not-available";
