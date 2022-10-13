@@ -9,13 +9,7 @@ function eyllWizardPaths (req) {
     '/eyll/nursery-type',
     '/eyll/do-you-have-urn',
     '/eyll/find-early-years',
-    '/register/choose-npq',
-    '/eyll/funding-vague',
-    '/eyll/choose-provider-ey-ll',
-    '/eyll/share-information',
-    '/eyll/check',
-    '/eyll/confirmation'
-
+    '/register/choose-npq'
   ]
 
   return nextAndBackPaths(paths, req)
@@ -39,19 +33,7 @@ function eyllWizardForks (req) {
       forkPath: '/register/where-school'
     },
 
-    {
-      currentPath: '/eyll/trn',
-      storedData: ['register', 'know-trn'],
-      values: ['dont-know', 'no-trn'],
-      forkPath: (value) => {
-        switch (value) {
-          case 'dont-know':
-            return '/register/get-your-trn'
-          case 'no-trn':
-            return '/register/get-a-trn'
-        }
-      }
-    },
+    
 
 
     {
@@ -68,38 +50,6 @@ function eyllWizardForks (req) {
       forkPath: '/register/choose-npq'
     },
 
-
-
-    {
-      currentPath: '/eyll/choose-npq',
-      storedData: ['register', 'course'],
-      values: ['NPQ for Leading Teaching (NPQLT)', 'NPQ for Leading Behaviour and Culture (NPQLBC)', 'NPQ for Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)', 'NPQ for Leading Literacy (NPQLL)', 'The Early Headship Coaching Offer'],
-      forkPath: (value) => {
-        switch (value) {
-          case 'NPQ for Leading Teaching (NPQLT)':
-            return '/eyll-nonfund/funding-not-available-npq'
-          case 'NPQ for Leading Behaviour and Culture (NPQLBC)':
-            return '/eyll-nonfund/funding-not-available-npq'
-          case 'NPQ for Leading Teacher Development (NPQLTD)':
-              return '/eyll-nonfund/funding-not-available-npq'
-          case 'NPQ for Senior Leadership (NPQSL)':
-              return '/eyll-nonfund/funding-not-available-npq'
-          case 'NPQ for Headship (NPQH)':
-              return '/eyll-nonfund/funding-not-available-npq'
-          case 'NPQ for Executive Leadership (NPQEL)':
-              return '/eyll-nonfund/funding-not-available-npq'
-          case 'NPQ for Leading Literacy (NPQLL)':
-              return '/eyll-nonfund/funding-not-available-npq'
-          case 'The Early Headship Coaching Offer':
-              return '/register/aso'
-        }
-      }
-    },
-
-    {
-      currentPath: '/eyll/choose-provider',
-      skipTo: '/eyll/funding-vague'
-    },
   ]
   return nextForkPath(forks, req)
 }
