@@ -3,27 +3,11 @@
 {% set action = '/register/funding-vague' %}
 
 {% block form %}
-  {{ govukRadios({
-    fieldset: {
-      legend: {
-        text: title,
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--xl govuk-!-margin-bottom-6"
-      }
-    },
-    items: [
-      {
-        text: "My workplace is covering the cost"
-      }, 
-      {
-        text: "I am paying"
-      },
-      {
-        text: "My NPQ is being paid for in another way",
-        hint: {
-          text: "For example, I am sharing the costs with my workplace"
-        }
-      }
-    ]
-  } | decorateFormAttributes(['register', 'aso-how-pay']) ) }}
+
+{% if (data.register['what-setting'] == "Early years or childcare") or (data.register['what-setting'] == "Other") %}
+{% include 'includes/how-paying/how-paying-ey.html' %}
+{% else %}
+{% include 'includes/how-paying/how-paying-school.html' %}
+{% endif %}
+
 {% endblock %}

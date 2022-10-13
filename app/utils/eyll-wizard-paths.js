@@ -195,13 +195,9 @@ function asoWizardPaths (req) {
     "/aso/aso-completed-npqh",
     "/aso/aso-headteacher",
     "/aso/aso-early-headship",
-    "/register/choose-provider",
     "/aso/aso-funding-not-available",
     "/aso/aso-how-pay",
-    "/aso/aso-choose-provider",
-    "/aso/share-information",
-    "/aso/check",
-    "/register/confirmation",
+    "/register/choose-provider",
   ];
 
   return nextAndBackPaths(paths, req)
@@ -224,10 +220,10 @@ function asoWizardForks (req) {
     },
 
     {
-      currentPath: "/aso/early-headship",
+      currentPath: "/aso/aso-early-headship",
       storedData: ["register", "aso-early-headship"],
-      values: ["No"],
-      forkPath: "/aso/aso-funding-not-available",
+      values: ["Yes"],
+      forkPath: "/aso/aso-funding",
     },
   ];
   return nextForkPath(forks, req)

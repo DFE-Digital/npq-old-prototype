@@ -89,7 +89,7 @@ function registerWizardForks (req) {
     {
       currentPath: "/register/what-setting",
       storedData: ["register", "what-setting"],
-      values: ["Other", "Early years or childcare", "School"],
+      values: ["Other", "Early years or childcare", "A school"],
       forkPath: (value) => {
         if (req.session.data.register["where-do-you-work"] != "England") {
         console.log("Not England");
@@ -105,6 +105,7 @@ function registerWizardForks (req) {
           console.log("EY!");
           return "/eyll/nursery";
         }
+        
       },
     },
 
@@ -118,8 +119,15 @@ function registerWizardForks (req) {
       currentPath: "/register/choose-npq",
       storedData: ["register", "course"],
       values: [
-        "NPQ for Early Years Leadership (NPQEYL)",
         "NPQ for Leading Behaviour and Culture (NPQLBC)",
+        "NPQ for Leading Literacy (NPQLL)",
+        "NPQ for Leading Teaching (NPQLT)",
+        "NPQ for Leading Teacher Development (NPQLTD)",
+        "NPQ for Leading Teacher Development (NPQLTD)",
+        "NPQ for Senior Leadership (NPQSL)",
+        "NPQ for Headship (NPQH)",
+        "NPQ for Executive Leadership (NPQEL)",
+        "NPQ for Early Years Leadership (NPQEYL)",
         "The Early Headship Coaching Offer",
       ],
       forkPath: (value) => {
@@ -129,11 +137,12 @@ function registerWizardForks (req) {
         );
         console.log("do you have ofsted:", req.session.data.register["ofsted"]);
 
+        if (req.session.data.register["course"]== "The Early Headship Coaching Offer")
+        {
+          return "/aso/aso-intro";
+        }
         if (req.session.data.register["where-do-you-work"] === "England") {
-          if (req.session.data.register["course"]== "The Early Headship Coaching Offer")
-            {
-              return "/aso/aso-intro";
-            }
+   
             
           if (
             req.session.data.register["nursery-type"] === "Private nursery" &&
@@ -156,7 +165,6 @@ function registerWizardForks (req) {
             console.log("funded");
             return "/register/funding-vague";
           }
-        // } else if (req.session.data.register["where-do-you-work"] != "England");
         } else 
 
         {
