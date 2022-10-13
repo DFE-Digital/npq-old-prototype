@@ -6,11 +6,6 @@
 {% block page %}
   <h1 class="govuk-heading-xl" >{{ title }}</h1>
 
-  <code>
-    {{ data.register | dump | safe }}
-  </code>
-
-
   {% if (data.register['ofsted'] == "Yes") and (data.register['course'] != "NPQ for Early Years Leadership (NPQEYL)") %}
 
     {% include 'includes/check/ey-not-ey.html' %}

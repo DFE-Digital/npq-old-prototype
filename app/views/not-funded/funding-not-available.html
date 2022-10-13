@@ -4,9 +4,6 @@
 {% block page %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
-  <code>
-  {{ data.register | dump | safe }}
-</code>
 
 {% if (data.register['where-do-you-work'] != "England") and (data.register['what-setting'] == "Early years or childcare")  %}
   {% include 'includes/non-funded-msg/no-ofsted.html' %}

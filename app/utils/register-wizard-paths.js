@@ -182,45 +182,11 @@ function registerWizardForks (req) {
       },
     },
 
-    {
-      currentPath: "/register/aso-completed-npqh",
-      storedData: ["register", "aso-completed-npqh"],
-      values: ["no"],
-      forkPath: "/register/aso-cannot-register",
-    },
 
-    {
-      currentPath: "/register/aso-completed-npqh",
-      storedData: ["register", "aso-completed-npqh"],
-      values: ["no"],
-      forkPath: "/register/aso-cannot-register",
-    },
 
-    {
-      currentPath: "/register/aso-headteacher",
-      storedData: ["register", "aso-headteacher"],
-      values: ["No"],
-      forkPath: "/aso-user/aso-funding-not-available",
-    },
+   
 
-    {
-      currentPath: "/register/aso-early-headship",
-      storedData: ["register", "aso-early-headship"],
-      values: ["No", "Yes"],
-      forkPath: (value) => {
-        switch (value) {
-          case "No":
-            return "/aso-user/aso-funding-not-available";
-          case "Yes":
-            return "/aso-user/aso-funding";
-        }
-      },
-    },
-
-    {
-      currentPath: "/register/aso-funding",
-      skipTo: "/register/choose-provider",
-    },
+  
   ];
   return nextForkPath(forks, req)
 }
@@ -264,12 +230,7 @@ function existingUserWizardForks (req) {
 
 function ASOForks (basePath) {
   return [
-    {
-      currentPath: `${basePath}/choose-npq`,
-      storedData: ['register', 'course'],
-      excludedValues: ['Additional Support Offer for new headteachers'],
-      forkPath: `${basePath}/choose-provider`
-    },
+
     {
       currentPath: `${basePath}/email-confirmation`,
       storedData: ['register', 'email'],
@@ -295,38 +256,8 @@ function ASOForks (basePath) {
       values: ['no'],
       forkPath: `${basePath}/change-some-details`
     },
-    {
-      currentPath: `${basePath}/choose-provider`,
-      storedData: ['register', 'course'],
-      values: ['Additional Support Offer for new headteachers'],
-      forkPath: (value) => {
-        if (basePath === '/register') {
-          return `${basePath}/share-information`
-        } else {
-          return `${basePath}/check`
-        }
-      }
-    },
-    {
-      currentPath: `${basePath}/aso-from-npqh`,
-      skipTo: `${basePath}/aso-completed-npqh`
-    },
-    {
-      currentPath: `${basePath}/aso-early-headship`,
-      storedData: ['register', 'aso-early-headship'],
-      values: ['no'],
-      forkPath: `${basePath}/aso-funding-not-available`
-    },
-    {
-      currentPath: `${basePath}/aso-funding-not-available`,
-      storedData: ['register', 'aso-pay-another-way'],
-      values: ['no'],
-      forkPath: `${basePath}/aso-contact-provider`
-    },
-    {
-      currentPath: `${basePath}/aso-how-pay`,
-      skipTo: `${basePath}/choose-provider`
-    }
+    
+
   ]
 }
 
