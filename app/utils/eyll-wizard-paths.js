@@ -33,71 +33,12 @@ function eyllWizardForks (req) {
       forkPath: '/register/where-school'
     },
 
-    
-
-
-    {
-      currentPath: '/eyll/nursery',
-      storedData: ['register', 'nursery'],
-      values: ['Yes'],
-      forkPath: '/eyll-nursery/trn'
-    },
 
     {
       currentPath: '/eyll/do-you-have-urn',
       storedData: ['register', 'ofsted'],
       values: ['No'],
       forkPath: '/register/choose-npq'
-    },
-
-  ]
-  return nextForkPath(forks, req)
-}
-
-function eyllNurseryWizardPaths (req) {
-  var paths = [
-    '/eyll-nursery/where-nursery',
-    '/eyll-nursery/which-nursery',
-    '/register/choose-npq', 
-    '/eyll-nursery/funding-vague',
-    '/eyll-nursery/choose-provider-ey-ll',
-    '/eyll-nursery/share-information',
-    '/eyll-nursery/check',
-    '/eyll-nursery/confirmation'
-
-  ]
-
-  return nextAndBackPaths(paths, req)
-}
-
-function eyllNurseryWizardForks (req) {
-  var forks = [
-
-    {
-      currentPath: '/eyll-nursery/trn',
-      storedData: ['register', 'know-trn'],
-      values: ['dont-know', 'no-trn'],
-      forkPath: (value) => {
-        switch (value) {
-          case 'dont-know':
-            return '/register/get-your-trn'
-          case 'no-trn':
-            return '/register/get-a-trn'
-        }
-      }
-    },
-     
-
-    {
-      currentPath: '/eyll-nursery/choose-provider',
-      skipTo: '/eyll-nursery/funding-vague'
-    },
-
-    {
-      currentPath: '/eyll-nursery/choose-npq',
-      storedData: ['register', 'course'],
-      values: ['The Early Headship Coaching Offer'],
-      forkPath: '/register/aso'
     },
 
   ]
@@ -275,8 +216,6 @@ function ittMentorFundedWizardForks(req) {
 module.exports = {
   eyllWizardPaths,
   eyllWizardForks,
-  eyllNurseryWizardPaths,
-  eyllNurseryWizardForks,
   OtherWizardPaths,
   OtherWizardForks,
   asoWizardPaths,
