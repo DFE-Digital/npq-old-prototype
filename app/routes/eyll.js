@@ -7,8 +7,6 @@ const {
   asoWizardForks,
   notFundedWizardPaths,
   notFundedWizardForks,
-  schoolNonfundWizardPaths,
-  schoolNonfundWizardForks,
   ittMentorWizardPaths,
   ittMentorWizardForks,
   ittMentorFundedWizardPaths,
@@ -38,9 +36,6 @@ module.exports = router => {
     });
   })
 
-  router.get('/school-nonfund/:view', (req, res) => {
-    res.render(`school-nonfund/${req.params.view}`, { paths: schoolNonfundWizardPaths(req) })
-  })
 
     router.get('/itt-mentor/:view', (req, res) => {
     res.render(`itt-mentor/${req.params.view}`, { paths: ittMentorWizardPaths(req) })
@@ -80,15 +75,6 @@ module.exports = router => {
   ], function (req, res) {
     const fork = notFundedWizardForks(req);
     const paths = notFundedWizardPaths(req);
-    fork ? res.redirect(fork) : res.redirect(paths.next)
-  })
-
-  router.post([
-    '/school-nonfund',
-    '/school-nonfund/:view'
-  ], function (req, res) {
-    const fork = schoolNonfundWizardForks(req)
-    const paths = schoolNonfundWizardPaths(req)
     fork ? res.redirect(fork) : res.redirect(paths.next)
   })
 

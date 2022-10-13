@@ -140,30 +140,6 @@ function notFundedWizardForks(req) {
   return nextForkPath(forks, req);
 }
 
-function schoolNonfundWizardPaths (req) {
-  var paths = [
-
-    '/school-nonfund/funding-not-available',
-    '/school-nonfund/how-pay',
-    '/school-nonfund/choose-provider',
-    '/school-nonfund/share-information',
-    '/school-nonfund/check',
-    '/register/confirmation',
-
-
-
-
-  ]
-
-  return nextAndBackPaths(paths, req)
-}
-
-function schoolNonfundWizardForks (req) {
-  var forks = [
-
-  ]
-  return nextForkPath(forks, req)
-}
 
 function ittMentorWizardPaths(req) {
   var paths = [
@@ -222,8 +198,6 @@ module.exports = {
   asoWizardForks,
   notFundedWizardPaths,
   notFundedWizardForks,
-  schoolNonfundWizardPaths,
-  schoolNonfundWizardForks,
   ittMentorWizardPaths,
   ittMentorWizardForks,
   ittMentorFundedWizardPaths,
