@@ -6,10 +6,22 @@
 {% block page %}
   <h1 class="govuk-heading-xl" >{{ title }}</h1>
 
+  <code>
+    {{ data.register | dump | safe }}
+  </code>
+
 
   {% if (data.register['ofsted'] == "Yes") and (data.register['course'] != "NPQ for Early Years Leadership (NPQEYL)") %}
 
-    {% include 'includes/check/ey-not-funded.html' %}
+    {% include 'includes/check/ey-not-ey.html' %}
+
+  {% elseif data.register['where-do-you-work'] != "England" %}
+
+    {% include 'includes/check/not-eng.html' %}
+  
+  {% elseif data.register['school'] == "private school" %}
+
+    {% include 'includes/check/private-school.html' %}
 
   {% elseif data.register['what-setting'] == "Other" %}
 
@@ -17,17 +29,15 @@
 
   {% elseif data.register['ofsted'] == "No" %}
 
-    {% include 'includes/check/ey-not-funded.html' %}
+    {% include 'includes/check/ey-not-ofsted.html' %}
   
   {% elseif (data.register['ofsted'] == "Yes") and (data.register['course'] == "NPQ for Early Years Leadership (NPQEYL)") %}
 
     {% include 'includes/check/ey-funded.html' %}
 
-  {% elseif data.register['nursery-type'] != "Private nursery" %}
+  {% elseif (data.register['course'] == "NPQ for Early Years Leadership (NPQEYL)") and (data.register['nursery-type'] != "Private nursery") %}
 
     {% include 'includes/check/ey-state-nursery.html' %}
-
-
 
   {% else %}
 

@@ -137,13 +137,24 @@ function registerWizardForks (req) {
         );
         console.log("do you have ofsted:", req.session.data.register["ofsted"]);
 
-        if (req.session.data.register["course"]== "The Early Headship Coaching Offer")
-        {
-          return "/aso/aso-intro";
-        }
+
         if (req.session.data.register["where-do-you-work"] === "England") {
    
-            
+          if (req.session.data.register["course"]== "The Early Headship Coaching Offer")
+          {
+            return "/aso/aso-intro";
+          }
+
+          if (req.session.data.register["what-setting"] === "Other") {
+            console.log("other maybe");
+            return "/register/choose-provider";
+          }
+
+          if (req.session.data.register["school"] === "private school") {
+            console.log("private school");
+            return "/not-funded/funding-not-available";
+          }
+
           if (
             req.session.data.register["nursery-type"] === "Private nursery" &&
             req.session.data.register["ofsted"] === "Yes" &&
@@ -158,10 +169,7 @@ function registerWizardForks (req) {
             console.log("no ofsted");
             return "/not-funded/funding-not-available";
           }
-          if (req.session.data.register["what-setting"] === "Other") {
-            console.log("other maybe");
-            return "/register/choose-provider";
-          } else {
+           else {
             console.log("funded");
             return "/register/funding-vague";
           }

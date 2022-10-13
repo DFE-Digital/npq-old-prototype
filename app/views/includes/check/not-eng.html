@@ -40,24 +40,6 @@
       ]
     }
   },
-  {
-    key: {
-      text: "Workplace"
-    },
-    value: {
-      text: data.register.school
-    },
-    actions: {
-      items: [
-        {
-          href: "/register/what-school",
-          text: "Change",
-          visuallyHiddenText: "workplace"
-        }
-      ]
-    }
-  },
-   
     {
       key: {
         text: "Course"
@@ -73,6 +55,24 @@
             visuallyHiddenText: " course"
           }
           
+        ]
+      }
+    },
+   
+    {
+      key: {
+        text: "How is your NPQ being paid for?"
+      },
+      value: {
+        text: data.register['aso-how-pay'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [
+          {
+            href: "/not-funded/how-pay",
+            text: "Change",
+            visuallyHiddenText: "how your NPQ is being paid for"
+          }
         ]
       }
     },
