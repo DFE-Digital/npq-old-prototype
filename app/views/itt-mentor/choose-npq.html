@@ -1,5 +1,5 @@
 {% extends "_wizard-form.html" %}
-{% set title = 'What are you applying for?' %}
+{% set title = 'Which NPQ do you want to do?' %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
@@ -52,11 +52,14 @@
         text: "NPQ for Early Years Leadership (NPQEYL)"
       },
       {
+      divider: "or"
+    },
+      {
         text: "The Early Headship Coaching Offer",
         hint: {
           text: "The Early Headship Coaching Offer is a package of structured face-to-face support for new headteachers. "
         }
-      } 
+      }
     ]
   } | decorateFormAttributes(['register', 'course']) ) }}
 {% endblock %}

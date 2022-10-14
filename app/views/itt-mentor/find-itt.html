@@ -1,12 +1,12 @@
 {% extends "_wizard-form.html" %}
-{% set title = " Enter the name of the ITT provider you are working with" %}
+{% set title = " Which initial teacher training provider (ITT) do you work for?" %}
 
 {% block form %}
   <h1 class="govuk-heading-xl">{{ title }}</h1>
 
   {{ govukInput({
     hint: {
-      text: "Search for your ITT provider"
+      text: "Enter the name of your provider or select from the suggestions"
     }
   } | decorateFormAttributes(['register', 'itt']) ) }}
 {% endblock %}
