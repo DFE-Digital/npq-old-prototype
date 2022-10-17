@@ -83,7 +83,7 @@ function registerWizardForks (req) {
       currentPath: "/register/chosen",
       storedData: ["register", "chosen"],
       values: ["No"],
-      forkPath: "/register/choosing-an-npq",
+      forkPath: "/register/choose-an-npq-and-provider",
     },
 
     {
@@ -105,7 +105,7 @@ function registerWizardForks (req) {
           console.log("EY!");
           return "/eyll/nursery";
         }
-        
+
       },
     },
 
@@ -139,7 +139,7 @@ function registerWizardForks (req) {
 
 
         if (req.session.data.register["where-do-you-work"] === "England") {
-   
+
           if (req.session.data.register["course"]== "The Early Headship Coaching Offer")
           {
             return "/aso/aso-intro";
@@ -173,7 +173,7 @@ function registerWizardForks (req) {
             console.log("funded");
             return "/register/funding-vague";
           }
-        } else 
+        } else
 
         {
           console.log("not eng");
@@ -184,9 +184,9 @@ function registerWizardForks (req) {
 
 
 
-   
 
-  
+
+
   ];
   return nextForkPath(forks, req)
 }
@@ -256,7 +256,7 @@ function ASOForks (basePath) {
       values: ['no'],
       forkPath: `${basePath}/change-some-details`
     },
-    
+
 
   ]
 }
