@@ -1,0 +1,13 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Continue with your NPQ registration" %}
+
+{% block form %}
+<h1 class="govuk-panel__title">You can continue</h1>
+
+<p>Thank you, we’ve finished checking our records.</p>
+ 
+
+  <h2 class="govuk-heading-m">Next time</h2>
+  <p class="govuk-!-margin-bottom-6">Next time, you can skip these questions by signing in with your email address: <b>{{ data['email-address'] or "email@example.com" }}</b></p>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "_wizard-form.html" %}
+{% set title = "If your provider accepts your application, you’ll qualify for DfE scholarship funding" %}
+{% set action = '/register/funding-vague' %}
+
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>From the information you have provided, DfE scholarship funding should be available for the <strong>Early Headship Coaching Offer.</strong></p>
+
+  <p>Your training provider will give you more details and confirm if you qualify for funding.</p>
+
+  <a href="/aso/already-funded.html" class="govuk-link govuk-link--no-visited-state">For prototype reference: If user has already applied for the EHCO</a></p> 
+
+{% endblock %}

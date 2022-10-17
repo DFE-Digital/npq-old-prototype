@@ -6,8 +6,73 @@
 
   <p>These are the training providers who provide <strong>{{ data.register.course }}.</strong> Providers may have different entry requirements.</p>
 
+      {% if (data.register['course'] == "NPQ for Early Years Leadership (NPQEYL)") or (data.register['course'] == "NPQ for Leading Literacy (NPQLL)") %}
 
   {{ govukRadios({
+    
+    items: [
+    {
+      text: "Ambition Institute"
+    },
+    {
+      text: "Education Development Trust"
+    },
+    {
+      text: "School-Led Network"
+    },
+    {
+      text: "Teacher Development Trust"
+    },
+    {
+      text: "Teach First"
+    },
+    {
+      text: "UCL Institute of Education"
+    }
+
+  ]
+  
+  } | decorateFormAttributes(['register', 'provider']) ) }}
+
+{% elseif data.register['course'] == "NPQ for Executive Leadership (NPQEL)" %}
+
+{{ govukRadios({
+    
+    items: [
+    {
+      text: "Ambition Institute"
+    },
+    {
+      text: "Best Practice Network (home of Outstanding Leaders Partnership)"
+    },
+    {
+      text: "Church of England"
+    },
+    {
+      text: "Education Development Trust"
+    },
+   {
+      text: "LLSE"
+    },
+    {
+      text: "Teacher Development Trust"
+    },
+    {
+      text: "Teach First"
+    },
+    {
+      text: "UCL Institute of Education"
+    }
+
+  ]
+  
+  } | decorateFormAttributes(['register', 'provider']) ) }}
+
+ 
+{% else %}
+
+  {{ govukRadios({
+    
     items: [
     {
       text: "Ambition Institute"
@@ -38,5 +103,7 @@
     }
 
   ]
+  
   } | decorateFormAttributes(['register', 'provider']) ) }}
+  {% endif %}
 {% endblock %}

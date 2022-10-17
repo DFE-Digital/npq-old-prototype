@@ -1,0 +1,13 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'How is your course being paid for?' %}
+{% set action = '/register/funding-vague' %}
+
+{% block form %}
+
+{% if (data.register['what-setting'] == "Early years or childcare") or (data.register['what-setting'] == "Other") %}
+{% include 'includes/how-paying/how-paying-ey.html' %}
+{% else %}
+{% include 'includes/how-paying/how-paying-school.html' %}
+{% endif %}
+
+{% endblock %}

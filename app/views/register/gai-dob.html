@@ -1,0 +1,41 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Your date of birth' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {{ govukDateInput({
+      id: 'dob',
+      fieldset: {
+        legend: {
+          text: "Date of birth",
+          classes: "govuk-label--s"
+        }
+      },
+      items: [
+        {
+          name: '[register][dob-day]',
+          value: data['register']['dob-day'],
+          classes: "govuk-input--width-2",
+          label: 'Day'
+        },
+        {
+          
+          value: data['register']['dob-month'],
+          classes: "govuk-input--width-2",
+          label: 'Month'
+        },
+        {
+          name: '[register][dob-year]',
+          value: data['register']['dob-year'],
+          classes: "govuk-input--width-4",
+          label: 'Year'
+        }
+      ],
+      hint: {
+        text: "For example, 12 11 1990"
+      }
+    }) }}
+
+
+{% endblock %}

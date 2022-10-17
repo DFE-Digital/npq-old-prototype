@@ -1,0 +1,134 @@
+{% set trn %}
+  <span class="app-!-font-family-tabular">
+    {{ data.register.trn }}
+  </span>
+{% endset %}
+
+{{ govukSummaryList({
+  rows: [
+
+  {
+    key: {
+      text: "Where do you work?"
+    },
+    value: {
+      text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
+    },
+    actions: {
+      items: [
+        {
+          href: "/register/where-do-you-work",
+          text: "Change",
+          visuallyHiddenText: "where you work"
+        }
+      ]
+    }
+  },
+    {
+    key: {
+      text: "Work setting"
+    },
+    value: {
+      text: data.register['work-setting']
+    },
+    actions: {
+      items: [
+        {
+          href: "/register/work-setting",
+          text: "Change",
+          visuallyHiddenText: "what setting you work in"
+        }
+      ]
+    }
+  }, 
+    {
+      key: {
+        text: "Do you work in a nursery?"
+      },
+      value: {
+        text: data.register['nursery']
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/nursery",
+            text: "Change",
+            visuallyHiddenText: "whether you work in a nursery"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Type of nursery"
+      },
+      value: {
+        text: data.register.nurseryType
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/nursery-type",
+            text: "Change",
+            visuallyHiddenText: "nursery"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Nursery"
+      },
+      value: {
+        text: data.register.school
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/which-school",
+            text: "Change",
+            visuallyHiddenText: "nursery"
+          }
+        ]
+      }
+    },
+
+    
+    
+    {
+      key: {
+        text: "Course"
+      },
+      value: {
+        text: data.register.course
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/choose-npq",
+            text: "Change",
+            visuallyHiddenText: " course"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Lead provider"
+      },
+      value: {
+        text: data.register.provider
+      },
+      actions: {
+        items: [
+          {
+            href: "/eyll/choose-provider-ey-ll",
+            text: "Change",
+            visuallyHiddenText: " lead provider"
+          }
+        ]
+      }
+    }
+
+  ]
+}) }}

@@ -1,0 +1,27 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Have you been awarded qualified teacher status (QTS)?' %}
+
+{% block form %}
+
+
+   {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--xl",
+        isPageHeading: true,
+        text: title
+      }
+    },
+  
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ]
+  } | decorateFormAttributes(['register', 'haveqts']) ) }}
+
+
+{% endblock %}

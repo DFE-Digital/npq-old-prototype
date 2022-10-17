@@ -1,0 +1,43 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Did a university, SCITT or school award your QTS?" %}
+
+{% block form %}
+<h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  {% set alert %}
+      {{ govukInput({
+        classes: "govuk-!-width-two-thirds",
+        label: {
+          text: "Where did you get your QTS?",
+          classes: "govuk-label--s"
+        },
+        hint: {
+            text: "Your university, SCITT, school or other training provider"
+          }
+
+      } | decorateFormAttributes(['register', 'whereqts'])) }}
+    {% endset %}
+
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          text: "Yes",
+          conditional: {
+            html: alert
+  }
+        },
+        {
+          text: "No, I was awarded QTS another way"
+        }
+       
+       
+      ]
+    } | decorateFormAttributes(['register', 'who-qts']) ) }}
+
+{% endblock %}

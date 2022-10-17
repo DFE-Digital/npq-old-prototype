@@ -1,0 +1,37 @@
+{% extends "_wizard-form.html" %}
+{% set title = "What is your National Insurance number?" %}
+
+{% block form %}
+  {% set help %}
+    <p>You can <a href="https://www.gov.uk/lost-national-insurance-number">find a lost National Insurance number</a>.</p>
+
+    {% if getAnIdentityJourney %}
+      <p>Or you can continue without it.</p>
+    {% else %}
+      <p>Or you can continue without it, but we are less likely to find your TRN.</p>
+    {% endif %}
+
+    {{ govukButton({
+      html: 'Continue without it',
+      classes: 'govuk-!-margin-bottom-0 govuk-button--secondary'
+    }) }}
+  {% endset %}
+
+  {{ govukInput({
+    label: {
+      text: title,
+      classes: "govuk-label--xl",
+      isPageHeading: true
+    },
+    classes: "govuk-input--width-10",
+    hint: {
+      text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    },
+    decorate: 'national-insurance-number'
+  }) }}
+
+  {{ govukDetails({
+    summaryText: "I don’t know my National Insurance number",
+    html: help
+  }) }}
+{% endblock %}

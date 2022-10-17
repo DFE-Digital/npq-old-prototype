@@ -1,0 +1,75 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'What’s your name?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <h2 class="govuk-heading-m">Use the name on your official documents</h2>
+  <p>
+    You should tell us the name that appears on your passport, driving licence or marriage certificate, if you have one.
+    We’ll try to match it against our records.
+  </p>
+
+  <p>If the names on your documents are different, give us the most recent one.</p>
+
+  <h2 class="govuk-heading-m">Your name</h2>
+  <p>The name you give will be shown on official documents and certificates.</p>
+
+  {{ govukInput({
+    label: {
+      text: "First name",
+      classes: "govuk-label--s"
+    }
+  } | decorateFormAttributes(['register', 'firstname']) ) }}
+
+  {{ govukInput({
+    label: {
+      text: "Last name",
+      classes: "govuk-label--s"
+    }
+  } | decorateFormAttributes(['register', 'lastname']) ) }}
+
+  {% set alert %}
+      {{ govukInput({
+      label: {
+        text: "Previous first name (optional)",
+        classes: "govuk-label--s"
+      },
+      decorate: 'previous-first-name'
+    }) }}
+
+    {{ govukInput({
+      label: {
+        text: "Previous last name (optional)",
+        classes: "govuk-label--s"
+      },
+      decorate: 'previous-last-name'
+    }) }}
+    {% endset %}
+
+    {{ govukRadios({
+      fieldset: {
+        legend: {
+          text: 'Have you ever changed your name?',
+          classes: "govuk-fieldset__legend--m"
+        }
+      },
+      items: [
+        {
+          text: "Yes",
+          conditional: {
+            html: alert
+  }
+        },
+        {
+          text: "No"
+        },
+        {
+          text: "Prefer not to say"
+        }
+       
+      ]
+    } | decorateFormAttributes(['register', 'previous-name']) ) }}
+
+
+{% endblock %}

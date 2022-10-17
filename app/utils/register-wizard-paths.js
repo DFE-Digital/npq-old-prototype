@@ -7,30 +7,32 @@ function registerWizardPaths (req) {
   const typesOfUser = typeOfUser(req)
 
   const paths = [
-    '/start',
-    '/register/chosen',
-    '/register/where-do-you-work',
-    '/register/work-in-school-two',
-    '/register/trn',
-    '/register/email',
-    '/register/email-confirmation',
-    '/register/personal-details',
-    ...typesOfUser.isInSchoolAndIsInEngland ? [
-      '/register/where-school',
-      '/register/which-school'
-    ] : [],
-    '/register/choose-npq',
-    '/register/aso',
-    '/register/aso-completed-npqh',
-    '/register/aso-headteacher',
-    '/register/aso-early-headship',
-    '/register/aso-funding',
-    '/register/funding-vague',
-    '/register/choose-provider',
-    '/register/share-information',
-    '/register/check',
-    '/register/confirmation'
-  ]
+    "/start",
+    "/register/trn",
+    "/register/email",
+    "/register/email-confirmation",
+    "/register/ask-questions",
+    "/register/gai-name",
+    "/register/gai-dob",
+    "/register/gai-have-nino",
+    "/register/gai-nino",
+    "/register/gai-trn",
+    "/register/gai-have-qts",
+    "/register/gai-how-qts",
+    "/register/check-answers-gai",
+    "/register/finish-gai",
+    "/register/chosen",
+    "/register/where-do-you-work",
+    "/register/what-setting",
+    "/register/where-school",
+    "/register/which-school",
+    "/register/choose-npq",
+    "/register/funding-vague",
+    "/register/choose-provider",
+    "/register/share-information",
+    "/register/check",
+    "/register/confirmation",
+  ];
 
   return nextAndBackPaths(paths, req)
 }
@@ -38,116 +40,154 @@ function registerWizardPaths (req) {
 function registerWizardForks (req) {
   var forks = [
     {
-      currentPath: '/register/chosen',
-      storedData: ['register', 'chosen'],
-      values: ['No'],
-      forkPath: '/register/choose-an-npq-and-provider'
-    },
-
-    {
-      currentPath: '/register/work-in-school-two',
-      storedData: ['register', 'work-in-school-two'],
-      values: ['Other', 'Early years or childcare'],
+      currentPath: "/register/trn",
+      storedData: ["register", "know-trn"],
+      values: ["dont-know", "no-trn"],
       forkPath: (value) => {
         switch (value) {
-          case 'Other':
-            return '/non-funded/trn'
-          case 'Early years or childcare':
-            return  '/eyll/trn'
+          case "dont-know":
+            return "/register/get-your-trn";
+          case "no-trn":
+            return "/register/get-a-trn";
         }
-      }
+      },
     },
 
-
+    {
+      currentPath: "/register/not-received-code",
+      skipTo: "/register/email",
+    },
 
     {
-      currentPath: '/register/trn',
-      storedData: ['register', 'know-trn'],
-      values: ['dont-know', 'no-trn'],
+      currentPath: "/register/email",
+      storedData: ["register", "email"],
+      values: ["returning user"],
+      forkPath: "/register/returning",
+    },
+
+    {
+      currentPath: "/register/gai-have-nino",
+      storedData: ["register", "have-nino"],
+      values: ["No"],
+      forkPath: "/register/gai-trn",
+    },
+
+    {
+      currentPath: "/register/gai-have-qts",
+      storedData: ["register", "haveqts"],
+      values: ["No"],
+      forkPath: "/register/check-answers-gai",
+    },
+
+    {
+      currentPath: "/register/chosen",
+      storedData: ["register", "chosen"],
+      values: ["No"],
+      forkPath: "/register/choosing-an-npq",
+    },
+
+    {
+      currentPath: "/register/what-setting",
+      storedData: ["register", "what-setting"],
+      values: ["Other", "Early years or childcare", "A school"],
       forkPath: (value) => {
-        switch (value) {
-          case 'dont-know':
-            return '/register/get-your-trn'
-          case 'no-trn':
-            return '/register/get-a-trn'
+        if (req.session.data.register["where-do-you-work"] != "England") {
+        console.log("Not England");
+        return "/register/choose-npq";
         }
-      }
+        if (req.session.data.register["what-setting"] == "Other") {
+          console.log("Other!");
+          return "/other/employment";
+        } else if (
+          req.session.data.register["what-setting"] ==
+          "Early years or childcare"
+        ) {
+          console.log("EY!");
+          return "/eyll/nursery";
+        }
+        
+      },
     },
 
-     {
-      currentPath: '/register/not-received-code',
-      skipTo: '/register/email'
+
+    {
+      currentPath: "/register/returning",
+      skipTo: "/register/chosen",
     },
 
     {
-      currentPath: '/register/choose-npq',
-      storedData: ['register', 'course'],
-      values: ['NPQ for Leading Literacy (NPQLL)', 'NPQ for Early Years Leadership (NPQEYL)', 'NPQ for Leading Teaching (NPQLT)', 'NPQ for Leading Behaviour and Culture (NPQLBC)', 'NPQ for Leading Teacher Development (NPQLTD)', 'NPQ for Senior Leadership (NPQSL)', 'NPQ for Headship (NPQH)', 'NPQ for Executive Leadership (NPQEL)'],
+      currentPath: "/register/choose-npq",
+      storedData: ["register", "course"],
+      values: [
+        "NPQ for Leading Behaviour and Culture (NPQLBC)",
+        "NPQ for Leading Literacy (NPQLL)",
+        "NPQ for Leading Teaching (NPQLT)",
+        "NPQ for Leading Teacher Development (NPQLTD)",
+        "NPQ for Leading Teacher Development (NPQLTD)",
+        "NPQ for Senior Leadership (NPQSL)",
+        "NPQ for Headship (NPQH)",
+        "NPQ for Executive Leadership (NPQEL)",
+        "NPQ for Early Years Leadership (NPQEYL)",
+        "The Early Headship Coaching Offer",
+      ],
       forkPath: (value) => {
-        switch (value) {
-          case 'NPQ for Leading Literacy (NPQLL)':
-            return '/register/funding-vague'
-          case 'NPQ for Early Years Leadership (NPQEYL)':
-            return '/register/funding-vague'
-          case 'NPQ for Leading Teaching (NPQLT)':
-            return '/register/funding-vague'
-          case 'NPQ for Leading Behaviour and Culture (NPQLBC)':
-            return '/register/funding-vague'
-          case 'NPQ for Leading Teacher Development (NPQLTD)':
-              return '/register/funding-vague'
-          case 'NPQ for Senior Leadership (NPQSL)':
-              return '/register/funding-vague'
-          case 'NPQ for Headship (NPQH)':
-              return '/register/funding-vague'
-          case 'NPQ for Executive Leadership (NPQEL)':
-              return '/register/funding-vague'
+        console.log(
+          "where do you work:",
+          req.session.data.register["where-do-you-work"]
+        );
+        console.log("do you have ofsted:", req.session.data.register["ofsted"]);
+
+
+        if (req.session.data.register["where-do-you-work"] === "England") {
+   
+          if (req.session.data.register["course"]== "The Early Headship Coaching Offer")
+          {
+            return "/aso/aso-intro";
+          }
+
+          if (req.session.data.register["what-setting"] === "Other") {
+            console.log("other maybe");
+            return "/register/choose-provider";
+          }
+
+          if (req.session.data.register["school"] === "private school") {
+            console.log("private school");
+            return "/not-funded/funding-not-available";
+          }
+
+          if (
+            req.session.data.register["nursery-type"] === "Private nursery" &&
+            req.session.data.register["ofsted"] === "Yes" &&
+            req.session.data.register["course"] !=
+              "NPQ for Early Years Leadership (NPQEYL)"
+          ) {
+            console.log("Not doing EY");
+            return "/not-funded/funding-not-available";
+          }
+
+          if (req.session.data.register["ofsted"] === "No") {
+            console.log("no ofsted");
+            return "/not-funded/funding-not-available";
+          }
+           else {
+            console.log("funded");
+            return "/register/funding-vague";
+          }
+        } else 
+
+        {
+          console.log("not eng");
+          return "/not-funded/funding-not-available";
         }
-      }
-    },
-
-    {
-      currentPath: '/register/aso-completed-npqh',
-      storedData: ['register', 'aso-completed-npqh'],
-      values: ['no'],
-      forkPath: '/register/aso-cannot-register'
-    },
-
-    {
-      currentPath: '/register/aso-completed-npqh',
-      storedData: ['register', 'aso-completed-npqh'],
-      values: ['no'],
-      forkPath: '/register/aso-cannot-register'
-    },
-
-    {
-      currentPath: '/register/aso-headteacher',
-      storedData: ['register', 'aso-headteacher'],
-      values: ['No'],
-      forkPath: '/aso-user/aso-funding-not-available'
-    },
-
-    {
-      currentPath: '/register/aso-early-headship',
-      storedData: ['register', 'aso-early-headship'],
-      values: ['No', 'Yes'],
-      forkPath: (value) => {
-        switch (value) {
-          case 'No':
-            return '/aso-user/aso-funding-not-available'
-          case 'Yes':
-            return '/aso-user/aso-funding'
-        }
-      }
-    },
-
-    {
-      currentPath: '/register/aso-funding',
-      skipTo: '/register/choose-provider'
+      },
     },
 
 
 
-  ]
+   
+
+  
+  ];
   return nextForkPath(forks, req)
 }
 
@@ -190,12 +230,7 @@ function existingUserWizardForks (req) {
 
 function ASOForks (basePath) {
   return [
-    {
-      currentPath: `${basePath}/choose-npq`,
-      storedData: ['register', 'course'],
-      excludedValues: ['Additional Support Offer for new headteachers'],
-      forkPath: `${basePath}/choose-provider`
-    },
+
     {
       currentPath: `${basePath}/email-confirmation`,
       storedData: ['register', 'email'],
@@ -221,50 +256,8 @@ function ASOForks (basePath) {
       values: ['no'],
       forkPath: `${basePath}/change-some-details`
     },
-    {
-      currentPath: `${basePath}/choose-provider`,
-      storedData: ['register', 'course'],
-      values: ['Additional Support Offer for new headteachers'],
-      forkPath: (value) => {
-        if (basePath === '/register') {
-          return `${basePath}/share-information`
-        } else {
-          return `${basePath}/check`
-        }
-      }
-    },
-    {
-      currentPath: `${basePath}/aso-completed-npqh`,
-      storedData: ['register', 'aso-completed-npqh'],
-      values: ['no'],
-      forkPath: `${basePath}/aso-cannot-register`
-    },
-    {
-      currentPath: `${basePath}/aso-headteacher`,
-      storedData: ['register', 'aso-headteacher'],
-      values: ['no'],
-      forkPath: `${basePath}/aso-funding-not-available`
-    },
-    {
-      currentPath: `${basePath}/aso-from-npqh`,
-      skipTo: `${basePath}/aso-completed-npqh`
-    },
-    {
-      currentPath: `${basePath}/aso-early-headship`,
-      storedData: ['register', 'aso-early-headship'],
-      values: ['no'],
-      forkPath: `${basePath}/aso-funding-not-available`
-    },
-    {
-      currentPath: `${basePath}/aso-funding-not-available`,
-      storedData: ['register', 'aso-pay-another-way'],
-      values: ['no'],
-      forkPath: `${basePath}/aso-contact-provider`
-    },
-    {
-      currentPath: `${basePath}/aso-how-pay`,
-      skipTo: `${basePath}/choose-provider`
-    }
+    
+
   ]
 }
 

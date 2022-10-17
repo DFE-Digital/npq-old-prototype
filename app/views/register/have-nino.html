@@ -1,0 +1,28 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Do you have a National Insurance number?" %}
+
+{% block form %}
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--xl",
+        isPageHeading: true,
+        text: title
+      }
+    },
+    items: [
+      {
+        text: "Yes"
+      },
+      {
+        text: "No"
+      }
+    ],
+    decorate: 'have-nino',
+    validate: {
+      presence: {
+        message: "Tell us if you have a National Insurance number"
+      }
+    }
+  }) }}
+{% endblock %}

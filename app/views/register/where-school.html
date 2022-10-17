@@ -2,7 +2,17 @@
 {% set title = 'Where is your workplace located?' %}
 
 {% block form %}
-  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+{% if data.register['what-setting'] != "Early years or childcare" %}
+
+    <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+ 
+{% else %}
+
+   <h1 class="govuk-heading-xl">Where is your nursery located?</h1>
+
+{% endif %}
 
   {{ govukInput({
   
@@ -10,4 +20,8 @@
       text: "Enter the town, city or the first part of the postcode. For example Chester or CH1."
     }
   } | decorateFormAttributes(['register', 'school-location']) ) }}
+
+
+ 
+
 {% endblock %}

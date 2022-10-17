@@ -1,0 +1,39 @@
+{% extends "_wizard-form.html" %}
+{% set title = "Did a university, SCITT or school award your QTS?" %}
+
+{% block form %}
+  {% set html %}
+    <label for="itt-autocomplete" class="govuk-label govuk-label--s">
+      Where did you get your QTS?
+    </label>
+    <div id="itt-provider-hint" class="govuk-hint">
+      Your university, SCITT, school or other training provider
+    </div>
+    <input class="govuk-input govuk-!-width-three-quarters" data-value="{{ data['itt-provider'] }}" id="itt-provider" name="itt-provider" type="itt-provider" spellcheck="false" autocomplete="itt-provider">
+  {% endset %}
+
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        classes: "govuk-fieldset__legend--xl",
+        isPageHeading: true,
+        text: title
+      }
+    },
+    items: [
+      {
+        text: "Yes",
+        conditional: { html: html }
+      },
+      {
+        text: "No, I was awarded QTS another way"
+      }
+    ],
+    decorate: "has-qts-from-provider",
+    validate: {
+      presence: {
+        message: "Tell us if you have been awarded QTS"
+      }
+    }
+  }) }}
+{% endblock %}
