@@ -1,0 +1,46 @@
+{% extends "_wizard-form.html" %}
+{% set title = 'Is ' + data.register.firstname + ' ' + data.register.lastname + ' your preferred name?' %}
+
+{% block form %}
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+
+  <p>
+    We can use a different name in correspondence, and tell people what you prefer to be called.
+  </p>
+
+  {% set alert %}
+  <h3 class="govuk-heading-m">What is your preferred name?</h3>
+
+      {{ govukInput({
+      label: {
+        text: "Preferred first name",
+        classes: "govuk-label--s"
+      }
+      } | decorateFormAttributes(['register', 'preferredfirstname'])  ) }}
+
+    {{ govukInput({
+      label: {
+        text: "Preferred last name",
+        classes: "govuk-label--s"
+      }
+    } | decorateFormAttributes(['register', 'preferredlastname'])  ) }}
+    {% endset %}
+
+    {{ govukRadios({
+      name: "preferredName",
+      items: [
+        {
+          text: "No, I prefer to be known by another name",
+          conditional: {
+            html: alert
+          }
+        },
+        {
+          text: "Yes"
+        }
+
+      ]
+    } | decorateFormAttributes(['register', 'preferredname']) ) }}
+
+
+{% endblock %}
