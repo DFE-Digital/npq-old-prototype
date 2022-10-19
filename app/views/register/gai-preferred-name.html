@@ -29,15 +29,16 @@
     {{ govukRadios({
       name: "preferredName",
       items: [
+      {
+        text: "Yes"
+      },
         {
           text: "No, I prefer to be known by another name",
           conditional: {
             html: alert
           }
-        },
-        {
-          text: "Yes"
         }
+
 
       ]
     } | decorateFormAttributes(['register', 'preferredname']) ) }}

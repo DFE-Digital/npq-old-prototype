@@ -43,6 +43,23 @@
     },
     {
       key: {
+        text: "Previous name"
+      },
+      value: {
+        text: data.register.previousfirstname + " " + data.register.previouslastname
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/gai-name",
+            text: "Change",
+            visuallyHiddenText: "previous name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
         text: "Preferred name"
       },
       value: {
