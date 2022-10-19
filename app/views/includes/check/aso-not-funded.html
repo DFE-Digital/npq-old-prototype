@@ -1,0 +1,164 @@
+{% set trn %}
+  <span class="app-!-font-family-tabular">
+    {{ data.register.trn }}
+  </span>
+{% endset %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Where do you work?"
+      },
+      value: {
+        text: (data.register['country'] | countryNameFromCode) if data.register['country'] else (data.register['where-do-you-work'] | capitaliseFirstLetter)
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/where-do-you-work",
+            text: "Change",
+            visuallyHiddenText: "where you work"
+          }
+        ]
+      }
+    },
+    {
+    key: {
+      text: "Work setting"
+    },
+    value: {
+      text: data.register['work-in-school-two']
+    },
+    actions: {
+      items: [
+        {
+          href: "/register/what-setting",
+          text: "Change",
+          visuallyHiddenText: "what setting you work in"
+        }
+      ]
+    }
+  },
+    
+    {
+      key: {
+        text: "Workplace"
+      },
+      value: {
+        text: data.register.school
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/where-school",
+            text: "Change",
+            visuallyHiddenText: " workplace"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Course"
+      },
+      value: {
+        text: data.register.course
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-npq",
+            text: "Change",
+            visuallyHiddenText: "course"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Have you completed an NPQH?"
+      },
+      value: {
+        text: data.register['aso-completed-npqh']
+      },
+      actions: {
+        items: [
+          {
+            href: "/aso/aso-completed-npqh",
+            text: "Change",
+            visuallyHiddenText: "if you have completed an NPQH"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Are you a headteacher?"
+      },
+      value: {
+        text: data.register['aso-headteacher'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [
+          {
+            href: "/aso/aso-headteacher",
+            text: "Change",
+            visuallyHiddenText: "if you are a headteacher"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Are you in your first 5 years of a headship?"
+      },
+      value: {
+        text: data.register['aso-early-headship'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [
+          {
+            href: "/aso/aso-early-headship",
+            text: "Change",
+            visuallyHiddenText: "if you are in your first 5 years of a headship"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "How is your NPQ being paid for?"
+      },
+      value: {
+        text: data.register['aso-how-pay'] | capitaliseFirstLetter
+      },
+      actions: {
+        items: [
+          {
+            href: "/not-funded/how-pay",
+            text: "Change",
+            visuallyHiddenText: "how your NPQ is being paid for"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Lead provider"
+      },
+      value: {
+        text: data.register.provider
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/choose-provider",
+            text: "Change",
+            visuallyHiddenText: "lead provider"
+          }
+        ]
+      }
+    } 
+  ]
+}) }}

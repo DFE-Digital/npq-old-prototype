@@ -28,103 +28,19 @@
       text: "Work setting"
     },
     value: {
-      text: data.register['work-in-school-two']
+      text: data.register['what-setting']
     },
     actions: {
       items: [
         {
-          href: "/register/work-in-school-two",
+          href: "/register/what-setting",
           text: "Change",
           visuallyHiddenText: "what setting you work in"
         }
       ]
     }
   },
-    {
-      key: {
-        text: "Full name"
-      },
-      value: {
-        text: data.register.name
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/personal-details",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "TRN"
-      },
-      value: {
-        html: trn
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/personal-details",
-            text: "Change",
-            visuallyHiddenText: "TRN"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Date of birth"
-      },
-      value: {
-        text: isoDateFromDateInputs(data.register['dob-year'], data.register['dob-month'], data.register['dob-day']) | dateWithYear
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/personal-details",
-            text: "Change",
-            visuallyHiddenText: "date of birth"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "National Insurance number"
-      },
-      value: {
-        text: data.register.nino
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/personal-details",
-            text: "Change",
-            visuallyHiddenText: "national insurance number"
-          }
-        ]
-      }
-    },
-    {
-      key: {
-        text: "Email address"
-      },
-      value: {
-        text: data.register.email
-      },
-      actions: {
-        items: [
-          {
-            href: "/register/email",
-            text: "Change",
-            visuallyHiddenText: "email address"
-          }
-        ]
-      }
-    },
+    
     {
       key: {
         text: "Workplace"
@@ -169,7 +85,7 @@
       actions: {
         items: [
           {
-            href: "/register/aso-completed-npqh",
+            href: "/aso/aso-completed-npqh",
             text: "Change",
             visuallyHiddenText: "if you have completed an NPQH"
           }
@@ -186,7 +102,7 @@
       actions: {
         items: [
           {
-            href: "/register/aso-headteacher",
+            href: "/aso/aso-headteacher",
             text: "Change",
             visuallyHiddenText: "if you are a headteacher"
           }
@@ -203,7 +119,7 @@
       actions: {
         items: [
           {
-            href: "/register/aso-early-headship",
+            href: "/aso/aso-early-headship",
             text: "Change",
             visuallyHiddenText: "if you are in your first 5 years of a headship"
           }
