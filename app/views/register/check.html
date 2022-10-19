@@ -33,8 +33,18 @@
   {% elseif (data.register['course'] == "NPQ for Early Years Leadership (NPQEYL)") and (data.register['nursery-type'] != "Private nursery") %}
 
     {% include 'includes/check/ey-state-nursery.html' %}
+ 
+  {% elseif data.register['aso-early-headship'] == "No" %}
 
-  {% else %}
+    {% include 'includes/check/aso-not-funded.html' %}    
+
+  {% elseif data.register['course'] == "The Early Headship Coaching Offer" %}
+
+    {% include 'includes/check/aso-funded.html' %}
+
+
+  
+    {% else %}
 
   {% include 'includes/check/school-funded.html' %}
 

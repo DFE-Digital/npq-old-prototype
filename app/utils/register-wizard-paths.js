@@ -83,7 +83,7 @@ function registerWizardForks (req) {
       currentPath: "/register/chosen",
       storedData: ["register", "chosen"],
       values: ["No"],
-      forkPath: "/register/choosing-an-npq",
+      forkPath: "/register/choose-an-npq-and-provider",
     },
 
     {
