@@ -13,6 +13,7 @@ function registerWizardPaths (req) {
     "/register/email-confirmation",
     "/register/ask-questions",
     "/register/gai-name",
+    "/register/gai-preferred-name",
     "/register/gai-dob",
     "/register/gai-have-nino",
     "/register/gai-nino",

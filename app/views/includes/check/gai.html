@@ -23,13 +23,13 @@
         ]
       }
     },
-    
+
     {
       key: {
         text: "Name"
       },
       value: {
-        text: data.register.firstname + " " + data.register.lastname  
+        text: data.register.firstname + " " + data.register.lastname
       },
       actions: {
         items: [
@@ -40,7 +40,41 @@
           }
         ]
       }
-    }, 
+    },
+    {
+      key: {
+        text: "Previous name"
+      },
+      value: {
+        text: data.register.previousfirstname + " " + data.register.previouslastname
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/gai-name",
+            text: "Change",
+            visuallyHiddenText: "previous name"
+          }
+        ]
+      }
+    },
+    {
+      key: {
+        text: "Preferred name"
+      },
+      value: {
+        text: data.register.preferredfirstname + " " + data.register.preferredlastname
+      },
+      actions: {
+        items: [
+          {
+            href: "/register/gai-preferred-name",
+            text: "Change",
+            visuallyHiddenText: "preferred name"
+          }
+        ]
+      }
+    },
     {
       key: {
         text: "Date of birth"
@@ -75,7 +109,7 @@
         ]
       }
     },
-  
+
     {
       key: {
         text: "Teacher reference number (TRN)"
@@ -93,8 +127,8 @@
         ]
       }
     },
-    
-   
+
+
 
     {
       key: {
@@ -130,9 +164,9 @@
         ]
       }
     }
-    
-    
-    
-    
+
+
+
+
   ]
 }) }}

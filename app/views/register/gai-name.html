@@ -34,17 +34,15 @@
       label: {
         text: "Previous first name (optional)",
         classes: "govuk-label--s"
-      },
-      decorate: 'previous-first-name'
-    }) }}
+      }
+    } | decorateFormAttributes(['register', 'previousfirstname']) ) }}
 
     {{ govukInput({
       label: {
         text: "Previous last name (optional)",
         classes: "govuk-label--s"
-      },
-      decorate: 'previous-last-name'
-    }) }}
+      }
+    } | decorateFormAttributes(['register', 'previouslastname']) ) }}
     {% endset %}
 
     {{ govukRadios({
@@ -67,7 +65,7 @@
         {
           text: "Prefer not to say"
         }
-       
+
       ]
     } | decorateFormAttributes(['register', 'previous-name']) ) }}
 
